@@ -6,7 +6,7 @@
   background-position: center;
   transform: translateY(-48px);
   @include media-portrait-tablet {
-    transform: translateY(0px);
+    z-index: 1;
   }
 }
 
@@ -30,6 +30,7 @@ body {
   display: none;
   @include media-portrait-tablet {
     display: flex;
+    z-index: 9;
   }
 }
 
@@ -46,4 +47,20 @@ body {
   bottom: 4em;
   right: 1em;
   color: #000000;
+  @include media-portrait-tablet {
+    bottom: 2em;
+    right: 2em;
+  }
 }
+
+.nav-item {
+  margin: 0px 10px;
+}
+
+.container {
+  @include media-laptop {
+    max-width: 100%;
+  }
+}
+
+
