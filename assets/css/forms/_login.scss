@@ -1,0 +1,21 @@
+.login-form {
+  @include form-border-responsive;
+}
+
+.media-title {
+  text-align: center;
+  @include media-landscape-tablet {
+    display:none;
+  }
+}
+
+.media-title-two {
+  text-align: center;
+  @include media-landscape-tablet {
+    display: block !important;
+  }
+}
+
+.form-group > button {
+  text-align: center;
+}

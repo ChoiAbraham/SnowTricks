@@ -5,9 +5,11 @@ footer {
   padding-bottom: 70px;
   background-color: white;
   @include media-portrait-tablet {
-    position: fixed;
     border-top: solid 2px;
     padding: 20px;
+  }
+  @include media-desktop {
+    position: fixed;
   }
 }
 
