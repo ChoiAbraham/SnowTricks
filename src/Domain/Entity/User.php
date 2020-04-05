@@ -40,7 +40,6 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(type="string", length=100)
-     * @Assert\Email
      */
     protected $email;
 
@@ -84,6 +83,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Domain\Entity\Comment", mappedBy="user")
      */
     private $comments;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     /**
      * User constructor
