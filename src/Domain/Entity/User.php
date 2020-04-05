@@ -5,6 +5,7 @@ namespace App\Domain\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -12,6 +13,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table(name="user_entity")
  * @ORM\Entity(repositoryClass="App\Domain\Repository\UserRepository")
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="Ce mail est déjà utilisé"
+ * )
  */
 class User implements UserInterface
 {
@@ -35,6 +40,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(type="string", length=100)
+     * @Assert\Email
      */
     protected $email;
 
@@ -80,11 +86,13 @@ class User implements UserInterface
     private $comments;
 
     /**
-     * User constructor.
-     * @param DateTime $createdAt
+     * User constructor
      */
-    public function __construct()
+    public function __construct(?string $name = '', ?string $email = '', ?string $password = '')
     {
+        $this->name = $name;
+        $this->email = $email;
+        $this->password = $password;
         $this->createdAt = new \DateTime();
         $this->comments = new ArrayCollection();
     }
@@ -124,7 +132,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -132,7 +140,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }

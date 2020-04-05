@@ -33,7 +33,7 @@
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('login') }}">Connexion</a>
+                    <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('registration') }}">Inscription</a>
@@ -55,7 +55,7 @@
                     <i class="fas fa-home"></i></a>
                 <a class="navbar-nav d-block d-md-none text-center col-4 menu-icon" href="/#tricks">
                     <i class="fas fa-bookmark"></i></a>
-                <a class="navbar-nav d-block d-md-none text-center col-4 menu-icon" href="{{ path('login') }}">
+                <a class="navbar-nav d-block d-md-none text-center col-4 menu-icon" href="{{ path('security_login') }}">
                     <i class="fas fa-sign-in-alt"></i></a>
             {% endif %}
         </div>

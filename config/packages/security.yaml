@@ -19,7 +19,8 @@ security:
                 path: /logout
                 target: /
 
-                #form_login:
+            #form_login:
+                #login_path: security_login
                 #check_path: /login
 
             # activate different ways to authenticate

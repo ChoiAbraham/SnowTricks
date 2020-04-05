@@ -4,12 +4,8 @@
 namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\TrickDTOInterface;
-use App\Domain\Entity\Trick;
-use App\Service\ImageFileNameService;
-use App\Service\UploaderHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class CreateTrickDTO implements TrickDTOInterface
 {

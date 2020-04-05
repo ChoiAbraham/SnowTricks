@@ -58,8 +58,7 @@ final class NewTrickAction implements NewTrickActionInterface
             'trick/trick_form.html.twig',
             [
                 'form' => $addTrickType->createView()
-            ],
-            false
+            ]
         );
     }
 }

@@ -4,10 +4,11 @@
 namespace App\Domain\Repository;
 
 use App\Domain\Entity\User;
+use App\Domain\Repository\Interfaces\UserRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-class UserRepository extends ServiceEntityRepository
+class UserRepository extends ServiceEntityRepository implements UserRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
