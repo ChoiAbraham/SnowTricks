@@ -48,7 +48,7 @@ class SecurityRegistrationAction
         return $responder (
             'security/registration.html.twig',
             [
-                'form' => $addUserType->createView()
+                'registrationForm' => $addUserType->createView()
             ]
         );
     }

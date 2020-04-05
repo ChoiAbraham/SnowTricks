@@ -1,0 +1,24 @@
+.registration-form {
+  border: solid 2px;
+  margin: 20px;
+  padding: 20px;
+  @include media-laptop {
+    margin: 50px 300px;
+  }
+  @include media-desktop {
+      margin: 100px 400px;
+  }
+}
+
+.registration-form > h1 {
+  text-align: center;
+}
+
+.registration-form > :nth-last-child(2) {
+  text-align: center;
+}
+
+.re-button {
+  width: 120px;
+  margin-bottom: 10px;
+}

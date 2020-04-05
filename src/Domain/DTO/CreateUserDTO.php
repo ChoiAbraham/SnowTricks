@@ -5,6 +5,8 @@ namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\UserDTOInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Form\CustomConstraints as AcmeAssert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class CreateUserDTO implements UserDTOInterface
 {
@@ -12,6 +14,7 @@ class CreateUserDTO implements UserDTOInterface
      * @var string
      *
      * @Assert\NotBlank()
+     * @AcmeAssert\UniqueUsername()
      */
     protected $username;
 
@@ -19,7 +22,8 @@ class CreateUserDTO implements UserDTOInterface
      * @var string
      *
      * @Assert\NotBlank()
-     * @Assert\Email()
+     * @Assert\Email(message="Entrez une addresse Email")
+     * @AcmeAssert\UniqueEmail()
      */
     protected $email;
 

@@ -2,12 +2,42 @@
 
 {% block body %}
     {{ include('include/_flash.message.html.twig') }}
-    {{ form_start(form) }}
-        {{ form_row(form.username, {'label': 'Nom d\'utilisateur', 'attr': {'placeholder': 'Nom d\'utilisateur'} }) }}
-        {{ form_row(form.email, {'label': 'Email', 'attr': {'placeholder': 'Adresse email...' }}) }}
-        {{ form_row(form.password, {'label': 'Mot de passe', 'attr': {'placeholder': 'Mot de passe' }}) }}
-        {{ form_row(form.confirm_password, {'label': 'Confirmation', 'attr': {'placeholder': 'Confirmation' }}) }}
-    {{ form_widget(form) }}
-        <button type="submit" class="btn btn-success">S'inscrire</button>
-    {{ form_end(form) }}
+<div class="container">
+    {% form_theme registrationForm _self %}
+
+    {{ form_start(registrationForm, {'attr': {'class':'registration-form'}}) }}
+        <h1>Inscription</h1>
+
+        <div class="form-group">
+            {{ form_row(registrationForm.username, {'label': 'Nom', 'attr': {'placeholder': 'Nom' }}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.email, {'label': 'Email', 'attr': {'placeholder': 'Adresse email...' }}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.password, {'label': 'Mot de passe', 'attr': {'placeholder': 'Mot de passe' }}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.confirm_password, {'label': 'Confirmation Mot de passe', 'attr': {'placeholder': 'Mot de passe' }}) }}
+        </div>
+        <div class="d-flex flex-column align-items-center">
+            <button type="submit" class="btn btn-success re-button">S'inscrire</button>
+            <a href="{{ path('security_login') }}">Déjà un compte?</a>
+        </div>
+    {{ form_end(registrationForm) }}
+</div>
+
 {% endblock %}
+
+{%- block form_row -%}
+    {%- set widget_attr = {} -%}
+    {%- if help is not empty -%}
+        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
+    {%- endif -%}
+    <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+        {{- form_label(form) -}}
+        {{- form_errors(form) -}}
+        {{- form_widget(form, widget_attr) -}}
+        {{- form_help(form) -}}
+    </div>
+{%- endblock form_row -%}
