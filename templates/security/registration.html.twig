@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ include('include/_flash.message.html.twig') }}
     {{ form_start(form) }}
         {{ form_row(form.username, {'label': 'Nom d\'utilisateur', 'attr': {'placeholder': 'Nom d\'utilisateur'} }) }}
         {{ form_row(form.email, {'label': 'Email', 'attr': {'placeholder': 'Adresse email...' }}) }}

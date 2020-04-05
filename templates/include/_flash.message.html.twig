@@ -1,3 +1,5 @@
-{% for message in app.flashes('success') %}
+{% for messages in app.flashes %}
+    {% for message in messages %}
     <div class="">{{ message }}</div>
+    {% endfor %}
 {% endfor %}

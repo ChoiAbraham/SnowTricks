@@ -34,6 +34,8 @@ class UserBuilder implements UserBuilderInterface
             $dto->getEmail(),
             $dto->getPassword()
         );
+
+        return $this;
     }
 
     /**

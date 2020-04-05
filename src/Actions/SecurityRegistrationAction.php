@@ -42,7 +42,7 @@ class SecurityRegistrationAction
         $addUserType = $this->formFactory->create(RegistrationType::class)->handleRequest($request);
 
         if ($this->addUserTypeHandler->handle($addUserType)) {
-            //return $redirect('security_login');
+            return $redirect('security_login');
         }
 
         return $responder (

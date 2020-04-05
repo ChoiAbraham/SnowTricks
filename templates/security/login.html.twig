@@ -12,6 +12,11 @@
                 {% endif %}
                 <form method="post" class="">
                     <div class="form-group">
+                        <label for="inputUsername" class="sr-only">Username</label>
+                        <input type="text" value="" name="username" id="inputUsername" class="form-control mt-4"
+                               placeholder="Username" required autofocus>
+                    </div>
+                    <div class="form-group">
                         <label for="inputMail" class="sr-only">Mail</label>
                         <input type="text" value="{{ last_username }}" name="mail" id="inputMail" class="form-control mt-4"
                                placeholder="Mail" required autofocus>

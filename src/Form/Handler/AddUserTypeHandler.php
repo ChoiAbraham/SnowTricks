@@ -59,21 +59,28 @@ class AddUserTypeHandler implements AddUserTypeHandlerInterface
             /** @var CreateUserDTO $data */
             $data = $form->getData();
 
-            dd($data);
-
             /** @var User $user */
             $user = $this->userBuilder->create($form->getData())->getUser();
-              $hash = $this->encoder->encodePassword($user, $user->getPassword());
+            $hash = $this->encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($hash);
 
-              $user->setPassword($hash);
+            $userByUsername = $this->userRepository->findOneBy(array('name' => $user->getName()));
+            $userByEmail = $this->userRepository->findOneBy(array('email' => $user->getEmail()));
 
-//            $this->em->persist($user);
-//            $this->em->flush();
+            if ($userByEmail === null && $userByEmail === null) {
+                $this->em->persist($user);
+                $this->em->flush();
 
-              $this->bag->add('success', 'Succès: vous êtes inscrit');
+                $this->bag->add('success', 'Succès: vous êtes inscrit');
 
-
-            return true;
+                return true;
+            } elseif ($userByUsername != null) {
+                $this->bag->add('fail', 'Ce Nom est déjà utilisé');
+                return false;
+            } elseif ($userByEmail != null) {
+                $this->bag->add('fail', 'Cet Email est déjà utilisé');
+                return false;
+            }
         }
 
         return false;

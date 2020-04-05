@@ -29,7 +29,7 @@
                     <a class="nav-link" href="{{ path('my_account') }}">Mon compte</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('logout') }}">Déconnexion</a>
+                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
                 </li>
             {% else %}
                 <li class="nav-item">
@@ -48,7 +48,7 @@
                     <i class="fas fa-home"></i></a>
                 <a class="navbar-nav d-block d-md-none text-center col-3 menu-icon" href="{{ path('new_trick') }}">
                     <i class="fas fa-bookmark"></i></a>
-                <a class="navbar-nav d-block d-md-none text-center col-3 menu-icon" href="{{ path('logout') }}">
+                <a class="navbar-nav d-block d-md-none text-center col-3 menu-icon" href="{{ path('app_logout') }}">
                     <i class="fas fa-sign-out-alt"></i></a>
             {% else %}
                 <a class="navbar-nav d-block d-md-none text-center col-4 menu-icon" href="{{ path('homepage_action') }}">

@@ -20,7 +20,7 @@ class UserFixture extends BaseFixture
         $this->encoder = $encoder;
     }
 
-    public function loadData(ObjectManager $manager)
+    protected function loadData(ObjectManager $manager)
     {
         $this->createMany(User::class, 21, function(User $user) {
             $user->setName($this->faker->name);
