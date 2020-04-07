@@ -19,6 +19,11 @@ security:
                 path:   app_logout
                 target: homepage_action
 
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+
             #form_login:
                 #login_path: security_login
                 #check_path: /login
