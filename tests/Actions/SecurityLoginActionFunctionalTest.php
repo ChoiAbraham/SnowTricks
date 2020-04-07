@@ -7,6 +7,7 @@ namespace App\Tests\Actions;
 use App\DataFixtures\UserFixture;
 use App\Tests\AbstractWebTestCase;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
+use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 
 class SecurityLoginActionFunctionalTest extends AbstractWebTestCase
 {
@@ -30,6 +31,9 @@ class SecurityLoginActionFunctionalTest extends AbstractWebTestCase
         static::assertResponseRedirects('/');
     }
 
+    /*
+     * @expectedException CustomUserMessageAuthenticationException
+     */
     public function testLoginWithWrongUsername()
     {
         $this->loadFixtures([UserFixture::class]);
@@ -49,11 +53,16 @@ class SecurityLoginActionFunctionalTest extends AbstractWebTestCase
         $form['password'] = 'abrahamchoi';
 
         $this->client->submit($form);
+//        $this->expectException(CustomUserMessageAuthenticationException::class);
+
         $this->client->followRedirect();
 
         static::assertSelectorTextContains('html div.alert-danger', 'Mauvais identifiant');
     }
 
+    /*
+     * @expectedException CustomUserMessageAuthenticationException
+     */
     public function testLoginWithWrongEmail()
     {
         $this->loadFixtures([UserFixture::class]);
@@ -78,6 +87,9 @@ class SecurityLoginActionFunctionalTest extends AbstractWebTestCase
         static::assertSelectorTextContains('html div.alert-danger', 'Mauvais identifiant');
     }
 
+    /*
+     * @expectedException CustomUserMessageAuthenticationException
+     */
     public function testLoginWithWrongPassword()
     {
         $this->loadFixtures([UserFixture::class]);
