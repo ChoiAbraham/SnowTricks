@@ -4,7 +4,6 @@
 namespace App\Responders;
 
 use App\Responders\Interfaces\ViewResponderInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Twig\Environment;
 use Symfony\Component\HttpFoundation\Response;
 

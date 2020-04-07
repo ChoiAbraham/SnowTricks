@@ -10,6 +10,7 @@
     <php>
         <ini name="error_reporting" value="-1" />
         <server name="APP_ENV" value="test" force="true" />
+        <server name="MAILER_ADDRESS" value="MAILER_ADDRESS=choi.abri@gmail.com" />
         <server name="SHELL_VERBOSITY" value="-1" />
         <server name="SYMFONY_PHPUNIT_REMOVE" value="" />
         <server name="SYMFONY_PHPUNIT_VERSION" value="7.5" />
@@ -24,6 +25,12 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
+            <exclude>
+                <file>src/Kernel.php</file>
+                <directory>
+                    src/Migrations
+                </directory>
+            </exclude>
         </whitelist>
     </filter>
 

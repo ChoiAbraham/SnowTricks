@@ -3,25 +3,24 @@
         {% if image.firstImage == true %}
             {% set firstimage = image.imageFileName %}
 
-            <div class="col-sm-12 mt-2">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 mt-2">
                 <div class="card text-center m-auto mb-4">
                     <a href="{{ path('trick_action', {slug: trick.slug, id: trick.id}) }}">
                         <img class="card-img-top pt-1"
                              src={{ asset('uploads/trick_picture/' ~ firstimage) }}
-                             alt="{{ image.altImage }}"
-                             style="height: 300px; width: 300px">
+                             alt="{{ image.altImage }}">
                     </a>
                     <div class="card-body">
-                        <div class="card-footer d-flex flex-row align-items">
-                            <div>
-                                <h5 class="card-title">
+                        <div class="card-footer d-flex flex-wrap">
+                            <div class="card-title">
+                                <h5>
                                     <a href="{{ path('trick_action', {slug: trick.slug, id: trick.id}) }}">{{ trick.title }}</a>
                                 </h5>
                                 <div class="text-primary">{{ trick.createdAt ? trick.createdAt|date('Y-m-d') : 'unpublished' }}</div>
                             </div>
 
-                            <div class="d-flex align-items-start">
-                                <div class="pl-4 p-2">
+                            <div class="card-buttons">
+                                <div class="p-2">
                                     <a href="{{ path('edit_trick', {id: trick.id}) }}"><i class="fas fa-edit"></i></a>
                                 </div>
                                 <div class="">
