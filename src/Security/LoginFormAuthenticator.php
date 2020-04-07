@@ -68,7 +68,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             'username' => $request->request->get('username'),
             'mail' => $request->request->get('mail'),
             'password' => $request->request->get('password'),
-            'csrf_token' => $request->request->get('csrf_token'),
+            'csrf_token' => $request->request->get('_csrf_token'),
         ];
         $request->getSession()->set(
             Security::LAST_USERNAME,
@@ -96,7 +96,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+        $passwordBool = $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
+
+        if (!$passwordBool) {
+            throw new CustomUserMessageAuthenticationException('Mauvais identifiant');
+        }
+
+        return $passwordBool;
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)

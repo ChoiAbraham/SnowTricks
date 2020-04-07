@@ -8,9 +8,6 @@ footer {
     border-top: solid 2px;
     padding: 20px;
   }
-  @include media-desktop {
-    position: fixed;
-  }
 }
 
 #navbar-footer{

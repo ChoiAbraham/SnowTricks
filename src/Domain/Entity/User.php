@@ -94,6 +94,7 @@ class User implements UserInterface
         $this->password = $password;
         $this->createdAt = new \DateTime();
         $this->comments = new ArrayCollection();
+        $this->roles[] = 'ROLE_USER';
     }
 
     /**
@@ -244,10 +245,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        $roles = $this->roles;
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->roles;
     }
 
     /**

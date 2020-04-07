@@ -3,10 +3,10 @@
   margin: 20px;
   padding: 20px;
   @include media-laptop {
-    margin: 50px 300px;
+    margin: 10px 300px;
   }
   @include media-desktop {
-    margin: 50px 400px;
+    margin: 10px 400px;
   }
 }
 

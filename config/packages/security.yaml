@@ -6,7 +6,6 @@ security:
         app_user_provider:
             entity:
                 class: App\Domain\Entity\User
-                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -17,7 +16,7 @@ security:
                 authenticators:
                    - App\Security\LoginFormAuthenticator
             logout:
-                path: app_logout
+                path:   app_logout
                 target: homepage_action
 
             #form_login:

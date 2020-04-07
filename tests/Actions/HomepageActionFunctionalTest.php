@@ -3,12 +3,20 @@
 
 namespace App\Tests\Actions;
 
-
+use App\DataFixtures\UserFixture;
+use App\Domain\Entity\User;
 use App\Tests\AbstractWebTestCase;
+use App\Tests\NeedLoginTrait;
+use Liip\TestFixturesBundle\Test\FixturesTrait;
+use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class HomepageActionFunctionalTest extends AbstractWebTestCase
 {
+    use FixturesTrait;
+    use NeedLoginTrait;
+
     public function testHomepageIsUp()
     {
         $this->client->request('GET', '/');
@@ -21,5 +29,16 @@ class HomepageActionFunctionalTest extends AbstractWebTestCase
         $crawler = $this->client->request('GET', '/');
 
         static::assertSame(1, $crawler->filter('html:contains("SnowTricks")')->count());
+    }
+
+    public function testLetAuthenticatedUserToAccessHomepage()
+    {
+        $this->client->request('GET', '/');
+        //Simulation Authentification
+        $users = $this->loadFixtures([UserFixture::class])->getReferenceRepository();
+        $user = $users->getReference('userRef_0');
+        $this->login($this->client, $user);
+
+        static::assertResponseStatusCodeSame(Response::HTTP_OK);
     }
 }

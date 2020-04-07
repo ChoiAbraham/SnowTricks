@@ -3,11 +3,10 @@
 {% block body %}
     {{ include('include/_flash.message.html.twig') }}
 <div class="container">
-    {% form_theme registrationForm _self %}
+    <h1 class="hide-block media-title-two mt-4">Inscription</h1>
 
     {{ form_start(registrationForm, {'attr': {'class':'registration-form'}}) }}
-        <h1>Inscription</h1>
-
+        <h1 class="media-title mb-4">Inscription</h1>
         <div class="form-group">
             {{ form_row(registrationForm.username, {'label': 'Nom', 'attr': {'placeholder': 'Nom' }}) }}
         </div>
@@ -28,16 +27,3 @@
 </div>
 
 {% endblock %}
-
-{%- block form_row -%}
-    {%- set widget_attr = {} -%}
-    {%- if help is not empty -%}
-        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
-    {%- endif -%}
-    <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
-        {{- form_label(form) -}}
-        {{- form_errors(form) -}}
-        {{- form_widget(form, widget_attr) -}}
-        {{- form_help(form) -}}
-    </div>
-{%- endblock form_row -%}
