@@ -1,25 +1,26 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Domain\Entity\User:
+            algorithm: auto
     providers:
-        in_memory: { memory: null }
         app_user_provider:
             entity:
                 class: App\Domain\Entity\User
-                property: 'email'
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: lazy
-              #guard:
-              #   authenticators:
-            # - App\Security\SecurityControllerAuthenticator
+            guard:
+                authenticators:
+                   - App\Security\LoginFormAuthenticator
             logout:
-                path: /logout
-                target: /
+                path:   app_logout
+                target: homepage_action
 
-                #form_login:
+            #form_login:
+                #login_path: security_login
                 #check_path: /login
 
             # activate different ways to authenticate
@@ -34,9 +35,3 @@ security:
     # - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     # - { path: ^/admin, roles: ROLE_ADMIN }
     # - { path: ^/profile, roles: ROLE_USER }
-
-    encoders:
-        App\Domain\Entity\User:
-            algorithm: auto
-
-

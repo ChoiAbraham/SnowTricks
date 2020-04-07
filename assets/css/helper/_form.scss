@@ -1,0 +1,20 @@
+@mixin form-border-responsive {
+  border: solid 2px;
+  margin: 20px;
+  padding: 20px;
+  @include media-laptop {
+    margin: 10px 300px;
+  }
+  @include media-desktop {
+    margin: 10px 400px;
+  }
+}
+
+.re-button {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+.center-button {
+  text-align: center;
+}

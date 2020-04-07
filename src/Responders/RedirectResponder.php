@@ -3,7 +3,6 @@
 
 namespace App\Responders;
 
-
 use App\Responders\Interfaces\RedirectResponderInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -27,6 +26,4 @@ class RedirectResponder implements RedirectResponderInterface
     {
         return new RedirectResponse($this->urlGenerator->generate($routeName, $params));
     }
-
-
 }

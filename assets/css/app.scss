@@ -1,11 +1,15 @@
 @import "helper/variables";
 @import "helper/mediaqueries";
+@import "helper/form";
 
 @import '~bootstrap';
 @import '~font-awesome';
 
 @import "./layout/header";
 @import "./layout/footer";
+
+@import "forms/registration";
+@import "forms/login";
 
 @import "./components/cards";
 @import "./components/articles";

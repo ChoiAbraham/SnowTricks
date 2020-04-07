@@ -48,7 +48,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $token;
 
@@ -80,13 +80,21 @@ class User implements UserInterface
     private $comments;
 
     /**
-     * User constructor.
-     * @param DateTime $createdAt
+     * @ORM\Column(type="json")
      */
-    public function __construct()
+    private $roles = [];
+
+    /**
+     * User constructor
+     */
+    public function __construct(?string $name = '', ?string $email = '', ?string $password = '')
     {
+        $this->name = $name;
+        $this->email = $email;
+        $this->password = $password;
         $this->createdAt = new \DateTime();
         $this->comments = new ArrayCollection();
+        $this->roles[] = 'ROLE_USER';
     }
 
     /**
@@ -124,7 +132,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -132,7 +140,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -237,10 +245,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        $roles = $this->roles;
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
+        return $this->roles;
     }
 
     /**

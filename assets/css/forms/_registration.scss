@@ -1,0 +1,11 @@
+.registration-form {
+  @include form-border-responsive;
+}
+
+.registration-form > h1 {
+  text-align: center;
+}
+
+.registration-form > :nth-last-child(2) {
+  text-align: center;
+}

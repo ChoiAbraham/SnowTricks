@@ -4,8 +4,8 @@ footer {
   padding-top: 20px;
   padding-bottom: 70px;
   background-color: white;
-  border-top: solid 2px;
   @include media-portrait-tablet {
+    border-top: solid 2px;
     padding: 20px;
   }
 }

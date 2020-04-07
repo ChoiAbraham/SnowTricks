@@ -1,7 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ include('include/_flash.message.html.twig') }}
+<div class="container">
+    <h1 class="hide-block media-title-two mt-4">Inscription</h1>
 
-    <p>Login Page</p>
+    {{ form_start(registrationForm, {'attr': {'class':'registration-form'}}) }}
+        <h1 class="media-title mb-4">Inscription</h1>
+        <div class="form-group">
+            {{ form_row(registrationForm.username, {'label': 'Nom', 'attr': {'placeholder': 'Nom' }}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.email, {'label': 'Email', 'attr': {'placeholder': 'Adresse email...' }}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.password, {'label': 'Mot de passe', 'attr': {'placeholder': 'Mot de passe' }}) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(registrationForm.confirm_password, {'label': 'Confirmation Mot de passe', 'attr': {'placeholder': 'Mot de passe' }}) }}
+        </div>
+        <div class="d-flex flex-column align-items-center">
+            <button type="submit" class="btn btn-success re-button">S'inscrire</button>
+            <a href="{{ path('security_login') }}">Déjà un compte?</a>
+        </div>
+    {{ form_end(registrationForm) }}
+</div>
 
 {% endblock %}

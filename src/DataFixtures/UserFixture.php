@@ -11,6 +11,39 @@ class UserFixture extends BaseFixture
     /** @var UserPasswordEncoderInterface */
     private $encoder;
 
+    private static $userNames = [
+        'Simone LeBatelier',
+        'Karel Labonté',
+        'Harbin Parent',
+        'Pénélope Margand',
+        'Vachel Quessy',
+        'Yolande Vadeboncoeur',
+        'Jacquenett Gousse',
+        'Abraham Choi'
+    ];
+
+    private static $userEmails = [
+        'SimoneLeBatelier@rhyta.com',
+        'KarelLabonte@teleworm.us',
+        'HarbinParent@armyspy.com',
+        'PenelopeMargand@dayrep.com',
+        'VachelQuessy@rhyta.com',
+        'YolandeVadeboncoeur@jourrapide.com',
+        'JacquenettGousse@dayrep.com',
+        'abraham.choi@yahoo.fr'
+    ];
+
+    private static $userPasswords = [
+        'SimoneLeBatelier',
+        'KarelLabonte',
+        'HarbinParent',
+        'PenelopeMargand',
+        'VachelQuessy',
+        'YolandeVadeboncoeur',
+        'JacquenettGousse',
+        'abrahamchoi'
+    ];
+
     /**
      * UserFixture constructor.
      * @param UserPasswordEncoderInterface $encoder
@@ -20,12 +53,16 @@ class UserFixture extends BaseFixture
         $this->encoder = $encoder;
     }
 
-    public function loadData(ObjectManager $manager)
+    protected function loadData(ObjectManager $manager)
     {
-        $this->createMany(User::class, 21, function(User $user) {
-            $user->setName($this->faker->name);
-            $user->setEmail($this->faker->email);
-            $user->setPassword($this->encoder->encodePassword($user, $this->faker->password));
+        $this->createMany(User::class, 8, function(User $user, $i) {
+            $user->setName(self::$userNames[$i]);
+            $user->setEmail(self::$userEmails[$i]);
+            // Pour récupérer User instance in tests
+            // voir doc liip bundle
+            $this->setReference('userRef_' . $i, $user);
+
+            $user->setPassword($this->encoder->encodePassword($user, self::$userPasswords[$i]));
             //$user->setPicturePath($this->faker->image($dir = '/tmp', $width = 640, $height = 480);
             $user->setToken($this->faker->creditCardNumber);
         });
