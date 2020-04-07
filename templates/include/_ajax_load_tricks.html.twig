@@ -1,0 +1,43 @@
+{% for trick in tricksToLoad %}
+    {% for image in trick.trickImages %}
+        {% if image.firstImage == true %}
+            {% set firstimage = image.imageFileName %}
+
+            <div class="col-sm-12 mt-2">
+                <div class="card text-center m-auto mb-4">
+                    <a href="{{ path('trick_action', {slug: trick.slug, id: trick.id}) }}">
+                        <img class="card-img-top pt-1"
+                             src={{ asset('uploads/trick_picture/' ~ firstimage) }}
+                             alt="{{ image.altImage }}"
+                             style="height: 300px; width: 300px">
+                    </a>
+                    <div class="card-body">
+                        <div class="card-footer d-flex flex-row align-items">
+                            <div>
+                                <h5 class="card-title">
+                                    <a href="{{ path('trick_action', {slug: trick.slug, id: trick.id}) }}">{{ trick.title }}</a>
+                                </h5>
+                                <div class="text-primary">{{ trick.createdAt ? trick.createdAt|date('Y-m-d') : 'unpublished' }}</div>
+                            </div>
+
+                            <div class="d-flex align-items-start">
+                                <div class="pl-4 p-2">
+                                    <a href="{{ path('edit_trick', {id: trick.id}) }}"><i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="">
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#delete_trick_homepage">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <form method="POST" action="{{ path('edit_trick_delete', {id: trick.id}) }}" style="display: inline-block">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
+                                        {{ include('include/modal_delete.html.twig') }}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endfor %}

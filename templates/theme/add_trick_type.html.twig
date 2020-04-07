@@ -1,0 +1,44 @@
+{% block form %}
+    {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.groups) }}
+        {{ form_row(form.content) }}
+
+    <ul id="video-fields-list"
+        data-prototype="{{ form_widget(form.videoslinks.vars.prototype)|e }}"
+        data-widget-tags="{{ '<li></li>'|e }}"
+        data-widget-counter="{{ form.videoslinks|length }}">
+        {% for videoField in form.videoslinks %}
+            <li>
+                {{ form_errors(videoField) }}
+                {{ form_widget(videoField) }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <button type="button"
+            class="add-another-collection-widget"
+            data-list-selector="#video-fields-list">Add Video
+    </button>
+
+    {# store the prototype on the data-prototype attribute #}
+    <ul id="image-fields-list"
+        data-prototype="{{ form_widget(form.imageslinks.vars.prototype)|e }}"
+        data-widget-tags="{{ '<li></li>'|e }}"
+        data-widget-counter="{{ form.imageslinks|length }}">
+        {% for imageField in form.imageslinks %}
+            <li>
+                {{ form_errors(imageField) }}
+                {{ form_widget(imageField) }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <button type="button"
+            class="add-another-collection-widget"
+            data-list-selector="#image-fields-list">Add Image
+    </button>
+
+        <button type="submit">Envoyer</button>
+    {{ form_end(form) }}
+{% endblock %}

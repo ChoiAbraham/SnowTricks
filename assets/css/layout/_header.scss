@@ -1,0 +1,49 @@
+.bg{
+  background-image: url("../../images/homepage_background.jpg");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transform: translateY(-48px);
+  @include media-portrait-tablet {
+    transform: translateY(0px);
+  }
+}
+
+.jumbotron-fluid > div{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.jumbotron-fluid > div > h1 {
+  padding-top: 30px;
+}
+
+body {
+  background-color: $bg-color;
+}
+
+#first-navbar {
+  display: none;
+  @include media-portrait-tablet {
+    display: flex;
+  }
+}
+
+.hide-block {
+  display: none;
+}
+
+.show-block {
+  display: block;
+}
+
+.arrow-homepage {
+  position: absolute;
+  bottom: 4em;
+  right: 1em;
+  color: #000000;
+}

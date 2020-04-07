@@ -1,0 +1,74 @@
+<?php
+
+
+namespace App\Domain\DTO;
+
+use App\Domain\Entity\TrickVideo;
+use Symfony\Component\Validator\Constraints as Assert;
+
+class TrickVideoDTO
+{
+    /** @var id */
+    protected $id;
+
+    /**
+     * @var string|null
+     *
+     * @Assert\NotBlank()
+     */
+    protected $pathUrl;
+
+    /**
+     * TrickVideoDTO constructor.
+     * @param string|null $pathUrl
+     */
+    public function __construct(?string $pathUrl)
+    {
+        $this->pathUrl = $pathUrl;
+    }
+
+    /**
+     * @param TrickVideo $video
+     */
+    public static function createFromEntity(TrickVideo $video)
+    {
+        $dto = new self();
+
+        $dto->setId($video->getId());
+        $dto->setPathUrl($video->getPathUrl());
+
+        return $dto;
+    }
+
+    /**
+     * @return id
+     */
+    public function getId(): id
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param id $id
+     */
+    public function setId(id $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPathUrl(): ?string
+    {
+        return $this->pathUrl;
+    }
+
+    /**
+     * @param string|null $pathUrl
+     */
+    public function setPathUrl(?string $pathUrl): void
+    {
+        $this->pathUrl = $pathUrl;
+    }
+}

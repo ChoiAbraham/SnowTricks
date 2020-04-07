@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Read: {{ trick.title ?? 'no' }}{% endblock %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4">
+                    <h1>
+                        {{ trick.title ?? 'no title' }}
+                    </h1>
+                    <div class="text-primary">
+                        {{ trick.createdAt ? trick.createdAt|date('Y-m-d') : 'unpublished' }}
+                    </div>
+                    <a href="#" class="btn btn-primary">Nous Contactez</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <p>
+            {{ trick.content | nl2br }}
+        </p>
+
+        <div class="row">
+            <div class="col-md-8">
+                {{ trick.groupTrick.name }}
+
+            </div>
+            <div class="col-md-4">
+                <p>Plus d'information</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block comment %}
+<!-- <h3><i class="pr-3 fa fa-comment"></i>{ article.comments|length }} Comments</h3>
+
+                            { for comment in article.comments %}
+                                <div class="row">
+                                    <div class="col-sm-12">
+
+                                        <div class="comment-container d-inline-block pl-3 align-top">
+                                            <span class="commenter-name">{ comment.authorName }}</span>
+                                            <small>about { comment.createdAt|ago }}</small>
+
+                                            <span class="comment"> { comment.content }}</span> -->
+
+{% endblock %}

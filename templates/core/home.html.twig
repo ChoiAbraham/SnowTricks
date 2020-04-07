@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="jumbotron-fluid">
+        <div class="text-center bg">
+            <h1>SnowTricks</h1>
+            <p>Pour tout savoir sur les Tricks</p>
+        </div>
+        <a href="#tricks" class="arrow-homepage">
+            <i class="fas fa-chevron-circle-down fa-2x"></i>
+        </a>
+    </div>
+
+    <div class="container">
+        <h2>Les derniers Tricks</h2>
+        <div class="row flex" id="tricks">
+            {% for trick in tricks %}
+                {% for image in trick.trickImages %}
+                    {% if image.firstImage == true %}
+                        {% set firstimage = image.imageFileName %}
+
+                        <div class="col-sm-12 mt-2">
+                            <div class="card text-center m-auto mb-4">
+                                <a href="{{ path('trick_action', {slug: trick.slug, id: trick.id}) }}">
+                                    <img class="card-img-top pt-1"
+                                         src={{ asset('uploads/trick_picture/' ~ firstimage) }}
+                                         alt="{{ image.altImage }}"
+                                         style="height: 300px; width: 300px">
+                                </a>
+                                <div class="card-body">
+                                    <div class="card-footer d-flex flex-row align-items">
+                                        <div>
+                                            <h5 class="card-title">
+                                                <a href="{{ path('trick_action', {slug: trick.slug, id: trick.id}) }}">{{ trick.title }}</a>
+                                            </h5>
+                                            <div class="text-primary">{{ trick.createdAt ? trick.createdAt|date('Y-m-d') : 'unpublished' }}</div>
+                                        </div>
+
+                                        <div class="d-flex align-items-start">
+                                            <div class="pl-4 p-2">
+                                                <a href="{{ path('edit_trick', {id: trick.id}) }}"><i class="fas fa-edit"></i></a>
+                                            </div>
+                                            <div class="">
+                                                <button class="btn btn-danger" data-toggle="modal" data-target="#delete_trick_homepage">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                                <form method="POST" action="{{ path('edit_trick_delete', {id: trick.id}) }}" style="display: inline-block">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
+                                                    {{ include('include/modal_delete.html.twig') }}
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+
+    {% if nextPage == true %}
+    <div class="row justify-content-center pt-4">
+        <button class="btn btn-primary hide-block" type="button" disabled id="js-btn-loading">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+        </button>
+        <a data-url="{{ path('tricks.loaded') }}"
+           type="button" data-maxpage="{{ maxPageNumber }}"
+           data-page="2"
+           class="btn btn-outline-primary js-btn-moretricks">MORE TRICKS
+        </a>
+    </div>
+
+    {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('homepageloadtricks') }}
+{% endblock %}
