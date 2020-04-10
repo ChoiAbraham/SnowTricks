@@ -1,12 +1,18 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app.login') }}
+{% endblock %}
+
 {% block body %}
 
     <div class="container">
         {{ include('include/_flash.message.html.twig') }}
-            <h1 class="hide-block media-title-two mt-4">Connexion</h1>
+        <div class="login-form">
 
-            <form method="post" class="login-form">
+            <h1 class="hide-block media-title-two">Connexion</h1>
+
+            <form method="post" class="border-form">
                 <h1 class="media-title mb-4">Connexion</h1>
                 {% if error %}
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -51,5 +57,8 @@
                 </div>
             </form>
         </div>
+
+    </div>
+
 
 {% endblock %}

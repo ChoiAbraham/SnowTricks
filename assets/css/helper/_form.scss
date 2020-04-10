@@ -1,13 +1,16 @@
 @mixin form-border-responsive {
+  @include media-laptop {
+    margin: 100px 300px 200px;
+  }
+  @include media-desktop {
+    margin: 100px 400px 200px;
+  }
+}
+
+.border-form {
   border: solid 2px;
   margin: 20px;
   padding: 20px;
-  @include media-laptop {
-    margin: 10px 300px;
-  }
-  @include media-desktop {
-    margin: 10px 400px;
-  }
 }
 
 .re-button {
@@ -17,4 +20,18 @@
 
 .center-button {
   text-align: center;
+}
+
+.media-title {
+  text-align: center;
+  @include media-landscape-tablet {
+    display:none;
+  }
+}
+
+.media-title-two {
+  text-align: center;
+  @include media-landscape-tablet {
+    display: block !important;
+  }
 }

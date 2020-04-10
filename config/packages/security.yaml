@@ -24,10 +24,6 @@ security:
                 lifetime: 604800 # 1 week in seconds
                 path:     /
 
-            #form_login:
-                #login_path: security_login
-                #check_path: /login
-
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
