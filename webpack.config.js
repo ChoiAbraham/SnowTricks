@@ -24,6 +24,15 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
+
+    //CSS Pages
+    .addEntry('app.request.password', './assets/js/page/app.request.password.js')
+    .addEntry('app.reset.password', './assets/js/page/app.reset.password.js')
+
+    .addEntry('app.registration', './assets/js/page/app.registration.js')
+    .addEntry('app.login', './assets/js/page/app.login.js')
+
+    //Javascript
     .addEntry('homepageloadtricks', './assets/js/homepage_load_tricks.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')

@@ -42,7 +42,7 @@ class AddUserTypeHandler implements AddUserTypeHandlerInterface
      * @param FlashBagInterface $bag
      * @param UserRepositoryInterface $userRepository
      * @param EntityManagerInterface $em
-     * @param UserPasswordEncoderInterface $encoder
+     * @param UserPasswordEncoderInterface $this->encoder
      */
     public function __construct(UserBuilderInterface $userBuilder, FlashBagInterface $bag, UserRepositoryInterface $userRepository, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {

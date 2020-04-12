@@ -1,0 +1,11 @@
+.disconnect-form {
+  @include form-border-responsive;
+}
+
+.disconnect-form > h1 {
+  text-align: center;
+}
+
+.disconnect-form > :nth-last-child(2) {
+  text-align: center;
+}

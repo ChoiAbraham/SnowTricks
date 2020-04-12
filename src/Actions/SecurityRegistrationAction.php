@@ -25,7 +25,6 @@ class SecurityRegistrationAction
     /** @var AddUserTypeHandlerInterface */
     private $addUserTypeHandler;
 
-    private $encoder;
     /**
      * SecurityRegistrationAction constructor.
      * @param FormFactoryInterface $formFactory

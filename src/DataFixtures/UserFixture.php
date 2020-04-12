@@ -46,7 +46,7 @@ class UserFixture extends BaseFixture
 
     /**
      * UserFixture constructor.
-     * @param UserPasswordEncoderInterface $encoder
+     * @param UserPasswordEncoderInterface $this->encoder
      */
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
