@@ -18,7 +18,7 @@
 .card-footer {
   padding : 0.75rem 0.5rem;
   @include media-laptop {
-    min-height:250px;
+    min-height:200px;
   }
 }
 
@@ -31,6 +31,10 @@
   @include media-laptop {
     width: 100%;
   }
+}
+
+.card-title-no-user {
+  width: 100%;
 }
 
 .card-buttons {

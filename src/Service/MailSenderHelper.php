@@ -2,23 +2,29 @@
 
 namespace App\Service;
 
+use App\Responders\ViewResponder;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mailer\SentMessage;
 use Symfony\Component\Mime\Address;
+use Twig\Environment;
 
 class MailSenderHelper
 {
     /** @var MailerInterface */
     private $mailer;
 
-    public function __construct(MailerInterface $mailer)
+    /**
+     * @var Environment
+     */
+    private $twig;
+
+    public function __construct(Environment $twig, MailerInterface $mailer)
     {
         $this->mailer = $mailer;
+        $this->twig = $twig;
     }
 
-    public function sendEmailWithTemplateTwig($token, string $emailUser, string $firstName)
+    public function sendTemplatedEmailForPasswordReset($token, string $emailUser, string $firstName): TemplatedEmail
     {
         $email = (new TemplatedEmail())
             ->from('hello@example.com')
@@ -26,16 +32,16 @@ class MailSenderHelper
             ->subject('Changement du mot de passe')
             ->htmlTemplate('emails/_password_recovery.html.twig')
             ->context([
-                'token' => $token
+                'tokenSent' => $token
             ]);
 
-        /**
-         * @var SentMessage $sentEmail
-         */
-        try {
-            $this->mailer->send($email);
-        } catch (TransportExceptionInterface $e) {
-            dump($e);
-        }
+        $this->mailer->send($email);
+
+        return $email;
+    }
+
+    public function getTwigTemplate(ViewResponder $responder)
+    {
+        return $responder('emails/_password_recovery.html.twig', []);
     }
 }

@@ -28,6 +28,7 @@ Encore
     //CSS Pages
     .addEntry('app.request.password', './assets/js/page/app.request.password.js')
     .addEntry('app.reset.password', './assets/js/page/app.reset.password.js')
+    .addStyleEntry('email', './assets/css/email.scss')
 
     .addEntry('app.registration', './assets/js/page/app.registration.js')
     .addEntry('app.login', './assets/js/page/app.login.js')

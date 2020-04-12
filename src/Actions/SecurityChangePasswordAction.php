@@ -3,48 +3,64 @@
 
 namespace App\Actions;
 
+use App\Domain\Entity\User;
 use App\Domain\Repository\Interfaces\UserRepositoryInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Form\Handler\Interfaces\ResetPasswordTypeHandlerInterface;
+use App\Form\Type\ResetPasswordType;
+use App\Responders\RedirectResponder;
+use Symfony\Component\Form\FormFactoryInterface;
 use App\Responders\Interfaces\ViewResponderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
- * @Route("/reset_password/{slug}", name="app.reset.password")
+ * @Route("/reset_password/{token}", name="app.reset.password")
  */
 class SecurityChangePasswordAction
 {
-    /** @var UserPasswordEncoderInterface */
-    private $encoder;
-
     /** @var UserRepositoryInterface */
     private $userRepository;
 
+    /** @var FormFactoryInterface $formFactory */
+    protected $formFactory;
+
+    /** @var ResetPasswordTypeHandlerInterface */
+    private $resetPasswordTypeHandler;
+
     /**
      * SecurityChangePasswordAction constructor.
-     * @param UserPasswordEncoderInterface $encoder
      * @param UserRepositoryInterface $userRepository
+     * @param FormFactoryInterface $formFactory
+     * @param ResetPasswordTypeHandlerInterface $resetPasswordTypeHandler
      */
-    public function __construct(UserPasswordEncoderInterface $encoder, UserRepositoryInterface $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository, FormFactoryInterface $formFactory, ResetPasswordTypeHandlerInterface $resetPasswordTypeHandler)
     {
-        $this->encoder = $encoder;
         $this->userRepository = $userRepository;
+        $this->formFactory = $formFactory;
+        $this->resetPasswordTypeHandler = $resetPasswordTypeHandler;
     }
 
-    public function __invoke(Request $request, ViewResponderInterface $responder)
+    public function __invoke(Request $request, RedirectResponder $redirect, ViewResponderInterface $responder)
     {
-//        /** @var User $user */
-//        $user = $this->userRepository->findOneBy(['token' => $request->attributes->get('slug')]);
-//
-//        return $responder (
-//            'security/resetpassword.html.twig',
-//            [
-//                'form' => $form->createView()
-//            ]
-//        );
-//        } else {
-////            return $redirect('homepage_action');
-//        }
+        /** @var User $user */
+        $user = $this->userRepository->findOneBy(['token' => $request->attributes->get('token')]);
+
+        if(is_null($user)) {
+            return $redirect('homepage_action');
+        } else {
+            $form = $this->formFactory->create(ResetPasswordType::class)->handleRequest($request);
+
+            if ($this->resetPasswordTypeHandler->handle($form, $user)) {
+                return $redirect('homepage_action');
+            }
+
+            return $responder (
+                'security/form_reset_password.html.twig',
+                [
+                    'form' => $form->createView()
+                ]
+            );
+        }
     }
 }

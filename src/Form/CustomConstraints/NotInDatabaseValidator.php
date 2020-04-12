@@ -10,7 +10,7 @@ use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
 
-class UniqueEmailValidator extends ConstraintValidator
+class NotInDatabaseValidator extends ConstraintValidator
 {
     /**
      * @var UserRepositoryInterface
@@ -28,8 +28,8 @@ class UniqueEmailValidator extends ConstraintValidator
 
     public function validate($value, Constraint $constraint)
     {
-        if (!$constraint instanceof UniqueEmail) {
-            throw new UnexpectedTypeException($constraint, UniqueEmail::class);
+        if (!$constraint instanceof NotInDatabase) {
+            throw new UnexpectedTypeException($constraint, NotInDatabase::class);
         }
 
         if (null === $value || '' === $value) {
@@ -40,9 +40,9 @@ class UniqueEmailValidator extends ConstraintValidator
             throw new UnexpectedValueException($value, 'string');
         }
 
-        $userByEmail = $this->userRepository->findOneBy(array('email' => $value));
+        $user = $this->userRepository->findByCredentials($value);
 
-        if ($userByEmail != null) {
+        if ($user == null) {
         $this->context->buildViolation($constraint->message)
             ->setParameter('{{ string }}', $value)
             ->addViolation();

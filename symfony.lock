@@ -120,6 +120,9 @@
     "liip/test-fixtures-bundle": {
         "version": "1.7.0"
     },
+    "lorenzo/pinky": {
+        "version": "1.0.5"
+    },
     "monolog/monolog": {
         "version": "1.25.3"
     },
@@ -427,6 +430,15 @@
     "symfony/security-http": {
         "version": "v4.4.5"
     },
+    "symfony/sendgrid-mailer": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.4",
+            "ref": "b46e4f8f1adb2864f0aa9c0ff57aea3324a07199"
+        }
+    },
     "symfony/serializer": {
         "version": "v4.4.5"
     },
@@ -543,6 +555,9 @@
         "version": "v3.0.3"
     },
     "twig/extra-bundle": {
+        "version": "v3.0.3"
+    },
+    "twig/inky-extra": {
         "version": "v3.0.3"
     },
     "twig/twig": {

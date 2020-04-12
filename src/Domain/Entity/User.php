@@ -124,7 +124,7 @@ class User implements UserInterface
     /**
      * @param string $token
      */
-    public function setToken(string $token): void
+    public function setToken(?string $token): void
     {
         $this->token = $token;
     }

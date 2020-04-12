@@ -13,23 +13,30 @@ class SecurityRegistrationActionFunctionalTest extends AbstractWebTestCase
 
     public function testSuccessAddNewUser()
     {
+        $this->loadFixtures([UserFixture::class]);
+
         $crawler = $this->client->request('GET', '/');
+        // static::assertEquals(200, $client->getResponse()->getStatusCode(), $client->getResponse()->getContent());
+        // same as
+        static::assertTrue($this->client->getResponse()->isSuccessful());
 
         $link = $crawler->selectLink('Inscription')->link();
         $crawler = $this->client->click($link);
 
-        $form = $crawler->selectButton("S'inscrire")->form();
-        $form['registration[username]'] = 'abraham';
-        $form['registration[email]'] = 'abraham@gmail.com';
-        $form['registration[password]'] = 'abrahamchoi';
-        $form['registration[confirm_password]'] = 'abrahamchoi';
+        $form = $crawler->selectButton('S\'inscrire')->form();
 
-        $this->client->submit($form);
+        $this->client->submit($form, [
+            'registration[username]' => 'VeryUpsetting',
+            'registration[email]' => 'veryupset@gmail.com',
+            'registration[password]' => 'weirdweird6',
+            'registration[confirm_password]' => 'weirdweird6',
+        ]);
 
-        static::assertSelectorNotExists('.invalid-feedback');
-        static::assertResponseRedirects('/login');
+        static::assertTrue($this->client->getResponse()->isRedirection());
 
         $crawler = $this->client->followRedirect();
+
+        static::assertSelectorNotExists('.invalid-feedback');
         static::assertSame(1, $crawler->filter('html:contains("vous êtes inscrit")')->count());
     }
 

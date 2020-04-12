@@ -1,0 +1,21 @@
+{% apply inky_to_html|inline_css(encore_entry_css_source('email')) %}
+    <container>
+        {% block content %}{% endblock %}
+
+        <row class="footer">
+            <columns>
+                <p><em>L'équipe SnowTricks</em></p>
+            </columns>
+        </row>
+        <row class="bottom">
+            <columns>
+                <center>
+                    <spacer size="20"></spacer>
+                    <div>
+                        A très bientôt
+                    </div>
+                </center>
+            </columns>
+        </row>
+    </container>
+{% endapply %}

@@ -64,7 +64,6 @@ class UserFixture extends BaseFixture
 
             $user->setPassword($this->encoder->encodePassword($user, self::$userPasswords[$i]));
             //$user->setPicturePath($this->faker->image($dir = '/tmp', $width = 640, $height = 480);
-            $user->setToken($this->faker->creditCardNumber);
         });
 
         $manager->flush();

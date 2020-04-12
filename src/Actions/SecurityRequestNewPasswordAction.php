@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/password-recovery", name="app_emailrequest.reset.password")
+ * @Route("/password-recovery", name="request.reset.password")
  */
 class SecurityRequestNewPasswordAction implements SecurityRequestNewPasswordInterface
 {

@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * @Annotation
  */
-class UniqueEmail extends Constraint
+class NotInDatabase extends Constraint
 {
-    public $message = 'L\'email "{{ string }}" existe déjà';
+    public $message = 'Mauvais identifiant';
 }
