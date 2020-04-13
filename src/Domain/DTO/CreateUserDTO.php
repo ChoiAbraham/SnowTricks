@@ -6,7 +6,6 @@ namespace App\Domain\DTO;
 use App\Domain\DTO\Interfaces\UserDTOInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Form\CustomConstraints as AcmeAssert;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class CreateUserDTO implements UserDTOInterface
 {

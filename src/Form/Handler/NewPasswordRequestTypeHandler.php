@@ -2,15 +2,16 @@
 
 namespace App\Form\Handler;
 
+use App\Domain\DTO\EmailPasswordRecoveryDTO;
 use App\Domain\Entity\User;
 use App\Form\Handler\Interfaces\NewPasswordRequestTypeHandlerInterface;
 use App\Domain\Repository\Interfaces\UserRepositoryInterface;
 use App\Service\MailSenderHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 
 class NewPasswordRequestTypeHandler implements NewPasswordRequestTypeHandlerInterface
 {
@@ -26,40 +27,52 @@ class NewPasswordRequestTypeHandler implements NewPasswordRequestTypeHandlerInte
     /** @var EntityManagerInterface */
     private $em;
 
+    /** @var UrlGeneratorInterface */
+    private $router;
+
     /**
      * NewPasswordRequestTypeHandler constructor.
      * @param FlashBagInterface $bag
      * @param MailSenderHelper $mailSenderHelper
      * @param UserRepositoryInterface $userRepository
      * @param EntityManagerInterface $em
+     * @param UrlGeneratorInterface $router
      */
-    public function __construct(FlashBagInterface $bag, MailSenderHelper $mailSenderHelper, UserRepositoryInterface $userRepository, EntityManagerInterface $em)
+    public function __construct(FlashBagInterface $bag, MailSenderHelper $mailSenderHelper, UserRepositoryInterface $userRepository, EntityManagerInterface $em, UrlGeneratorInterface $router)
     {
         $this->bag = $bag;
         $this->mailSenderHelper = $mailSenderHelper;
         $this->userRepository = $userRepository;
         $this->em = $em;
+        $this->router = $router;
     }
 
     public function handle(FormInterface $form)
     {
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
+            /** @var EmailPasswordRecoveryDTO $emailPasswordRecoveryDTO */
+            $emailPasswordRecoveryDTO = $form->getData();
+
+            $pseudo = $emailPasswordRecoveryDTO->getPseudo();
+            $email = $emailPasswordRecoveryDTO->getEmail();
+
             /** @var User $user */
-            $user = $this->userRepository->findOneBy(['name' => $data['pseudo'], 'email' => $data['email']]);
-            if (!$user) {
-                throw new CustomUserMessageAuthenticationException('Votre requête n\'a pu être abouti');
-//                return new RedirectResponse($this->router->generate('homepage_action'));
+            $user = $this->userRepository->findOneBy(['name' => $pseudo, 'email' => $email]);
+
+            if (is_null($user)) {
+                $this->bag->add('success', 'Un mail vous a été envoyé avec un lien pour modifier votre mot de passe');
+                return new RedirectResponse($this->router->generate('homepage_action'));
             }
+
             $token = md5(uniqid(rand()));
             $user->setToken($token);
 
-            $this->em->persist($user);
             $this->em->flush();
 
-            $this->mailSenderHelper->sendEmailWithTemplateTwig($token, $data['email'], $data['pseudo']);
+            $this->mailSenderHelper->sendTemplatedEmailForPasswordReset($token, $email, $pseudo);
 
             $this->bag->add('success', 'Un mail vous a été envoyé avec un lien pour modifier votre mot de passe');
+
             return true;
         }
 

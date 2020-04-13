@@ -3,11 +3,9 @@
 
 namespace App\Tests\Actions;
 
-
 use App\DataFixtures\UserFixture;
 use App\Tests\AbstractWebTestCase;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
-use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 
 class SecurityLoginActionFunctionalTest extends AbstractWebTestCase
 {
@@ -53,7 +51,7 @@ class SecurityLoginActionFunctionalTest extends AbstractWebTestCase
         $form['password'] = 'abrahamchoi';
 
         $this->client->submit($form);
-//        $this->expectException(CustomUserMessageAuthenticationException::class);
+        static::assertResponseRedirects();
 
         $this->client->followRedirect();
 

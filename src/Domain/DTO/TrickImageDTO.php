@@ -6,6 +6,7 @@ namespace App\Domain\DTO;
 
 use App\Domain\Entity\TrickImage;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class TrickImageDTO
 {
@@ -14,8 +15,19 @@ class TrickImageDTO
     /** @var string */
     protected $alt;
 
+    /**
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 500,
+     *     minHeight = 200,
+     *     maxHeight = 500
+     * )
+     */
     protected $image;
 
+    /**
+     * @Assert\Unique
+     */
     protected $firstimage;
 
     /**

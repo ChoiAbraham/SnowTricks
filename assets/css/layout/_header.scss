@@ -63,4 +63,13 @@ body {
   }
 }
 
+.flash-homepage {
+  z-index: 1;
+  width: 97%;
+  position: fixed;
+  margin-top: 10px;
+  @include media-laptop {
+    width: 27%;
+  }
+}
 

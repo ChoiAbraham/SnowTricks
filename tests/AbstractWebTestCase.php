@@ -29,7 +29,7 @@ class AbstractWebTestCase extends WebTestCase
         $this->client = self::createClient();
 
         $this->containerService = self::$container;
-        $this->entityManager = $this->containerService->get('doctrine.orm.entity_manager');
+        $this->entityManager = $this->containerService->get('doctrine.orm.default_entity_manager');
 
         $schemaTool = new SchemaTool($this->entityManager);
         $schemaTool->dropSchema($this->entityManager->getMetadataFactory()->getAllMetadata());

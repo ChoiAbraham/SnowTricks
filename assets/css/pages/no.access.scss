@@ -1,0 +1,25 @@
+@import '../app.scss';
+
+.bg-error{
+  background-image: url("../../images/error/bg-error-smartphone.jpg");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include media-portrait-tablet {
+    background-image: url("../../images/error/bg-error-desktop.jpg");
+  }
+}
+
+.card-one {
+  margin-bottom: 20px;
+  @include media-laptop {
+    padding-left: 20%;
+  }
+}
+
+.card-two {
+  @include media-laptop {
+    padding-right: 20%;
+  }
+}

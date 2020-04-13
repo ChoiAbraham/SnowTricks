@@ -8,9 +8,7 @@ use App\Domain\Entity\User;
 use App\Tests\AbstractWebTestCase;
 use App\Tests\NeedLoginTrait;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
-use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class HomepageActionFunctionalTest extends AbstractWebTestCase
 {
@@ -35,6 +33,7 @@ class HomepageActionFunctionalTest extends AbstractWebTestCase
     {
         $this->client->request('GET', '/');
         //Simulation Authentification
+        /** @var User $user */
         $users = $this->loadFixtures([UserFixture::class])->getReferenceRepository();
         $user = $users->getReference('userRef_0');
         $this->login($this->client, $user);

@@ -3,6 +3,7 @@
 
 namespace App\Service;
 
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UploaderHelper
@@ -15,6 +16,7 @@ class UploaderHelper
     /**
      * UploaderHelper constructor.
      * @param string $uploadPath
+     * @param Filesystem $filesystem
      */
     public function __construct(string $uploadPath)
     {
@@ -37,5 +39,26 @@ class UploaderHelper
         } catch (FileException $e) {
             //
         }
+    }
+
+    public function uploadProfilPictureImage(UploadedFile $uploadedFile, $newFileName)
+    {
+        $destination = $this->uploadPath.'/profil_picture';
+
+        try {
+            $uploadedFile->move(
+                $destination,
+                $newFileName
+            );
+        } catch (FileException $e) {
+            // ... handle exception if something happens during file upload
+        }
+    }
+
+    public function deleteProfilPictureImage(?string $filename)
+    {
+        $fileSystem = new FileSystem();
+        $destination = $this->uploadPath.'/profil_picture/'. $filename;
+        $fileSystem->remove($destination);
     }
 }

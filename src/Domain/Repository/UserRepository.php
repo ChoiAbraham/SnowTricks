@@ -15,6 +15,17 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         parent::__construct($registry, User::class);
     }
 
+    public function findByCredentials(string $value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.name = :value OR a.email = :value')
+            ->setParameter('value', $value)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
     /*
     /**
      * @param $value

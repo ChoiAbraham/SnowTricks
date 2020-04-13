@@ -12,6 +12,7 @@
                     </a>
                     <div class="card-body">
                         <div class="card-footer d-flex flex-wrap">
+                            {% if app.user %}
                             <div class="card-title">
                                 <h5>
                                     <a href="{{ path('trick_action', {slug: trick.slug, id: trick.id}) }}">{{ trick.title }}</a>
@@ -33,6 +34,14 @@
                                     </form>
                                 </div>
                             </div>
+                            {% else %}
+                                <div class="card-title-no-user">
+                                    <h5>
+                                        <a href="{{ path('trick_action', {slug: trick.slug, id: trick.id}) }}">{{ trick.title }}</a>
+                                    </h5>
+                                    <div class="text-primary">{{ trick.createdAt ? trick.createdAt|date('Y-m-d') : 'unpublished' }}</div>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

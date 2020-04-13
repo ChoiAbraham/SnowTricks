@@ -1,0 +1,24 @@
+<div class="jumbotron d-flex align-items-center bg-error">
+    <div class="container">
+        <h2 class="text-center mb-5">
+            Vous devez être connecté pour accéder à cette page.
+        </h2>
+        <div class="row">
+            <div class="col-sm-6 card-one">
+                <div class="card text-center">
+                    <div class="card-body d-flex align-items-center justify-content-center">
+                        <a href="{{ path('security_login') }}" class="btn btn-warning">Je me connecte</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 card-two">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <p class="card-text">Vous n'êtes pas inscrits ? Vous pouvez vous inscrire ci-dessous.</p>
+                        <a href="{{ path('registration') }}" class="btn btn-primary">Je m'inscris.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

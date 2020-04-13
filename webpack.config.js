@@ -28,11 +28,13 @@ Encore
     //CSS Pages
     .addEntry('app.request.password', './assets/js/page/app.request.password.js')
     .addEntry('app.reset.password', './assets/js/page/app.reset.password.js')
-
+    .addStyleEntry('email', './assets/css/email.scss')
+    .addStyleEntry('noaccess', './assets/css/pages/no.access.scss')
     .addEntry('app.registration', './assets/js/page/app.registration.js')
     .addEntry('app.login', './assets/js/page/app.login.js')
 
     //Javascript
+    .addEntry('app.account.dashboard', './assets/js/page/app.account.dashboard.js')
     .addEntry('homepageloadtricks', './assets/js/homepage_load_tricks.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')

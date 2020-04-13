@@ -71,5 +71,4 @@ class EditTrickTypeHandler implements EditTrickTypeHandlerInterface
 
         return false;
     }
-
 }
