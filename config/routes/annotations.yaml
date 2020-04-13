@@ -1,5 +1,6 @@
 controllers:
     resource: ../../src/Actions/
+
     type: annotation
 
 kernel:

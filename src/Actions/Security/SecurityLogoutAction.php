@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Security;
+
 use Symfony\Component\Routing\Annotation\Route;
 
 class SecurityLogoutAction

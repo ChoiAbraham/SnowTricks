@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Actions;
+namespace App\Actions\Security;
 
 use App\Responders\ViewResponder;
 use Symfony\Component\Routing\Annotation\Route;

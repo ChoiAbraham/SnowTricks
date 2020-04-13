@@ -54,7 +54,7 @@
                                                     </button>
                                                     <form method="POST" action="{{ path('edit_trick_delete', {id: trick.id}) }}" style="display: inline-block">
                                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
-                                                        {{ include('include/modal_delete.html.twig') }}
+                                                        {{ include('include/_ajax_modal_delete.html.twig') }}
                                                     </form>
                                                 </div>
                                             </div>
@@ -75,6 +75,7 @@
                 {% endfor %}
             {% endfor %}
         </div>
+
 
 
     {% if nextPage == true %}

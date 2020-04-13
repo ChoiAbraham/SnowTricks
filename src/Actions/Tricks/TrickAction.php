@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Actions;
+namespace App\Actions\Tricks;
 
 use App\Domain\Entity\Trick;
 use App\Domain\Entity\User;

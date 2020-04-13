@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Actions;
+namespace App\Actions\Security;
 
 use App\Actions\Interfaces\SecurityRequestNewPasswordInterface;
 use App\Form\Handler\Interfaces\NewPasswordRequestTypeHandlerInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Tricks;
 
 use App\Actions\Interfaces\EditTrickActionInterface;
 use App\Domain\DTO\TrickDTO;

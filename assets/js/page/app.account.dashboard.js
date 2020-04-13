@@ -1,6 +1,18 @@
-import '../../css/pages/app.account.dashboard.scss';
+import 'bootstrap';  // js-file
 
-$(document).on('change', '.custom-file-input', function () {
-    let fileName = $(this).val().replace(/\\/g, '/').replace(/.*\//, '');
-    $(this).parent('.custom-file').find('.custom-file-label').text(fileName);
+import '../../css/pages/app.account.dashboard.scss';
+import '../bootstrap/browse_button_my_account'
+
+import deleteInModal from '../components/delete_in_modal'
+import $ from "jquery";
+
+$(document).on('click', '.delete_account', function () {
+    let message = $(this).data('message');
+    deleteInModal(message);
+});
+
+$(document).on('click', '.delete_modal', function () {
+    let slug = $(this).data('slug');
+    let message = $(this).data('message');
+    deleteInModal(slug, message);
 });
