@@ -138,17 +138,17 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @see UserInterface
      */
-    public function getPassword(): ?string
+    public function getPassword()
     {
         return $this->password;
     }
 
     /**
-     * @return string
+     * @return
      */
-    public function getPicturePath(): string
+    public function getPicturePath(): ?string
     {
         return $this->picturePath;
     }
@@ -249,7 +249,7 @@ class User implements UserInterface
     }
 
     /**
-     * @inheritDoc
+     * @see UserInterface
      */
     public function getSalt()
     {

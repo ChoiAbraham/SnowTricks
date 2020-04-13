@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Account{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app.account.dashboard') }}
+{% endblock %}
+
+{% block body %}
+    {% if is_granted('ROLE_USER') %}
+        {% for message in app.flashes('success') %}
+                <div class="alert alert-success" role="alert">
+                    <strong>{{ message }}</strong>
+                </div>
+        {% endfor %}
+        <div class="container mt-5">
+            <h1 class="text-center">Mon Compte</h1>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center d-flex">
+                <div class="col-sm-12 col-md-10 col-lg-6 col-xl-6 mt-2 card-one">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            Photo de profil
+                        </div>
+                        <div class="card-body">
+                            <div class="container-fluid mb-3">
+                                {% if app.user.picturePath %}
+                                <div class="text-center img-width">
+                                    <img src="{{ asset('uploads/profil_picture/' ~ app.user.picturePath) }}"
+                                         class="rounded-circle"
+                                         alt="photo de profil">
+                                </div>
+                                {% else %}
+                                    <div class="text-center">
+                                        <img src="{{ asset('uploads/profil_picture/profil_picture_default.jpg') }}"
+                                             class="rounded-circle"
+                                             alt="photo de profil">
+                                    </div>
+                                {% endif %}
+                            </div>
+                            {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            <div class="d-flex justify-content-center">
+                                <button class="btn btn-success">Envoyer</button>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+                {{ include('include/modal_delete.html.twig') }}
+                <div class="col-sm-12 col-md-10 col-lg-6 col-xl-6 mt-2 card-two">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            Liste de vos Tricks
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                {% if tricks %}
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center" >Titre du Trick</th>
+                                        <th class="text-center" >Suppression</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for trick in tricks %}
+                                        <tr>
+                                            <td >
+                                                <a href="{{ path('trick_action', {'slug': trick.slug, 'id': trick.id }) }}">{{ trick.title |capitalize }}</a>
+                                            </td>
+                                            <td >
+                                                <button class="btn btn-danger">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                {% else %}
+                                    <h5 class="card-title text-center">Vous n'avez pas encore créer de Tricks</h5>
+                                {% endif %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app.account.dashboard') }}
+{% endblock %}

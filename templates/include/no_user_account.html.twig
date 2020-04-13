@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block title %}Error{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('noaccess') }}
+{% endblock %}
+
+{% block body %}
+    {{ include('include/access_denied.html.twig') }}
+{% endblock %}

@@ -63,7 +63,7 @@ class ResetPasswordTypeHandler implements ResetPasswordTypeHandlerInterface
                 $user->setToken(null);
                 $user->setPassword($hash);
 
-                $this->em->persist($user);
+                $this->em->flush();
 
                 $this->bag->add('success', 'Votre mot de passe été modifié avec succès');
 

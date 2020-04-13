@@ -155,6 +155,7 @@ class Trick
             // TrickVideo::updateFromDTO(trickVideo)
             // $trickEntity->addTrickVideo($trickVideo)
         }
+
         return $trickEntity;
     }
 

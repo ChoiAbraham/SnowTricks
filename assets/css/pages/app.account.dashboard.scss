@@ -1,0 +1,18 @@
+@import '../app.scss';
+
+.card-one {
+  margin-bottom: 20px;
+  @include media-desktop {
+    padding-left: 20%;
+  }
+}
+
+.card-two {
+  @include media-desktop {
+    padding-right: 20%;
+  }
+}
+
+.img-width > img {
+  width: 200px;
+}
