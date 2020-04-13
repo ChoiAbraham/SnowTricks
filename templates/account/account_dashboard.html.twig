@@ -48,7 +48,6 @@
                         </div>
                     </div>
                 </div>
-                {{ include('include/modal_delete.html.twig') }}
                 <div class="col-sm-12 col-md-10 col-lg-6 col-xl-6 mt-2 card-two">
                     <div class="card">
                         <div class="card-header text-center">
@@ -84,9 +83,26 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-12 pt-5">
+                    <div class="d-flex justify-content-center">
+                        <!-- Button trigger modal -->
+                        <button type="button"
+                                data-message="Attention, cette action est irréversible"
+                                class="btn btn-danger delete_account"
+                        >
+                            Supprimer le compte
+                        </button>
+
+                        <form method="POST" action="{{ path('my_account_delete', {'username': app.user.name}) }}" style="display: inline-block">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete-item') }}">
+                            {{ include('include/_ajax_modal_delete.html.twig') }}
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     {% endif %}
+
 {% endblock %}
 
 {% block javascripts %}

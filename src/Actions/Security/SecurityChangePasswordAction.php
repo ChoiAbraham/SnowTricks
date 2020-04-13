@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Actions;
+namespace App\Actions\Security;
 
 use App\Domain\Entity\User;
 use App\Domain\Repository\Interfaces\UserRepositoryInterface;

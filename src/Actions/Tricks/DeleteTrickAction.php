@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Tricks;
 
 use App\Actions\Interfaces\DeleteTrickActionInterface;
 use App\Domain\Entity\Trick;
@@ -62,11 +62,12 @@ final class DeleteTrickAction extends AbstractController implements DeleteTrickA
 
     public function __invoke(Request $request, ViewResponderInterface $responder, RedirectResponder $redirect)
     {
+        dd('yes it worked');
+
         $trickEntity = $this->trickRepository->find($request->attributes->get('id'));
         //dd($this->tokenStorage->getToken()->getUser());
 
         if ($this->csrf->isTokenValid(new CsrfToken('delete' . $trickEntity->getId(), $request->get('_token')))) {
-            dd('yes it worked');
             $this->flashBag->add('success', 'it worked');
 
             // TODO - images et videos à supprimer

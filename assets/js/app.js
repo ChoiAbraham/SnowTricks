@@ -23,6 +23,4 @@ import 'bootstrap';  // js-file
 
 //console.log(getNiceMessage(5));
 
-
-
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

@@ -1,32 +1,27 @@
 <?php
 
 
-namespace App\Actions;
+namespace App\Actions\Account;
 
 use App\Actions\Interfaces\MyAccountActionInterface;
 use App\Domain\Entity\Trick;
-use App\Domain\Entity\User;
 use App\Domain\Repository\UserRepository;
 use App\Domain\Repository\TrickRepository;
 use App\Form\Handler\Interfaces\EditProfilPictureTypeHandlerInterface;
 use App\Form\ProfilPictureType;
 use App\Responders\RedirectResponder;
 use App\Responders\ViewResponder;
-use Psr\Container\ContainerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\UsageTrackingTokenStorage;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 
 /**
  * Class MyAccountAction
  *
- * @Route("/dashboard", name="my_account")
+ * @Route("/dashboard", name="my_account", methods={"GET","POST"})
  * @IsGranted("ROLE_USER")
  */
 class MyAccountAction implements MyAccountActionInterface
