@@ -1,0 +1,28 @@
+<div class="modal fade" id="modalVideos" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Fermer</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="container">
+                    <div class="row">
+                        {% for video in videos %}
+                            <div class="col-xs-12 w-100">
+                                <iframe class="w-100 video-css"
+                                        frameborder="0"
+                                        allow="accelerometer; encrypted-media; gyroscope"
+                                        src="{{ video.pathUrl }}"
+                                        allowfullscreen
+                                        style="height:13em">
+                                </iframe>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

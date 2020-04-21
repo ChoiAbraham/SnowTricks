@@ -1,5 +1,3 @@
 services:
   _defaults:
     public: true
-    bind:
-      $uploadProfilPicturePath: '%kernel.project_dir%/public/uploads/profilpicture/'

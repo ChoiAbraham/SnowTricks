@@ -40,19 +40,19 @@
                                         {% if app.user %}
                                             <div class="card-title">
                                                 <h5>
-                                                    <a href="{{ path('trick_action', {slug: trick.slug, id: trick.id}) }}">{{ trick.title }}</a>
+                                                    <a href="{{ path('trick_action', {slug: trick.slug}) }}">{{ trick.title }}</a>
                                                 </h5>
                                                 <div class="text-primary">{{ trick.createdAt ? trick.createdAt|date('Y-m-d') : 'unpublished' }}</div>
                                             </div>
                                             <div class="card-buttons">
                                                 <div class="p-2">
-                                                    <a href="{{ path('edit_trick', {id: trick.id}) }}"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ path('edit_trick', {slug: trick.slug}) }}"><i class="fas fa-edit"></i></a>
                                                 </div>
                                                 <div class="">
                                                     <button class="btn btn-danger" data-toggle="modal" data-target="#delete_trick">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>
-                                                    <form method="POST" action="{{ path('edit_trick_delete', {id: trick.id}) }}" style="display: inline-block">
+                                                    <form method="POST" action="{{ path('edit_trick_delete', {slug: trick.slug}) }}" style="display: inline-block">
                                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
                                                         {{ include('include/_ajax_modal_delete.html.twig') }}
                                                     </form>

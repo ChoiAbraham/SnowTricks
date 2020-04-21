@@ -1,0 +1,81 @@
+@import "../helper/variables";
+@import "../helper/mediaqueries";
+@import "../helper/form";
+
+@import '~bootstrap';
+@import '~font-awesome';
+
+@import "../layout/header";
+@import "../layout/footer";
+
+@import "../components/cards";
+@import "../components/articles";
+@import "../components/profile";
+
+.section_one {
+  max-height: 420px;
+  @include media-portrait-tablet {
+    max-height: 700px;
+  }
+  @include media-laptop {
+    max-height: 1200px;
+  }
+}
+
+.section_one > img {
+  max-height: 100vh;
+  display: block;
+  margin: auto;
+}
+
+.img-css > img {
+  @include media-landscape-tablet {
+    display: block;
+    height: 200px;
+    margin: auto;
+  }
+}
+
+.first-image-contents {
+  min-height:0 !important;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  @include media-portrait-tablet {
+    top: 55px;
+  }
+}
+
+.first-image-contents > h1 {
+  height: 10vh;
+  text-align: center;
+  width:100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  @include media-portrait-tablet {
+    padding-top: 120px !important;
+    margin-top: 0px;
+    height: 65vh;
+  }
+  @include media-landscape-tablet {
+    padding-top: 200px !important;
+  }
+  @include media-laptop {
+    padding-top: 260px !important;
+    height: 90vh;
+  }
+  @include media-desktop {
+    height: 100vh;
+  }
+}
+
+.buttons_edit_delete_first_image {
+  width: 100%;
+  position: relative;
+  top: 14px;
+  left: -20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}

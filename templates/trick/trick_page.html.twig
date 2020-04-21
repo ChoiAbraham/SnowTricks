@@ -1,0 +1,242 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trick{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('displayTrickPage') }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="jumbotron-fluid section_one">
+            {% if firstImage|default %}
+                <img src="{{ asset('uploads/trick_picture/') ~ firstImage.imageFileName }}"
+                     class="img-fluid w-100" alt="">
+            {% else %}
+                <img src="{{ asset('uploads/first_image_default/first_image_default.jpg') }}"
+                     class="img-fluid w-100" alt="">
+            {% endif %}
+
+                <div class="first-image-contents">
+                    <div class="buttons_edit_delete_first_image">
+                            <div class="p-2">
+                                <a href="{{ path('edit_trick', {slug: trick.slug}) }}"><i class="fas fa-edit"></i></a>
+                            </div>
+                            <div class="">
+                                <button class="btn btn-danger"
+                                        data-message="Êtes-vous sûr de vouloir supprimer ce trick ?"
+                                        data-toggle="modal"
+                                        data-target="#delete_trick">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                                <form method="POST" action="{{ path('edit_trick_delete', {slug: trick.slug}) }}" style="display: inline-block">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.slug) }}">
+                                    {{ include('include/_ajax_modal_delete.html.twig') }}
+                                </form>
+                            </div>
+                    </div>
+                    {% if firstImage|default %}
+                        <h1>{{ trick.title }}</h1>
+                    {% else %}
+                        <h1>PAS DE PREMIERE IMAGE</h1>
+                    {% endif %}
+                </div>
+
+    </div>
+
+    <!-- Section Medias on Mobile -->
+    <div class="container onmobile-only">
+        <div class="text-center">
+            {% if images or videos %}
+            <button type="button" class="btn btn-primary btn-lg show-media mt-2">Voir les médias</button>
+            {% else %}
+            <button type="button" class="btn btn-primary btn-lg mt-2">Pas de médias</button>
+            {% endif %}
+            <div class="hide-block toshow">
+                {% if images %}
+                    <!-- Trigger the Modal For Images -->
+                    <button type="button" class="btn btn-primary btn-lg mt-2" data-toggle="modal" data-target="#modalImages">Voir les Images</button>
+                {% else %}
+                    <button class="btn btn-primary btn-lg mt-2">Pas encore d'Image</button>
+                {% endif %}
+
+                {% if videos %}
+                    <!-- Trigger the modal For Videos -->
+                    <button type="button" class="btn btn-primary btn-lg mt-2" data-toggle="modal" data-target="#modalVideos">Voir les Vidéos</button>
+                {% else %}
+                    <button class="btn btn-primary btn-lg mt-2">Pas encore de Vidéo</button>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Modal Images -->
+        {{ include('include/modal/_modal_trick_images.html.twig') }}
+
+        <!-- Modal Videos -->
+        {{ include('include/modal/_modal_trick_videos.html.twig') }}
+    </div>
+
+    <!-- Section Medias on Desktop -->
+    <div class="container hide-block ondesktop-only">
+        <div class="row">
+            {% for image in images %}
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 mt-2 text-right img-css">
+                    <img src="{{ asset('uploads/trick_picture/') ~ image.imageFileName }}"
+                         class="rounded img-fluid"
+                         alt="">
+                    <span class="d-inline-block pb-3 pt-2">
+                        <a href="{{ path('edit_trick', {slug: trick.slug}) }}"><i class="fas fa-edit"></i></a>
+                        <button class="btn btn-danger"
+                                data-message="Êtes-vous sûr de vouloir supprimer ce trick ?"
+                                data-toggle="modal"
+                                data-target="#delete_trick">
+                                    <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <form method="POST" action="{{ path('edit_trick_delete', {slug: trick.slug}) }}" style="display: inline-block">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.slug) }}">
+                            {{ include('include/_ajax_modal_delete.html.twig') }}
+                        </form>
+                    </span>
+                </div>
+
+            {% endfor %}
+
+            {% for video in videos %}
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 mt-2 text-right block-media">
+                    <iframe class="w-100 border border-info" height="200"
+                            frameborder="0"
+                            allow="accelerometer; encrypted-media; gyroscope"
+                            src="{{ video.pathUrl }}"
+                            allowfullscreen>
+                    </iframe>
+                    <span class="d-inline-block pb-3 pt-2">
+                        <a href="{{ path('edit_trick', {slug: trick.slug}) }}"><i class="fas fa-edit"></i></a>
+                        <button class="btn btn-danger"
+                                data-message="Êtes-vous sûr de vouloir supprimer ce trick ?"
+                                data-toggle="modal"
+                                data-target="#delete_trick">
+                                    <i class="fas fa-trash-alt"></i>
+                        </button>
+                        <form method="POST" action="{{ path('edit_trick_delete', {slug: trick.slug}) }}" style="display: inline-block">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.slug) }}">
+                            {{ include('include/_ajax_modal_delete.html.twig') }}
+                        </form>
+                    </span>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="container">
+        {{ include('include/_ajax_modal_delete.html.twig') }}
+        <div class="d-flex justify-content-center">
+            <div class="row">
+                {{ include('include/_flash.message.html.twig')}}
+
+                <!-- Description -->
+                <div class="col-12">
+                    <h1 class="text-center mt-4">Description</h1>
+
+                    <div class="col-md-12 mt-4 p-2 d-inline-block text-center">
+                        <div>
+                            <p>Catégorie : <span class="badge badge-light">{{ trick.groupTrick.name }}</span></p>
+                        </div>
+                        <div>
+                            <p>Créée le : <span class="badge badge-light">{{ trick.createdAt|date('d-m-Y') }}</span></p>
+                        </div>
+                        <div>
+
+                        </div>
+                            {% if trick.updatedAt|default %}
+                                <p>
+                                    Modifié le : <span class="badge badge-light"> {{ trick.updatedAt|date('d-m-Y') }}</span>
+                                </p>
+                            {% endif %}
+                        </div>
+                        <div class="text-center">
+                            <p>{{ trick.content }}</p>
+                        </div>
+                </div>
+
+                <!-- Comment Form -->
+                <div class="col-12 p-5">
+                    <div class="border border-info p-3">
+                        {{ form_start(form) }}
+                        {{ form_row(form.text, {'attr': {'rows': "7", 'cols': "50"}}) }}
+                        <button class="btn btn-primary">Envoyer</button>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
+                <!-- Comments -->
+                {% if comments %}
+
+                <div class="col-12" >
+                    <h1 class="text-center pb-2">Commentaires :</h1>
+
+                        <ul class="list-unstyled p-2" id="comments-list">
+                            {% for comment in comments %}
+                            <li class="media">
+                                {% if comment.user.picturePath %}
+                                    <img src="{{ asset('uploads/profilpicture/' ~ comment.user.picturePath) }}"
+                                         class="mr-3 rounded-circle embed-responsive d-inline-block p-1"
+                                         alt="photo profil utilisateur">
+                                {% else %}
+                                    <img src="{{ asset('build/images/user/profil_picture_default.53651817.jpg') }}"
+                                         class="mr-3 rounded-circle embed-responsive d-inline-block p-1"
+                                         alt="photo profil default" style="width:80px; height:80px">
+                                {% endif %}
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        {{ comment.user.name|capitalize }}
+                                        <br>
+                                        <small>
+                                            Le {{ comment.user.createdAt|date("d/m/Y") }}</a>
+                                        </small>
+                                    </h4>
+                                    <p>{{ comment.content }}</p>
+                                    {% if app.user and comment.user.name == app.user.name %}
+                                        <span class="d-inline-block pb-3">
+                                            <button class="btn btn-warning text-right p-0"><a href="" style="color: white">
+                                                Modifier</a>
+                                            </button>
+                                            <button class=" btn btn-danger text-right  p-0 pl-1 delete_modal" data-toggle="modal"
+                                                data-slug=""
+                                                data-message="Êtes-vous sûr de vouloir supprimer ce commentaire ?">Supprimer
+                                            </button>
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+                 </div>
+                </div>
+                {% endif %}
+
+        </div>
+        {% if nextPage == true %}
+            <div class="col-12 text-center pt-4 pb-2">
+                <button class="btn btn-primary hide-block" type="button" disabled id="js-btn-loading">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                </button>
+                <a data-url="{{ path('comments.loaded') }}"
+                   type="button" data-maxpage="{{ maxPageNumberComments }}"
+                   data-page="2"
+                   class="btn btn-outline-primary" id="js-btn-morecomments">Plus de Commentaires
+                </a>
+            </div>
+
+        {% endif %}
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('displayTrickPage') }}
+    {{ encore_entry_script_tags('trick_load_comments') }}
+{% endblock %}

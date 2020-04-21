@@ -19,7 +19,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 /**
  * Class DeleteTrickAction
  *
- * @Route("/delete/{id}", name="edit_trick_delete")
+ * @Route("/delete/{slug}", name="edit_trick_delete")
  */
 final class DeleteTrickAction extends AbstractController implements DeleteTrickActionInterface
 {
@@ -64,7 +64,7 @@ final class DeleteTrickAction extends AbstractController implements DeleteTrickA
     {
         dd('yes it worked');
 
-        $trickEntity = $this->trickRepository->find($request->attributes->get('id'));
+        $trickEntity = $this->trickRepository->find($request->attributes->get('slug'));
         //dd($this->tokenStorage->getToken()->getUser());
 
         if ($this->csrf->isTokenValid(new CsrfToken('delete' . $trickEntity->getId(), $request->get('_token')))) {

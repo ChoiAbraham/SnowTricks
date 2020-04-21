@@ -24,7 +24,7 @@ class TrickVideoDTO
      */
     public function __construct(?string $pathUrl)
     {
-        $this->pathUrl = $pathUrl;
+        $this->setPathUrl($pathUrl);
     }
 
     /**
@@ -70,5 +70,8 @@ class TrickVideoDTO
     public function setPathUrl(?string $pathUrl): void
     {
         $this->pathUrl = $pathUrl;
+
+
+        $this->pathUrl = $finalLink;
     }
 }

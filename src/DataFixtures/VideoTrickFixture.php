@@ -6,16 +6,36 @@ use App\Domain\Entity\Comment;
 use App\Domain\Entity\Trick;
 use App\Domain\Entity\TrickVideo;
 use App\Domain\Entity\User;
+use App\Service\VideoLinkHelper;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class VideoTrickFixture extends BaseFixture implements DependentFixtureInterface
 {
+    /** @var VideoLinkHelper $videoLinkHelper */
+    private $videoLinkHelper;
+
+    /**
+     * VideoTrickFixture constructor.
+     * @param VideoLinkHelper $videoLinkHelper
+     */
+    public function __construct(VideoLinkHelper $videoLinkHelper)
+    {
+        $this->videoLinkHelper = $videoLinkHelper;
+    }
+
+    private static $trickVideos = [
+        'https://www.youtube.com/embed/9JE9hlkhDok',
+        'https://www.youtube.com/watch?v=iOTcr9wKC-o&list=PLY9JrLCZkx375dmwYeEdkC85GeFA5hb0U',
+        'https://player.vimeo.com/video/163662857',
+        'https://vimeo.com/video/163662857'
+    ];
+
     public function loadData(ObjectManager $manager)
     {
-        for ($i = 0; $i < 3; $i++) {
-            $trickVideo = new TrickVideo($this->faker->url);
-            $trickVideo->setName($this->faker->title);
+        for ($i = 0; $i < 4; $i++) {
+            $finalLink = $this->videoLinkHelper->transformLinkForEmbedIframe(self::$trickVideos[$i]);
+            $trickVideo = new TrickVideo($finalLink);
             $this->addReference(TrickVideo::class . '_' . $i, $trickVideo);
             $manager->persist($trickVideo);
 

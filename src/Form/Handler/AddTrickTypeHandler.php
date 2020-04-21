@@ -49,7 +49,6 @@ class AddTrickTypeHandler implements AddTrickTypeHandlerInterface
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var CreateTrickDTO $data */
             $data = $form->getData();
-            // si je n'utilise pas les datamapper je ne vois pas le uploadFile
 
             /** @var Trick $trick */
             $trick = $this->trickBuilder->create($form->getData())->getTrick(); // = new Trick();

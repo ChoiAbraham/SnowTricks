@@ -24,7 +24,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class EditTrickAction
  *
- * @Route("/trick/edit/{id}", name="edit_trick", methods={"GET","POST"})
+ * @Route("/trick/edit/{slug}", name="edit_trick", methods={"GET","POST"})
  */
 final class EditTrickAction implements EditTrickActionInterface
 {
@@ -73,7 +73,7 @@ final class EditTrickAction implements EditTrickActionInterface
 
         // Récupération de l'entité Trick
         /** @var Trick $trickEntity */
-        $trickEntity = $this->trickRepository->find($request->attributes->get('id'));
+        $trickEntity = $this->trickRepository->find($request->attributes->get('slug'));
 
         // Récupération des Images du Trick
         $imagesEntity = $this->trickImageRepository->findBy(['trick' => $request->attributes->get('id')]);
