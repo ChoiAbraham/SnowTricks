@@ -87,27 +87,6 @@ class TrickAction
 
     public function __invoke(Request $request, ViewResponder $responder, RedirectResponder $redirect)
     {
-        //tester dailymotion
-        // 1. link
-        $link = '
-        
-        ';
-        $result = $this->videoHelper->transformLinkForEmbedIframe($link);
-        dd($result);
-        // 2. Iframe
-
-        // 3. link Iframe
-
-        //tester vimeo
-        // 1. link
-
-        // 2. Iframe
-
-        //tester youtube
-        // 1. link
-
-        // 2. Iframe
-
         /** @var Trick $trick */
         $trick = $this->trickRepository->findOneBy(['slug' => $request->attributes->get('slug')]);
 
