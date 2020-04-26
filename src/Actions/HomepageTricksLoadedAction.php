@@ -43,7 +43,7 @@ final class HomepageTricksLoadedAction
         $offset = $pageId * Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE - Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE ;
 
         /** @var Trick $tricksToShow */
-        $tricksToLoad = $this->trickRepository->findBy([], [], Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE, $offset);
+        $tricksToLoad = $this->trickRepository->findLatestWithFirstImageActive(Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE, $offset);
         $page = $pageId++;
 
         return $responder (

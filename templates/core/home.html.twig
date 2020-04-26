@@ -14,7 +14,7 @@
     <div class="jumbotron-fluid">
         <div class="text-center bg">
             <h1>SnowTricks</h1>
-            <p>Pour tout savoir sur les Tricks</p>
+            <p>{{ 'text.homepage.title.sentence'|trans}}</p>
         </div>
         <a href="#tricks" class="arrow-homepage">
             <i class="fas fa-chevron-circle-down fa-2x"></i>
@@ -30,7 +30,7 @@
                         {% set firstimage = image.imageFileName %}
                         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 mt-2">
                             <div class="card text-center m-auto mb-4">
-                                <a href="{{ path('trick_action', {slug: trick.slug, id: trick.id}) }}">
+                                <a href="{{ path('trick_action', {slug: trick.slug}) }}">
                                     <img class="card-img-top pt-1"
                                          src={{ asset('uploads/trick_picture/' ~ firstimage) }}
                                          alt="{{ image.altImage }}">
@@ -46,22 +46,22 @@
                                             </div>
                                             <div class="card-buttons">
                                                 <div class="p-2">
-                                                    <a href="{{ path('edit_trick', {slug: trick.slug}) }}"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ path('trick_edit', {slug: trick.slug}) }}"><i class="fas fa-edit"></i></a>
                                                 </div>
                                                 <div class="">
-                                                    <button class="btn btn-danger" data-toggle="modal" data-target="#delete_trick">
+                                                    <button class="btn btn-danger js-delete-trick" data-id="{{ trick.slug }}" data-message="Etes-vous sûr de vouloir supprimer ce trick?">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>
                                                     <form method="POST" action="{{ path('edit_trick_delete', {slug: trick.slug}) }}" style="display: inline-block">
                                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
-                                                        {{ include('include/_ajax_modal_delete.html.twig') }}
+                                                        {{ include('include/modal/_ajax_modal_delete_trick.html.twig') }}
                                                     </form>
                                                 </div>
                                             </div>
                                         {% else %}
                                             <div class="card-title-no-user">
                                                 <h5>
-                                                    <a href="{{ path('trick_action', {slug: trick.slug, id: trick.id}) }}">{{ trick.title }}</a>
+                                                    <a href="{{ path('trick_action', {slug: trick.slug}) }}">{{ trick.title }}</a>
                                                 </h5>
                                                 <div class="text-primary">{{ trick.createdAt ? trick.createdAt|date('Y-m-d') : 'unpublished' }}</div>
                                             </div>
@@ -99,4 +99,5 @@
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('homepageloadtricks') }}
+    {{ encore_entry_script_tags('delete.trick') }}
 {% endblock %}

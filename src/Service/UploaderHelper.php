@@ -4,6 +4,7 @@
 namespace App\Service;
 
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UploaderHelper
@@ -60,5 +61,11 @@ class UploaderHelper
         $fileSystem = new FileSystem();
         $destination = $this->uploadPath.'/profil_picture/'. $filename;
         $fileSystem->remove($destination);
+    }
+
+    public function createTrickPictureFile(?string $filename)
+    {
+        $file = new File($this->uploadPath . '/trick_picture/' . $filename);
+        return $file;
     }
 }

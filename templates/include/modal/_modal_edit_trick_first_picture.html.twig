@@ -1,5 +1,5 @@
 <!-- Modal Images -->
-<div class="modal fade" id="modalImages" role="dialog">
+<div class="modal fade" id="editFirstPicture" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,14 +9,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                {% for image in images %}
-
-                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 mt-2 text-right img-css">
-                        <img src="{{ asset('uploads/trick_picture/') ~ image.imageFileName }}"
-                             class="rounded img-fluid"
-                             alt="">
-                    </div>
-
+                {% for image in EditTrickForm.imageslinks %}
+                    {% if image.vars.value.firstimage == true %}
+                        <div class="js-first-picture-wrapper">
+                            {{ form_label(image) }}
+                            {{ form_widget(image) }}
+                            {{ form_errors(image) }}
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>

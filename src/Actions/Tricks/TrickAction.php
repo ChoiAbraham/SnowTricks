@@ -7,21 +7,20 @@ use App\Domain\Entity\Comment;
 use App\Domain\Entity\Trick;
 use App\Domain\Entity\TrickImage;
 use App\Domain\Entity\TrickVideo;
-use App\Domain\Entity\User;
 use App\Domain\Repository\CommentRepository;
+use App\Domain\Repository\GroupTrickRepository;
 use App\Domain\Repository\TrickImageRepository;
 use App\Domain\Repository\TrickVideoRepository;
 use App\Domain\Repository\TrickRepository;
 use App\Form\Handler\AddTrickCommentTypeHandler;
+use App\Form\Handler\Interfaces\EditTrickTypeHandlerInterface;
 use App\Form\Type\addTrickCommentType;
 use App\Responders\RedirectResponder;
 use App\Responders\ViewResponder;
-use App\Service\VideoLinkHelper;
+use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
@@ -54,11 +53,17 @@ class TrickAction
     /** @var FormFactoryInterface */
     private $formFactory;
 
+    /** @var GroupTrickRepository */
+    protected $groupTrickRepository;
+
+    /** @var EditTrickTypeHandlerInterface */
+    private $editTrickTypeHandler;
+
     /** @var AddTrickCommentTypeHandler */
     private $addTrickCommentTypeHandler;
 
-    /** @var VideoLinkHelper */
-    private $videoHelper;
+    /** @var UploaderHelper */
+    private $uploaderHelper;
 
     /**
      * TrickAction constructor.
@@ -69,10 +74,12 @@ class TrickAction
      * @param Security $security
      * @param CommentRepository $commentRepository
      * @param FormFactoryInterface $formFactory
+     * @param GroupTrickRepository $groupTrickRepository
+     * @param EditTrickTypeHandlerInterface $editTrickTypeHandler
      * @param AddTrickCommentTypeHandler $addTrickCommentTypeHandler
-     * @param VideoLinkHelper $videoHelper
+     * @param UploaderHelper $uploaderHelper
      */
-    public function __construct(VideoLinkHelper $videoHelper, EventDispatcherInterface $eventDispatcher, TrickRepository $trickRepository, TrickImageRepository $trickImageRepository, TrickVideoRepository $trickVideoRepository, Security $security, CommentRepository $commentRepository, FormFactoryInterface $formFactory, AddTrickCommentTypeHandler $addTrickCommentTypeHandler)
+    public function __construct(EventDispatcherInterface $eventDispatcher, TrickRepository $trickRepository, TrickImageRepository $trickImageRepository, TrickVideoRepository $trickVideoRepository, Security $security, CommentRepository $commentRepository, FormFactoryInterface $formFactory, GroupTrickRepository $groupTrickRepository, EditTrickTypeHandlerInterface $editTrickTypeHandler, AddTrickCommentTypeHandler $addTrickCommentTypeHandler, UploaderHelper $uploaderHelper)
     {
         $this->eventDispatcher = $eventDispatcher;
         $this->trickRepository = $trickRepository;
@@ -81,12 +88,15 @@ class TrickAction
         $this->security = $security;
         $this->commentRepository = $commentRepository;
         $this->formFactory = $formFactory;
+        $this->groupTrickRepository = $groupTrickRepository;
+        $this->editTrickTypeHandler = $editTrickTypeHandler;
         $this->addTrickCommentTypeHandler = $addTrickCommentTypeHandler;
-        $this->videoHelper = $videoHelper;
+        $this->uploaderHelper = $uploaderHelper;
     }
 
     public function __invoke(Request $request, ViewResponder $responder, RedirectResponder $redirect)
     {
+        // TRICK PAGE
         /** @var Trick $trick */
         $trick = $this->trickRepository->findOneBy(['slug' => $request->attributes->get('slug')]);
 
@@ -96,6 +106,7 @@ class TrickAction
 
         /** @var TrickImage $image */
         $images = $this->trickImageRepository->findBy(['trick' => $trick->getId()]);
+
         /** @var TrickVideo $video */
         $videos = $this->trickVideoRepository->findBy(['trick' => $trick->getId()]);
 

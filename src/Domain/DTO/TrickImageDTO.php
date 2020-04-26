@@ -5,6 +5,7 @@ namespace App\Domain\DTO;
 
 
 use App\Domain\Entity\TrickImage;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -49,52 +50,31 @@ class TrickImageDTO
     /**
      * TrickImageDTO constructor.
      * @param $id
-     * @param string $alt
-     * @param $image
+     * @param $alt
      */
-    public function __construct($id = null, string $alt = '', $image = '', $firstImage = false)
+    public function __construct($id = null, ?string $alt = '', $imageFileName = '', $firstImage = false)
     {
         $this->id = $id;
         $this->alt = $alt;
-        $this->image = $image;
+        $this->image = $imageFileName;
         $this->firstimage = $firstImage;
-    }
-
-    /**
-     *
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param UploadedFile $image
-     */
-    public function setImage(string $image): UploadedFile
-    {
-        $this->image = $image;
     }
 
     /**
      * @param TrickImage $image
      */
-    public static function createFromEntity(TrickImage $image, $i)
+    public static function createFromEntity(TrickImage $image, $i, $files)
     {
         $dto = new self();
-
         $dto->setId($i);
         $dto->setAlt($image->getAltImage());
-        $dto->setImage($image->getImageFileName());
+        $dto->setImage($files[$i-1]);
         $dto->setFirstimage($image->getFirstImage());
 
         return $dto;
     }
 
-    /**
-     * @return string
-     */
-    public function getAlt(): string
+    public function getAlt(): ?string
     {
         return $this->alt;
     }
@@ -105,6 +85,22 @@ class TrickImageDTO
     public function setAlt(string $alt): void
     {
         $this->alt = $alt;
+    }
+
+    /**
+     * @return File
+     */
+    public function getImage(): File
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param File $imageFileName
+     */
+    public function setImage(File $imageFileName): void
+    {
+        $this->image = $imageFileName;
     }
 
     public function getId()

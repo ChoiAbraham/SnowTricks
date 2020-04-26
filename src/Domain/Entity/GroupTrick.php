@@ -28,9 +28,10 @@ class GroupTrick
      */
     private $trick;
 
-    public function __construct()
+    public function __construct($name = null)
     {
         $this->trick = new ArrayCollection();
+        $this->name = $name;
     }
 
     public function getId(): ?int

@@ -2,28 +2,80 @@
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('new.trick') }}
+    <script src="https://cdn.tiny.cloud/1/w6jfk9kprz4iiji7ui8t1le9wicly1a688zb4enm70ryi4ex/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#create_trick_content',
+            plugin: 'a_tinymce_plugin',
+            a_plugin_option: true,
+            a_configuration_option: 400
+        });
+    </script>
+
 {% endblock %}
 
 {% block body %}
-    <h2>Welcome</h2>
-    {{ form_start(form) }}
-    {{ form_row(form.fullname) }}
-    {# render each row and field in the embedded form, in this example it's rendering the experience (Exp) fiels as rows #}
-    <div class="col-sm-8 col-sm-offset-2" id="exp_list" data-prototype="{{ form_widget(form.exp.vars.prototype)|e('html_attr') }}">
-        {% for row in form.exp %}
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <strong>{{ row.vars.value.title }}</strong>
-                </div>
-                <div class="panel-body">
-                    {{ form_row(row) }}
+    {% if is_granted('ROLE_USER') %}
+        <div class="container">
+            <div class="container trickblock">
+                <h1 class="text-center mt-5">Nouveau Trick</h1>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ form_start(form) }}
+                        {{ form_row(form.title) }}
+                        {{ form_row(form.content, {'attr': {'rows' : '15'}}) }}
+                        {{ form_row(form.groups) }}
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 d-flex justify-content-center">
+                                    <div>
+                                        <div id="image_list"
+                                        data-prototype="{{ form_widget(form.imageslinks.vars.prototype)|e('html_attr') }}">
+                                        {% for imagelink in form.imageslinks %}
+                                            <div class="panel panel_trick panel-warning">
+                                                <div class="panel-body">
+                                                    {{ form_row(imagelink.image) }}
+                                                    {{ form_row(imagelink.alt) }}
+                                                    {{ form_widget(imagelink.first_image) }}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <div>
+                                    <div id="video_list"
+                                         data-prototype="{{ form_widget(form.videoslinks.vars.prototype)|e('html_attr') }}">
+                                        {% for videolink in form.videoslinks %}
+                                            <div class="panel panel_video panel-warning">
+                                                <div class="panel-body">
+                                                    {{ form_row(videolink.pathUrl, { 'label': 'Video'}) }}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary text-center">Ajouter le Trick</button>
+                        </div>
+                        {{ form_end(form) }}
+
+                    </div>
                 </div>
             </div>
-        {% endfor %}
-    </div>
-    {{ form_end(form) }}
+        </div>
+    {% else %}
+        {{ include('include/access_denied.html.twig') }}
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}
     {{ encore_entry_script_tags('new.trick') }}
+    {{ encore_entry_script_tags('addpictures') }}
+    {{ encore_entry_script_tags('addvideos') }}
+    {{ encore_entry_script_tags('checkbox') }}
 {% endblock %}

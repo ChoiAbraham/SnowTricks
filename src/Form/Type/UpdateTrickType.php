@@ -60,6 +60,7 @@ class UpdateTrickType extends AbstractType
                     'entry_type' => ImageType::class,
                     'allow_add' => true,
                     'allow_delete' => true,
+                    'by_reference' => false,
                 ]
             )
             ->add(
@@ -71,6 +72,7 @@ class UpdateTrickType extends AbstractType
                     'entry_options' => ['label' => false],
                     'allow_add' => true,
                     'allow_delete' => true,
+                    'by_reference' => false,
                 ]
             );
     }

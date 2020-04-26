@@ -2,36 +2,42 @@
 
 namespace App\Actions\Tricks;
 
-use App\Actions\Interfaces\EditTrickActionInterface;
-use App\Domain\DTO\TrickDTO;
-use App\Domain\DTO\TrickImageDTO;
 use App\Domain\DTO\UpdateTrickDTO;
+use App\Domain\Entity\Comment;
+use App\Domain\Entity\GroupTrick;
 use App\Domain\Entity\Trick;
+use App\Domain\Entity\TrickImage;
+use App\Domain\Entity\TrickVideo;
+use App\Domain\Repository\CommentRepository;
 use App\Domain\Repository\GroupTrickRepository;
 use App\Domain\Repository\TrickImageRepository;
-use App\Domain\Repository\TrickRepository;
 use App\Domain\Repository\TrickVideoRepository;
+use App\Domain\Repository\TrickRepository;
+use App\Form\Handler\AddTrickCommentTypeHandler;
 use App\Form\Handler\Interfaces\EditTrickTypeHandlerInterface;
-use App\Form\Type\CreateTrickType;
-use App\Form\Type\TrickType;
+use App\Form\Type\addTrickCommentType;
 use App\Form\Type\UpdateTrickType;
-use App\Responders\Interfaces\ViewResponderInterface;
+use App\Responders\RedirectResponder;
+use App\Responders\ViewResponder;
+use App\Service\UploaderHelper;
+use Doctrine\ORM\EntityNotFoundException;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Security\Core\Security;
 
 /**
  * Class EditTrickAction
  *
- * @Route("/trick/edit/{slug}", name="edit_trick", methods={"GET","POST"})
+ * @Route("/trick/edit/{slug}", name="trick_edit", methods={"GET","POST"})
  */
-final class EditTrickAction implements EditTrickActionInterface
+class EditTrickAction
 {
-    /** @var FormFactoryInterface */
-    private $formFactory;
+    /** @var EventDispatcherInterface */
+    private $eventDispatcher;
 
-    /** @var TrickRepository */
+    /** @var trickRepository */
     protected $trickRepository;
 
     /** @var TrickImageRepository */
@@ -40,71 +46,108 @@ final class EditTrickAction implements EditTrickActionInterface
     /** @var TrickVideoRepository */
     protected $trickVideoRepository;
 
+    /** @var Security */
+    private $security;
+
+    /** @var CommentRepository */
+    protected $commentRepository;
+
+    /** @var FormFactoryInterface */
+    private $formFactory;
+
     /** @var GroupTrickRepository */
     protected $groupTrickRepository;
 
     /** @var EditTrickTypeHandlerInterface */
     private $editTrickTypeHandler;
 
+    /** @var AddTrickCommentTypeHandler */
+    private $addTrickCommentTypeHandler;
+
+    /** @var UploaderHelper */
+    private $uploaderHelper;
+
     /**
-     * EditTrickAction constructor.
-     * @param FormFactoryInterface $formFactory
+     * TrickAction constructor.
+     * @param EventDispatcherInterface $eventDispatcher
      * @param TrickRepository $trickRepository
      * @param TrickImageRepository $trickImageRepository
      * @param TrickVideoRepository $trickVideoRepository
+     * @param Security $security
+     * @param CommentRepository $commentRepository
+     * @param FormFactoryInterface $formFactory
      * @param GroupTrickRepository $groupTrickRepository
      * @param EditTrickTypeHandlerInterface $editTrickTypeHandler
+     * @param AddTrickCommentTypeHandler $addTrickCommentTypeHandler
+     * @param UploaderHelper $uploaderHelper
      */
-    public function __construct(FormFactoryInterface $formFactory, TrickRepository $trickRepository, TrickImageRepository $trickImageRepository, TrickVideoRepository $trickVideoRepository, GroupTrickRepository $groupTrickRepository, EditTrickTypeHandlerInterface $editTrickTypeHandler)
+    public function __construct(EventDispatcherInterface $eventDispatcher, TrickRepository $trickRepository, TrickImageRepository $trickImageRepository, TrickVideoRepository $trickVideoRepository, Security $security, CommentRepository $commentRepository, FormFactoryInterface $formFactory, GroupTrickRepository $groupTrickRepository, EditTrickTypeHandlerInterface $editTrickTypeHandler, AddTrickCommentTypeHandler $addTrickCommentTypeHandler, UploaderHelper $uploaderHelper)
     {
-        $this->formFactory = $formFactory;
+        $this->eventDispatcher = $eventDispatcher;
         $this->trickRepository = $trickRepository;
         $this->trickImageRepository = $trickImageRepository;
         $this->trickVideoRepository = $trickVideoRepository;
+        $this->security = $security;
+        $this->commentRepository = $commentRepository;
+        $this->formFactory = $formFactory;
         $this->groupTrickRepository = $groupTrickRepository;
         $this->editTrickTypeHandler = $editTrickTypeHandler;
+        $this->addTrickCommentTypeHandler = $addTrickCommentTypeHandler;
+        $this->uploaderHelper = $uploaderHelper;
     }
 
-    public function __invoke(Request $request, ViewResponderInterface $responder)
+    public function __invoke(Request $request, ViewResponder $responder, RedirectResponder $redirect)
     {
-        // Edition :
-        // HYDRATION DU DTO PAR L'ENTITE TRICK
-        // ETAPE 1 : Récupération de l'entité
+        // TRICK PAGE
+        /** @var Trick $trick */
+        $trick = $this->trickRepository->findOneBy(['slug' => $request->attributes->get('slug')]);
 
-        // Récupération de l'entité Trick
-        /** @var Trick $trickEntity */
-        $trickEntity = $this->trickRepository->find($request->attributes->get('slug'));
+        if(is_null($trick)) {
+            throw new EntityNotFoundException('Pas de Trick "%s"', $trick->getSlug());
+        }
 
-        // Récupération des Images du Trick
-        $imagesEntity = $this->trickImageRepository->findBy(['trick' => $request->attributes->get('id')]);
-        $trickEntity->setTrickImages($imagesEntity); //ArrayCollection
+        /** @var TrickImage $image */
+        $images = $this->trickImageRepository->findBy(['trick' => $trick->getId()]);
+        $trick->setTrickImages($images);
 
-        // Récupération des Vidéos du Trick
-        $videosEntity = $this->trickVideoRepository->findBy(['trick' => $request->attributes->get('id')]);
-        $trickEntity->getTrickVideos($videosEntity); //ArrayCollection
+        /** @var TrickVideo $video */
+        $videos = $this->trickVideoRepository->findBy(['trick' => $trick->getId()]);
+        $trick->setTrickVideos($videos);
 
-        // Récupération du Nom du Trick avec le group_id
-        $groupEntity = $this->groupTrickRepository->findOneBy(['id' => $trickEntity->getGroupTrick()]);
-        $trickEntity->setGroupTrick($groupEntity);
+        $firstImage = $this->trickImageRepository->findOneBy(['trick' => $trick->getId(), 'firstImage' => true]);
 
-        // ETAPE 2 : HYDRATATION DU DTO
-        $dto = UpdateTrickDTO::createFromEntity($trickEntity);
-        //dd($dto);
+        // EDITION TRICK
 
-        // ETAPE 3 : POPULATE THE FORM WITH THE DTO
+        // 1. Récupération du Nom du Trick avec le group_id
+        $groupEntity = $this->groupTrickRepository->findOneBy(['id' => $trick->getGroupTrick()]);
+        if(is_null($groupEntity)) {
+            $groupEntity = new GroupTrick();
+            $trick->setGroupTrick($groupEntity);
+        }
+
+        // 2. HYDRATATION DU DTO PAR L'ENTITY TRICK
+        $files = [];
+        foreach ($images as $image) {
+            $files[] = $this->uploaderHelper->createTrickPictureFile($image->getImageFileName());
+        }
+        $dto = UpdateTrickDTO::createFromEntity($trick, $files);
+
+        // 3. POPULATE THE FORM WITH THE DTO
         $trickType = $this->formFactory->create(UpdateTrickType::class, $dto)->handleRequest($request);
-        //dd($trickType);
 
         if ($this->editTrickTypeHandler->handle($trickType)) {
-            // ... Redirect??
+            return $redirect('trick_action', ['slug' => $trick->getSlug()]);
         }
 
         return $responder (
-            'trick/trick_form.html.twig',
+            'trick/trick_page_edit.html.twig',
             [
-                'form' => $trickType->createView()
-            ],
-            false
+                'EditTrickForm' => $trickType->createView(),
+                'firstImage' => $firstImage,
+                'trick' => $trick,
+                'images' => $images,
+                'videos' => $videos,
+            ]
         );
     }
 }

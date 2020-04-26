@@ -1,0 +1,250 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trick{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('displayTrickPage') }}
+    <script src="https://cdn.tiny.cloud/1/w6jfk9kprz4iiji7ui8t1le9wicly1a688zb4enm70ryi4ex/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#update_trick_content',
+            plugin: 'a_tinymce_plugin',
+            a_plugin_option: true,
+            a_configuration_option: 400
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+
+
+{{ form_start(EditTrickForm) }}
+
+    {{ include('include/modal/_modal_edit_trick_first_picture.html.twig') }}
+    {{ include('include/modal/_ajax_modal_delete_first_picture.html.twig') }}
+
+    <div class="jumbotron-fluid section_one">
+            {% if firstImage|default %}
+                <img src="{{ asset('uploads/trick_picture/') ~ firstImage.imageFileName }}"
+                     class="img-fluid w-100" alt="">
+            {% else %}
+                <img src="{{ asset('uploads/first_image_default/first_image_default.jpg') }}"
+                     class="img-fluid w-100" alt="">
+            {% endif %}
+
+                <div class="first-image-contents">
+                    <div class="buttons_edit_delete_first_image">
+                            <div>
+                                <!-- Button trigger modal -->
+                                <div class="btn btn-info edit_modal">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+
+                            </div>
+                            <div class="">
+                                <div class="btn btn-danger deleteFirstPicture" data-message="Êtes-vous sûr de vouloir supprimer cette image ?">
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+                            </div>
+
+                    </div>
+                    {% if firstImage|default %}
+                        <h1>{{ trick.title }}</h1>
+                    {% else %}
+                        <h1>PAS DE PREMIERE IMAGE</h1>
+                    {% endif %}
+                </div>
+    </div>
+
+    <!-- Section Medias on Mobile -->
+    <div class="container onmobile-only">
+        <div class="text-center">
+            {% if images or videos %}
+            <button type="button" class="btn btn-primary btn-lg show-media mt-2">Voir les médias</button>
+            {% else %}
+            <button type="button" class="btn btn-primary btn-lg mt-2">Pas de médias</button>
+            {% endif %}
+            <div class="hide-block toshow">
+                {% if images %}
+                    <!-- Trigger the Modal For Images -->
+                    <button type="button" class="btn btn-primary btn-lg mt-2" data-toggle="modal" data-target="#modalImages">Voir les Images</button>
+                {% else %}
+                    <button class="btn btn-primary btn-lg mt-2">Pas encore d'Image</button>
+                {% endif %}
+
+                {% if videos %}
+                    <!-- Trigger the modal For Videos -->
+                    <button type="button" class="btn btn-primary btn-lg mt-2" data-toggle="modal" data-target="#modalVideos">Voir les Vidéos</button>
+                {% else %}
+                    <button class="btn btn-primary btn-lg mt-2">Pas encore de Vidéo</button>
+                {% endif %}
+            </div>
+        </div>
+
+
+        <!-- Modal Images -->
+        {{ include('include/modal/_modal_trick_images.html.twig') }}
+
+        <!-- Modal Videos -->
+        {{ include('include/modal/_modal_trick_videos.html.twig') }}
+    </div>
+
+    <!-- Section Medias on Desktop -->
+    <div class="container hide-block ondesktop-only">
+        <div class="row">
+            {% set i = 0 %}
+            {% for image in EditTrickForm.imageslinks %}
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 mt-2 text-right img-css js-picture-wrapper{{ i }} {% if image.vars.value.firstimage == true %}js-first-picture-wrapper{% endif %}">
+                    <img src="{{ asset('uploads/trick_picture/') ~ images[i].imageFileName }}"
+                         class="rounded img-fluid"
+                         alt="">
+
+                    <span class="d-inline-block pb-3 pt-2">
+                        {% if image.vars.value.firstimage == true %}
+                            <div class="btn btn-info edit_modal js-first-picture-wrapper">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                        {% else %}
+                            <div class="btn btn-info edit_pictures_modal" data-imageid="{{ i }}"><i class="fas fa-edit"></i></div>
+                        {% endif %}
+                        {% if image.vars.value.firstimage == true %}
+                            <div class="btn btn-danger deleteFirstPicture js-first-picture-wrapper" data-message="Êtes-vous sûr de vouloir supprimer cette image ?">
+                                    <i class="fas fa-trash-alt"></i>
+                            </div>
+                        {% else %}
+                            <div class="btn btn-danger deleteTrickPictures"
+                                 data-message="Êtes-vous sûr de vouloir supprimer cette image ?">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        {% endif %}
+                    </span>
+                </div>
+                {{ include('include/modal/_ajax_modal_delete_trick_pictures.html.twig') }}
+                {{ include('include/modal/_modal_edit_trick_pictures.html.twig') }}
+
+                {% set i = i + 1 %}
+            {% endfor %}
+
+            {% set y = 0 %}
+            {% for video in EditTrickForm.videoslinks %}
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 mt-2 text-right block-media js-video-wrapper{{ y }}">
+                    <iframe class="w-100 border border-info" height="200"
+                            frameborder="0"
+                            allow="accelerometer; encrypted-media; gyroscope"
+                            src="{{ videos[y].pathUrl }}"
+                            allowfullscreen>
+                    </iframe>
+                    <span class="d-inline-block pb-3 pt-2">
+                        <div class="btn btn-info edit_videos_modal" data-videoid="{{ y }}"><i class="fas fa-edit"></i></div>
+
+                        <div class="btn btn-danger deleteTrickVideos"
+                             data-message="Êtes-vous sûr de vouloir supprimer cette Video ?">
+                                <i class="fas fa-trash-alt"></i>
+                        </div>
+                    </span>
+                </div>
+                {{ include('include/modal/_ajax_modal_delete_trick_videos.html.twig') }}
+                {{ include('include/modal/_modal_edit_trick_videos.html.twig') }}
+
+                {% set y = y + 1 %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 d-flex justify-content-start">
+                <div>
+                    <div id="image_list"
+                         data-prototype="{{ form_widget(EditTrickForm.imageslinks.vars.prototype)|e('html_attr') }}">
+                        {% for imagelink in EditTrickForm.imageslinks %}
+                            <div class="panel panel_trick panel-warning">
+                                <div class="panel-body">
+                                    {{ form_row(imagelink.image) }}
+                                    {{ form_row(imagelink.alt) }}
+                                    {{ form_widget(imagelink.first_image) }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-start">
+                <div>
+                    <div id="video_list"
+                         data-prototype="{{ form_widget(EditTrickForm.videoslinks.vars.prototype)|e('html_attr') }}">
+                        {% for videolink in EditTrickForm.videoslinks %}
+                            <div class="panel panel_video panel-warning">
+                                <div class="panel-body">
+                                    {{ form_row(videolink.pathUrl, { 'label': 'Video'}) }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        {{ include('include/_ajax_modal_delete.html.twig') }}
+        <div class="d-flex justify-content-center">
+            <div class="row w-100">
+                {{ include('include/_flash.message.html.twig')}}
+
+                <!-- Description -->
+                <div class="col-12">
+                    <h1 class="text-center mt-4">Modification du Trick</h1>
+
+                    <div class="col-md-12 mt-4 p-2 d-inline-block text-center">
+                        <div class="d-flex justify-content-center flex-wrap">
+                            <div class="pr-3">
+                                <p>Créée le : <span class="badge badge-light">{{ trick.createdAt|date('d-m-Y') }}</span></p>
+                            </div>
+                            {% if trick.updatedAt is defined and trick.updatedAt %}
+                                <p>Modifié le : <span class="badge badge-light"> {{ trick.updatedAt|date('d-m-Y') }}</span></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 p-1 w-100">
+                    <div class="col-md-6 w-100">
+                        {{ form_row(EditTrickForm.title) }}
+                    </div>
+                    <div class="col-md-12 w-100">
+                        {{ form_row(EditTrickForm.content, {'attr': {'rows' : '15'}}) }}
+                    </div>
+                    <div class="col-md-6 w-100">
+                        {{ form_row(EditTrickForm.groups) }}
+                    </div>
+
+                    <div class="d-flex justify-content-center p-3">
+                        <div class="btn btn-danger js-delete-trick m-1" data-id="{{ trick.slug }}"
+                                data-message="Êtes-vous sûr de vouloir supprimer ce trick ?">
+                            Supprimer
+                        </div>
+                        <button type="submit" class="btn btn-primary m-1">Sauvegarder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ form_end(EditTrickForm) }}
+
+    <form method="POST" action="{{ path('edit_trick_delete', {slug: trick.slug}) }}" style="display: inline-block">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
+        {{ include('include/modal/_ajax_modal_delete_trick.html.twig') }}
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('addpictures') }}
+    {{ encore_entry_script_tags('addvideos') }}
+    {{ encore_entry_script_tags('checkbox') }}
+    {{ encore_entry_script_tags('displayTrickPage') }}
+    {{ encore_entry_script_tags('delete.trick') }}
+
+{% endblock %}

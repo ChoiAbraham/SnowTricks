@@ -15,27 +15,27 @@
         <a class="navbar-brand" href="{{ path('homepage_action') }}">SnowTricks</a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('homepage_action') }}">Home</a>
+                <a class="nav-link" href="{{ path('homepage_action') }}">{{ 'text.home.title'|trans }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/#tricks">Tricks</a>
+                <a class="nav-link" href="/{{ app.request.getLocale() }}/#tricks">Tricks</a>
             </li>
             {% if app.user is defined and app.user %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('new_trick') }}">Nouveau Trick</a>
+                    <a class="nav-link" href="{{ path('new_trick') }}">{{ 'text.navbar.newtrick'|trans }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('my_account') }}">Compte</a>
+                    <a class="nav-link" href="{{ path('my_account') }}">{{ 'text.navbar.account'|trans }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                    <a class="nav-link" href="{{ path('app_logout') }}">{{ 'text.navbar.logout'|trans }}</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
+                    <a class="nav-link" href="{{ path('security_login') }}">{{ 'text.navbar.login'|trans }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('registration') }}">Inscription</a>
+                    <a class="nav-link" href="{{ path('registration') }}">{{ 'text.navbar.sign.up'|trans }}</a>
                 </li>
             {% endif %}
         </ul>

@@ -22,7 +22,7 @@ class TrickVideoDTO
      * TrickVideoDTO constructor.
      * @param string|null $pathUrl
      */
-    public function __construct(?string $pathUrl)
+    public function __construct(?string $pathUrl = '')
     {
         $this->setPathUrl($pathUrl);
     }
@@ -30,11 +30,11 @@ class TrickVideoDTO
     /**
      * @param TrickVideo $video
      */
-    public static function createFromEntity(TrickVideo $video)
+    public static function createFromEntity(TrickVideo $video, $y)
     {
         $dto = new self();
 
-        $dto->setId($video->getId());
+        $dto->setId($y);
         $dto->setPathUrl($video->getPathUrl());
 
         return $dto;
@@ -49,9 +49,9 @@ class TrickVideoDTO
     }
 
     /**
-     * @param id $id
+     * @param $id
      */
-    public function setId(id $id): void
+    public function setId($id): void
     {
         $this->id = $id;
     }
@@ -70,8 +70,5 @@ class TrickVideoDTO
     public function setPathUrl(?string $pathUrl): void
     {
         $this->pathUrl = $pathUrl;
-
-
-        $this->pathUrl = $finalLink;
     }
 }

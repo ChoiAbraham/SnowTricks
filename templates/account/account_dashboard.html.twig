@@ -32,7 +32,7 @@
                                          alt="photo de profil">
                                 </div>
                                 {% else %}
-                                    <div class="text-center">
+                                    <div class="text-center img-width">
                                         <img src="{{ asset('uploads/profil_picture/profil_picture_default.jpg') }}"
                                              class="rounded-circle"
                                              alt="photo de profil">
@@ -69,9 +69,14 @@
                                                 <a href="{{ path('trick_action', {'slug': trick.slug, 'id': trick.id }) }}">{{ trick.title |capitalize }}</a>
                                             </td>
                                             <td >
-                                                <button class="btn btn-danger">
+                                                <button class="btn btn-danger js-delete-trick" data-id="{{ trick.slug }}"
+                                                        data-message="Êtes-vous sûr de vouloir supprimer ce trick ?">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
+                                                <form method="POST" action="{{ path('edit_trick_delete', {slug: trick.slug}) }}" style="display: inline-block">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
+                                                    {{ include('include/modal/_ajax_modal_delete_trick.html.twig') }}
+                                                </form>
                                             </td>
                                         </tr>
                                     {% endfor %}
@@ -107,4 +112,5 @@
 
 {% block javascripts %}
     {{ encore_entry_script_tags('app.account.dashboard') }}
+    {{ encore_entry_script_tags('delete.trick') }}
 {% endblock %}

@@ -33,7 +33,7 @@ final class NewTrickAction implements NewTrickActionInterface
     /**
      * HomepageAction constructor.
      * @param FormFactoryInterface $formFactory
-     * @param TrickRepositoryht $trickRepository
+     * @param TrickRepository $trickRepository
      * @param AddTrickTypeHandlerInterface $addTrickTypeHandler
      */
     public function __construct(FormFactoryInterface $formFactory, TrickRepository $trickRepository, AddTrickTypeHandlerInterface $addTrickTypeHandler)
@@ -45,9 +45,9 @@ final class NewTrickAction implements NewTrickActionInterface
 
     public function __invoke(Request $request, ViewResponderInterface $responder)
     {
-        //When the user submits the form, handleRequest() recognizes this and immediately writes the submitted data
-        // back into the AddTrickType object.
         $addTrickType = $this->formFactory->create(CreateTrickType::class)->handleRequest($request);
+
+        //if no user => redirect to no user
 
         if ($this->addTrickTypeHandler->handle($addTrickType)) {
 

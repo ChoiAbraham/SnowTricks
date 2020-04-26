@@ -12,6 +12,7 @@ use App\Domain\DTO\TrickVideoDTO;
 use App\Domain\Entity\Trick;
 use App\Domain\Repository\GroupTrickRepository;
 use App\Domain\Repository\UserRepository;
+use Symfony\Component\Security\Core\Security;
 
 class TrickBuilder implements TrickBuilderInterface
 {
@@ -40,21 +41,27 @@ class TrickBuilder implements TrickBuilderInterface
      */
     private $userRepository;
 
-    private $trickImages = [];
+    /** @var Security */
+    private $security;
 
     /**
      * TrickBuilder constructor.
+     * @param Trick $trick
      * @param TrickImageBuilderInterface $trickImageBuilder
      * @param TrickVideoBuilderInterface $trickVideoBuilder
      * @param GroupTrickRepository $groupTrickRepository
      * @param UserRepository $userRepository
+     * @param array $trickImages
+     * @param Security $security
      */
-    public function __construct(TrickImageBuilderInterface $trickImageBuilder, TrickVideoBuilderInterface $trickVideoBuilder, GroupTrickRepository $groupTrickRepository, UserRepository $userRepository)
+    public function __construct(Trick $trick, TrickImageBuilderInterface $trickImageBuilder, TrickVideoBuilderInterface $trickVideoBuilder, GroupTrickRepository $groupTrickRepository, UserRepository $userRepository, Security $security)
     {
+        $this->trick = $trick;
         $this->trickImageBuilder = $trickImageBuilder;
+        $this->trickVideoBuilder = $trickVideoBuilder;
         $this->groupTrickRepository = $groupTrickRepository;
         $this->userRepository = $userRepository;
-        $this->trickVideoBuilder = $trickVideoBuilder;
+        $this->security = $security;
     }
 
     /**
@@ -67,17 +74,17 @@ class TrickBuilder implements TrickBuilderInterface
             $dto->getTitle(),
             $dto->getContent(),
             $this->getGroupTrick($dto->getGroups()),
-            $this->getUserTest()
+            $this->getUser()
         );
 
         //TrickVideo Instances from TrickVideoDTOs
-        $trickVideos = $this->getTrickVideos($dto->getVideos());
+        $trickVideos = $this->getTrickVideos($dto->getVideoslinks());
         foreach ($trickVideos as $trickVideo) {
             //set the trick to the Video and add the video to the Trick
             $this->trick->videos($trickVideo);
         }
 
-        $trickImages = $this->getTrickImages($dto->getImages());
+        $trickImages = $this->getTrickImages($dto->getImageslinks());
         foreach ($trickImages as $trickImage) {
             //set the trick to the Image and add the Image to the Trick
             $this->trick->images($trickImage);
@@ -86,10 +93,10 @@ class TrickBuilder implements TrickBuilderInterface
         return $this;
     }
 
-    public function getUserTest()
+    public function getUser()
     {
-        $userRandom = $this->userRepository->find(190);
-        return $userRandom;
+        $user =  $this->security->getUser();
+        return $user;
     }
 
     public function getTrickVideos($videoDTOs):array
@@ -104,24 +111,27 @@ class TrickBuilder implements TrickBuilderInterface
         return $trickVideos;
     }
 
-    public function getGroupTrick(int $groupTrick)
+    public function getGroupTrick($groupTrick)
     {
+        if($groupTrick == null) {
+            return null;
+        }
         $name = Trick::LIST_GROUPS[$groupTrick];
         $result = $this->groupTrickRepository->findOneBy(array('name' => $name));
-        $id = $result->getId();
 
         return $result;
     }
 
     public function getTrickImages($imageDTOs)
     {
+        $trickImages = [];
         foreach ($imageDTOs as $imageDTO) {
             /* @var TrickImageDTO $imageDTO */
             $image = $this->trickImageBuilder->create($imageDTO)->getTrickImage(); // = new TrickImage
-            $this->trickImages[] = $image;
+            $trickImages[] = $image;
         }
 
-        return $this->trickImages;
+        return $trickImages;
     }
 
     /**
