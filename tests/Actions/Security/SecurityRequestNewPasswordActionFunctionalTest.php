@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Tests\Controller;
+namespace App\Tests\Actions\Security;
 
 use App\DataFixtures\UserFixture;
 use App\Tests\AbstractWebTestCase;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
-use Symfony\Component\Mime\Header\MailboxListHeader;
 
 class SecurityRequestNewPasswordActionFunctionalTest extends AbstractWebTestCase
 {

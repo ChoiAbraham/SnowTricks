@@ -6,7 +6,6 @@ namespace App\Domain\DTO;
 
 use App\Domain\Entity\TrickImage;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class TrickImageDTO
@@ -17,6 +16,8 @@ class TrickImageDTO
     protected $alt;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
      * @Assert\Image(
      *     minWidth = 200,
      *     maxWidth = 500,
@@ -52,11 +53,11 @@ class TrickImageDTO
      * @param $id
      * @param $alt
      */
-    public function __construct($id = null, ?string $alt = '', $imageFileName = '', $firstImage = false)
+    public function __construct($id = null, ?string $alt = '', $image = '', $firstImage = false)
     {
         $this->id = $id;
         $this->alt = $alt;
-        $this->image = $imageFileName;
+        $this->image = $image;
         $this->firstimage = $firstImage;
     }
 
@@ -88,19 +89,19 @@ class TrickImageDTO
     }
 
     /**
-     * @return File
+     * @return
      */
-    public function getImage(): File
+    public function getImage(): ?File
     {
         return $this->image;
     }
 
     /**
-     * @param File $imageFileName
+     * @param ?File $image
      */
-    public function setImage(File $imageFileName): void
+    public function setImage(?File $image): void
     {
-        $this->image = $imageFileName;
+        $this->image = $image;
     }
 
     public function getId()

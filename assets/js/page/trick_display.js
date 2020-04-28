@@ -34,16 +34,18 @@ $(document).on('click', '.edit_videos_modal', function () {
     editVideos(videoId);
 });
 
-//show modal for Delete trick videos
-$(document).on('click', '.deleteTrickVideos', function () {
-    let message = $(this).data('message');
-    deleteTrickVideos(message);
-});
-
 //show modal for Delete trick images
 $(document).on('click', '.deleteTrickPictures', function () {
+    let imageId = $(this).data('imageid');
     let message = $(this).data('message');
-    deleteTrickPictures(message);
+    deleteTrickPictures(message, imageId);
+});
+
+//show modal for Delete trick videos
+$(document).on('click', '.deleteTrickVideos', function () {
+    let videoId = $(this).data('videoid');
+    let message = $(this).data('message');
+    deleteTrickVideos(message, videoId);
 });
 
 //show modal for Delete trick images

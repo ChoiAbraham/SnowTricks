@@ -28,10 +28,6 @@ class UploaderHelper
     {
         $destination = $this->uploadPath.'/trick_picture';
 
-        //$uploadedFile->move($destination, $nameToGiveToTheFile);
-        // the easiest name to use is : $uploadedFile->getClientOriginalName();
-        // careful : security (have to be an image, not .php extension)
-        // careful : has to be unique => newFileName
         try {
             $uploadedFile->move(
                 $destination,
@@ -54,6 +50,13 @@ class UploaderHelper
         } catch (FileException $e) {
             // ... handle exception if something happens during file upload
         }
+    }
+
+    public function deleteTrickImage(?string $filename)
+    {
+        $destination = $this->uploadPath.'/trick_picture/' . $filename;
+        $fileSystem = new FileSystem();
+        $fileSystem->remove($destination);
     }
 
     public function deleteProfilPictureImage(?string $filename)

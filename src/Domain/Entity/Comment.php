@@ -51,7 +51,7 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Domain\Entity\User", inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 

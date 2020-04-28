@@ -29,8 +29,6 @@ class UpdateTrickDTO implements TrickDTOInterface
 
     /**
      * @var string|null
-     *
-     * @Assert\NotBlank()
      */
     protected $groups;
 
@@ -115,6 +113,9 @@ class UpdateTrickDTO implements TrickDTOInterface
      */
     public function getTitle(): ?string
     {
+        if ($this->title == '') {
+            $this->title = 'no title';
+        }
         return $this->title;
     }
 
@@ -135,11 +136,47 @@ class UpdateTrickDTO implements TrickDTOInterface
     }
 
     /**
-     * @return mixed
+     * Only select those with upload files
      */
     public function getImageslinks()
     {
-        return $this->imageslinks;
+        $checkUploads = [];
+        foreach ($this->imageslinks as $image) {
+            if (!is_null($image->getImage())) {
+                $checkUploads[] = $image;
+            }
+        }
+        return $checkUploads;
+    }
+
+    /**
+     * Only select those with Ids
+     */
+    public function getImageslinksWithIds()
+    {
+        $checkUploads = [];
+        foreach ($this->imageslinks as $image) {
+            if (!is_null($image->getId())) {
+                $checkUploads[] = $image;
+            }
+        }
+        return $checkUploads;
+    }
+
+    /**
+     *
+     * Only select those with upload Files and No Ids
+     */
+    public function getImageslinksWithNoIds()
+    {
+        $checkUploads = [];
+
+        foreach ($this->imageslinks as $image) {
+            if (!is_null($image->getImage()) && is_null($image->getId())) {
+                $checkUploads[] = $image;
+            }
+        }
+        return $checkUploads;
     }
 
     /**
@@ -148,6 +185,34 @@ class UpdateTrickDTO implements TrickDTOInterface
     public function setImageslinks($imageslinks): void
     {
         $this->imageslinks = $imageslinks;
+    }
+
+    /**
+     * Only select those with Ids
+     */
+    public function getVideolinksWithIds()
+    {
+        $checkUploads = [];
+        foreach ($this->videoslinks as $video) {
+            if (!is_null($video->getId())) {
+                $checkUploads[] = $video;
+            }
+        }
+        return $checkUploads;
+    }
+
+    /**
+     * Only select those with No Ids
+     */
+    public function getVideolinksWithNoIds()
+    {
+        $checkUploads = [];
+        foreach ($this->videoslinks as $video) {
+            if (is_null($video->getId())) {
+                $checkUploads[] = $video;
+            }
+        }
+        return $checkUploads;
     }
 
     /**

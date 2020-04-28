@@ -12,9 +12,19 @@ use Doctrine\Common\Persistence\ObjectManager;
 class TrickFixtures extends BaseFixture implements DependentFixtureInterface
 {
     private static $trickTitles = [
-        'Why Asteroids Taste Like Bacon',
-        'Life on Planet Mercury: Tan, Relaxing and Fabulous',
-        'Light Speed Travel: Fountain of Youth or Fallacy',
+        'Ollie',
+        'Nollie',
+        'Switch Ollie',
+        'Fakie Ollie',
+        'Shifty',
+        'Air-to-fakie',
+        'Grabs - Beef Carpaccio',
+        'Beef - Curtains',
+        'Bloody Dracula',
+        'Crail',
+        'Drunk Driver',
+        'Gorilla',
+        'Japan Air',
     ];
 
     private static $trickContents = [
@@ -26,8 +36,8 @@ class TrickFixtures extends BaseFixture implements DependentFixtureInterface
 
     protected function loadData(ObjectManager $manager)
     {
-        $this->createMany(Trick::class, 10, function (Trick $trick, $count) {
-            $title = $trick->setTitle($this->faker->sentence($nbWords = 6, $variableNbWords = true));
+        $this->createMany(Trick::class, 10, function (Trick $trick, $i) {
+            $title = $trick->setTitle(self::$trickTitles[$i]);
 
             $trick->setSlug($title);
             $trick->setContent($this->faker->randomElement(self::$trickContents));

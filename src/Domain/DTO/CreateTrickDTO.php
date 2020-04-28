@@ -6,6 +6,7 @@ namespace App\Domain\DTO;
 use App\Domain\DTO\Interfaces\TrickDTOInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Form\CustomConstraints as AcmeAssert;
 
 class CreateTrickDTO implements TrickDTOInterface
 {
@@ -14,6 +15,7 @@ class CreateTrickDTO implements TrickDTOInterface
      *
      * @Assert\NotBlank()
      * @Assert\Length(min="5", max="100")
+     * @AcmeAssert\UniqueTrickTitle()
      */
     protected $title;
 
@@ -29,6 +31,9 @@ class CreateTrickDTO implements TrickDTOInterface
      */
     protected $groups;
 
+    /**
+     * @Assert\NotNull()
+     */
     protected $imageslinks;
 
     protected $videoslinks;
@@ -119,7 +124,14 @@ class CreateTrickDTO implements TrickDTOInterface
      */
     public function getImageslinks()
     {
-        return $this->imageslinks;
+        $checkNewUploads = [];
+        //Among new image uploads, only select those with upload files
+        foreach ($this->imageslinks as $image) {
+            if (!is_null($image->getImage())) {
+                $checkNewUploads[] = $image;
+            }
+        }
+        return $checkNewUploads;
     }
 
     /**

@@ -135,7 +135,7 @@ class EditTrickAction
         // 3. POPULATE THE FORM WITH THE DTO
         $trickType = $this->formFactory->create(UpdateTrickType::class, $dto)->handleRequest($request);
 
-        if ($this->editTrickTypeHandler->handle($trickType)) {
+        if ($this->editTrickTypeHandler->handle($trickType, $trick)) {
             return $redirect('trick_action', ['slug' => $trick->getSlug()]);
         }
 

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Tests\Actions;
+namespace App\Tests\Actions\Account;
 
 use App\DataFixtures\UserFixture;
 use App\Domain\Entity\User;
@@ -10,7 +10,7 @@ use App\Tests\NeedLoginTrait;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class MyAccountActionTest extends AbstractWebTestCase
+class MyAccountActionFunctionalTest extends AbstractWebTestCase
 {
     use FixturesTrait;
     use NeedLoginTrait;

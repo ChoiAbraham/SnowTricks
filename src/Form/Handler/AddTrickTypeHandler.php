@@ -5,16 +5,14 @@ namespace App\Form\Handler;
 
 
 use App\Domain\Builder\Interfaces\TrickBuilderInterface;
-use App\Domain\Builder\Interfaces\TrickVideoBuilderInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\Domain\DTO\CreateTrickDTO;
-use App\Domain\DTO\TrickVideoDTO;
 use App\Domain\Entity\Trick;
 use App\Domain\Repository\Interfaces\TrickRepositoryInterface;
 use App\Form\Handler\Interfaces\AddTrickTypeHandlerInterface;
-use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 class AddTrickTypeHandler implements AddTrickTypeHandlerInterface
 {
@@ -31,34 +29,71 @@ class AddTrickTypeHandler implements AddTrickTypeHandlerInterface
     /** @var EntityManagerInterface */
     private $em;
 
+    /** @var UrlGeneratorInterface */
+    protected $urlGenerator;
+
+    /** @var FlashBagInterface */
+    protected $bag;
+
+    /** @var bool */
+    protected $checkImage;
+
     /**
      * AddTrickTypeHandler constructor.
      * @param TrickBuilderInterface $trickBuilder
      * @param TrickRepositoryInterface $trickRepository
      * @param EntityManagerInterface $em
+     * @param UrlGeneratorInterface $urlGenerator
+     * @param FlashBagInterface $bag
+     * @param string $noImages
      */
-    public function __construct(TrickBuilderInterface $trickBuilder, TrickRepositoryInterface $trickRepository, EntityManagerInterface $em)
+    public function __construct(TrickBuilderInterface $trickBuilder, TrickRepositoryInterface $trickRepository, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator, FlashBagInterface $bag, bool $checkImage = false)
     {
         $this->trickBuilder = $trickBuilder;
         $this->trickRepository = $trickRepository;
         $this->em = $em;
+        $this->urlGenerator = $urlGenerator;
+        $this->bag = $bag;
+        $this->checkImage = $checkImage;
     }
 
-    public function handle(FormInterface $form): bool
+    public function handle(FormInterface $form)
     {
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var CreateTrickDTO $data */
             $data = $form->getData();
 
             /** @var Trick $trick */
-            $trick = $this->trickBuilder->create($form->getData())->getTrick(); // = new Trick();
+            $trick = $this->trickBuilder->create($data)->getTrick(); // = new Trick();
 
             $this->em->persist($trick);
             $this->em->flush();
+
+            // if no first image among all images, then redirect to account
+            foreach ($trick->getTrickImages() as $image) {
+                if ($image->getFirstImage() == false) {
+                    $this->checkImage = true;
+                    return false;
+                }
+            }
+
+            // if no images, redirect to account
+            if($trick->getTrickImages()->isEmpty()) {
+                $this->checkImage = true;
+                return false;
+            }
 
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function checkImage(): bool
+    {
+        return $this->checkImage;
     }
 }

@@ -4,7 +4,11 @@
 namespace App\Actions\Account;
 
 use App\Actions\Interfaces\DeleteMyAccountActionInterface;
+use App\Domain\Entity\Comment;
+use App\Domain\Entity\Trick;
+use App\Domain\Repository\CommentRepository;
 use App\Domain\Repository\Interfaces\UserRepositoryInterface;
+use App\Domain\Repository\TrickRepository;
 use App\Responders\RedirectResponder;
 use App\Responders\ViewResponder;
 use App\Service\UploaderHelper;
@@ -49,6 +53,12 @@ class DeleteMyAccountAction implements DeleteMyAccountActionInterface
     /** @var TokenStorageInterface */
     private $tokenStorageInterface;
 
+    /** @var TrickRepository */
+    private $trickRepository;
+
+    /** @var CommentRepository */
+    private $commentRepository;
+
     /**
      * DeleteMyAccountAction constructor.
      * @param UserRepositoryInterface $userRepository
@@ -58,8 +68,10 @@ class DeleteMyAccountAction implements DeleteMyAccountActionInterface
      * @param UploaderHelper $uploaderHelper
      * @param CsrfTokenManagerInterface $csrf
      * @param TokenStorageInterface $tokenStorageInterface
+     * @param TrickRepository $trickRepository
+     * @param CommentRepository $commentRepository
      */
-    public function __construct(UserRepositoryInterface $userRepository, Security $security, FlashBagInterface $bag, EntityManagerInterface $entityManager, UploaderHelper $uploaderHelper, CsrfTokenManagerInterface $csrf, TokenStorageInterface $tokenStorageInterface)
+    public function __construct(UserRepositoryInterface $userRepository, Security $security, FlashBagInterface $bag, EntityManagerInterface $entityManager, UploaderHelper $uploaderHelper, CsrfTokenManagerInterface $csrf, TokenStorageInterface $tokenStorageInterface, TrickRepository $trickRepository, CommentRepository $commentRepository)
     {
         $this->userRepository = $userRepository;
         $this->security = $security;
@@ -68,6 +80,8 @@ class DeleteMyAccountAction implements DeleteMyAccountActionInterface
         $this->uploaderHelper = $uploaderHelper;
         $this->csrf = $csrf;
         $this->tokenStorageInterface = $tokenStorageInterface;
+        $this->trickRepository = $trickRepository;
+        $this->commentRepository = $commentRepository;
     }
 
     public function __invoke(Request $request, RedirectResponder $redirect, ViewResponder $responder)
@@ -77,13 +91,25 @@ class DeleteMyAccountAction implements DeleteMyAccountActionInterface
         $submittedToken = $request->get('_token');
 
         if ($this->csrf->isTokenValid(new CsrfToken('delete-item', $submittedToken))) {
-            $this->bag->add('success', 'Votre compte a été supprimé');
 
             $this->uploaderHelper->deleteProfilPictureImage($user->getPicturePath());
+
+            $comments = $this->commentRepository->findBy(['user' => $user->getId()]);
+            foreach ($comments as $comment) {
+                /** @var Comment $comment */
+                $comment->setUser(null);
+            }
+            $trickEntitys = $this->trickRepository->findBy(['creator' => $user->getId()]);
+            foreach ($trickEntitys as $trick) {
+                /** @var Trick $trick */
+                $trick->setCreator(null);
+                $trick->setLastUser(null);
+            }
 
             $this->entityManager->remove($user);
             $this->entityManager->flush();
 
+            $this->bag->add('success', 'Votre compte a été supprimé');
             $this->tokenStorageInterface->setToken(null);
 
             // Error
