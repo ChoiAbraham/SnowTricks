@@ -10,6 +10,7 @@ use App\Form\Type\CreateTrickType;
 use App\Responders\Interfaces\ViewResponderInterface;
 use App\Responders\RedirectResponder;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
@@ -20,6 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class NewTrickAction
  *
  * @Route("/trick/new", name="new_trick")
+ * @IsGranted("ROLE_USER")
  */
 final class NewTrickAction implements NewTrickActionInterface
 {

@@ -68,12 +68,6 @@ class MyAccountAction implements MyAccountActionInterface
 
     public function __invoke(Request $request, ViewResponder $responder, RedirectResponder $redirect)
     {
-        // authorization avec ROLE_USER
-        // j'aimerais get the user from the token mais getToken() ne renvoie rien
-        // question : je pensais qu'à chaque authentification, symfony stockait un token. comment je fais pour le récupérer?
-//        dd($this->tokenStorageInterface->getToken());
-        //getToken()->getUser doessn't worl => service
-
         $userId = $this->security->getUser()->getId();
         $user = $this->security->getUser();
         /** @var Trick $tricks */

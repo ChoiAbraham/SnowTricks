@@ -23,6 +23,15 @@
     {{ include('include/modal/_modal_edit_trick_first_picture.html.twig') }}
     {{ include('include/modal/_ajax_modal_delete_first_picture.html.twig') }}
 
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success flash-homepage" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    {% endfor %}
+
     <div class="jumbotron-fluid section_one">
             {% if firstImage|default %}
                 <img src="{{ asset('uploads/trick_picture/') ~ firstImage.imageFileName }}"

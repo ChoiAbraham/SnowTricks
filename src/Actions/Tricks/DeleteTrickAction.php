@@ -12,6 +12,7 @@ use App\Domain\Repository\TrickVideoRepository;
 use App\Responders\Interfaces\ViewResponderInterface;
 use App\Responders\RedirectResponder;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +26,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
  * Class DeleteTrickAction
  *
  * @Route("/delete/{slug}", name="edit_trick_delete")
+ * @IsGranted("ROLE_USER")
  */
 final class DeleteTrickAction extends AbstractController implements DeleteTrickActionInterface
 {

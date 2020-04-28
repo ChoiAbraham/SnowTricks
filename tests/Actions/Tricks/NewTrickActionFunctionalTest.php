@@ -37,7 +37,7 @@ class NewTrickActionFunctionalTest extends PantherTestCase
         $schemaTool->createSchema($this->entityManager->getMetadataFactory()->getAllMetadata());
     }
 
-    public function testMyAccountIsRedirectedIfNotAuthenticated()
+    public function testIsRedirectedIfNotAuthenticated()
     {
         $panther = static::createPantherClient();
         $panther->request('GET', '/trick/new');
