@@ -13,7 +13,10 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class HomepageAction
  *
- * @Route("/", name="homepage_action")
+ * @Route(
+ *     "/",
+ *     name="homepage_action",
+ * )
  */
 final class HomepageAction implements HomeActionInterface
 {
@@ -32,7 +35,8 @@ final class HomepageAction implements HomeActionInterface
     public function __invoke(Request $request, ViewResponderInterface $responder)
     {
         /** @var Trick $tricks */
-        $tricks = $this->trickRepository->findBy([], [], Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE, null);
+//        $tricks = $this->trickRepository->findBy([], ['id' => 'DESC'], Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE, null);
+        $tricks = $this->trickRepository->findLatestWithFirstImageActive(Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE, null);
 
         /** @var $maxPageNumber */
         $maxPageNumber = ceil(

@@ -1,8 +1,7 @@
 <?php
 
 
-namespace App\Tests\Actions;
-
+namespace App\Tests\Actions\Account;
 
 use App\DataFixtures\UserFixture;
 use App\Domain\Entity\User;
@@ -11,7 +10,7 @@ use App\Tests\NeedLoginTrait;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class MyAccountActionTest extends AbstractWebTestCase
+class MyAccountActionFunctionalTest extends AbstractWebTestCase
 {
     use FixturesTrait;
     use NeedLoginTrait;
@@ -55,25 +54,18 @@ class MyAccountActionTest extends AbstractWebTestCase
 
         $form = $crawler->selectButton("Envoyer")->form();
 
-        // Comment Upload a File in Test? // problème avec le path $this->uploadProfilPicturePath,
-        // Question 2/ dois-je tester image size > 500k, si oui comment?
         $photo = new UploadedFile(
-            $this->uploadProfilPicturePath,
-            'profil_picture_test.jpg',
+            'assets/images/user/profil_picture_default.jpg',
+            'first_image_default.jpg',
             'image/jpeg',
             null
         );
-        $this->client->request(
-            'POST',
-            '/submit',
-            ['name' => 'Abraham'],
-            ['photo' => $photo]
-        );
 
-        // ou plutôt :
-//      $form['profil_picture[profilPicture]'] = $photo;
-//        $crawler = $this->client->submit($form);
-//        $crawler = $this->client->followRedirect();
-//        static::assertSelectorTextContains('html div.alert.alert-success', 'Votre avatar a été modifié');
+        $form['profil_picture[profilPicture]'] = $photo;
+
+        $this->client->submit($form);
+
+        $this->client->followRedirect();
+        static::assertSelectorTextContains('html div.alert.alert-success', 'Votre avatar a été modifié');
     }
 }

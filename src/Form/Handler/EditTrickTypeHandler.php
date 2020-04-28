@@ -3,13 +3,18 @@
 
 namespace App\Form\Handler;
 
-
 use App\Domain\Builder\Interfaces\TrickBuilderInterface;
+use App\Domain\Builder\Interfaces\TrickImageBuilderInterface;
+use App\Domain\Builder\Interfaces\TrickVideoBuilderInterface;
+use App\Domain\DTO\UpdateTrickDTO;
 use App\Domain\Entity\Trick;
 use App\Domain\Entity\TrickImage;
 use App\Domain\Repository\Interfaces\TrickRepositoryInterface;
 use App\Form\Handler\Interfaces\EditTrickTypeHandlerInterface;
+use App\Service\TrickUpdateResolver;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Security\Core\Security;
 
 class EditTrickTypeHandler implements EditTrickTypeHandlerInterface
 {
@@ -23,48 +28,56 @@ class EditTrickTypeHandler implements EditTrickTypeHandlerInterface
      */
     private $trickRepository;
 
+    /** @var EntityManagerInterface */
+    private $em;
+
+    /** @var TrickUpdateResolver */
+    private $trickUpdateResolver;
+
+    /** @var TrickImageBuilderInterface */
+    private $trickImageBuilder;
+
+    /** @var TrickVideoBuilderInterface */
+    private $trickVideoBuilder;
+
     /**
-     * AddTrickTypeHandler constructor.
+     * EditTrickTypeHandler constructor.
      * @param TrickBuilderInterface $trickBuilder
      * @param TrickRepositoryInterface $trickRepository
+     * @param EntityManagerInterface $em
+     * @param TrickUpdateResolver $trickUpdateResolver
+     * @param TrickImageBuilderInterface $trickImageBuilder
+     * @param TrickVideoBuilderInterface $trickVideoBuilder
      */
-    public function __construct(TrickBuilderInterface $trickBuilder, TrickRepositoryInterface $trickRepository)
+    public function __construct(TrickBuilderInterface $trickBuilder, TrickRepositoryInterface $trickRepository, EntityManagerInterface $em, TrickUpdateResolver $trickUpdateResolver, TrickImageBuilderInterface $trickImageBuilder, TrickVideoBuilderInterface $trickVideoBuilder)
     {
         $this->trickBuilder = $trickBuilder;
         $this->trickRepository = $trickRepository;
+        $this->em = $em;
+        $this->trickUpdateResolver = $trickUpdateResolver;
+        $this->trickImageBuilder = $trickImageBuilder;
+        $this->trickVideoBuilder = $trickVideoBuilder;
     }
 
-    public function handle(FormInterface $form): bool
+    public function handle(FormInterface $form, $trick): bool
     {
         if ($form->isSubmitted() && $form->isValid()) {
-            //dd($form->getData()->getImageslinks());
-            dd($form->getData());
-            // CAS 1 : UPDATE
-            $trick = Trick::updateFromDTO($form->getData());
-            //dd($trick); //contient les $trickImages sans les nouvelles $images et vidéos
-            // je flush $trick
-            // $entityManager->flush();
+            /** @var UpdateTrickDTO $data */
+            $data = $form->getData();
 
-            // CAS 2 : NOUVELLES IMAGES ET VIDEOS
-            // pour les nouvelles images
-            $allImages = $form->getData()->getImageslinks();
-            foreach($allImages as $image) {
-                if(is_null($image->getId())) {
-                    $newImage = TrickImage::updateFromDTO($image);
-                    dd($newImage);
-                    // je persist et je flush TrickImage en passant l'id du trick (avec l'objet $request)
-                }
-            }
+            // Step 1 : Update Trick (Title/Content/Group/Images/Videos) // flush
+            $trick = $this->trickUpdateResolver->updateTrickFromDTO($form->getData(), $trick);
 
-            // idem pour vidéo, je passe une propriété Id
-            $allVideos = $form->getData()->getVideoslinks();
-            foreach($allVideos as $video) {
-                // TODO - sélectionner ceux qui ont des Id null
-            }
-            //dd($image);
+            // Step 2 : Update Trick (New Images / New Videos) // persist and flush
+            // TrickImageBuilder // persist and flush
+            $imageDTOs = $data->getImageslinksWithNoIds();
+            $this->trickBuilder->setTrickImages($trick, $imageDTOs);
 
-            // $entityManager->persist($$image);
-            // $entityManager->flush();
+            $videoDTOs = $data->getVideolinksWithNoIds();
+            $this->trickBuilder->setTrickVideos($trick, $videoDTOs);
+
+            $this->em->persist($trick);
+            $this->em->flush();
 
             return true;
         }

@@ -5,20 +5,18 @@ namespace App\Form\Type;
 
 use App\Domain\DTO\CreateTrickDTO;
 use App\Domain\DTO\TrickDTO;
-use App\Domain\Entity\GroupTrick;
 use App\Domain\Entity\Trick;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\DataMapperInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CreateTrickType extends AbstractType implements DataMapperInterface
+class CreateTrickType extends AbstractType
 {
     public function buildForm(
         FormBuilderInterface $builder,
@@ -38,7 +36,10 @@ class CreateTrickType extends AbstractType implements DataMapperInterface
             )
             ->add(
                 'content',
-                TextareaType::class
+                TextareaType::class,
+                [
+                    'required' => false,
+                ]
             )
             ->add(
                 'groups',
@@ -58,10 +59,10 @@ class CreateTrickType extends AbstractType implements DataMapperInterface
                 CollectionType::class,
                 [
                     'label' => false,
-                    // each entry in the array will be an "FileType" field
                     'entry_type' => ImageType::class,
                     'allow_add' => true,
                     'allow_delete' => true,
+                    'by_reference' => false,
                 ]
             )
             ->add(
@@ -74,55 +75,24 @@ class CreateTrickType extends AbstractType implements DataMapperInterface
                     'allow_add' => true,
                     'allow_delete' => true,
                 ]
-            )
-            ->setDataMapper($this);
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => CreateTrickDTO::class,
-            'empty_data' => null,
+            'empty_data' => function (FormInterface $form) {
+                return new CreateTrickDTO(
+                    $form->get('title')->getData(),
+                    $form->get('content')->getData(),
+                    $form->get('groups')->getData(),
+                    $form->get('imageslinks')->getData(),
+                    $form->get('videoslinks')->getData()
+                );
+            },
             'translation_domain' => 'forms'
         ]);
-    }
-
-    /**
-     * Maps properties of some data to a list of forms.
-     *
-     * @param CreateTrickDTO $createTrickDTO Structured data
-     * @param FormInterface[]|\Traversable $forms A list of {@link FormInterface} instances
-     *
-     * @throws Exception\UnexpectedTypeException if the type of the data parameter is not supported
-     */
-    public function mapDataToForms($createTrickDTO, $forms): void
-    {
-        $forms = iterator_to_array($forms);
-        $forms['title']->setData($createTrickDTO ? $createTrickDTO->getTitle() : '');
-        $forms['content']->setData($createTrickDTO ? $createTrickDTO->getContent() : '');
-        $forms['groups']->setData($createTrickDTO ? $createTrickDTO->getGroups() : '');
-        $forms['imageslinks']->setData($createTrickDTO ? $createTrickDTO->getImages() : []);
-        $forms['videoslinks']->setData($createTrickDTO ? $createTrickDTO->getVideos() : []);
-    }
-
-    /**
-     * Maps the data of a list of forms into the properties of some data.
-     *
-     * @param FormInterface[]|\Traversable $forms A list of {@link FormInterface} instances
-     * @param CreateTrickDTO $createTrickDTO Structured data
-     *
-     * @throws Exception\UnexpectedTypeException if the type of the data parameter is not supported
-     */
-    public function mapFormsToData($forms, &$createTrickDTO): void
-    {
-        $forms = iterator_to_array($forms);
-        $createTrickDTO = new CreateTrickDTO(
-            $forms['title']->getData(),
-            $forms['content']->getData(),
-            $forms['groups']->getData(),
-            $forms['imageslinks']->getData(),
-            $forms['videoslinks']->getData()
-        );
     }
 
     private function getChoices()

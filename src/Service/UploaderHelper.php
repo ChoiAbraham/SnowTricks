@@ -4,6 +4,7 @@
 namespace App\Service;
 
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UploaderHelper
@@ -27,10 +28,6 @@ class UploaderHelper
     {
         $destination = $this->uploadPath.'/trick_picture';
 
-        //$uploadedFile->move($destination, $nameToGiveToTheFile);
-        // the easiest name to use is : $uploadedFile->getClientOriginalName();
-        // careful : security (have to be an image, not .php extension)
-        // careful : has to be unique => newFileName
         try {
             $uploadedFile->move(
                 $destination,
@@ -55,10 +52,23 @@ class UploaderHelper
         }
     }
 
+    public function deleteTrickImage(?string $filename)
+    {
+        $destination = $this->uploadPath.'/trick_picture/' . $filename;
+        $fileSystem = new FileSystem();
+        $fileSystem->remove($destination);
+    }
+
     public function deleteProfilPictureImage(?string $filename)
     {
         $fileSystem = new FileSystem();
         $destination = $this->uploadPath.'/profil_picture/'. $filename;
         $fileSystem->remove($destination);
+    }
+
+    public function createTrickPictureFile(?string $filename)
+    {
+        $file = new File($this->uploadPath . '/trick_picture/' . $filename);
+        return $file;
     }
 }

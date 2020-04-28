@@ -23,6 +23,7 @@ class SecurityRequestNewPasswordAction implements SecurityRequestNewPasswordInte
     /** @var NewPasswordRequestTypeHandlerInterface */
     private $newPasswordRequestTypeHandler;
 
+
     /**
      * SecurityPasswordRecoveryAction constructor.
      * @param FormFactoryInterface $formFactory

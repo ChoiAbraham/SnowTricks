@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Tests\Controller;
+namespace App\Tests\Actions\Security;
 
 use App\DataFixtures\UserFixture;
 use App\Tests\AbstractWebTestCase;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
-use Symfony\Component\Mime\Header\MailboxListHeader;
 
 class SecurityRequestNewPasswordActionFunctionalTest extends AbstractWebTestCase
 {
@@ -38,11 +37,7 @@ class SecurityRequestNewPasswordActionFunctionalTest extends AbstractWebTestCase
 
         $email = static::getMailerMessage(0);
 
-//        dd($email);
-
-        // run : php bin/phpunit tests/Actions/SecurityRequestNewPasswordActionFunctionalTest.php --filter=testSuccessfulRequestForNewPassword
-        // question : how to get the address 'abraham.choi@yahoo.fr, it says an object MailboxListHeader.
-//        static::assertEmailHeaderSame($email, 'To', 'abraham.choi@yahoo.fr');
+        static::assertEmailHeaderSame($email, 'To', 'Abraham Choi <abraham.choi@yahoo.fr>');
         static::assertEmailTextBodyContains($email, 'SnowTricks');
     }
 
@@ -93,6 +88,7 @@ class SecurityRequestNewPasswordActionFunctionalTest extends AbstractWebTestCase
         $form['email_for_password_recovery_form[pseudo]']->setValue('');
         $form['email_for_password_recovery_form[email]']->setValue('');
         $crawler = $this->client->submit($form);
+
 
         static::assertSame(2, $crawler->filter('html span.form-error-icon')->count());
     }

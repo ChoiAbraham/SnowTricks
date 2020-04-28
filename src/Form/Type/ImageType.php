@@ -3,9 +3,7 @@
 namespace App\Form\Type;
 
 use App\Domain\DTO\TrickImageDTO;
-use App\Domain\Entity\TrickImage;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\DataMapperInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -14,8 +12,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
-class ImageType extends AbstractType implements DataMapperInterface
+class ImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -25,14 +24,15 @@ class ImageType extends AbstractType implements DataMapperInterface
                 [
                     'required' => false,
                     'mapped' => false,
+                    'label' => false,
                 ]
             )
             ->add(
                 'image',
                 FileType::class,
                 [
-                    'data_class' => null,
-                    'label' => 'Votre image',
+                    'attr' => ['placeholder' => 'Trick Image', 'lang' => 'fr'],
+                    'label' => 'Image',
                     'required' => false,
                     'constraints' => [
                         new File(
@@ -59,52 +59,21 @@ class ImageType extends AbstractType implements DataMapperInterface
                     'label' => 'Image à la Une ?',
                     'required' => false
                 ]
-            )
-            ->setDataMapper($this);
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => TrickImageDTO::class,
-            'empty_data' => null,
+            'empty_data' => function (FormInterface $form) {
+                return new TrickImageDTO(
+                    $form->get('id')->getData(),
+                    $form->get('alt')->getData(),
+                    $form->get('image')->getData(),
+                    $form->get('first_image')->getData()
+                    );
+            }
         ]);
-    }
-
-    /**
-     * Maps properties of some data to a list of forms.
-     *
-     * @param TrickImageDTO $trickImageDTO Structured data
-     * @param FormInterface[]|\Traversable $forms A list of {@link FormInterface} instances
-     *
-     * @throws Exception\UnexpectedTypeException if the type of the data parameter is not supported
-
-     */
-    public function mapDataToForms($trickImageDTO, $forms): void
-    {
-        $forms = iterator_to_array($forms);
-        $forms['id']->setData($trickImageDTO ? $trickImageDTO->getId() : null);
-        $forms['alt']->setData($trickImageDTO ? $trickImageDTO->getAlt() : '');
-        $forms['image']->setData($trickImageDTO ? $trickImageDTO->getImage() : '');
-        $forms['first_image']->setData($trickImageDTO ? $trickImageDTO->getFirstimage() : false);
-    }
-
-    /**
-     * Maps the data of a list of forms into the properties of some data.
-     *
-     * @param FormInterface[]|\Traversable $forms A list of {@link FormInterface} instances
-     * @param TrickImageDTO $trickImageDTO Structured data
-     *
-     * @throws Exception\UnexpectedTypeException if the type of the data parameter is not supported
-     */
-    public function mapFormsToData($forms, &$trickImageDTO): void
-    {
-        $forms = iterator_to_array($forms);
-        $trickImageDTO = new TrickImageDTO(
-            $forms['id']->getData(),
-            $forms['alt']->getData(),
-            $forms['image']->getData(),
-            $forms['first_image']->getData(),
-        );
     }
 }

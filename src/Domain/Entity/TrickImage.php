@@ -62,17 +62,6 @@ class TrickImage
         $this->altImage = $altImage;
     }
 
-    public static function updateFromDTO(TrickImageDTO $trickImage): self
-    {
-        $trickEntity = new self();
-        $trickEntity->setFirstImage($trickImage->getFirstimage());
-        //$trickEntity->setPath($trickImage->get);
-        $trickEntity->setAltImage($trickImage->getAlt());
-        //$trickEntity->setImageFileName($trickImage->getImage());
-
-        return $trickEntity;
-    }
-
     /**
      * @return bool
      */
@@ -119,22 +108,6 @@ class TrickImage
     public function getImageFileName(): string
     {
         return $this->imageFileName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPath(): string
-    {
-        return 'images/'.$this->getImageFileName();
-    }
-
-    /**
-     * @param string $path
-     */
-    public function setPath(string $path): void
-    {
-        $this->path = $path;
     }
 
     /**

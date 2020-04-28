@@ -7,6 +7,7 @@ namespace App\Domain\DTO;
 use App\Domain\DTO\Interfaces\TrickDTOInterface;
 use App\Domain\Entity\Trick;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class UpdateTrickDTO implements TrickDTOInterface
@@ -28,8 +29,6 @@ class UpdateTrickDTO implements TrickDTOInterface
 
     /**
      * @var string|null
-     *
-     * @Assert\NotBlank()
      */
     protected $groups;
 
@@ -50,8 +49,8 @@ class UpdateTrickDTO implements TrickDTOInterface
         $this->title = $title;
         $this->content = $content;
         $this->groups = $groups;
-        $this->images = $images;
-        $this->videos = $videos;
+        $this->imageslinks = $images;
+        $this->videoslinks = $videos;
     }
 
     /**
@@ -82,32 +81,30 @@ class UpdateTrickDTO implements TrickDTOInterface
      * Prepopulate the data from the Trick Entity
      *
      */
-    public static function createFromEntity(Trick $trick): self
+    public static function createFromEntity(Trick $trick, $files): self
     {
         $dto = new UpdateTrickDTO();
         $dto->setTitle($trick->getTitle());
         $dto->setContent($trick->getContent());
 
-        // QUESTION
-        // je set le group au nom et je retire le groupTrick instance, correct?
         $dto->setGroups($trick->getGroupTrick()->getName());
         $images = [];
-        //dd($trick->getTrickImages());
         $i = 1;
         foreach ($trick->getTrickImages() as $image) {
-            $images[] = TrickImageDTO::createFromEntity($image, $i);
+            $images[] = TrickImageDTO::createFromEntity($image, $i, $files);
             $i++;
         }
         //$images returns an array of TrickImageDTO instances
         $dto->setImageslinks($images);
 
+        $y = 1;
         $videos = [];
         foreach ($trick->getTrickVideos() as $video) {
-            $videos[] = TrickVideoDTO::createFromEntity($video);
+            $videos[] = TrickVideoDTO::createFromEntity($video, $y);
+            $y++;
         }
         $dto->setVideoslinks($videos);
 
-        //dd($dto);
         return $dto;
     }
 
@@ -116,6 +113,9 @@ class UpdateTrickDTO implements TrickDTOInterface
      */
     public function getTitle(): ?string
     {
+        if ($this->title == '') {
+            $this->title = 'no title';
+        }
         return $this->title;
     }
 
@@ -136,11 +136,47 @@ class UpdateTrickDTO implements TrickDTOInterface
     }
 
     /**
-     * @return mixed
+     * Only select those with upload files
      */
     public function getImageslinks()
     {
-        return $this->imageslinks;
+        $checkUploads = [];
+        foreach ($this->imageslinks as $image) {
+            if (!is_null($image->getImage())) {
+                $checkUploads[] = $image;
+            }
+        }
+        return $checkUploads;
+    }
+
+    /**
+     * Only select those with Ids
+     */
+    public function getImageslinksWithIds()
+    {
+        $checkUploads = [];
+        foreach ($this->imageslinks as $image) {
+            if (!is_null($image->getId())) {
+                $checkUploads[] = $image;
+            }
+        }
+        return $checkUploads;
+    }
+
+    /**
+     *
+     * Only select those with upload Files and No Ids
+     */
+    public function getImageslinksWithNoIds()
+    {
+        $checkUploads = [];
+
+        foreach ($this->imageslinks as $image) {
+            if (!is_null($image->getImage()) && is_null($image->getId())) {
+                $checkUploads[] = $image;
+            }
+        }
+        return $checkUploads;
     }
 
     /**
@@ -149,6 +185,34 @@ class UpdateTrickDTO implements TrickDTOInterface
     public function setImageslinks($imageslinks): void
     {
         $this->imageslinks = $imageslinks;
+    }
+
+    /**
+     * Only select those with Ids
+     */
+    public function getVideolinksWithIds()
+    {
+        $checkUploads = [];
+        foreach ($this->videoslinks as $video) {
+            if (!is_null($video->getId())) {
+                $checkUploads[] = $video;
+            }
+        }
+        return $checkUploads;
+    }
+
+    /**
+     * Only select those with No Ids
+     */
+    public function getVideolinksWithNoIds()
+    {
+        $checkUploads = [];
+        foreach ($this->videoslinks as $video) {
+            if (is_null($video->getId())) {
+                $checkUploads[] = $video;
+            }
+        }
+        return $checkUploads;
     }
 
     /**

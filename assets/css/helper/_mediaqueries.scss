@@ -29,3 +29,14 @@ $breakpoints: (
   }
 }
 
+.onmobile-only {
+  @include media-portrait-tablet {
+    display:none !important;
+  }
+}
+
+.ondesktop-only {
+  @include media-portrait-tablet {
+    display: block !important;
+  }
+}

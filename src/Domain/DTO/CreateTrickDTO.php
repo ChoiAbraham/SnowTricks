@@ -6,6 +6,7 @@ namespace App\Domain\DTO;
 use App\Domain\DTO\Interfaces\TrickDTOInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Form\CustomConstraints as AcmeAssert;
 
 class CreateTrickDTO implements TrickDTOInterface
 {
@@ -13,7 +14,8 @@ class CreateTrickDTO implements TrickDTOInterface
      * @var string|null
      *
      * @Assert\NotBlank()
-     * @Assert\Length(min="10", max="100")
+     * @Assert\Length(min="5", max="100")
+     * @AcmeAssert\UniqueTrickTitle()
      */
     protected $title;
 
@@ -26,14 +28,15 @@ class CreateTrickDTO implements TrickDTOInterface
 
     /**
      * @var string|null
-     *
-     * @Assert\NotBlank()
      */
     protected $groups;
 
-    protected $images;
+    /**
+     * @Assert\NotNull()
+     */
+    protected $imageslinks;
 
-    protected $videos;
+    protected $videoslinks;
 
     /**
      * TrickDTO constructor.
@@ -43,13 +46,13 @@ class CreateTrickDTO implements TrickDTOInterface
      * @param ArrayCollection $image
      * @param ArrayCollection $video
      */
-    public function __construct(?string $title = '', ?string $content = '', ?string $groups='', $images = [], $videos = [])
+    public function __construct(?string $title = '', ?string $content = '', ?string $groups = null, $imageslinks = [], $videoslinks = [])
     {
         $this->title = $title;
         $this->content = $content;
         $this->groups = $groups;
-        $this->images = $images;
-        $this->videos = $videos;
+        $this->imageslinks = $imageslinks;
+        $this->videoslinks = $videoslinks;
     }
 
     /**
@@ -79,17 +82,17 @@ class CreateTrickDTO implements TrickDTOInterface
     /**
      * @param mixed $images
      */
-    public function setImages($images): void
+    public function setImageslinks($images): void
     {
-        $this->images = $images;
+        $this->imageslinks = $images;
     }
 
     /**
      * @param mixed $videos
      */
-    public function setVideos($videos): void
+    public function setVideoslinks($videos): void
     {
-        $this->videos = $videos;
+        $this->videoslinks = $videos;
     }
 
     /**
@@ -119,16 +122,23 @@ class CreateTrickDTO implements TrickDTOInterface
     /**
      *
      */
-    public function getImages()
+    public function getImageslinks()
     {
-        return $this->images;
+        $checkNewUploads = [];
+        //Among new image uploads, only select those with upload files
+        foreach ($this->imageslinks as $image) {
+            if (!is_null($image->getImage())) {
+                $checkNewUploads[] = $image;
+            }
+        }
+        return $checkNewUploads;
     }
 
     /**
      *
      */
-    public function getVideos()
+    public function getVideoslinks()
     {
-        return $this->videos;
+        return $this->videoslinks;
     }
 }

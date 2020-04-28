@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Comment
 {
+    public CONST NUMBER_PER_PAGE = 4;
+
     /**
      * @var id
      *
@@ -49,7 +51,7 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Domain\Entity\User", inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 
@@ -81,7 +83,7 @@ class Comment
     /**
      * @return DateTime
      */
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }

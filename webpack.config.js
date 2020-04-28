@@ -35,7 +35,18 @@ Encore
 
     //Javascript
     .addEntry('app.account.dashboard', './assets/js/page/app.account.dashboard.js')
+    .addEntry('trick_load_comments', './assets/js/components/trick_load_comments.js')
+
     .addEntry('homepageloadtricks', './assets/js/homepage_load_tricks.js')
+    .addEntry('new.trick', './assets/js/page/new.trick.js')
+    .addEntry('displayTrickPage', './assets/js/page/trick_display.js')
+
+    .addEntry('delete.trick', './assets/js/components/delete.trick.js')
+    .addEntry('addpictures', './assets/js/components/addpictures.js')
+    .addEntry('addvideos', './assets/js/components/addvideos.js')
+    .addEntry('checkbox', './assets/js/components/checkbox.js')
+
+
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

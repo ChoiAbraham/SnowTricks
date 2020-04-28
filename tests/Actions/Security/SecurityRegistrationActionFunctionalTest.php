@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Tests\Actions;
+namespace App\Tests\Actions\Security;
 
 use App\DataFixtures\UserFixture;
 use App\Tests\AbstractWebTestCase;

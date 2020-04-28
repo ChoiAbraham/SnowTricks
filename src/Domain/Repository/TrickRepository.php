@@ -18,10 +18,14 @@ class TrickRepository extends ServiceEntityRepository implements TrickRepository
     /**
      * @return Trick[]
      */
-    public function findLatest(): array
+    public function findLatestWithFirstImageActive($maxresult, $offset): array
     {
-        return $this->createQueryBuilder('t')
-            ->setMaxResults(5)
+        return $this->createQueryBuilder('trick')
+            ->orderBy('trick.id', 'DESC')
+            ->leftJoin('trick.trickImages', 'trick_images')
+            ->andWhere('trick_images.firstImage = true')
+            ->setMaxResults($maxresult)
+            ->setFirstResult($offset)
             ->getQuery()
             ->getResult();
     }

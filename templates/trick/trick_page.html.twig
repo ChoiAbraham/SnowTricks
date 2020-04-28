@@ -1,0 +1,224 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trick{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('displayTrickPage') }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="jumbotron-fluid section_one">
+            {% if firstImage|default %}
+                <img src="{{ asset('uploads/trick_picture/') ~ firstImage.imageFileName }}"
+                     class="img-fluid w-100" alt="">
+            {% else %}
+                <img src="{{ asset('uploads/first_image_default/first_image_default.jpg') }}"
+                     class="img-fluid w-100" alt="">
+            {% endif %}
+
+                <div class="first-image-contents">
+                    {% if app.user is defined and app.user %}
+                        <div class="buttons_edit_delete_first_image">
+                            <div class="p-2">
+                                <a href="{{ path('trick_edit', {slug: trick.slug}) }}"><i class="fas fa-edit"></i></a>
+                            </div>
+                            <div class="">
+                                <button class="btn btn-danger js-delete-trick" data-id="{{ trick.slug }}"
+                                        data-message="Êtes-vous sûr de vouloir supprimer ce trick ?">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if firstImage|default %}
+                        {% if app.user is defined and app.user %}
+                            <h1>{{ trick.title }}</h1>
+                        {% else %}
+                            <h1 class="mt-5">{{ trick.title }}</h1>
+                        {% endif %}
+                    {% else %}
+                        {% if app.user is defined and app.user %}
+                            <h1>{{ trick.title }}</h1>
+                        {% else %}
+                            <h1 class="mt-5">{{ trick.title }}</h1>
+                        {% endif %}
+                    {% endif %}
+                </div>
+    </div>
+    <form method="POST" action="{{ path('edit_trick_delete', {slug: trick.slug}) }}" style="display: inline-block">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
+        {{ include('include/modal/_ajax_modal_delete_trick.html.twig') }}
+    </form>
+
+
+    <!-- Section Medias on Mobile -->
+    <div class="container onmobile-only">
+        <div class="text-center">
+            {% if images or videos %}
+            <button type="button" class="btn btn-primary btn-lg show-media mt-2">Voir les médias</button>
+            {% else %}
+            <button type="button" class="btn btn-primary btn-lg mt-2">Pas de médias</button>
+            {% endif %}
+            <div class="hide-block toshow">
+                {% if images %}
+                    <!-- Trigger the Modal For Images -->
+                    <button type="button" class="btn btn-primary btn-lg mt-2" data-toggle="modal" data-target="#modalImages">Voir les Images</button>
+                {% else %}
+                    <button class="btn btn-primary btn-lg mt-2">Pas encore d'Image</button>
+                {% endif %}
+
+                {% if videos %}
+                    <!-- Trigger the modal For Videos -->
+                    <button type="button" class="btn btn-primary btn-lg mt-2" data-toggle="modal" data-target="#modalVideos">Voir les Vidéos</button>
+                {% else %}
+                    <button class="btn btn-primary btn-lg mt-2">Pas encore de Vidéo</button>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Modal Images -->
+        {{ include('include/modal/_modal_trick_images.html.twig') }}
+
+        <!-- Modal Videos -->
+        {{ include('include/modal/_modal_trick_videos.html.twig') }}
+    </div>
+
+    <!-- Section Medias on Desktop -->
+    <div class="container hide-block ondesktop-only">
+        <div class="row">
+            {% for image in images %}
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 mt-2 text-right img-css">
+                    <img src="{{ asset('uploads/trick_picture/') ~ image.imageFileName }}"
+                         class="rounded img-fluid"
+                         alt="">
+                </div>
+
+            {% endfor %}
+
+            {% for video in videos %}
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2 mt-2 text-right block-media">
+                    <iframe class="w-100 border border-info" height="200"
+                            frameborder="0"
+                            allow="accelerometer; encrypted-media; gyroscope"
+                            src="{{ video.pathUrl }}"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <!-- Section Content -->
+    <div class="container">
+        {{ include('include/_ajax_modal_delete.html.twig') }}
+        <div class="d-flex justify-content-center">
+            <div class="row">
+                {{ include('include/_flash.message.html.twig')}}
+
+                <!-- Description -->
+                <div class="col-12">
+                    <h1 class="text-center mt-4">Description</h1>
+
+                    <div class="col-md-12 mt-4 p-2 d-inline-block text-center">
+                        <div class="">
+                            {{ trick.content|raw }}
+                        </div>
+                        <div class="d-flex justify-content-center flex-wrap">
+                            {% if trick.groupTrick.name is defined %}
+                                <div class="pr-3">
+                                    <p>Catégorie : <span class="badge badge-light">{{ trick.groupTrick.name }}</span></p>
+                                </div>
+                            {% else %}
+                                <div class="pr-3">
+                                    <p>Catégorie : <span class="badge badge-light">Pas de Groupe Défini</span></p>
+                                </div>
+                            {% endif %}
+                            <div class="pr-3">
+                                <p>Créée le : <span class="badge badge-light">{{ trick.createdAt|date('d-m-Y') }}</span></p>
+                            </div>
+                            <div>
+
+                            </div>
+                            {% if trick.updatedAt is defined and trick.updatedAt %}
+                                <p>
+                                    Modifié le : <span class="badge badge-light"> {{ trick.updatedAt|date('d-m-Y') }}</span>
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment Form -->
+                <div class="col-12 p-5">
+                    <div class="border border-info p-3">
+                        {{ form_start(form) }}
+                        {{ form_row(form.text, {'attr': {'rows': "7", 'cols': "50"}}) }}
+                        <button class="btn btn-primary">Envoyer</button>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
+                <!-- Comments -->
+                {% if comments %}
+
+                <div class="col-12" >
+                    <h1 class="text-center pb-2">Commentaires :</h1>
+
+                        <ul class="list-unstyled p-2" id="comments-list">
+                            {% for comment in comments %}
+                            <li class="media">
+                                {% if comment.user.picturePath %}
+                                    <img src="{{ asset('uploads/profilpicture/' ~ comment.user.picturePath) }}"
+                                         class="mr-3 rounded-circle embed-responsive d-inline-block p-1"
+                                         alt="photo profil utilisateur">
+                                {% else %}
+                                    <img src="{{ asset('build/images/user/profil_picture_default.53651817.jpg') }}"
+                                         class="mr-3 rounded-circle embed-responsive d-inline-block p-1"
+                                         alt="photo profil default" style="width:80px; height:80px">
+                                {% endif %}
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        {{ comment.user.name|capitalize }}
+                                        <br>
+                                        <small>
+                                            Le {{ comment.user.createdAt|date("d/m/Y") }}</a>
+                                        </small>
+                                    </h4>
+                                    <p>{{ comment.content }}</p>
+                                </div>
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+                 </div>
+                </div>
+                {% endif %}
+
+        </div>
+        {% if nextPage == true %}
+            <div class="col-12 text-center pt-4 pb-2">
+                <button class="btn btn-primary hide-block" type="button" disabled id="js-btn-loading">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                </button>
+                <a data-url="{{ path('comments.loaded') }}"
+                   type="button" data-maxpage="{{ maxPageNumberComments }}"
+                   data-page="2"
+                   class="btn btn-outline-primary" id="js-btn-morecomments">Plus de Commentaires
+                </a>
+            </div>
+
+        {% endif %}
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('displayTrickPage') }}
+    {{ encore_entry_script_tags('trick_load_comments') }}
+    {{ encore_entry_script_tags('delete.trick') }}
+{% endblock %}

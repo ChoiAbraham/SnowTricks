@@ -19,7 +19,7 @@ use Cocur\Slugify\Slugify;
 class Trick
 {
     public CONST LIST_GROUPS=['group1', 'group2', 'group3'];
-    public CONST NUMBER_OF_TRICKS_IN_HOMEPAGE = 3;
+    public CONST NUMBER_OF_TRICKS_IN_HOMEPAGE = 6;
 
     /**
      * @var id
@@ -71,13 +71,13 @@ class Trick
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Domain\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $creator;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Domain\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $lastUser;
 
@@ -125,40 +125,6 @@ class Trick
         $this->addTrickVideo($trickVideo);
     }
 
-    public static function updateFromDTO(UpdateTrickDTO $updateTrickDTO)
-    {
-        $trickEntity = new self();
-        // QUESTION
-        // si je ne change pas le title, je le set. performance?
-        // comment détecter qu'il n'y a pas eu de changement? parce que je peux pas mettre un id sur un title
-        $trickEntity->setTitle($updateTrickDTO->getTitle());
-        $trickEntity->setGroupTrick($updateTrickDTO->getGroups());
-        $trickEntity->setContent($updateTrickDTO->getContent());
-
-        $trickImagesDTOs = $updateTrickDTO->getImageslinks();
-        foreach($trickImagesDTOs as $trickImage) {
-            //parcours des ID
-            // si ID est un nombre
-            if($trickImage->getId() != null) {
-                // alors j'hydrate TrickImage à partir de TrickImageDTO
-                $trickImage = TrickImage::updateFromDTO($trickImage);
-                $trickEntity->addTrickImage($trickImage);
-            }
-            // si ID est null
-                // je ne fais rien
-        }
-        //dd($trickEntity);
-
-        $trickVideosDTOs = $updateTrickDTO->getVideoslinks();
-        foreach($trickVideosDTOs as $trickVideo) {
-            // IDEM pour les vidéos
-            // TrickVideo::updateFromDTO(trickVideo)
-            // $trickEntity->addTrickVideo($trickVideo)
-        }
-
-        return $trickEntity;
-    }
-
     public function setTrickImages(array $trickImages): self
     {
         $this->trickImages->clear();
@@ -168,10 +134,19 @@ class Trick
         return $this;
     }
 
+    public function setTrickVideos(array $trickVideos): self
+    {
+        $this->trickVideos->clear();
+        foreach($trickVideos as $video) {
+            $this->trickVideos->add($video);
+        }
+        return $this;
+    }
+
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt()
     {
         return $this->updatedAt;
     }

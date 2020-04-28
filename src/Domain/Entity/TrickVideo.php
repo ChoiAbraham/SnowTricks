@@ -31,7 +31,7 @@ class TrickVideo
      * TrickVideo constructor.
      * @param $pathUrl
      */
-    public function __construct($pathUrl)
+    public function __construct(string $pathUrl)
     {
         $this->pathUrl = $pathUrl;
     }

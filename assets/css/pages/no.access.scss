@@ -1,4 +1,16 @@
-@import '../app.scss';
+@import "../helper/variables";
+@import "../helper/mediaqueries";
+@import "../helper/form";
+
+@import '~bootstrap';
+@import '~font-awesome';
+
+@import "../layout/header";
+@import "../layout/footer";
+
+@import "../components/cards";
+@import "../components/articles";
+@import "../components/profile";
 
 .bg-error{
   background-image: url("../../images/error/bg-error-smartphone.jpg");

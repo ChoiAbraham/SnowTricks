@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Controller;
+namespace App\Tests\Actions\Security;
 
 use App\DataFixtures\UserFixture;
 use App\Domain\Entity\User;
@@ -46,24 +46,5 @@ class SecurityChangePasswordActionFunctionalTest extends AbstractWebTestCase
         $this->client->followRedirect();
 
         static::assertSelectorTextContains('flash-homepage', 'Votre mot de passe été modifié avec succès');
-
-        // 3. Get the Email Template
-//        $mailSenderHelper = $this->containerService->get('App\Service\MailSenderHelper');
-//        $emailTemplate = $mailSenderHelper->sendTemplatedEmailForPasswordReset($token, $user->getEmail(), $user->getName());
-
-//        dd($emailTemplate);
-        // i would like to get the twig template of the email (HTML Version) so i can pass it to the crawler
-        // InvalidArgumentException: Expecting a DOMNodeList or DOMNode instance, an array, a string, or null, but got "Symfony\Bridge\Twig\Mime\TemplatedEmail".
-//        $crawler = new Crawler($emailTemplate);
-//        $link = $crawler->selectLink('Changement du mot de passe')->link();
-//        $crawler = $this->client->click($link);
-    }
-
-    public function testFormWithWrongUsername()
-    {
-    }
-
-    public function testFormWithNoCredentials()
-    {
     }
 }

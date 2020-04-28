@@ -8,6 +8,8 @@ use App\Domain\DTO\TrickImageDTO;
 use App\Domain\Entity\TrickImage;
 use App\Service\ImageFileNameService;
 use App\Service\UploaderHelper;
+use http\Exception\BadMessageException;
+use Symfony\Component\HttpFoundation\File\Exception\UnexpectedTypeException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class TrickImageBuilder implements TrickImageBuilderInterface
@@ -39,10 +41,11 @@ class TrickImageBuilder implements TrickImageBuilderInterface
     {
         /** @var UploadedFile $uploadFile*/
         $uploadFile = $dto->getImage();
-        $newFileName = ImageFileNameService::generateFileName($uploadFile);
-
-        if ($uploadFile) {
+        if(!is_null($uploadFile)) {
+            $newFileName = ImageFileNameService::generateFileName($uploadFile);
             $this->uploaderHelper->uploadTrickImage($uploadFile, $newFileName);
+        } else {
+            throw new \RuntimeException('File does not exist.');
         }
 
         $this->trickImage = new TrickImage(
