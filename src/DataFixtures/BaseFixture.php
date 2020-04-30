@@ -3,10 +3,11 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
 
-abstract class BaseFixture extends Fixture
+abstract class BaseFixture extends Fixture implements FixtureGroupInterface
 {
     /** @var ObjectManager */
     private $manager;
@@ -56,4 +57,9 @@ abstract class BaseFixture extends Fixture
     }
 
     abstract protected function loadData(ObjectManager $manager);
+
+    public static function getGroups(): array
+    {
+        return ['snowtricks'];
+    }
 }

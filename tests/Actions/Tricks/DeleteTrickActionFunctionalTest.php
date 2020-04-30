@@ -22,14 +22,15 @@ class DeleteTrickActionFunctionalTest extends AbstractWebTestCase
         //Simulation Authentification
         /** @var User $user */
         $users = $this->loadFixtures([UserFixture::class])->getReferenceRepository();
-        $user = $users->getReference('userRef_7');
-        $this->login($this->client, $user);
 
         $this->loadFixtures([
             TrickFixtures::class,
             ImageTrickFixture::class,
             VideoTrickFixture::class,
         ]);
+
+        $user = $users->getReference('userRef_7');
+        $this->login($this->client, $user);
 
         $trickRepository = $this->containerService->get('App\Domain\Repository\TrickRepository');
         $trick = $trickRepository->findOneBy(['slug' => 'crail']);

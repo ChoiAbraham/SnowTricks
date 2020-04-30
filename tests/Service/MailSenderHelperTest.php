@@ -7,13 +7,25 @@ use App\Service\MailSenderHelper;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mailer\MailerInterface;
+use Twig\Environment;
 
 class MailSenderHelperTest extends TestCase
 {
+    /** @var Environment */
+    private $twigEnvironment;
+
+    /** @var MailerInterface */
+    private $symfonyMailer;
+
+    public function setUp()
+    {
+        $this->symfonyMailer = $this->createMock(MailerInterface::class);
+        $this->twigEnvironment = $this->createMock(Environment::class);
+    }
+
     public function testSendTemplatedEmailForPasswordReset()
     {
-        $symfonyMailer = $this->createMock(MailerInterface::class);
-        $symfonyMailer->expects($this->once())
+        $this->symfonyMailer->expects($this->once())
             ->method('send');
 
         $user = new User();
@@ -23,7 +35,7 @@ class MailSenderHelperTest extends TestCase
         $token = md5(uniqid(rand()));
         $user->setToken($token);
 
-        $mailer = new MailSenderHelper($symfonyMailer);
+        $mailer = new MailSenderHelper($this->twigEnvironment, $this->symfonyMailer);
         $email = $mailer->sendTemplatedEmailForPasswordReset($token, $user->getEmail(), $user->getName());
 
         $this->assertSame('Changement du mot de passe', $email->getSubject());

@@ -2,12 +2,10 @@
 
 namespace App\Tests\Actions\Security;
 
-use App\DataFixtures\UserFixture;
+use App\DataFixtures\Tests\UserPasswordFixture;
 use App\Domain\Entity\User;
 use App\Tests\AbstractWebTestCase;
-use Doctrine\ORM\EntityManagerInterface;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
-use Symfony\Component\DomCrawler\Crawler;
 
 class SecurityChangePasswordActionFunctionalTest extends AbstractWebTestCase
 {
@@ -15,36 +13,29 @@ class SecurityChangePasswordActionFunctionalTest extends AbstractWebTestCase
 
     public function testSuccessfulPasswordChanged()
     {
-        $this->loadFixtures([UserFixture::class]);
+        $this->loadFixtures([UserPasswordFixture::class]);
 
-        // 1.Take the eighth user from the database / Abraham Choi <abraham.choi@yahoo.fr>
-        $users = $this->loadFixtures([UserFixture::class])->getReferenceRepository();
+        $users = $this->loadFixtures([UserPasswordFixture::class])->getReferenceRepository();
         /** @var User $user */
-        $user = $users->getReference('userRef_7');
+        $user = $users->getReference('userRef_0');
 
-        // 2. Set a token
-        $token = md5(uniqid(rand()));
-        $user->setToken($token);
-
-        // 3. update the token in the database // NOT WORKING
-        $this->entityManager->flush();
-        dd($user);
-
-        // 4. go to the change password page
+        $token = $user->getToken();
         $uri = '/reset_password/' . $token;
         $crawler = $this->client->request('GET', $uri);
 
-        // 5. Submit form
-        $button = $crawler->selectButton('Réinitialiser');
-        $form = $button->form();
-        $form['email_for_password_recovery_form[pseudo]']->setValue('Abraham CHOI');
-        $form['email_for_password_recovery_form[password]']->setValue(('Hello World'));
+        $form = $crawler->selectButton('Réinitialiser')->form();
+
+        $form['reset_password[username]'] = 'Abraham Choi';
+        $form['reset_password[password][first]'] = 'newpassword6';
+        $form['reset_password[password][second]'] = 'newpassword6';
         $this->client->submit($form);
 
         // 6. Assertion
-        static::assertResponseRedirects('/');
+        static::assertTrue($this->client->getResponse()->isRedirection());
         $this->client->followRedirect();
 
-        static::assertSelectorTextContains('flash-homepage', 'Votre mot de passe été modifié avec succès');
+        static::assertTrue($this->client->getResponse()->isSuccessful());
+
+        static::assertSelectorTextContains('.flash-homepage', 'Votre mot de passe été modifié avec succès');
     }
 }

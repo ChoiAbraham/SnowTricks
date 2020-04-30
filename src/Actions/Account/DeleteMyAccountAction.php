@@ -25,7 +25,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 /**
  * Class MyAccountAction
  *
- * @Route("/dashboard/delete-account/{username}", name="my_account_delete")
+ * @Route("/dashboard/delete-account/{id}", name="my_account_delete")
  * @IsGranted("ROLE_USER")
  */
 class DeleteMyAccountAction implements DeleteMyAccountActionInterface
@@ -88,9 +88,11 @@ class DeleteMyAccountAction implements DeleteMyAccountActionInterface
     {
         /** @var User $user */
         $user = $this->security->getUser();
+        $userFromRepo = $this->userRepository->findOneBy(['id' => $request->attributes->get('id') ]);
+
         $submittedToken = $request->get('_token');
 
-        if ($this->csrf->isTokenValid(new CsrfToken('delete-item', $submittedToken))) {
+        if ($this->csrf->isTokenValid(new CsrfToken('delete-item', $submittedToken)) && $userFromRepo == $user) {
 
             $this->uploaderHelper->deleteProfilPictureImage($user->getPicturePath());
 

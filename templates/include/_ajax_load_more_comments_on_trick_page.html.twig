@@ -1,11 +1,11 @@
 {% for comment in commentsToLoad %}
     <li class="media">
         {% if comment.user.picturePath %}
-            <img src="{{ asset('uploads/profilpicture/' ~ comment.user.picturePath) }}"
+            <img src="{{ asset('uploads/profil_picture/' ~ comment.user.picturePath) }}"
                  class="mr-3 rounded-circle embed-responsive d-inline-block p-1"
-                 alt="photo profil utilisateur">
+                 alt="photo profil utilisateur" style="width:80px; height:80px">
         {% else %}
-            <img src="{{ asset('build/images/user/profil_picture_default.53651817.jpg') }}"
+            <img src="{{ asset('uploads/profile_picture/profil_picture_default.jpg') }}"
                  class="mr-3 rounded-circle embed-responsive d-inline-block p-1"
                  alt="photo profil default" style="width:80px; height:80px">
         {% endif %}
@@ -18,18 +18,26 @@
                 </small>
             </h4>
             <p>{{ comment.content }}</p>
-            {% if app.user and comment.user.name == app.user.name %}
-                <span class="d-inline-block pb-3">
-
-                <button class="btn btn-warning text-right p-0"><a href="" style="color: white">
-                    Modifier</a>
-                </button>
-                <button class=" btn btn-danger text-right  p-0 pl-1 delete_modal" data-toggle="modal"
-                    data-slug=""
-                    data-message="Êtes-vous sûr de vouloir supprimer ce commentaire ?">Supprimer
-                </button>
-            </span>
+            {% if app.user is defined and app.user %}
+                {% if comment.user.name == app.user.name %}
+                    <span class="d-inline-block pb-3 margin_left_com">
+                        <button class="btn btn-info text-right p-0">
+                            <a href="{{ path('edit.comment', {id: comment.id}) }}" style="color: white">
+                                Modifier</a>
+                        </button>
+                        <button class=" btn btn-danger text-right p-0 pl-1 js-delete-comment"
+                                data-message="Êtes-vous sûr de vouloir supprimer cette votre commentaire ?"
+                                data-toggle="modal"
+                                data-target="#deletecomment{{ comment.id }}">Supprimer
+                        </button>
+                        <form method="POST" action="{{ path('delete.comment', {id: comment.id}) }}" style="display: inline-block">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+                            {{ include('include/modal/_ajax_modal_delete_comment.html.twig') }}
+                        </form>
+                    </span>
+                {% endif %}
             {% endif %}
+
         </div>
 
     </li>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\Projects\SnowTricks\src\Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../.css/style.css" rel="stylesheet" type="text/css">
+  <link href="../.css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">C:\Projects\SnowTricks\src</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Form</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Type/ProfilPictureType.php.html#13">App\Form\Type\ProfilPictureType</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Type/ResetPasswordFromAccountType.php.html#13">App\Form\Type\ResetPasswordFromAccountType</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Type/UpdateTrickType.php.html#19">App\Form\Type\UpdateTrickType</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Handler/EditTrickTypeHandler.php.html#19">App\Form\Handler\EditTrickTypeHandler</a></td><td class="text-right">38%</td></tr>
+       <tr><td><a href="Handler/EditProfilPictureTypeHandler.php.html#15">App\Form\Handler\EditProfilPictureTypeHandler</a></td><td class="text-right">45%</td></tr>
+       <tr><td><a href="CustomConstraints/NotInDatabaseValidator.php.html#13">App\Form\CustomConstraints\NotInDatabaseValidator</a></td><td class="text-right">57%</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueTrickTitleValidator.php.html#13">App\Form\CustomConstraints\UniqueTrickTitleValidator</a></td><td class="text-right">57%</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueEmailValidator.php.html#13">App\Form\CustomConstraints\UniqueEmailValidator</a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueUsernameValidator.php.html#13">App\Form\CustomConstraints\UniqueUsernameValidator</a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Type/ImageType.php.html#17">App\Form\Type\ImageType</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Type/VideoType.php.html#12">App\Form\Type\VideoType</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Handler/AddTrickTypeHandler.php.html#17">App\Form\Handler\AddTrickTypeHandler</a></td><td class="text-right">81%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Type/UpdateTrickType.php.html#19">App\Form\Type\UpdateTrickType</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="CustomConstraints/NotInDatabaseValidator.php.html#13">App\Form\CustomConstraints\NotInDatabaseValidator</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueTrickTitleValidator.php.html#13">App\Form\CustomConstraints\UniqueTrickTitleValidator</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Handler/AddTrickTypeHandler.php.html#17">App\Form\Handler\AddTrickTypeHandler</a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="Handler/EditTrickTypeHandler.php.html#19">App\Form\Handler\EditTrickTypeHandler</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueEmailValidator.php.html#13">App\Form\CustomConstraints\UniqueEmailValidator</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueUsernameValidator.php.html#13">App\Form\CustomConstraints\UniqueUsernameValidator</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Handler/EditProfilPictureTypeHandler.php.html#15">App\Form\Handler\EditProfilPictureTypeHandler</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Handler/EditTrickTypeHandler.php.html#62"><abbr title="App\Form\Handler\EditTrickTypeHandler::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Handler/EditProfilPictureTypeHandler.php.html#48"><abbr title="App\Form\Handler\EditProfilPictureTypeHandler::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Type/ProfilPictureType.php.html#15"><abbr title="App\Form\Type\ProfilPictureType::buildForm">buildForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Type/ProfilPictureType.php.html#42"><abbr title="App\Form\Type\ProfilPictureType::configureOptions">configureOptions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Type/RegistrationType.php.html#40"><abbr title="App\Form\Type\RegistrationType::getSalt">getSalt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Type/ResetPasswordFromAccountType.php.html#15"><abbr title="App\Form\Type\ResetPasswordFromAccountType::buildForm">buildForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Type/UpdateTrickType.php.html#21"><abbr title="App\Form\Type\UpdateTrickType::buildForm">buildForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Type/UpdateTrickType.php.html#80"><abbr title="App\Form\Type\UpdateTrickType::configureOptions">configureOptions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Type/UpdateTrickType.php.html#98"><abbr title="App\Form\Type\UpdateTrickType::getChoices">getChoices</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Type/ImageType.php.html#65"><abbr title="App\Form\Type\ImageType::configureOptions">configureOptions</abbr></a></td><td class="text-right">44%</td></tr>
+       <tr><td><a href="CustomConstraints/NotInDatabaseValidator.php.html#29"><abbr title="App\Form\CustomConstraints\NotInDatabaseValidator::validate">validate</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueTrickTitleValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueTrickTitleValidator::validate">validate</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Handler/AddTrickTypeHandler.php.html#60"><abbr title="App\Form\Handler\AddTrickTypeHandler::handle">handle</abbr></a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="Type/VideoType.php.html#23"><abbr title="App\Form\Type\VideoType::configureOptions">configureOptions</abbr></a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueEmailValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueEmailValidator::validate">validate</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueUsernameValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueUsernameValidator::validate">validate</abbr></a></td><td class="text-right">75%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Handler/EditTrickTypeHandler.php.html#62"><abbr title="App\Form\Handler\EditTrickTypeHandler::handle">handle</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Handler/EditProfilPictureTypeHandler.php.html#48"><abbr title="App\Form\Handler\EditProfilPictureTypeHandler::handle">handle</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="CustomConstraints/NotInDatabaseValidator.php.html#29"><abbr title="App\Form\CustomConstraints\NotInDatabaseValidator::validate">validate</abbr></a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueTrickTitleValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueTrickTitleValidator::validate">validate</abbr></a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Handler/AddTrickTypeHandler.php.html#60"><abbr title="App\Form\Handler\AddTrickTypeHandler::handle">handle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueEmailValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueEmailValidator::validate">validate</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CustomConstraints/UniqueUsernameValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueUsernameValidator::validate">validate</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Type/UpdateTrickType.php.html#98"><abbr title="App\Form\Type\UpdateTrickType::getChoices">getChoices</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 6.1.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.1</a> with <a href="https://xdebug.org/">Xdebug 2.9.4</a> and <a href="https://phpunit.de/">PHPUnit 7.5.20</a> at Thu Apr 30 14:24:37 UTC 2020.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../.js/jquery.min.js" type="text/javascript"></script>
+  <script src="../.js/d3.min.js" type="text/javascript"></script>
+  <script src="../.js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([3,0,0,0,1,1,2,0,2,3,2,11], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([9,0,0,0,0,1,2,0,4,0,1,29], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[100,0,"<a href=\"CustomConstraints\/NotInDatabase.php.html#12\">App\\Form\\CustomConstraints\\NotInDatabase<\/a>"],[57.14285714285714,7,"<a href=\"CustomConstraints\/NotInDatabaseValidator.php.html#13\">App\\Form\\CustomConstraints\\NotInDatabaseValidator<\/a>"],[100,0,"<a href=\"CustomConstraints\/UniqueEmail.php.html#12\">App\\Form\\CustomConstraints\\UniqueEmail<\/a>"],[78.57142857142857,7,"<a href=\"CustomConstraints\/UniqueEmailValidator.php.html#13\">App\\Form\\CustomConstraints\\UniqueEmailValidator<\/a>"],[100,0,"<a href=\"CustomConstraints\/UniqueTrickTitle.php.html#12\">App\\Form\\CustomConstraints\\UniqueTrickTitle<\/a>"],[57.14285714285714,7,"<a href=\"CustomConstraints\/UniqueTrickTitleValidator.php.html#13\">App\\Form\\CustomConstraints\\UniqueTrickTitleValidator<\/a>"],[100,0,"<a href=\"CustomConstraints\/UniqueUsername.php.html#12\">App\\Form\\CustomConstraints\\UniqueUsername<\/a>"],[78.57142857142857,7,"<a href=\"CustomConstraints\/UniqueUsernameValidator.php.html#13\">App\\Form\\CustomConstraints\\UniqueUsernameValidator<\/a>"],[81.81818181818183,8,"<a href=\"Handler\/AddTrickTypeHandler.php.html#17\">App\\Form\\Handler\\AddTrickTypeHandler<\/a>"],[100,4,"<a href=\"Handler\/AddUserTypeHandler.php.html#16\">App\\Form\\Handler\\AddUserTypeHandler<\/a>"],[45.45454545454545,4,"<a href=\"Handler\/EditProfilPictureTypeHandler.php.html#15\">App\\Form\\Handler\\EditProfilPictureTypeHandler<\/a>"],[38.88888888888889,4,"<a href=\"Handler\/EditTrickTypeHandler.php.html#19\">App\\Form\\Handler\\EditTrickTypeHandler<\/a>"],[100,5,"<a href=\"Handler\/NewPasswordRequestTypeHandler.php.html#16\">App\\Form\\Handler\\NewPasswordRequestTypeHandler<\/a>"],[94.44444444444444,5,"<a href=\"Handler\/ResetPasswordTypeHandler.php.html#16\">App\\Form\\Handler\\ResetPasswordTypeHandler<\/a>"],[100,7,"<a href=\"Handler\/TrickCommentTypeHandler.php.html#15\">App\\Form\\Handler\\TrickCommentTypeHandler<\/a>"],[100,4,"<a href=\"Type\/CreateTrickType.php.html#18\">App\\Form\\Type\\CreateTrickType<\/a>"],[100,2,"<a href=\"Type\/EmailForPasswordRecoveryFormType.php.html#13\">App\\Form\\Type\\EmailForPasswordRecoveryFormType<\/a>"],[80,2,"<a href=\"Type\/ImageType.php.html#17\">App\\Form\\Type\\ImageType<\/a>"],[0,2,"<a href=\"Type\/ProfilPictureType.php.html#13\">App\\Form\\Type\\ProfilPictureType<\/a>"],[93.33333333333333,3,"<a href=\"Type\/RegistrationType.php.html#12\">App\\Form\\Type\\RegistrationType<\/a>"],[0,1,"<a href=\"Type\/ResetPasswordFromAccountType.php.html#13\">App\\Form\\Type\\ResetPasswordFromAccountType<\/a>"],[100,2,"<a href=\"Type\/ResetPasswordType.php.html#14\">App\\Form\\Type\\ResetPasswordType<\/a>"],[0,4,"<a href=\"Type\/UpdateTrickType.php.html#19\">App\\Form\\Type\\UpdateTrickType<\/a>"],[80,2,"<a href=\"Type\/VideoType.php.html#12\">App\\Form\\Type\\VideoType<\/a>"],[100,2,"<a href=\"Type\/trickCommentType.php.html#13\">App\\Form\\Type\\trickCommentType<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"CustomConstraints\/NotInDatabaseValidator.php.html#24\">App\\Form\\CustomConstraints\\NotInDatabaseValidator::__construct<\/a>"],[50,6,"<a href=\"CustomConstraints\/NotInDatabaseValidator.php.html#29\">App\\Form\\CustomConstraints\\NotInDatabaseValidator::validate<\/a>"],[100,1,"<a href=\"CustomConstraints\/UniqueEmailValidator.php.html#24\">App\\Form\\CustomConstraints\\UniqueEmailValidator::__construct<\/a>"],[75,6,"<a href=\"CustomConstraints\/UniqueEmailValidator.php.html#29\">App\\Form\\CustomConstraints\\UniqueEmailValidator::validate<\/a>"],[100,1,"<a href=\"CustomConstraints\/UniqueTrickTitleValidator.php.html#24\">App\\Form\\CustomConstraints\\UniqueTrickTitleValidator::__construct<\/a>"],[50,6,"<a href=\"CustomConstraints\/UniqueTrickTitleValidator.php.html#29\">App\\Form\\CustomConstraints\\UniqueTrickTitleValidator::validate<\/a>"],[100,1,"<a href=\"CustomConstraints\/UniqueUsernameValidator.php.html#24\">App\\Form\\CustomConstraints\\UniqueUsernameValidator::__construct<\/a>"],[75,6,"<a href=\"CustomConstraints\/UniqueUsernameValidator.php.html#29\">App\\Form\\CustomConstraints\\UniqueUsernameValidator::validate<\/a>"],[100,1,"<a href=\"Handler\/AddTrickTypeHandler.php.html#50\">App\\Form\\Handler\\AddTrickTypeHandler::__construct<\/a>"],[71.42857142857143,6,"<a href=\"Handler\/AddTrickTypeHandler.php.html#60\">App\\Form\\Handler\\AddTrickTypeHandler::handle<\/a>"],[100,1,"<a href=\"Handler\/AddTrickTypeHandler.php.html#95\">App\\Form\\Handler\\AddTrickTypeHandler::checkImage<\/a>"],[100,1,"<a href=\"Handler\/AddUserTypeHandler.php.html#47\">App\\Form\\Handler\\AddUserTypeHandler::__construct<\/a>"],[100,3,"<a href=\"Handler\/AddUserTypeHandler.php.html#56\">App\\Form\\Handler\\AddUserTypeHandler::handle<\/a>"],[100,1,"<a href=\"Handler\/EditProfilPictureTypeHandler.php.html#40\">App\\Form\\Handler\\EditProfilPictureTypeHandler::__construct<\/a>"],[0,3,"<a href=\"Handler\/EditProfilPictureTypeHandler.php.html#48\">App\\Form\\Handler\\EditProfilPictureTypeHandler::handle<\/a>"],[100,1,"<a href=\"Handler\/EditTrickTypeHandler.php.html#52\">App\\Form\\Handler\\EditTrickTypeHandler::__construct<\/a>"],[0,3,"<a href=\"Handler\/EditTrickTypeHandler.php.html#62\">App\\Form\\Handler\\EditTrickTypeHandler::handle<\/a>"],[100,1,"<a href=\"Handler\/NewPasswordRequestTypeHandler.php.html#41\">App\\Form\\Handler\\NewPasswordRequestTypeHandler::__construct<\/a>"],[100,4,"<a href=\"Handler\/NewPasswordRequestTypeHandler.php.html#50\">App\\Form\\Handler\\NewPasswordRequestTypeHandler::handle<\/a>"],[100,1,"<a href=\"Handler\/ResetPasswordTypeHandler.php.html#41\">App\\Form\\Handler\\ResetPasswordTypeHandler::__construct<\/a>"],[91.66666666666666,4,"<a href=\"Handler\/ResetPasswordTypeHandler.php.html#50\">App\\Form\\Handler\\ResetPasswordTypeHandler::handle<\/a>"],[100,1,"<a href=\"Handler\/TrickCommentTypeHandler.php.html#36\">App\\Form\\Handler\\TrickCommentTypeHandler::__construct<\/a>"],[100,3,"<a href=\"Handler\/TrickCommentTypeHandler.php.html#43\">App\\Form\\Handler\\TrickCommentTypeHandler::handleAddComment<\/a>"],[100,3,"<a href=\"Handler\/TrickCommentTypeHandler.php.html#62\">App\\Form\\Handler\\TrickCommentTypeHandler::handleUpdateComment<\/a>"],[100,1,"<a href=\"Type\/CreateTrickType.php.html#20\">App\\Form\\Type\\CreateTrickType::buildForm<\/a>"],[100,1,"<a href=\"Type\/CreateTrickType.php.html#80\">App\\Form\\Type\\CreateTrickType::configureOptions<\/a>"],[100,2,"<a href=\"Type\/CreateTrickType.php.html#97\">App\\Form\\Type\\CreateTrickType::getChoices<\/a>"],[100,1,"<a href=\"Type\/EmailForPasswordRecoveryFormType.php.html#15\">App\\Form\\Type\\EmailForPasswordRecoveryFormType::buildForm<\/a>"],[100,1,"<a href=\"Type\/EmailForPasswordRecoveryFormType.php.html#26\">App\\Form\\Type\\EmailForPasswordRecoveryFormType::configureOptions<\/a>"],[100,1,"<a href=\"Type\/ImageType.php.html#19\">App\\Form\\Type\\ImageType::buildForm<\/a>"],[44.44444444444444,1,"<a href=\"Type\/ImageType.php.html#65\">App\\Form\\Type\\ImageType::configureOptions<\/a>"],[0,1,"<a href=\"Type\/ProfilPictureType.php.html#15\">App\\Form\\Type\\ProfilPictureType::buildForm<\/a>"],[0,1,"<a href=\"Type\/ProfilPictureType.php.html#42\">App\\Form\\Type\\ProfilPictureType::configureOptions<\/a>"],[100,1,"<a href=\"Type\/RegistrationType.php.html#14\">App\\Form\\Type\\RegistrationType::buildForm<\/a>"],[100,1,"<a href=\"Type\/RegistrationType.php.html#23\">App\\Form\\Type\\RegistrationType::configureOptions<\/a>"],[0,1,"<a href=\"Type\/RegistrationType.php.html#40\">App\\Form\\Type\\RegistrationType::getSalt<\/a>"],[0,1,"<a href=\"Type\/ResetPasswordFromAccountType.php.html#15\">App\\Form\\Type\\ResetPasswordFromAccountType::buildForm<\/a>"],[100,1,"<a href=\"Type\/ResetPasswordType.php.html#16\">App\\Form\\Type\\ResetPasswordType::buildForm<\/a>"],[100,1,"<a href=\"Type\/ResetPasswordType.php.html#32\">App\\Form\\Type\\ResetPasswordType::configureOptions<\/a>"],[0,1,"<a href=\"Type\/UpdateTrickType.php.html#21\">App\\Form\\Type\\UpdateTrickType::buildForm<\/a>"],[0,1,"<a href=\"Type\/UpdateTrickType.php.html#80\">App\\Form\\Type\\UpdateTrickType::configureOptions<\/a>"],[0,2,"<a href=\"Type\/UpdateTrickType.php.html#98\">App\\Form\\Type\\UpdateTrickType::getChoices<\/a>"],[100,1,"<a href=\"Type\/VideoType.php.html#14\">App\\Form\\Type\\VideoType::buildForm<\/a>"],[71.42857142857143,1,"<a href=\"Type\/VideoType.php.html#23\">App\\Form\\Type\\VideoType::configureOptions<\/a>"],[100,1,"<a href=\"Type\/trickCommentType.php.html#15\">App\\Form\\Type\\trickCommentType::buildForm<\/a>"],[100,1,"<a href=\"Type\/trickCommentType.php.html#24\">App\\Form\\Type\\trickCommentType::configureOptions<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

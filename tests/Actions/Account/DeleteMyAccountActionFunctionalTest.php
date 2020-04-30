@@ -21,10 +21,18 @@ class DeleteMyAccountActionFunctionalTest extends AbstractWebTestCase
         $user = $users->getReference('userRef_7');
         $this->login($this->client, $user);
 
-        $crawler = $this->client->request('GET', '/dashboard');
+        $tokenName = 'delete-item';
 
-        $form = $crawler->selectButton("Supprimer Définitivement")->form();
-        $this->client->submit($form);
+        $csrfStorage = $this->containerService->get('security.csrf.token_storage');
+        $csrfStorage->setToken($tokenName, 'random');
+
+        $this->client->request(
+            'POST',
+            '/dashboard/delete-account/' . $user->getId(),
+            [
+                '_token' => 'random',
+            ]
+        );
 
         static::assertTrue($this->client->getResponse()->isRedirection());
 

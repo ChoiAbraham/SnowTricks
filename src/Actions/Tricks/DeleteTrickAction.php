@@ -28,7 +28,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
  * @Route("/delete/{slug}", name="edit_trick_delete")
  * @IsGranted("ROLE_USER")
  */
-final class DeleteTrickAction extends AbstractController implements DeleteTrickActionInterface
+final class DeleteTrickAction implements DeleteTrickActionInterface
 {
     /** @var EntityManagerInterface */
     private $manager;

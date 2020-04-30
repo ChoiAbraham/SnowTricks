@@ -3,7 +3,6 @@
 namespace App\DataFixtures;
 
 use App\Domain\Entity\GroupTrick;
-use App\Domain\Entity\Trick;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class GroupFixture extends BaseFixture

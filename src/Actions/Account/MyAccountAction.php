@@ -8,7 +8,7 @@ use App\Domain\Entity\Trick;
 use App\Domain\Repository\UserRepository;
 use App\Domain\Repository\TrickRepository;
 use App\Form\Handler\Interfaces\EditProfilPictureTypeHandlerInterface;
-use App\Form\ProfilPictureType;
+use App\Form\Type\ProfilPictureType;
 use App\Responders\RedirectResponder;
 use App\Responders\ViewResponder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -68,8 +68,9 @@ class MyAccountAction implements MyAccountActionInterface
 
     public function __invoke(Request $request, ViewResponder $responder, RedirectResponder $redirect)
     {
-        $userId = $this->security->getUser()->getId();
         $user = $this->security->getUser();
+        $userId = $user->getId();
+
         /** @var Trick $tricks */
         $tricks = $this->trickRepository->findBy(['creator' => $userId]);
 

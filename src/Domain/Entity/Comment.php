@@ -59,15 +59,14 @@ class Comment
      * Comment constructor.
      * @param DateTime $createdAt
      */
-    public function __construct()
+    public function __construct(string $text = '', User $user = null)
     {
+        $this->content = $text;
+        $this->user = $user;
         $this->createdAt = new \DateTime();;
     }
 
-    /**
-     * @return id
-     */
-    public function getId(): id
+    public function getId()
     {
         return $this->id;
     }
@@ -101,7 +100,7 @@ class Comment
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }

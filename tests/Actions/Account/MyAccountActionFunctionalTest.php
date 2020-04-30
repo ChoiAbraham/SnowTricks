@@ -23,8 +23,6 @@ class MyAccountActionFunctionalTest extends AbstractWebTestCase
 
         $this->client->followRedirect();
         static::assertTrue($this->client->getResponse()->isSuccessful());
-
-        static::assertSelectorTextContains('h2', 'Vous devez être connecté pour accéder à cette page');
     }
 
     public function testLetAuthenticatedUserToAccessAccountPage()
@@ -55,8 +53,8 @@ class MyAccountActionFunctionalTest extends AbstractWebTestCase
         $form = $crawler->selectButton("Envoyer")->form();
 
         $photo = new UploadedFile(
-            'assets/images/user/profil_picture_default.jpg',
-            'first_image_default.jpg',
+            'public/uploads/profile_picture/profil_picture_default.jpg',
+            'profil_picture_default.jpg',
             'image/jpeg',
             null
         );

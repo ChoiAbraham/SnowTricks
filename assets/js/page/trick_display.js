@@ -14,6 +14,11 @@ function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
 }
 
+$('.show-media').on('click', function () {
+    $('.ondesktop-only').removeClass('hide-block');
+    $('.ondesktop-only').toggle();
+});
+
 //*** MODALS ***//
 
 //show modal for Edit first image

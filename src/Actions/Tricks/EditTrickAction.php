@@ -62,9 +62,6 @@ class EditTrickAction
     /** @var EditTrickTypeHandlerInterface */
     private $editTrickTypeHandler;
 
-    /** @var AddTrickCommentTypeHandler */
-    private $addTrickCommentTypeHandler;
-
     /** @var UploaderHelper */
     private $uploaderHelper;
 
@@ -82,11 +79,10 @@ class EditTrickAction
      * @param FormFactoryInterface $formFactory
      * @param GroupTrickRepository $groupTrickRepository
      * @param EditTrickTypeHandlerInterface $editTrickTypeHandler
-     * @param AddTrickCommentTypeHandler $addTrickCommentTypeHandler
      * @param UploaderHelper $uploaderHelper
      * @param FlashBagInterface $bag
      */
-    public function __construct(EventDispatcherInterface $eventDispatcher, TrickRepository $trickRepository, TrickImageRepository $trickImageRepository, TrickVideoRepository $trickVideoRepository, Security $security, CommentRepository $commentRepository, FormFactoryInterface $formFactory, GroupTrickRepository $groupTrickRepository, EditTrickTypeHandlerInterface $editTrickTypeHandler, AddTrickCommentTypeHandler $addTrickCommentTypeHandler, UploaderHelper $uploaderHelper, FlashBagInterface $bag)
+    public function __construct(EventDispatcherInterface $eventDispatcher, TrickRepository $trickRepository, TrickImageRepository $trickImageRepository, TrickVideoRepository $trickVideoRepository, Security $security, CommentRepository $commentRepository, FormFactoryInterface $formFactory, GroupTrickRepository $groupTrickRepository, EditTrickTypeHandlerInterface $editTrickTypeHandler, UploaderHelper $uploaderHelper, FlashBagInterface $bag)
     {
         $this->eventDispatcher = $eventDispatcher;
         $this->trickRepository = $trickRepository;
@@ -97,7 +93,6 @@ class EditTrickAction
         $this->formFactory = $formFactory;
         $this->groupTrickRepository = $groupTrickRepository;
         $this->editTrickTypeHandler = $editTrickTypeHandler;
-        $this->addTrickCommentTypeHandler = $addTrickCommentTypeHandler;
         $this->uploaderHelper = $uploaderHelper;
         $this->bag = $bag;
     }

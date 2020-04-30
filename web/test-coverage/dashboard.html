@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\Projects\SnowTricks\src</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href=".css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href=".css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href=".css/style.css" rel="stylesheet" type="text/css">
+  <link href=".css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">C:\Projects\SnowTricks\src</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Actions/Account/DeleteMyAccountAction.php.html#31">App\Actions\Account\DeleteMyAccountAction</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Builder/GroupTrickBuilder.php.html#15">App\Domain\Builder\GroupTrickBuilder</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/ImageFileNameService.php.html#11">App\Service\ImageFileNameService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listener/UserCreatedListener.php.html#9">App\Listener\UserCreatedListener</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Type/UpdateTrickType.php.html#19">App\Form\Type\UpdateTrickType</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Type/ResetPasswordFromAccountType.php.html#13">App\Form\Type\ResetPasswordFromAccountType</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Type/ProfilPictureType.php.html#13">App\Form\Type\ProfilPictureType</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#13">App\Domain\DTO\UpdateTrickDTO</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickVideoDTO.php.html#9">App\Domain\DTO\TrickVideoDTO</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#11">App\Domain\DTO\TrickImageDTO</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/ProfilPictureDTO.php.html#10">App\Domain\DTO\ProfilPictureDTO</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/GroupFixture.php.html#8">App\DataFixtures\GroupFixture</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/HomepageTricksLoadedAction.php.html#17">App\Actions\HomepageTricksLoadedAction</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/NoUserAction.php.html#13">App\Actions\NoUserAction</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/Security/SecurityLogoutAction.php.html#7">App\Actions\Security\SecurityLogoutAction</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/Tricks/TrickCommentsLoadedAction.php.html#18">App\Actions\Tricks\TrickCommentsLoadedAction</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/BaseFixture.php.html#10">App\DataFixtures\BaseFixture</a></td><td class="text-right">5%</td></tr>
+       <tr><td><a href="DataFixtures/Tests/BaseTestFixture.php.html#10">App\DataFixtures\Tests\BaseTestFixture</a></td><td class="text-right">5%</td></tr>
+       <tr><td><a href="Domain/Entity/GroupTrick.php.html#12">App\Domain\Entity\GroupTrick</a></td><td class="text-right">5%</td></tr>
+       <tr><td><a href="DataFixtures/CommentFixture.php.html#11">App\DataFixtures\CommentFixture</a></td><td class="text-right">7%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#10">App\Domain\Entity\TrickVideo</a></td><td class="text-right">8%</td></tr>
+       <tr><td><a href="DataFixtures/TrickFixtures.php.html#12">App\DataFixtures\TrickFixtures</a></td><td class="text-right">9%</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#10">App\Service\UploaderHelper</a></td><td class="text-right">9%</td></tr>
+       <tr><td><a href="Service/TrickUpdateResolver.php.html#14">App\Service\TrickUpdateResolver</a></td><td class="text-right">12%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickImageBuilder.php.html#15">App\Domain\Builder\TrickImageBuilder</a></td><td class="text-right">15%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickImage.php.html#14">App\Domain\Entity\TrickImage</a></td><td class="text-right">17%</td></tr>
+       <tr><td><a href="DataFixtures/Tests/UserPasswordFixture.php.html#9">App\DataFixtures\Tests\UserPasswordFixture</a></td><td class="text-right">18%</td></tr>
+       <tr><td><a href="DataFixtures/ImageTrickFixture.php.html#11">App\DataFixtures\ImageTrickFixture</a></td><td class="text-right">20%</td></tr>
+       <tr><td><a href="DataFixtures/UserFixture.php.html#9">App\DataFixtures\UserFixture</a></td><td class="text-right">22%</td></tr>
+       <tr><td><a href="DataFixtures/VideoTrickFixture.php.html#13">App\DataFixtures\VideoTrickFixture</a></td><td class="text-right">27%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickVideoBuilder.php.html#11">App\Domain\Builder\TrickVideoBuilder</a></td><td class="text-right">28%</td></tr>
+       <tr><td><a href="Actions/Tricks/EditTrickAction.php.html#36">App\Actions\Tricks\EditTrickAction</a></td><td class="text-right">30%</td></tr>
+       <tr><td><a href="DataFixtures/AppFixtures.php.html#9">App\DataFixtures\AppFixtures</a></td><td class="text-right">33%</td></tr>
+       <tr><td><a href="Form/Handler/EditTrickTypeHandler.php.html#19">App\Form\Handler\EditTrickTypeHandler</a></td><td class="text-right">38%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#19">App\Domain\Entity\Trick</a></td><td class="text-right">40%</td></tr>
+       <tr><td><a href="Form/Handler/EditProfilPictureTypeHandler.php.html#15">App\Form\Handler\EditProfilPictureTypeHandler</a></td><td class="text-right">45%</td></tr>
+       <tr><td><a href="Domain/Builder/UserBuilder.php.html#14">App\Domain\Builder\UserBuilder</a></td><td class="text-right">52%</td></tr>
+       <tr><td><a href="Domain/DTO/CreateUserDTO.php.html#10">App\Domain\DTO\CreateUserDTO</a></td><td class="text-right">52%</td></tr>
+       <tr><td><a href="Domain/DTO/EmailPasswordRecoveryDTO.php.html#8">App\Domain\DTO\EmailPasswordRecoveryDTO</a></td><td class="text-right">55%</td></tr>
+       <tr><td><a href="Domain/DTO/ChangePasswordDTO.php.html#10">App\Domain\DTO\ChangePasswordDTO</a></td><td class="text-right">55%</td></tr>
+       <tr><td><a href="Form/CustomConstraints/NotInDatabaseValidator.php.html#13">App\Form\CustomConstraints\NotInDatabaseValidator</a></td><td class="text-right">57%</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueTrickTitleValidator.php.html#13">App\Form\CustomConstraints\UniqueTrickTitleValidator</a></td><td class="text-right">57%</td></tr>
+       <tr><td><a href="Domain/DTO/CreateTrickDTO.php.html#11">App\Domain\DTO\CreateTrickDTO</a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Domain/Entity/User.php.html#16">App\Domain\Entity\User</a></td><td class="text-right">63%</td></tr>
+       <tr><td><a href="Actions/Account/MyAccountAction.php.html#27">App\Actions\Account\MyAccountAction</a></td><td class="text-right">64%</td></tr>
+       <tr><td><a href="Twig/AppExtension.php.html#12">App\Twig\AppExtension</a></td><td class="text-right">76%</td></tr>
+       <tr><td><a href="Domain/Entity/Comment.php.html#13">App\Domain\Entity\Comment</a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueUsernameValidator.php.html#13">App\Form\CustomConstraints\UniqueUsernameValidator</a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueEmailValidator.php.html#13">App\Form\CustomConstraints\UniqueEmailValidator</a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#18">App\Domain\Builder\TrickBuilder</a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Form/Type/ImageType.php.html#17">App\Form\Type\ImageType</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Form/Type/VideoType.php.html#12">App\Form\Type\VideoType</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Form/Handler/AddTrickTypeHandler.php.html#17">App\Form\Handler\AddTrickTypeHandler</a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="Actions/Tricks/NewTrickAction.php.html#26">App\Actions\Tricks\NewTrickAction</a></td><td class="text-right">86%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#13">App\Domain\DTO\UpdateTrickDTO</a></td><td class="text-right">1482</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#19">App\Domain\Entity\Trick</a></td><td class="text-right">497</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#11">App\Domain\DTO\TrickImageDTO</a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#10">App\Domain\Entity\TrickVideo</a></td><td class="text-right">164</td></tr>
+       <tr><td><a href="Domain/Entity/GroupTrick.php.html#12">App\Domain\Entity\GroupTrick</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#10">App\Service\UploaderHelper</a></td><td class="text-right">101</td></tr>
+       <tr><td><a href="DataFixtures/BaseFixture.php.html#10">App\DataFixtures\BaseFixture</a></td><td class="text-right">95</td></tr>
+       <tr><td><a href="DataFixtures/Tests/BaseTestFixture.php.html#10">App\DataFixtures\Tests\BaseTestFixture</a></td><td class="text-right">95</td></tr>
+       <tr><td><a href="Domain/Entity/TrickImage.php.html#14">App\Domain\Entity\TrickImage</a></td><td class="text-right">92</td></tr>
+       <tr><td><a href="Domain/DTO/TrickVideoDTO.php.html#9">App\Domain\DTO\TrickVideoDTO</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Domain/Entity/User.php.html#16">App\Domain\Entity\User</a></td><td class="text-right">78</td></tr>
+       <tr><td><a href="Service/TrickUpdateResolver.php.html#14">App\Service\TrickUpdateResolver</a></td><td class="text-right">50</td></tr>
+       <tr><td><a href="Domain/DTO/CreateTrickDTO.php.html#11">App\Domain\DTO\CreateTrickDTO</a></td><td class="text-right">49</td></tr>
+       <tr><td><a href="Actions/Account/DeleteMyAccountAction.php.html#31">App\Actions\Account\DeleteMyAccountAction</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Domain/Entity/Comment.php.html#13">App\Domain\Entity\Comment</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Form/Type/UpdateTrickType.php.html#19">App\Form\Type\UpdateTrickType</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Actions/Tricks/EditTrickAction.php.html#36">App\Actions\Tricks\EditTrickAction</a></td><td class="text-right">17</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#18">App\Domain\Builder\TrickBuilder</a></td><td class="text-right">15</td></tr>
+       <tr><td><a href="Domain/Builder/TrickImageBuilder.php.html#15">App\Domain\Builder\TrickImageBuilder</a></td><td class="text-right">13</td></tr>
+       <tr><td><a href="DataFixtures/ImageTrickFixture.php.html#11">App\DataFixtures\ImageTrickFixture</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Actions/HomepageTricksLoadedAction.php.html#17">App\Actions\HomepageTricksLoadedAction</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Actions/Tricks/TrickCommentsLoadedAction.php.html#18">App\Actions\Tricks\TrickCommentsLoadedAction</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/DTO/ChangePasswordDTO.php.html#10">App\Domain\DTO\ChangePasswordDTO</a></td><td class="text-right">11</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueTrickTitleValidator.php.html#13">App\Form\CustomConstraints\UniqueTrickTitleValidator</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Form/CustomConstraints/NotInDatabaseValidator.php.html#13">App\Form\CustomConstraints\NotInDatabaseValidator</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="DataFixtures/CommentFixture.php.html#11">App\DataFixtures\CommentFixture</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="DataFixtures/VideoTrickFixture.php.html#13">App\DataFixtures\VideoTrickFixture</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Form/Handler/AddTrickTypeHandler.php.html#17">App\Form\Handler\AddTrickTypeHandler</a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="Domain/Builder/UserBuilder.php.html#14">App\Domain\Builder\UserBuilder</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Form/Handler/EditTrickTypeHandler.php.html#19">App\Form\Handler\EditTrickTypeHandler</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueUsernameValidator.php.html#13">App\Form\CustomConstraints\UniqueUsernameValidator</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueEmailValidator.php.html#13">App\Form\CustomConstraints\UniqueEmailValidator</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Form/Handler/EditProfilPictureTypeHandler.php.html#15">App\Form\Handler\EditProfilPictureTypeHandler</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Twig/AppExtension.php.html#12">App\Twig\AppExtension</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="DataFixtures/GroupFixture.php.html#8">App\DataFixtures\GroupFixture</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Actions/Tricks/NewTrickAction.php.html#26">App\Actions\Tricks\NewTrickAction</a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Actions/Account/MyAccountAction.php.html#27">App\Actions\Account\MyAccountAction</a></td><td class="text-right">3</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Actions/Account/DeleteMyAccountAction.php.html#74"><abbr title="App\Actions\Account\DeleteMyAccountAction::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#251"><abbr title="App\Domain\Entity\Trick::removeComment">removeComment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#128"><abbr title="App\Domain\Entity\Trick::videos">videos</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#134"><abbr title="App\Domain\Entity\Trick::setTrickImages">setTrickImages</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#143"><abbr title="App\Domain\Entity\Trick::setTrickVideos">setTrickVideos</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#163"><abbr title="App\Domain\Entity\Trick::setUpdatedAt">setUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#220"><abbr title="App\Domain\Entity\Trick::setTitle">setTitle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#228"><abbr title="App\Domain\Entity\Trick::setContent">setContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#236"><abbr title="App\Domain\Entity\Trick::getComments">getComments</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#264"><abbr title="App\Domain\Entity\Trick::getCreator">getCreator</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/GroupTrick.php.html#72"><abbr title="App\Domain\Entity\GroupTrick::removeTrick">removeTrick</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#276"><abbr title="App\Domain\Entity\Trick::getLastUser">getLastUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#291"><abbr title="App\Domain\Entity\Trick::getTrickVideos">getTrickVideos</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#296"><abbr title="App\Domain\Entity\Trick::addTrickVideo">addTrickVideo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#306"><abbr title="App\Domain\Entity\Trick::removeTrickVideo">removeTrickVideo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#327"><abbr title="App\Domain\Entity\Trick::addTrickImage">addTrickImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#337"><abbr title="App\Domain\Entity\Trick::removeTrickImage">removeTrickImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#355"><abbr title="App\Domain\Entity\Trick::setGroupTrick">setGroupTrick</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#122"><abbr title="App\Domain\Entity\Trick::images">images</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/GroupTrick.php.html#62"><abbr title="App\Domain\Entity\GroupTrick::addTrick">addTrick</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickImage.php.html#76"><abbr title="App\Domain\Entity\TrickImage::setFirstImage">setFirstImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#207"><abbr title="App\Domain\DTO\UpdateTrickDTO::getVideolinksWithNoIds">getVideolinksWithNoIds</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#125"><abbr title="App\Domain\DTO\UpdateTrickDTO::getContent">getContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#133"><abbr title="App\Domain\DTO\UpdateTrickDTO::getGroups">getGroups</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/Account/DeleteMyAccountAction.php.html#87"><abbr title="App\Actions\Account\DeleteMyAccountAction::__invoke">__invoke</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#155"><abbr title="App\Domain\DTO\UpdateTrickDTO::getImageslinksWithIds">getImageslinksWithIds</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#170"><abbr title="App\Domain\DTO\UpdateTrickDTO::getImageslinksWithNoIds">getImageslinksWithNoIds</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#185"><abbr title="App\Domain\DTO\UpdateTrickDTO::setImageslinks">setImageslinks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#193"><abbr title="App\Domain\DTO\UpdateTrickDTO::getVideolinksWithIds">getVideolinksWithIds</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#221"><abbr title="App\Domain\DTO\UpdateTrickDTO::getVideoslinks">getVideoslinks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/GroupTrick.php.html#57"><abbr title="App\Domain\Entity\GroupTrick::getTrick">getTrick</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#229"><abbr title="App\Domain\DTO\UpdateTrickDTO::setVideoslinks">setVideoslinks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Comment.php.html#85"><abbr title="App\Domain\Entity\Comment::getCreatedAt">getCreatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Comment.php.html#98"><abbr title="App\Domain\Entity\Comment::getUpdatedAt">getUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/Comment.php.html#125"><abbr title="App\Domain\Entity\Comment::setUser">setUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/GroupTrick.php.html#31"><abbr title="App\Domain\Entity\GroupTrick::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/GroupTrick.php.html#37"><abbr title="App\Domain\Entity\GroupTrick::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/GroupTrick.php.html#47"><abbr title="App\Domain\Entity\GroupTrick::setName">setName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickImage.php.html#58"><abbr title="App\Domain\Entity\TrickImage::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickImage.php.html#92"><abbr title="App\Domain\Entity\TrickImage::setAltImage">setAltImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#84"><abbr title="App\Domain\DTO\UpdateTrickDTO::createFromEntity">createFromEntity</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/MailSenderHelper.php.html#43"><abbr title="App\Service\MailSenderHelper::getTwigTemplate">getTwigTemplate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Type/RegistrationType.php.html#40"><abbr title="App\Form\Type\RegistrationType::getSalt">getSalt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Type/ResetPasswordFromAccountType.php.html#15"><abbr title="App\Form\Type\ResetPasswordFromAccountType::buildForm">buildForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Type/UpdateTrickType.php.html#21"><abbr title="App\Form\Type\UpdateTrickType::buildForm">buildForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Type/UpdateTrickType.php.html#80"><abbr title="App\Form\Type\UpdateTrickType::configureOptions">configureOptions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Type/UpdateTrickType.php.html#98"><abbr title="App\Form\Type\UpdateTrickType::getChoices">getChoices</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Listener/UserCreatedListener.php.html#11"><abbr title="App\Listener\UserCreatedListener::onUserCreated">onUserCreated</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/ImageFileNameService.php.html#13"><abbr title="App\Service\ImageFileNameService::generateFileName">generateFileName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/TrickUpdateResolver.php.html#47"><abbr title="App\Service\TrickUpdateResolver::updateTrickFromDTO">updateTrickFromDTO</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Type/ProfilPictureType.php.html#15"><abbr title="App\Form\Type\ProfilPictureType::buildForm">buildForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#27"><abbr title="App\Service\UploaderHelper::uploadTrickImage">uploadTrickImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#41"><abbr title="App\Service\UploaderHelper::uploadProfilPictureImage">uploadProfilPictureImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#55"><abbr title="App\Service\UploaderHelper::deleteTrickImage">deleteTrickImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#62"><abbr title="App\Service\UploaderHelper::deleteProfilPictureImage">deleteProfilPictureImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#69"><abbr title="App\Service\UploaderHelper::createTrickPictureFile">createTrickPictureFile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Twig/AppExtension.php.html#23"><abbr title="App\Twig\AppExtension::getFunctions">getFunctions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Twig/AppExtension.php.html#30"><abbr title="App\Twig\AppExtension::getFilters">getFilters</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Type/ProfilPictureType.php.html#42"><abbr title="App\Form\Type\ProfilPictureType::configureOptions">configureOptions</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Handler/EditTrickTypeHandler.php.html#62"><abbr title="App\Form\Handler\EditTrickTypeHandler::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickImage.php.html#100"><abbr title="App\Domain\Entity\TrickImage::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#61"><abbr title="App\Domain\Entity\TrickVideo::setPathUrl">setPathUrl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickImage.php.html#116"><abbr title="App\Domain\Entity\TrickImage::setImageFileName">setImageFileName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickImage.php.html#126"><abbr title="App\Domain\Entity\TrickImage::getTrick">getTrick</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickImage.php.html#137"><abbr title="App\Domain\Entity\TrickImage::setTrick">setTrick</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#34"><abbr title="App\Domain\Entity\TrickVideo::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#39"><abbr title="App\Domain\Entity\TrickVideo::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#44"><abbr title="App\Domain\Entity\TrickVideo::getName">getName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#49"><abbr title="App\Domain\Entity\TrickVideo::setName">setName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#68"><abbr title="App\Domain\Entity\TrickVideo::getTrick">getTrick</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Form/Handler/EditProfilPictureTypeHandler.php.html#48"><abbr title="App\Form\Handler\EditProfilPictureTypeHandler::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#73"><abbr title="App\Domain\Entity\TrickVideo::setTrick">setTrick</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/User.php.html#191"><abbr title="App\Domain\Entity\User::setPicturePath">setPicturePath</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/User.php.html#199"><abbr title="App\Domain\Entity\User::getUpdatedAt">getUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/User.php.html#207"><abbr title="App\Domain\Entity\User::setUpdatedAt">setUpdatedAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/User.php.html#215"><abbr title="App\Domain\Entity\User::getComments">getComments</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/User.php.html#220"><abbr title="App\Domain\Entity\User::addComment">addComment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Entity/User.php.html#230"><abbr title="App\Domain\Entity\User::removeComment">removeComment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#114"><abbr title="App\Domain\DTO\UpdateTrickDTO::getTitle">getTitle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#141"><abbr title="App\Domain\DTO\UpdateTrickDTO::getImageslinks">getImageslinks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#75"><abbr title="App\Domain\DTO\UpdateTrickDTO::setGroups">setGroups</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/Tests/BaseTestFixture.php.html#39"><abbr title="App\DataFixtures\Tests\BaseTestFixture::getRandomReference">getRandomReference</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/ChangePasswordDTO.php.html#63"><abbr title="App\Domain\DTO\ChangePasswordDTO::setPassword">setPassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/ChangePasswordDTO.php.html#47"><abbr title="App\Domain\DTO\ChangePasswordDTO::setUsername">setUsername</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Builder/UserBuilder.php.html#59"><abbr title="App\Domain\Builder\UserBuilder::updateProfilPicture">updateProfilPicture</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickVideoBuilder.php.html#50"><abbr title="App\Domain\Builder\TrickVideoBuilder::getTrickVideo">getTrickVideo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickVideoBuilder.php.html#43"><abbr title="App\Domain\Builder\TrickVideoBuilder::getEmbedPathUrl">getEmbedPathUrl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickVideoBuilder.php.html#34"><abbr title="App\Domain\Builder\TrickVideoBuilder::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickImageBuilder.php.html#63"><abbr title="App\Domain\Builder\TrickImageBuilder::getTrickImage">getTrickImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#67"><abbr title="App\Domain\DTO\UpdateTrickDTO::setContent">setContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Builder/GroupTrickBuilder.php.html#36"><abbr title="App\Domain\Builder\GroupTrickBuilder::getGroupTrick">getGroupTrick</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Builder/GroupTrickBuilder.php.html#26"><abbr title="App\Domain\Builder\GroupTrickBuilder::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/VideoTrickFixture.php.html#34"><abbr title="App\DataFixtures\VideoTrickFixture::loadData">loadData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/UserFixture.php.html#56"><abbr title="App\DataFixtures\UserFixture::loadData">loadData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/TrickFixtures.php.html#37"><abbr title="App\DataFixtures\TrickFixtures::loadData">loadData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/Tests/UserPasswordFixture.php.html#35"><abbr title="App\DataFixtures\Tests\UserPasswordFixture::loadData">loadData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/Tests/BaseTestFixture.php.html#27"><abbr title="App\DataFixtures\Tests\BaseTestFixture::createMany">createMany</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/CreateTrickDTO.php.html#69"><abbr title="App\Domain\DTO\CreateTrickDTO::setContent">setContent</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/Tricks/TrickCommentsLoadedAction.php.html#37"><abbr title="App\Actions\Tricks\TrickCommentsLoadedAction::__invoke">__invoke</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/HomepageTricksLoadedAction.php.html#26"><abbr title="App\Actions\HomepageTricksLoadedAction::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/HomepageTricksLoadedAction.php.html#32"><abbr title="App\Actions\HomepageTricksLoadedAction::__invoke">__invoke</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/NoUserAction.php.html#15"><abbr title="App\Actions\NoUserAction::__invoke">__invoke</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/Security/SecurityLogoutAction.php.html#12"><abbr title="App\Actions\Security\SecurityLogoutAction::logout">logout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/Tricks/EditTrickAction.php.html#100"><abbr title="App\Actions\Tricks\EditTrickAction::__invoke">__invoke</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/Tricks/TrickCommentsLoadedAction.php.html#31"><abbr title="App\Actions\Tricks\TrickCommentsLoadedAction::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/AppFixtures.php.html#11"><abbr title="App\DataFixtures\AppFixtures::load">load</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/Tests/BaseTestFixture.php.html#20"><abbr title="App\DataFixtures\Tests\BaseTestFixture::load">load</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/BaseFixture.php.html#20"><abbr title="App\DataFixtures\BaseFixture::load">load</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/BaseFixture.php.html#27"><abbr title="App\DataFixtures\BaseFixture::createMany">createMany</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/BaseFixture.php.html#39"><abbr title="App\DataFixtures\BaseFixture::getRandomReference">getRandomReference</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/CommentFixture.php.html#13"><abbr title="App\DataFixtures\CommentFixture::loadData">loadData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/GroupFixture.php.html#16"><abbr title="App\DataFixtures\GroupFixture::loadData">loadData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/ImageTrickFixture.php.html#39"><abbr title="App\DataFixtures\ImageTrickFixture::loadData">loadData</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/CreateTrickDTO.php.html#61"><abbr title="App\Domain\DTO\CreateTrickDTO::setTitle">setTitle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickImageBuilder.php.html#40"><abbr title="App\Domain\Builder\TrickImageBuilder::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/CreateTrickDTO.php.html#77"><abbr title="App\Domain\DTO\CreateTrickDTO::setGroups">setGroups</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#115"><abbr title="App\Domain\DTO\TrickImageDTO::setId">setId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/CreateTrickDTO.php.html#93"><abbr title="App\Domain\DTO\CreateTrickDTO::setVideoslinks">setVideoslinks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#67"><abbr title="App\Domain\DTO\TrickImageDTO::createFromEntity">createFromEntity</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#78"><abbr title="App\Domain\DTO\TrickImageDTO::getAlt">getAlt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#86"><abbr title="App\Domain\DTO\TrickImageDTO::setAlt">setAlt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#94"><abbr title="App\Domain\DTO\TrickImageDTO::getImage">getImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#102"><abbr title="App\Domain\DTO\TrickImageDTO::setImage">setImage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#107"><abbr title="App\Domain\DTO\TrickImageDTO::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickVideoDTO.php.html#25"><abbr title="App\Domain\DTO\TrickVideoDTO::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#46"><abbr title="App\Domain\DTO\TrickImageDTO::setFirstimage">setFirstimage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickVideoDTO.php.html#33"><abbr title="App\Domain\DTO\TrickVideoDTO::createFromEntity">createFromEntity</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickVideoDTO.php.html#46"><abbr title="App\Domain\DTO\TrickVideoDTO::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickVideoDTO.php.html#54"><abbr title="App\Domain\DTO\TrickVideoDTO::setId">setId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickVideoDTO.php.html#62"><abbr title="App\Domain\DTO\TrickVideoDTO::getPathUrl">getPathUrl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickVideoDTO.php.html#70"><abbr title="App\Domain\DTO\TrickVideoDTO::setPathUrl">setPathUrl</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#47"><abbr title="App\Domain\DTO\UpdateTrickDTO::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#59"><abbr title="App\Domain\DTO\UpdateTrickDTO::setTitle">setTitle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#56"><abbr title="App\Domain\DTO\TrickImageDTO::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Twig/AppExtension.php.html#51"><abbr title="App\Twig\AppExtension::getSubscribedServices">getSubscribedServices</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#38"><abbr title="App\Domain\DTO\TrickImageDTO::getFirstimage">getFirstimage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/ProfilPictureDTO.php.html#29"><abbr title="App\Domain\DTO\ProfilPictureDTO::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/CreateUserDTO.php.html#71"><abbr title="App\Domain\DTO\CreateUserDTO::setUsername">setUsername</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/CreateUserDTO.php.html#87"><abbr title="App\Domain\DTO\CreateUserDTO::setEmail">setEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/CreateUserDTO.php.html#103"><abbr title="App\Domain\DTO\CreateUserDTO::setPassword">setPassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/CreateUserDTO.php.html#119"><abbr title="App\Domain\DTO\CreateUserDTO::setConfirmPassword">setConfirmPassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/EmailPasswordRecoveryDTO.php.html#45"><abbr title="App\Domain\DTO\EmailPasswordRecoveryDTO::setPseudo">setPseudo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/ProfilPictureDTO.php.html#68"><abbr title="App\Domain\DTO\ProfilPictureDTO::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/EmailPasswordRecoveryDTO.php.html#61"><abbr title="App\Domain\DTO\EmailPasswordRecoveryDTO::setEmail">setEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/ProfilPictureDTO.php.html#35"><abbr title="App\Domain\DTO\ProfilPictureDTO::getProfilPicture">getProfilPicture</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/ProfilPictureDTO.php.html#43"><abbr title="App\Domain\DTO\ProfilPictureDTO::setProfilPicture">setProfilPicture</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/ProfilPictureDTO.php.html#51"><abbr title="App\Domain\DTO\ProfilPictureDTO::createFromEntity">createFromEntity</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/DTO/ProfilPictureDTO.php.html#63"><abbr title="App\Domain\DTO\ProfilPictureDTO::getAlt">getAlt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Actions/Account/MyAccountAction.php.html#69"><abbr title="App\Actions\Account\MyAccountAction::__invoke">__invoke</abbr></a></td><td class="text-right">40%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#138"><abbr title="App\Domain\Builder\TrickBuilder::getGroupTrick">getGroupTrick</abbr></a></td><td class="text-right">40%</td></tr>
+       <tr><td><a href="Form/Type/ImageType.php.html#65"><abbr title="App\Form\Type\ImageType::configureOptions">configureOptions</abbr></a></td><td class="text-right">44%</td></tr>
+       <tr><td><a href="Form/CustomConstraints/NotInDatabaseValidator.php.html#29"><abbr title="App\Form\CustomConstraints\NotInDatabaseValidator::validate">validate</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueTrickTitleValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueTrickTitleValidator::validate">validate</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Domain/DTO/CreateTrickDTO.php.html#125"><abbr title="App\Domain\DTO\CreateTrickDTO::getImageslinks">getImageslinks</abbr></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#126"><abbr title="App\Domain\Builder\TrickBuilder::getTrickVideos">getTrickVideos</abbr></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#149"><abbr title="App\Domain\Builder\TrickBuilder::getTrickImages">getTrickImages</abbr></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Security/LoginFormAuthenticator.php.html#107"><abbr title="App\Security\LoginFormAuthenticator::onAuthenticationSuccess">onAuthenticationSuccess</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Form/Handler/AddTrickTypeHandler.php.html#60"><abbr title="App\Form\Handler\AddTrickTypeHandler::handle">handle</abbr></a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="Form/Type/VideoType.php.html#23"><abbr title="App\Form\Type\VideoType::configureOptions">configureOptions</abbr></a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueEmailValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueEmailValidator::validate">validate</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueUsernameValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueUsernameValidator::validate">validate</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#110"><abbr title="App\Domain\Builder\TrickBuilder::setTrickVideos">setTrickVideos</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#96"><abbr title="App\Domain\Builder\TrickBuilder::setTrickImages">setTrickImages</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Security/LoginFormAuthenticator.php.html#96"><abbr title="App\Security\LoginFormAuthenticator::checkCredentials">checkCredentials</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Actions/Tricks/NewTrickAction.php.html#55"><abbr title="App\Actions\Tricks\NewTrickAction::__invoke">__invoke</abbr></a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Security/LoginFormAuthenticator.php.html#80"><abbr title="App\Security\LoginFormAuthenticator::getUser">getUser</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Actions/Tricks/DeleteTrickAction.php.html#96"><abbr title="App\Actions\Tricks\DeleteTrickAction::__invoke">__invoke</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Actions/Security/SecurityChangePasswordAction.php.html#44"><abbr title="App\Actions\Security\SecurityChangePasswordAction::__invoke">__invoke</abbr></a></td><td class="text-right">88%</td></tr>
+       <tr><td><a href="Actions/Comments/DeleteCommentAction.php.html#67"><abbr title="App\Actions\Comments\DeleteCommentAction::__invoke">__invoke</abbr></a></td><td class="text-right">88%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Service/TrickUpdateResolver.php.html#47"><abbr title="App\Service\TrickUpdateResolver::updateTrickFromDTO">updateTrickFromDTO</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Actions/Tricks/EditTrickAction.php.html#100"><abbr title="App\Actions\Tricks\EditTrickAction::__invoke">__invoke</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="DataFixtures/Tests/BaseTestFixture.php.html#39"><abbr title="App\DataFixtures\Tests\BaseTestFixture::getRandomReference">getRandomReference</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="DataFixtures/BaseFixture.php.html#39"><abbr title="App\DataFixtures\BaseFixture::getRandomReference">getRandomReference</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Actions/Account/DeleteMyAccountAction.php.html#87"><abbr title="App\Actions\Account\DeleteMyAccountAction::__invoke">__invoke</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#47"><abbr title="App\Domain\DTO\UpdateTrickDTO::__construct">__construct</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#170"><abbr title="App\Domain\DTO\UpdateTrickDTO::getImageslinksWithNoIds">getImageslinksWithNoIds</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Domain/Entity/GroupTrick.php.html#72"><abbr title="App\Domain\Entity\GroupTrick::removeTrick">removeTrick</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Form/Handler/EditProfilPictureTypeHandler.php.html#48"><abbr title="App\Form\Handler\EditProfilPictureTypeHandler::handle">handle</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#84"><abbr title="App\Domain\DTO\UpdateTrickDTO::createFromEntity">createFromEntity</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#114"><abbr title="App\Domain\DTO\UpdateTrickDTO::getTitle">getTitle</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#251"><abbr title="App\Domain\Entity\Trick::removeComment">removeComment</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/Entity/User.php.html#230"><abbr title="App\Domain\Entity\User::removeComment">removeComment</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#337"><abbr title="App\Domain\Entity\Trick::removeTrickImage">removeTrickImage</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#306"><abbr title="App\Domain\Entity\Trick::removeTrickVideo">removeTrickVideo</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Form/Handler/EditTrickTypeHandler.php.html#62"><abbr title="App\Form\Handler\EditTrickTypeHandler::handle">handle</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#141"><abbr title="App\Domain\DTO\UpdateTrickDTO::getImageslinks">getImageslinks</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#155"><abbr title="App\Domain\DTO\UpdateTrickDTO::getImageslinksWithIds">getImageslinksWithIds</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#193"><abbr title="App\Domain\DTO\UpdateTrickDTO::getVideolinksWithIds">getVideolinksWithIds</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#207"><abbr title="App\Domain\DTO\UpdateTrickDTO::getVideolinksWithNoIds">getVideolinksWithNoIds</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Form/CustomConstraints/NotInDatabaseValidator.php.html#29"><abbr title="App\Form\CustomConstraints\NotInDatabaseValidator::validate">validate</abbr></a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueTrickTitleValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueTrickTitleValidator::validate">validate</abbr></a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Form/Handler/AddTrickTypeHandler.php.html#60"><abbr title="App\Form\Handler\AddTrickTypeHandler::handle">handle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueUsernameValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueUsernameValidator::validate">validate</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Form/CustomConstraints/UniqueEmailValidator.php.html#29"><abbr title="App\Form\CustomConstraints\UniqueEmailValidator::validate">validate</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Actions/Tricks/DeleteTrickAction.php.html#96"><abbr title="App\Actions\Tricks\DeleteTrickAction::__invoke">__invoke</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#134"><abbr title="App\Domain\Entity\Trick::setTrickImages">setTrickImages</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#143"><abbr title="App\Domain\Entity\Trick::setTrickVideos">setTrickVideos</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#264"><abbr title="App\Domain\Entity\Trick::getCreator">getCreator</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#276"><abbr title="App\Domain\Entity\Trick::getLastUser">getLastUser</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#296"><abbr title="App\Domain\Entity\Trick::addTrickVideo">addTrickVideo</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#69"><abbr title="App\Service\UploaderHelper::createTrickPictureFile">createTrickPictureFile</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/Trick.php.html#327"><abbr title="App\Domain\Entity\Trick::addTrickImage">addTrickImage</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/TrickImage.php.html#126"><abbr title="App\Domain\Entity\TrickImage::getTrick">getTrick</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/TrickImage.php.html#137"><abbr title="App\Domain\Entity\TrickImage::setTrick">setTrick</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#39"><abbr title="App\Domain\Entity\TrickVideo::getId">getId</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/GroupTrick.php.html#62"><abbr title="App\Domain\Entity\GroupTrick::addTrick">addTrick</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#49"><abbr title="App\Domain\Entity\TrickVideo::setName">setName</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#68"><abbr title="App\Domain\Entity\TrickVideo::getTrick">getTrick</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#73"><abbr title="App\Domain\Entity\TrickVideo::setTrick">setTrick</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/User.php.html#220"><abbr title="App\Domain\Entity\User::addComment">addComment</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Form/Type/UpdateTrickType.php.html#98"><abbr title="App\Form\Type\UpdateTrickType::getChoices">getChoices</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#27"><abbr title="App\Service\UploaderHelper::uploadTrickImage">uploadTrickImage</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#41"><abbr title="App\Service\UploaderHelper::uploadProfilPictureImage">uploadProfilPictureImage</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#55"><abbr title="App\Service\UploaderHelper::deleteTrickImage">deleteTrickImage</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Service/UploaderHelper.php.html#62"><abbr title="App\Service\UploaderHelper::deleteProfilPictureImage">deleteProfilPictureImage</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/TrickVideo.php.html#44"><abbr title="App\Domain\Entity\TrickVideo::getName">getName</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/Comment.php.html#98"><abbr title="App\Domain\Entity\Comment::getUpdatedAt">getUpdatedAt</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/GroupTrick.php.html#37"><abbr title="App\Domain\Entity\GroupTrick::getId">getId</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#78"><abbr title="App\Domain\DTO\TrickImageDTO::getAlt">getAlt</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="DataFixtures/BaseFixture.php.html#27"><abbr title="App\DataFixtures\BaseFixture::createMany">createMany</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="DataFixtures/CommentFixture.php.html#13"><abbr title="App\DataFixtures\CommentFixture::loadData">loadData</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="DataFixtures/GroupFixture.php.html#16"><abbr title="App\DataFixtures\GroupFixture::loadData">loadData</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="DataFixtures/ImageTrickFixture.php.html#39"><abbr title="App\DataFixtures\ImageTrickFixture::loadData">loadData</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="DataFixtures/Tests/BaseTestFixture.php.html#27"><abbr title="App\DataFixtures\Tests\BaseTestFixture::createMany">createMany</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="DataFixtures/VideoTrickFixture.php.html#34"><abbr title="App\DataFixtures\VideoTrickFixture::loadData">loadData</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Builder/TrickImageBuilder.php.html#40"><abbr title="App\Domain\Builder\TrickImageBuilder::create">create</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Entity/Comment.php.html#125"><abbr title="App\Domain\Entity\Comment::setUser">setUser</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/CreateTrickDTO.php.html#61"><abbr title="App\Domain\DTO\CreateTrickDTO::setTitle">setTitle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/CreateTrickDTO.php.html#69"><abbr title="App\Domain\DTO\CreateTrickDTO::setContent">setContent</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#56"><abbr title="App\Domain\DTO\TrickImageDTO::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/Builder/UserBuilder.php.html#59"><abbr title="App\Domain\Builder\UserBuilder::updateProfilPicture">updateProfilPicture</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#94"><abbr title="App\Domain\DTO\TrickImageDTO::getImage">getImage</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/TrickImageDTO.php.html#102"><abbr title="App\Domain\DTO\TrickImageDTO::setImage">setImage</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Actions/Tricks/TrickCommentsLoadedAction.php.html#37"><abbr title="App\Actions\Tricks\TrickCommentsLoadedAction::__invoke">__invoke</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#133"><abbr title="App\Domain\DTO\UpdateTrickDTO::getGroups">getGroups</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#125"><abbr title="App\Domain\DTO\UpdateTrickDTO::getContent">getContent</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#67"><abbr title="App\Domain\DTO\UpdateTrickDTO::setContent">setContent</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/UpdateTrickDTO.php.html#59"><abbr title="App\Domain\DTO\UpdateTrickDTO::setTitle">setTitle</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/TrickVideoDTO.php.html#70"><abbr title="App\Domain\DTO\TrickVideoDTO::setPathUrl">setPathUrl</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/TrickVideoDTO.php.html#25"><abbr title="App\Domain\DTO\TrickVideoDTO::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/TrickVideoDTO.php.html#62"><abbr title="App\Domain\DTO\TrickVideoDTO::getPathUrl">getPathUrl</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Actions/HomepageTricksLoadedAction.php.html#32"><abbr title="App\Actions\HomepageTricksLoadedAction::__invoke">__invoke</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Domain/DTO/CreateTrickDTO.php.html#125"><abbr title="App\Domain\DTO\CreateTrickDTO::getImageslinks">getImageslinks</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Actions/Tricks/NewTrickAction.php.html#55"><abbr title="App\Actions\Tricks\NewTrickAction::__invoke">__invoke</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Security/LoginFormAuthenticator.php.html#80"><abbr title="App\Security\LoginFormAuthenticator::getUser">getUser</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Actions/Security/SecurityChangePasswordAction.php.html#44"><abbr title="App\Actions\Security\SecurityChangePasswordAction::__invoke">__invoke</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Actions/Comments/DeleteCommentAction.php.html#67"><abbr title="App\Actions\Comments\DeleteCommentAction::__invoke">__invoke</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#138"><abbr title="App\Domain\Builder\TrickBuilder::getGroupTrick">getGroupTrick</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Actions/Account/MyAccountAction.php.html#69"><abbr title="App\Actions\Account\MyAccountAction::__invoke">__invoke</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#126"><abbr title="App\Domain\Builder\TrickBuilder::getTrickVideos">getTrickVideos</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#149"><abbr title="App\Domain\Builder\TrickBuilder::getTrickImages">getTrickImages</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Security/LoginFormAuthenticator.php.html#107"><abbr title="App\Security\LoginFormAuthenticator::onAuthenticationSuccess">onAuthenticationSuccess</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Security/LoginFormAuthenticator.php.html#96"><abbr title="App\Security\LoginFormAuthenticator::checkCredentials">checkCredentials</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#96"><abbr title="App\Domain\Builder\TrickBuilder::setTrickImages">setTrickImages</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Domain/Builder/TrickBuilder.php.html#110"><abbr title="App\Domain\Builder\TrickBuilder::setTrickVideos">setTrickVideos</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 6.1.4</a> using <a href="https://secure.php.net/" target="_top">PHP 7.3.1</a> with <a href="https://xdebug.org/">Xdebug 2.9.4</a> and <a href="https://phpunit.de/">PHPUnit 7.5.20</a> at Thu Apr 30 14:24:37 UTC 2020.</small>
+    </p>
+   </footer>
+  </div>
+  <script src=".js/jquery.min.js" type="text/javascript"></script>
+  <script src=".js/d3.min.js" type="text/javascript"></script>
+  <script src=".js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([16,7,4,4,3,2,6,3,5,4,9,26], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([148,0,0,0,0,3,2,4,7,5,3,157], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,5,"<a href=\"Actions\/Account\/DeleteMyAccountAction.php.html#31\">App\\Actions\\Account\\DeleteMyAccountAction<\/a>"],[64.70588235294117,3,"<a href=\"Actions\/Account\/MyAccountAction.php.html#27\">App\\Actions\\Account\\MyAccountAction<\/a>"],[93.33333333333333,4,"<a href=\"Actions\/Comments\/DeleteCommentAction.php.html#24\">App\\Actions\\Comments\\DeleteCommentAction<\/a>"],[94.73684210526315,5,"<a href=\"Actions\/Comments\/UpdateCommentAction.php.html#28\">App\\Actions\\Comments\\UpdateCommentAction<\/a>"],[100,3,"<a href=\"Actions\/HomepageAction.php.html#21\">App\\Actions\\HomepageAction<\/a>"],[0,3,"<a href=\"Actions\/HomepageTricksLoadedAction.php.html#17\">App\\Actions\\HomepageTricksLoadedAction<\/a>"],[0,1,"<a href=\"Actions\/NoUserAction.php.html#13\">App\\Actions\\NoUserAction<\/a>"],[92.3076923076923,4,"<a href=\"Actions\/Security\/SecurityChangePasswordAction.php.html#20\">App\\Actions\\Security\\SecurityChangePasswordAction<\/a>"],[100,1,"<a href=\"Actions\/Security\/SecurityLoginAction.php.html#15\">App\\Actions\\Security\\SecurityLoginAction<\/a>"],[0,1,"<a href=\"Actions\/Security\/SecurityLogoutAction.php.html#7\">App\\Actions\\Security\\SecurityLogoutAction<\/a>"],[100,3,"<a href=\"Actions\/Security\/SecurityRegistrationAction.php.html#20\">App\\Actions\\Security\\SecurityRegistrationAction<\/a>"],[100,3,"<a href=\"Actions\/Security\/SecurityRequestNewPasswordAction.php.html#18\">App\\Actions\\Security\\SecurityRequestNewPasswordAction<\/a>"],[90.625,7,"<a href=\"Actions\/Tricks\/DeleteTrickAction.php.html#31\">App\\Actions\\Tricks\\DeleteTrickAction<\/a>"],[30.76923076923077,6,"<a href=\"Actions\/Tricks\/EditTrickAction.php.html#36\">App\\Actions\\Tricks\\EditTrickAction<\/a>"],[86.66666666666667,4,"<a href=\"Actions\/Tricks\/NewTrickAction.php.html#26\">App\\Actions\\Tricks\\NewTrickAction<\/a>"],[97.43589743589743,6,"<a href=\"Actions\/Tricks\/TrickAction.php.html#34\">App\\Actions\\Tricks\\TrickAction<\/a>"],[0,3,"<a href=\"Actions\/Tricks\/TrickCommentsLoadedAction.php.html#18\">App\\Actions\\Tricks\\TrickCommentsLoadedAction<\/a>"],[33.33333333333333,2,"<a href=\"DataFixtures\/AppFixtures.php.html#9\">App\\DataFixtures\\AppFixtures<\/a>"],[5,10,"<a href=\"DataFixtures\/BaseFixture.php.html#10\">App\\DataFixtures\\BaseFixture<\/a>"],[7.142857142857142,3,"<a href=\"DataFixtures\/CommentFixture.php.html#11\">App\\DataFixtures\\CommentFixture<\/a>"],[0,2,"<a href=\"DataFixtures\/GroupFixture.php.html#8\">App\\DataFixtures\\GroupFixture<\/a>"],[20,4,"<a href=\"DataFixtures\/ImageTrickFixture.php.html#11\">App\\DataFixtures\\ImageTrickFixture<\/a>"],[5,10,"<a href=\"DataFixtures\/Tests\/BaseTestFixture.php.html#10\">App\\DataFixtures\\Tests\\BaseTestFixture<\/a>"],[18.181818181818183,2,"<a href=\"DataFixtures\/Tests\/UserPasswordFixture.php.html#9\">App\\DataFixtures\\Tests\\UserPasswordFixture<\/a>"],[9.090909090909092,2,"<a href=\"DataFixtures\/TrickFixtures.php.html#12\">App\\DataFixtures\\TrickFixtures<\/a>"],[22.22222222222222,2,"<a href=\"DataFixtures\/UserFixture.php.html#9\">App\\DataFixtures\\UserFixture<\/a>"],[27.27272727272727,4,"<a href=\"DataFixtures\/VideoTrickFixture.php.html#13\">App\\DataFixtures\\VideoTrickFixture<\/a>"],[100,3,"<a href=\"Domain\/Builder\/CommentBuilder.php.html#14\">App\\Domain\\Builder\\CommentBuilder<\/a>"],[0,2,"<a href=\"Domain\/Builder\/GroupTrickBuilder.php.html#15\">App\\Domain\\Builder\\GroupTrickBuilder<\/a>"],[78.57142857142857,14,"<a href=\"Domain\/Builder\/TrickBuilder.php.html#18\">App\\Domain\\Builder\\TrickBuilder<\/a>"],[15.384615384615385,4,"<a href=\"Domain\/Builder\/TrickImageBuilder.php.html#15\">App\\Domain\\Builder\\TrickImageBuilder<\/a>"],[28.57142857142857,4,"<a href=\"Domain\/Builder\/TrickVideoBuilder.php.html#11\">App\\Domain\\Builder\\TrickVideoBuilder<\/a>"],[52.63157894736842,5,"<a href=\"Domain\/Builder\/UserBuilder.php.html#14\">App\\Domain\\Builder\\UserBuilder<\/a>"],[55.55555555555556,7,"<a href=\"Domain\/DTO\/ChangePasswordDTO.php.html#10\">App\\Domain\\DTO\\ChangePasswordDTO<\/a>"],[100,7,"<a href=\"Domain\/DTO\/CommentDTO.php.html#9\">App\\Domain\\DTO\\CommentDTO<\/a>"],[60,21,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#11\">App\\Domain\\DTO\\CreateTrickDTO<\/a>"],[52.94117647058824,9,"<a href=\"Domain\/DTO\/CreateUserDTO.php.html#10\">App\\Domain\\DTO\\CreateUserDTO<\/a>"],[55.55555555555556,5,"<a href=\"Domain\/DTO\/EmailPasswordRecoveryDTO.php.html#8\">App\\Domain\\DTO\\EmailPasswordRecoveryDTO<\/a>"],[0,6,"<a href=\"Domain\/DTO\/ProfilPictureDTO.php.html#10\">App\\Domain\\DTO\\ProfilPictureDTO<\/a>"],[0,14,"<a href=\"Domain\/DTO\/TrickImageDTO.php.html#11\">App\\Domain\\DTO\\TrickImageDTO<\/a>"],[0,9,"<a href=\"Domain\/DTO\/TrickVideoDTO.php.html#9\">App\\Domain\\DTO\\TrickVideoDTO<\/a>"],[0,38,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#13\">App\\Domain\\DTO\\UpdateTrickDTO<\/a>"],[77.77777777777779,17,"<a href=\"Domain\/Entity\/Comment.php.html#13\">App\\Domain\\Entity\\Comment<\/a>"],[5.88235294117647,12,"<a href=\"Domain\/Entity\/GroupTrick.php.html#12\">App\\Domain\\Entity\\GroupTrick<\/a>"],[40.243902439024396,46,"<a href=\"Domain\/Entity\/Trick.php.html#19\">App\\Domain\\Entity\\Trick<\/a>"],[17.647058823529413,12,"<a href=\"Domain\/Entity\/TrickImage.php.html#14\">App\\Domain\\Entity\\TrickImage<\/a>"],[8.333333333333332,14,"<a href=\"Domain\/Entity\/TrickVideo.php.html#10\">App\\Domain\\Entity\\TrickVideo<\/a>"],[63.41463414634146,31,"<a href=\"Domain\/Entity\/User.php.html#16\">App\\Domain\\Entity\\User<\/a>"],[100,2,"<a href=\"Domain\/Repository\/CommentRepository.php.html#11\">App\\Domain\\Repository\\CommentRepository<\/a>"],[100,1,"<a href=\"Domain\/Repository\/GroupTrickRepository.php.html#15\">App\\Domain\\Repository\\GroupTrickRepository<\/a>"],[100,1,"<a href=\"Domain\/Repository\/TrickImageRepository.php.html#10\">App\\Domain\\Repository\\TrickImageRepository<\/a>"],[100,2,"<a href=\"Domain\/Repository\/TrickRepository.php.html#11\">App\\Domain\\Repository\\TrickRepository<\/a>"],[100,1,"<a href=\"Domain\/Repository\/TrickVideoRepository.php.html#15\">App\\Domain\\Repository\\TrickVideoRepository<\/a>"],[100,2,"<a href=\"Domain\/Repository\/UserRepository.php.html#11\">App\\Domain\\Repository\\UserRepository<\/a>"],[100,0,"<a href=\"Form\/CustomConstraints\/NotInDatabase.php.html#12\">App\\Form\\CustomConstraints\\NotInDatabase<\/a>"],[57.14285714285714,7,"<a href=\"Form\/CustomConstraints\/NotInDatabaseValidator.php.html#13\">App\\Form\\CustomConstraints\\NotInDatabaseValidator<\/a>"],[100,0,"<a href=\"Form\/CustomConstraints\/UniqueEmail.php.html#12\">App\\Form\\CustomConstraints\\UniqueEmail<\/a>"],[78.57142857142857,7,"<a href=\"Form\/CustomConstraints\/UniqueEmailValidator.php.html#13\">App\\Form\\CustomConstraints\\UniqueEmailValidator<\/a>"],[100,0,"<a href=\"Form\/CustomConstraints\/UniqueTrickTitle.php.html#12\">App\\Form\\CustomConstraints\\UniqueTrickTitle<\/a>"],[57.14285714285714,7,"<a href=\"Form\/CustomConstraints\/UniqueTrickTitleValidator.php.html#13\">App\\Form\\CustomConstraints\\UniqueTrickTitleValidator<\/a>"],[100,0,"<a href=\"Form\/CustomConstraints\/UniqueUsername.php.html#12\">App\\Form\\CustomConstraints\\UniqueUsername<\/a>"],[78.57142857142857,7,"<a href=\"Form\/CustomConstraints\/UniqueUsernameValidator.php.html#13\">App\\Form\\CustomConstraints\\UniqueUsernameValidator<\/a>"],[81.81818181818183,8,"<a href=\"Form\/Handler\/AddTrickTypeHandler.php.html#17\">App\\Form\\Handler\\AddTrickTypeHandler<\/a>"],[100,4,"<a href=\"Form\/Handler\/AddUserTypeHandler.php.html#16\">App\\Form\\Handler\\AddUserTypeHandler<\/a>"],[45.45454545454545,4,"<a href=\"Form\/Handler\/EditProfilPictureTypeHandler.php.html#15\">App\\Form\\Handler\\EditProfilPictureTypeHandler<\/a>"],[38.88888888888889,4,"<a href=\"Form\/Handler\/EditTrickTypeHandler.php.html#19\">App\\Form\\Handler\\EditTrickTypeHandler<\/a>"],[100,5,"<a href=\"Form\/Handler\/NewPasswordRequestTypeHandler.php.html#16\">App\\Form\\Handler\\NewPasswordRequestTypeHandler<\/a>"],[94.44444444444444,5,"<a href=\"Form\/Handler\/ResetPasswordTypeHandler.php.html#16\">App\\Form\\Handler\\ResetPasswordTypeHandler<\/a>"],[100,7,"<a href=\"Form\/Handler\/TrickCommentTypeHandler.php.html#15\">App\\Form\\Handler\\TrickCommentTypeHandler<\/a>"],[100,4,"<a href=\"Form\/Type\/CreateTrickType.php.html#18\">App\\Form\\Type\\CreateTrickType<\/a>"],[100,2,"<a href=\"Form\/Type\/EmailForPasswordRecoveryFormType.php.html#13\">App\\Form\\Type\\EmailForPasswordRecoveryFormType<\/a>"],[80,2,"<a href=\"Form\/Type\/ImageType.php.html#17\">App\\Form\\Type\\ImageType<\/a>"],[0,2,"<a href=\"Form\/Type\/ProfilPictureType.php.html#13\">App\\Form\\Type\\ProfilPictureType<\/a>"],[93.33333333333333,3,"<a href=\"Form\/Type\/RegistrationType.php.html#12\">App\\Form\\Type\\RegistrationType<\/a>"],[0,1,"<a href=\"Form\/Type\/ResetPasswordFromAccountType.php.html#13\">App\\Form\\Type\\ResetPasswordFromAccountType<\/a>"],[100,2,"<a href=\"Form\/Type\/ResetPasswordType.php.html#14\">App\\Form\\Type\\ResetPasswordType<\/a>"],[0,4,"<a href=\"Form\/Type\/UpdateTrickType.php.html#19\">App\\Form\\Type\\UpdateTrickType<\/a>"],[80,2,"<a href=\"Form\/Type\/VideoType.php.html#12\">App\\Form\\Type\\VideoType<\/a>"],[100,2,"<a href=\"Form\/Type\/trickCommentType.php.html#13\">App\\Form\\Type\\trickCommentType<\/a>"],[0,1,"<a href=\"Listener\/UserCreatedListener.php.html#9\">App\\Listener\\UserCreatedListener<\/a>"],[100,2,"<a href=\"Responders\/RedirectResponder.php.html#11\">App\\Responders\\RedirectResponder<\/a>"],[100,2,"<a href=\"Responders\/ViewResponder.php.html#13\">App\\Responders\\ViewResponder<\/a>"],[90.32258064516128,12,"<a href=\"Security\/LoginFormAuthenticator.php.html#22\">App\\Security\\LoginFormAuthenticator<\/a>"],[0,1,"<a href=\"Service\/ImageFileNameService.php.html#11\">App\\Service\\ImageFileNameService<\/a>"],[92.3076923076923,3,"<a href=\"Service\/MailSenderHelper.php.html#11\">App\\Service\\MailSenderHelper<\/a>"],[12.82051282051282,8,"<a href=\"Service\/TrickUpdateResolver.php.html#14\">App\\Service\\TrickUpdateResolver<\/a>"],[9.090909090909092,11,"<a href=\"Service\/UploaderHelper.php.html#10\">App\\Service\\UploaderHelper<\/a>"],[100,5,"<a href=\"Service\/VideoLinkHelper.php.html#6\">App\\Service\\VideoLinkHelper<\/a>"],[76.92307692307693,6,"<a href=\"Twig\/AppExtension.php.html#12\">App\\Twig\\AppExtension<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Actions\/Account\/DeleteMyAccountAction.php.html#74\">App\\Actions\\Account\\DeleteMyAccountAction::__construct<\/a>"],[0,4,"<a href=\"Actions\/Account\/DeleteMyAccountAction.php.html#87\">App\\Actions\\Account\\DeleteMyAccountAction::__invoke<\/a>"],[100,1,"<a href=\"Actions\/Account\/MyAccountAction.php.html#58\">App\\Actions\\Account\\MyAccountAction::__construct<\/a>"],[40,2,"<a href=\"Actions\/Account\/MyAccountAction.php.html#69\">App\\Actions\\Account\\MyAccountAction::__invoke<\/a>"],[100,1,"<a href=\"Actions\/Comments\/DeleteCommentAction.php.html#58\">App\\Actions\\Comments\\DeleteCommentAction::__construct<\/a>"],[88.88888888888889,3,"<a href=\"Actions\/Comments\/DeleteCommentAction.php.html#67\">App\\Actions\\Comments\\DeleteCommentAction::__invoke<\/a>"],[100,1,"<a href=\"Actions\/Comments\/UpdateCommentAction.php.html#55\">App\\Actions\\Comments\\UpdateCommentAction::__construct<\/a>"],[92.3076923076923,4,"<a href=\"Actions\/Comments\/UpdateCommentAction.php.html#65\">App\\Actions\\Comments\\UpdateCommentAction::__invoke<\/a>"],[100,1,"<a href=\"Actions\/HomepageAction.php.html#30\">App\\Actions\\HomepageAction::__construct<\/a>"],[100,2,"<a href=\"Actions\/HomepageAction.php.html#35\">App\\Actions\\HomepageAction::__invoke<\/a>"],[0,1,"<a href=\"Actions\/HomepageTricksLoadedAction.php.html#26\">App\\Actions\\HomepageTricksLoadedAction::__construct<\/a>"],[0,2,"<a href=\"Actions\/HomepageTricksLoadedAction.php.html#32\">App\\Actions\\HomepageTricksLoadedAction::__invoke<\/a>"],[0,1,"<a href=\"Actions\/NoUserAction.php.html#15\">App\\Actions\\NoUserAction::__invoke<\/a>"],[100,1,"<a href=\"Actions\/Security\/SecurityChangePasswordAction.php.html#37\">App\\Actions\\Security\\SecurityChangePasswordAction::__construct<\/a>"],[88.88888888888889,3,"<a href=\"Actions\/Security\/SecurityChangePasswordAction.php.html#44\">App\\Actions\\Security\\SecurityChangePasswordAction::__invoke<\/a>"],[100,1,"<a href=\"Actions\/Security\/SecurityLoginAction.php.html#17\">App\\Actions\\Security\\SecurityLoginAction::__invoke<\/a>"],[0,1,"<a href=\"Actions\/Security\/SecurityLogoutAction.php.html#12\">App\\Actions\\Security\\SecurityLogoutAction::logout<\/a>"],[100,1,"<a href=\"Actions\/Security\/SecurityRegistrationAction.php.html#33\">App\\Actions\\Security\\SecurityRegistrationAction::__construct<\/a>"],[100,2,"<a href=\"Actions\/Security\/SecurityRegistrationAction.php.html#39\">App\\Actions\\Security\\SecurityRegistrationAction::__invoke<\/a>"],[100,1,"<a href=\"Actions\/Security\/SecurityRequestNewPasswordAction.php.html#32\">App\\Actions\\Security\\SecurityRequestNewPasswordAction::__construct<\/a>"],[100,2,"<a href=\"Actions\/Security\/SecurityRequestNewPasswordAction.php.html#38\">App\\Actions\\Security\\SecurityRequestNewPasswordAction::__invoke<\/a>"],[100,1,"<a href=\"Actions\/Tricks\/DeleteTrickAction.php.html#82\">App\\Actions\\Tricks\\DeleteTrickAction::__construct<\/a>"],[85.71428571428571,6,"<a href=\"Actions\/Tricks\/DeleteTrickAction.php.html#96\">App\\Actions\\Tricks\\DeleteTrickAction::__invoke<\/a>"],[100,1,"<a href=\"Actions\/Tricks\/EditTrickAction.php.html#85\">App\\Actions\\Tricks\\EditTrickAction::__construct<\/a>"],[0,5,"<a href=\"Actions\/Tricks\/EditTrickAction.php.html#100\">App\\Actions\\Tricks\\EditTrickAction::__invoke<\/a>"],[100,1,"<a href=\"Actions\/Tricks\/NewTrickAction.php.html#47\">App\\Actions\\Tricks\\NewTrickAction::__construct<\/a>"],[80,3,"<a href=\"Actions\/Tricks\/NewTrickAction.php.html#55\">App\\Actions\\Tricks\\NewTrickAction::__invoke<\/a>"],[100,1,"<a href=\"Actions\/Tricks\/TrickAction.php.html#87\">App\\Actions\\Tricks\\TrickAction::__construct<\/a>"],[96.15384615384616,5,"<a href=\"Actions\/Tricks\/TrickAction.php.html#103\">App\\Actions\\Tricks\\TrickAction::__invoke<\/a>"],[0,1,"<a href=\"Actions\/Tricks\/TrickCommentsLoadedAction.php.html#31\">App\\Actions\\Tricks\\TrickCommentsLoadedAction::__construct<\/a>"],[0,2,"<a href=\"Actions\/Tricks\/TrickCommentsLoadedAction.php.html#37\">App\\Actions\\Tricks\\TrickCommentsLoadedAction::__invoke<\/a>"],[0,1,"<a href=\"DataFixtures\/AppFixtures.php.html#11\">App\\DataFixtures\\AppFixtures::load<\/a>"],[100,1,"<a href=\"DataFixtures\/AppFixtures.php.html#19\">App\\DataFixtures\\AppFixtures::getGroups<\/a>"],[0,1,"<a href=\"DataFixtures\/BaseFixture.php.html#20\">App\\DataFixtures\\BaseFixture::load<\/a>"],[0,2,"<a href=\"DataFixtures\/BaseFixture.php.html#27\">App\\DataFixtures\\BaseFixture::createMany<\/a>"],[0,5,"<a href=\"DataFixtures\/BaseFixture.php.html#39\">App\\DataFixtures\\BaseFixture::getRandomReference<\/a>"],[100,1,"<a href=\"DataFixtures\/BaseFixture.php.html#59\">App\\DataFixtures\\BaseFixture::loadData<\/a>"],[100,1,"<a href=\"DataFixtures\/BaseFixture.php.html#61\">App\\DataFixtures\\BaseFixture::getGroups<\/a>"],[0,2,"<a href=\"DataFixtures\/CommentFixture.php.html#13\">App\\DataFixtures\\CommentFixture::loadData<\/a>"],[100,1,"<a href=\"DataFixtures\/CommentFixture.php.html#40\">App\\DataFixtures\\CommentFixture::getDependencies<\/a>"],[0,2,"<a href=\"DataFixtures\/GroupFixture.php.html#16\">App\\DataFixtures\\GroupFixture::loadData<\/a>"],[100,1,"<a href=\"DataFixtures\/ImageTrickFixture.php.html#33\">App\\DataFixtures\\ImageTrickFixture::__construct<\/a>"],[0,2,"<a href=\"DataFixtures\/ImageTrickFixture.php.html#39\">App\\DataFixtures\\ImageTrickFixture::loadData<\/a>"],[100,1,"<a href=\"DataFixtures\/ImageTrickFixture.php.html#69\">App\\DataFixtures\\ImageTrickFixture::getDependencies<\/a>"],[0,1,"<a href=\"DataFixtures\/Tests\/BaseTestFixture.php.html#20\">App\\DataFixtures\\Tests\\BaseTestFixture::load<\/a>"],[0,2,"<a href=\"DataFixtures\/Tests\/BaseTestFixture.php.html#27\">App\\DataFixtures\\Tests\\BaseTestFixture::createMany<\/a>"],[0,5,"<a href=\"DataFixtures\/Tests\/BaseTestFixture.php.html#39\">App\\DataFixtures\\Tests\\BaseTestFixture::getRandomReference<\/a>"],[100,1,"<a href=\"DataFixtures\/Tests\/BaseTestFixture.php.html#59\">App\\DataFixtures\\Tests\\BaseTestFixture::loadData<\/a>"],[100,1,"<a href=\"DataFixtures\/Tests\/BaseTestFixture.php.html#61\">App\\DataFixtures\\Tests\\BaseTestFixture::getGroups<\/a>"],[100,1,"<a href=\"DataFixtures\/Tests\/UserPasswordFixture.php.html#30\">App\\DataFixtures\\Tests\\UserPasswordFixture::__construct<\/a>"],[0,1,"<a href=\"DataFixtures\/Tests\/UserPasswordFixture.php.html#35\">App\\DataFixtures\\Tests\\UserPasswordFixture::loadData<\/a>"],[0,1,"<a href=\"DataFixtures\/TrickFixtures.php.html#37\">App\\DataFixtures\\TrickFixtures::loadData<\/a>"],[100,1,"<a href=\"DataFixtures\/TrickFixtures.php.html#55\">App\\DataFixtures\\TrickFixtures::getDependencies<\/a>"],[100,1,"<a href=\"DataFixtures\/UserFixture.php.html#51\">App\\DataFixtures\\UserFixture::__construct<\/a>"],[0,1,"<a href=\"DataFixtures\/UserFixture.php.html#56\">App\\DataFixtures\\UserFixture::loadData<\/a>"],[100,1,"<a href=\"DataFixtures\/VideoTrickFixture.php.html#22\">App\\DataFixtures\\VideoTrickFixture::__construct<\/a>"],[0,2,"<a href=\"DataFixtures\/VideoTrickFixture.php.html#34\">App\\DataFixtures\\VideoTrickFixture::loadData<\/a>"],[100,1,"<a href=\"DataFixtures\/VideoTrickFixture.php.html#48\">App\\DataFixtures\\VideoTrickFixture::getDependencies<\/a>"],[100,1,"<a href=\"Domain\/Builder\/CommentBuilder.php.html#29\">App\\Domain\\Builder\\CommentBuilder::__construct<\/a>"],[100,1,"<a href=\"Domain\/Builder\/CommentBuilder.php.html#38\">App\\Domain\\Builder\\CommentBuilder::create<\/a>"],[100,1,"<a href=\"Domain\/Builder\/CommentBuilder.php.html#52\">App\\Domain\\Builder\\CommentBuilder::getComment<\/a>"],[0,1,"<a href=\"Domain\/Builder\/GroupTrickBuilder.php.html#26\">App\\Domain\\Builder\\GroupTrickBuilder::create<\/a>"],[0,1,"<a href=\"Domain\/Builder\/GroupTrickBuilder.php.html#36\">App\\Domain\\Builder\\GroupTrickBuilder::getGroupTrick<\/a>"],[100,1,"<a href=\"Domain\/Builder\/TrickBuilder.php.html#61\">App\\Domain\\Builder\\TrickBuilder::__construct<\/a>"],[100,1,"<a href=\"Domain\/Builder\/TrickBuilder.php.html#76\">App\\Domain\\Builder\\TrickBuilder::create<\/a>"],[75,2,"<a href=\"Domain\/Builder\/TrickBuilder.php.html#96\">App\\Domain\\Builder\\TrickBuilder::setTrickImages<\/a>"],[75,2,"<a href=\"Domain\/Builder\/TrickBuilder.php.html#110\">App\\Domain\\Builder\\TrickBuilder::setTrickVideos<\/a>"],[100,1,"<a href=\"Domain\/Builder\/TrickBuilder.php.html#120\">App\\Domain\\Builder\\TrickBuilder::getUser<\/a>"],[60,2,"<a href=\"Domain\/Builder\/TrickBuilder.php.html#126\">App\\Domain\\Builder\\TrickBuilder::getTrickVideos<\/a>"],[40,2,"<a href=\"Domain\/Builder\/TrickBuilder.php.html#138\">App\\Domain\\Builder\\TrickBuilder::getGroupTrick<\/a>"],[60,2,"<a href=\"Domain\/Builder\/TrickBuilder.php.html#149\">App\\Domain\\Builder\\TrickBuilder::getTrickImages<\/a>"],[100,1,"<a href=\"Domain\/Builder\/TrickBuilder.php.html#164\">App\\Domain\\Builder\\TrickBuilder::getTrick<\/a>"],[100,1,"<a href=\"Domain\/Builder\/TrickImageBuilder.php.html#31\">App\\Domain\\Builder\\TrickImageBuilder::__construct<\/a>"],[0,2,"<a href=\"Domain\/Builder\/TrickImageBuilder.php.html#40\">App\\Domain\\Builder\\TrickImageBuilder::create<\/a>"],[0,1,"<a href=\"Domain\/Builder\/TrickImageBuilder.php.html#63\">App\\Domain\\Builder\\TrickImageBuilder::getTrickImage<\/a>"],[100,1,"<a href=\"Domain\/Builder\/TrickVideoBuilder.php.html#25\">App\\Domain\\Builder\\TrickVideoBuilder::__construct<\/a>"],[0,1,"<a href=\"Domain\/Builder\/TrickVideoBuilder.php.html#34\">App\\Domain\\Builder\\TrickVideoBuilder::create<\/a>"],[0,1,"<a href=\"Domain\/Builder\/TrickVideoBuilder.php.html#43\">App\\Domain\\Builder\\TrickVideoBuilder::getEmbedPathUrl<\/a>"],[0,1,"<a href=\"Domain\/Builder\/TrickVideoBuilder.php.html#50\">App\\Domain\\Builder\\TrickVideoBuilder::getTrickVideo<\/a>"],[100,1,"<a href=\"Domain\/Builder\/UserBuilder.php.html#36\">App\\Domain\\Builder\\UserBuilder::__construct<\/a>"],[100,1,"<a href=\"Domain\/Builder\/UserBuilder.php.html#48\">App\\Domain\\Builder\\UserBuilder::create<\/a>"],[0,2,"<a href=\"Domain\/Builder\/UserBuilder.php.html#59\">App\\Domain\\Builder\\UserBuilder::updateProfilPicture<\/a>"],[100,1,"<a href=\"Domain\/Builder\/UserBuilder.php.html#81\">App\\Domain\\Builder\\UserBuilder::getUser<\/a>"],[100,3,"<a href=\"Domain\/DTO\/ChangePasswordDTO.php.html#30\">App\\Domain\\DTO\\ChangePasswordDTO::__construct<\/a>"],[100,1,"<a href=\"Domain\/DTO\/ChangePasswordDTO.php.html#39\">App\\Domain\\DTO\\ChangePasswordDTO::getUsername<\/a>"],[0,1,"<a href=\"Domain\/DTO\/ChangePasswordDTO.php.html#47\">App\\Domain\\DTO\\ChangePasswordDTO::setUsername<\/a>"],[100,1,"<a href=\"Domain\/DTO\/ChangePasswordDTO.php.html#55\">App\\Domain\\DTO\\ChangePasswordDTO::getPassword<\/a>"],[0,1,"<a href=\"Domain\/DTO\/ChangePasswordDTO.php.html#63\">App\\Domain\\DTO\\ChangePasswordDTO::setPassword<\/a>"],[100,2,"<a href=\"Domain\/DTO\/CommentDTO.php.html#22\">App\\Domain\\DTO\\CommentDTO::__construct<\/a>"],[100,1,"<a href=\"Domain\/DTO\/CommentDTO.php.html#27\">App\\Domain\\DTO\\CommentDTO::createFromEntity<\/a>"],[100,2,"<a href=\"Domain\/DTO\/CommentDTO.php.html#38\">App\\Domain\\DTO\\CommentDTO::getText<\/a>"],[100,2,"<a href=\"Domain\/DTO\/CommentDTO.php.html#46\">App\\Domain\\DTO\\CommentDTO::setText<\/a>"],[100,4,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#49\">App\\Domain\\DTO\\CreateTrickDTO::__construct<\/a>"],[0,2,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#61\">App\\Domain\\DTO\\CreateTrickDTO::setTitle<\/a>"],[0,2,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#69\">App\\Domain\\DTO\\CreateTrickDTO::setContent<\/a>"],[0,1,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#77\">App\\Domain\\DTO\\CreateTrickDTO::setGroups<\/a>"],[100,1,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#85\">App\\Domain\\DTO\\CreateTrickDTO::setImageslinks<\/a>"],[0,1,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#93\">App\\Domain\\DTO\\CreateTrickDTO::setVideoslinks<\/a>"],[100,2,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#101\">App\\Domain\\DTO\\CreateTrickDTO::getTitle<\/a>"],[100,2,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#109\">App\\Domain\\DTO\\CreateTrickDTO::getContent<\/a>"],[100,2,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#117\">App\\Domain\\DTO\\CreateTrickDTO::getGroups<\/a>"],[60,3,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#125\">App\\Domain\\DTO\\CreateTrickDTO::getImageslinks<\/a>"],[100,1,"<a href=\"Domain\/DTO\/CreateTrickDTO.php.html#140\">App\\Domain\\DTO\\CreateTrickDTO::getVideoslinks<\/a>"],[100,1,"<a href=\"Domain\/DTO\/CreateUserDTO.php.html#52\">App\\Domain\\DTO\\CreateUserDTO::__construct<\/a>"],[100,1,"<a href=\"Domain\/DTO\/CreateUserDTO.php.html#63\">App\\Domain\\DTO\\CreateUserDTO::getUsername<\/a>"],[0,1,"<a href=\"Domain\/DTO\/CreateUserDTO.php.html#71\">App\\Domain\\DTO\\CreateUserDTO::setUsername<\/a>"],[100,1,"<a href=\"Domain\/DTO\/CreateUserDTO.php.html#79\">App\\Domain\\DTO\\CreateUserDTO::getEmail<\/a>"],[0,1,"<a href=\"Domain\/DTO\/CreateUserDTO.php.html#87\">App\\Domain\\DTO\\CreateUserDTO::setEmail<\/a>"],[100,1,"<a href=\"Domain\/DTO\/CreateUserDTO.php.html#95\">App\\Domain\\DTO\\CreateUserDTO::getPassword<\/a>"],[0,1,"<a href=\"Domain\/DTO\/CreateUserDTO.php.html#103\">App\\Domain\\DTO\\CreateUserDTO::setPassword<\/a>"],[100,1,"<a href=\"Domain\/DTO\/CreateUserDTO.php.html#111\">App\\Domain\\DTO\\CreateUserDTO::getConfirmPassword<\/a>"],[0,1,"<a href=\"Domain\/DTO\/CreateUserDTO.php.html#119\">App\\Domain\\DTO\\CreateUserDTO::setConfirmPassword<\/a>"],[100,1,"<a href=\"Domain\/DTO\/EmailPasswordRecoveryDTO.php.html#28\">App\\Domain\\DTO\\EmailPasswordRecoveryDTO::__construct<\/a>"],[100,1,"<a href=\"Domain\/DTO\/EmailPasswordRecoveryDTO.php.html#37\">App\\Domain\\DTO\\EmailPasswordRecoveryDTO::getPseudo<\/a>"],[0,1,"<a href=\"Domain\/DTO\/EmailPasswordRecoveryDTO.php.html#45\">App\\Domain\\DTO\\EmailPasswordRecoveryDTO::setPseudo<\/a>"],[100,1,"<a href=\"Domain\/DTO\/EmailPasswordRecoveryDTO.php.html#53\">App\\Domain\\DTO\\EmailPasswordRecoveryDTO::getEmail<\/a>"],[0,1,"<a href=\"Domain\/DTO\/EmailPasswordRecoveryDTO.php.html#61\">App\\Domain\\DTO\\EmailPasswordRecoveryDTO::setEmail<\/a>"],[0,1,"<a href=\"Domain\/DTO\/ProfilPictureDTO.php.html#29\">App\\Domain\\DTO\\ProfilPictureDTO::__construct<\/a>"],[0,1,"<a href=\"Domain\/DTO\/ProfilPictureDTO.php.html#35\">App\\Domain\\DTO\\ProfilPictureDTO::getProfilPicture<\/a>"],[0,1,"<a href=\"Domain\/DTO\/ProfilPictureDTO.php.html#43\">App\\Domain\\DTO\\ProfilPictureDTO::setProfilPicture<\/a>"],[0,1,"<a href=\"Domain\/DTO\/ProfilPictureDTO.php.html#51\">App\\Domain\\DTO\\ProfilPictureDTO::createFromEntity<\/a>"],[0,1,"<a href=\"Domain\/DTO\/ProfilPictureDTO.php.html#63\">App\\Domain\\DTO\\ProfilPictureDTO::getAlt<\/a>"],[0,1,"<a href=\"Domain\/DTO\/ProfilPictureDTO.php.html#68\">App\\Domain\\DTO\\ProfilPictureDTO::getId<\/a>"],[0,1,"<a href=\"Domain\/DTO\/TrickImageDTO.php.html#38\">App\\Domain\\DTO\\TrickImageDTO::getFirstimage<\/a>"],[0,1,"<a href=\"Domain\/DTO\/TrickImageDTO.php.html#46\">App\\Domain\\DTO\\TrickImageDTO::setFirstimage<\/a>"],[0,2,"<a href=\"Domain\/DTO\/TrickImageDTO.php.html#56\">App\\Domain\\DTO\\TrickImageDTO::__construct<\/a>"],[0,1,"<a href=\"Domain\/DTO\/TrickImageDTO.php.html#67\">App\\Domain\\DTO\\TrickImageDTO::createFromEntity<\/a>"],[0,2,"<a href=\"Domain\/DTO\/TrickImageDTO.php.html#78\">App\\Domain\\DTO\\TrickImageDTO::getAlt<\/a>"],[0,1,"<a href=\"Domain\/DTO\/TrickImageDTO.php.html#86\">App\\Domain\\DTO\\TrickImageDTO::setAlt<\/a>"],[0,2,"<a href=\"Domain\/DTO\/TrickImageDTO.php.html#94\">App\\Domain\\DTO\\TrickImageDTO::getImage<\/a>"],[0,2,"<a href=\"Domain\/DTO\/TrickImageDTO.php.html#102\">App\\Domain\\DTO\\TrickImageDTO::setImage<\/a>"],[0,1,"<a href=\"Domain\/DTO\/TrickImageDTO.php.html#107\">App\\Domain\\DTO\\TrickImageDTO::getId<\/a>"],[0,1,"<a href=\"Domain\/DTO\/TrickImageDTO.php.html#115\">App\\Domain\\DTO\\TrickImageDTO::setId<\/a>"],[0,2,"<a href=\"Domain\/DTO\/TrickVideoDTO.php.html#25\">App\\Domain\\DTO\\TrickVideoDTO::__construct<\/a>"],[0,1,"<a href=\"Domain\/DTO\/TrickVideoDTO.php.html#33\">App\\Domain\\DTO\\TrickVideoDTO::createFromEntity<\/a>"],[0,1,"<a href=\"Domain\/DTO\/TrickVideoDTO.php.html#46\">App\\Domain\\DTO\\TrickVideoDTO::getId<\/a>"],[0,1,"<a href=\"Domain\/DTO\/TrickVideoDTO.php.html#54\">App\\Domain\\DTO\\TrickVideoDTO::setId<\/a>"],[0,2,"<a href=\"Domain\/DTO\/TrickVideoDTO.php.html#62\">App\\Domain\\DTO\\TrickVideoDTO::getPathUrl<\/a>"],[0,2,"<a href=\"Domain\/DTO\/TrickVideoDTO.php.html#70\">App\\Domain\\DTO\\TrickVideoDTO::setPathUrl<\/a>"],[0,4,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#47\">App\\Domain\\DTO\\UpdateTrickDTO::__construct<\/a>"],[0,2,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#59\">App\\Domain\\DTO\\UpdateTrickDTO::setTitle<\/a>"],[0,2,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#67\">App\\Domain\\DTO\\UpdateTrickDTO::setContent<\/a>"],[0,1,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#75\">App\\Domain\\DTO\\UpdateTrickDTO::setGroups<\/a>"],[0,3,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#84\">App\\Domain\\DTO\\UpdateTrickDTO::createFromEntity<\/a>"],[0,3,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#114\">App\\Domain\\DTO\\UpdateTrickDTO::getTitle<\/a>"],[0,2,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#125\">App\\Domain\\DTO\\UpdateTrickDTO::getContent<\/a>"],[0,2,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#133\">App\\Domain\\DTO\\UpdateTrickDTO::getGroups<\/a>"],[0,3,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#141\">App\\Domain\\DTO\\UpdateTrickDTO::getImageslinks<\/a>"],[0,3,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#155\">App\\Domain\\DTO\\UpdateTrickDTO::getImageslinksWithIds<\/a>"],[0,4,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#170\">App\\Domain\\DTO\\UpdateTrickDTO::getImageslinksWithNoIds<\/a>"],[0,1,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#185\">App\\Domain\\DTO\\UpdateTrickDTO::setImageslinks<\/a>"],[0,3,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#193\">App\\Domain\\DTO\\UpdateTrickDTO::getVideolinksWithIds<\/a>"],[0,3,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#207\">App\\Domain\\DTO\\UpdateTrickDTO::getVideolinksWithNoIds<\/a>"],[0,1,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#221\">App\\Domain\\DTO\\UpdateTrickDTO::getVideoslinks<\/a>"],[0,1,"<a href=\"Domain\/DTO\/UpdateTrickDTO.php.html#229\">App\\Domain\\DTO\\UpdateTrickDTO::setVideoslinks<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Comment.php.html#62\">App\\Domain\\Entity\\Comment::__construct<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Comment.php.html#69\">App\\Domain\\Entity\\Comment::getId<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Comment.php.html#77\">App\\Domain\\Entity\\Comment::getContent<\/a>"],[0,1,"<a href=\"Domain\/Entity\/Comment.php.html#85\">App\\Domain\\Entity\\Comment::getCreatedAt<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Comment.php.html#93\">App\\Domain\\Entity\\Comment::setContent<\/a>"],[0,2,"<a href=\"Domain\/Entity\/Comment.php.html#98\">App\\Domain\\Entity\\Comment::getUpdatedAt<\/a>"],[100,2,"<a href=\"Domain\/Entity\/Comment.php.html#103\">App\\Domain\\Entity\\Comment::setUpdatedAt<\/a>"],[100,2,"<a href=\"Domain\/Entity\/Comment.php.html#108\">App\\Domain\\Entity\\Comment::getTrick<\/a>"],[100,2,"<a href=\"Domain\/Entity\/Comment.php.html#113\">App\\Domain\\Entity\\Comment::setTrick<\/a>"],[100,2,"<a href=\"Domain\/Entity\/Comment.php.html#120\">App\\Domain\\Entity\\Comment::getUser<\/a>"],[0,2,"<a href=\"Domain\/Entity\/Comment.php.html#125\">App\\Domain\\Entity\\Comment::setUser<\/a>"],[0,1,"<a href=\"Domain\/Entity\/GroupTrick.php.html#31\">App\\Domain\\Entity\\GroupTrick::__construct<\/a>"],[0,2,"<a href=\"Domain\/Entity\/GroupTrick.php.html#37\">App\\Domain\\Entity\\GroupTrick::getId<\/a>"],[100,2,"<a href=\"Domain\/Entity\/GroupTrick.php.html#42\">App\\Domain\\Entity\\GroupTrick::getName<\/a>"],[0,1,"<a href=\"Domain\/Entity\/GroupTrick.php.html#47\">App\\Domain\\Entity\\GroupTrick::setName<\/a>"],[0,1,"<a href=\"Domain\/Entity\/GroupTrick.php.html#57\">App\\Domain\\Entity\\GroupTrick::getTrick<\/a>"],[0,2,"<a href=\"Domain\/Entity\/GroupTrick.php.html#62\">App\\Domain\\Entity\\GroupTrick::addTrick<\/a>"],[0,3,"<a href=\"Domain\/Entity\/GroupTrick.php.html#72\">App\\Domain\\Entity\\GroupTrick::removeTrick<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Trick.php.html#102\">App\\Domain\\Entity\\Trick::__construct<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Trick.php.html#116\">App\\Domain\\Entity\\Trick::comments<\/a>"],[0,1,"<a href=\"Domain\/Entity\/Trick.php.html#122\">App\\Domain\\Entity\\Trick::images<\/a>"],[0,1,"<a href=\"Domain\/Entity\/Trick.php.html#128\">App\\Domain\\Entity\\Trick::videos<\/a>"],[0,2,"<a href=\"Domain\/Entity\/Trick.php.html#134\">App\\Domain\\Entity\\Trick::setTrickImages<\/a>"],[0,2,"<a href=\"Domain\/Entity\/Trick.php.html#143\">App\\Domain\\Entity\\Trick::setTrickVideos<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Trick.php.html#155\">App\\Domain\\Entity\\Trick::getUpdatedAt<\/a>"],[0,1,"<a href=\"Domain\/Entity\/Trick.php.html#163\">App\\Domain\\Entity\\Trick::setUpdatedAt<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Trick.php.html#171\">App\\Domain\\Entity\\Trick::getSlug<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Trick.php.html#179\">App\\Domain\\Entity\\Trick::setSlug<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Trick.php.html#188\">App\\Domain\\Entity\\Trick::getId<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Trick.php.html#196\">App\\Domain\\Entity\\Trick::getTitle<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Trick.php.html#204\">App\\Domain\\Entity\\Trick::getContent<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Trick.php.html#212\">App\\Domain\\Entity\\Trick::getCreatedAt<\/a>"],[0,1,"<a href=\"Domain\/Entity\/Trick.php.html#220\">App\\Domain\\Entity\\Trick::setTitle<\/a>"],[0,1,"<a href=\"Domain\/Entity\/Trick.php.html#228\">App\\Domain\\Entity\\Trick::setContent<\/a>"],[0,1,"<a href=\"Domain\/Entity\/Trick.php.html#236\">App\\Domain\\Entity\\Trick::getComments<\/a>"],[100,2,"<a href=\"Domain\/Entity\/Trick.php.html#241\">App\\Domain\\Entity\\Trick::addComment<\/a>"],[0,3,"<a href=\"Domain\/Entity\/Trick.php.html#251\">App\\Domain\\Entity\\Trick::removeComment<\/a>"],[0,2,"<a href=\"Domain\/Entity\/Trick.php.html#264\">App\\Domain\\Entity\\Trick::getCreator<\/a>"],[100,2,"<a href=\"Domain\/Entity\/Trick.php.html#269\">App\\Domain\\Entity\\Trick::setCreator<\/a>"],[0,2,"<a href=\"Domain\/Entity\/Trick.php.html#276\">App\\Domain\\Entity\\Trick::getLastUser<\/a>"],[100,2,"<a href=\"Domain\/Entity\/Trick.php.html#281\">App\\Domain\\Entity\\Trick::setLastUser<\/a>"],[0,1,"<a href=\"Domain\/Entity\/Trick.php.html#291\">App\\Domain\\Entity\\Trick::getTrickVideos<\/a>"],[0,2,"<a href=\"Domain\/Entity\/Trick.php.html#296\">App\\Domain\\Entity\\Trick::addTrickVideo<\/a>"],[0,3,"<a href=\"Domain\/Entity\/Trick.php.html#306\">App\\Domain\\Entity\\Trick::removeTrickVideo<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Trick.php.html#322\">App\\Domain\\Entity\\Trick::getTrickImages<\/a>"],[0,2,"<a href=\"Domain\/Entity\/Trick.php.html#327\">App\\Domain\\Entity\\Trick::addTrickImage<\/a>"],[0,3,"<a href=\"Domain\/Entity\/Trick.php.html#337\">App\\Domain\\Entity\\Trick::removeTrickImage<\/a>"],[100,1,"<a href=\"Domain\/Entity\/Trick.php.html#350\">App\\Domain\\Entity\\Trick::getGroupTrick<\/a>"],[0,1,"<a href=\"Domain\/Entity\/Trick.php.html#355\">App\\Domain\\Entity\\Trick::setGroupTrick<\/a>"],[0,1,"<a href=\"Domain\/Entity\/TrickImage.php.html#58\">App\\Domain\\Entity\\TrickImage::__construct<\/a>"],[100,1,"<a href=\"Domain\/Entity\/TrickImage.php.html#68\">App\\Domain\\Entity\\TrickImage::getFirstImage<\/a>"],[0,1,"<a href=\"Domain\/Entity\/TrickImage.php.html#76\">App\\Domain\\Entity\\TrickImage::setFirstImage<\/a>"],[100,1,"<a href=\"Domain\/Entity\/TrickImage.php.html#84\">App\\Domain\\Entity\\TrickImage::getAltImage<\/a>"],[0,1,"<a href=\"Domain\/Entity\/TrickImage.php.html#92\">App\\Domain\\Entity\\TrickImage::setAltImage<\/a>"],[0,1,"<a href=\"Domain\/Entity\/TrickImage.php.html#100\">App\\Domain\\Entity\\TrickImage::getId<\/a>"],[100,1,"<a href=\"Domain\/Entity\/TrickImage.php.html#108\">App\\Domain\\Entity\\TrickImage::getImageFileName<\/a>"],[0,1,"<a href=\"Domain\/Entity\/TrickImage.php.html#116\">App\\Domain\\Entity\\TrickImage::setImageFileName<\/a>"],[0,2,"<a href=\"Domain\/Entity\/TrickImage.php.html#126\">App\\Domain\\Entity\\TrickImage::getTrick<\/a>"],[0,2,"<a href=\"Domain\/Entity\/TrickImage.php.html#137\">App\\Domain\\Entity\\TrickImage::setTrick<\/a>"],[0,1,"<a href=\"Domain\/Entity\/TrickVideo.php.html#34\">App\\Domain\\Entity\\TrickVideo::__construct<\/a>"],[0,2,"<a href=\"Domain\/Entity\/TrickVideo.php.html#39\">App\\Domain\\Entity\\TrickVideo::getId<\/a>"],[0,2,"<a href=\"Domain\/Entity\/TrickVideo.php.html#44\">App\\Domain\\Entity\\TrickVideo::getName<\/a>"],[0,2,"<a href=\"Domain\/Entity\/TrickVideo.php.html#49\">App\\Domain\\Entity\\TrickVideo::setName<\/a>"],[100,2,"<a href=\"Domain\/Entity\/TrickVideo.php.html#56\">App\\Domain\\Entity\\TrickVideo::getPathUrl<\/a>"],[0,1,"<a href=\"Domain\/Entity\/TrickVideo.php.html#61\">App\\Domain\\Entity\\TrickVideo::setPathUrl<\/a>"],[0,2,"<a href=\"Domain\/Entity\/TrickVideo.php.html#68\">App\\Domain\\Entity\\TrickVideo::getTrick<\/a>"],[0,2,"<a href=\"Domain\/Entity\/TrickVideo.php.html#73\">App\\Domain\\Entity\\TrickVideo::setTrick<\/a>"],[100,4,"<a href=\"Domain\/Entity\/User.php.html#90\">App\\Domain\\Entity\\User::__construct<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#103\">App\\Domain\\Entity\\User::getId<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#111\">App\\Domain\\Entity\\User::getName<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#119\">App\\Domain\\Entity\\User::getToken<\/a>"],[100,2,"<a href=\"Domain\/Entity\/User.php.html#127\">App\\Domain\\Entity\\User::setToken<\/a>"],[100,2,"<a href=\"Domain\/Entity\/User.php.html#135\">App\\Domain\\Entity\\User::getEmail<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#143\">App\\Domain\\Entity\\User::getPassword<\/a>"],[100,2,"<a href=\"Domain\/Entity\/User.php.html#151\">App\\Domain\\Entity\\User::getPicturePath<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#159\">App\\Domain\\Entity\\User::getCreatedAt<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#167\">App\\Domain\\Entity\\User::setName<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#175\">App\\Domain\\Entity\\User::setEmail<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#183\">App\\Domain\\Entity\\User::setPassword<\/a>"],[0,1,"<a href=\"Domain\/Entity\/User.php.html#191\">App\\Domain\\Entity\\User::setPicturePath<\/a>"],[0,1,"<a href=\"Domain\/Entity\/User.php.html#199\">App\\Domain\\Entity\\User::getUpdatedAt<\/a>"],[0,1,"<a href=\"Domain\/Entity\/User.php.html#207\">App\\Domain\\Entity\\User::setUpdatedAt<\/a>"],[0,1,"<a href=\"Domain\/Entity\/User.php.html#215\">App\\Domain\\Entity\\User::getComments<\/a>"],[0,2,"<a href=\"Domain\/Entity\/User.php.html#220\">App\\Domain\\Entity\\User::addComment<\/a>"],[0,3,"<a href=\"Domain\/Entity\/User.php.html#230\">App\\Domain\\Entity\\User::removeComment<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#246\">App\\Domain\\Entity\\User::getRoles<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#254\">App\\Domain\\Entity\\User::getSalt<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#262\">App\\Domain\\Entity\\User::getUsername<\/a>"],[100,1,"<a href=\"Domain\/Entity\/User.php.html#269\">App\\Domain\\Entity\\User::eraseCredentials<\/a>"],[100,1,"<a href=\"Domain\/Repository\/CommentRepository.php.html#13\">App\\Domain\\Repository\\CommentRepository::__construct<\/a>"],[100,1,"<a href=\"Domain\/Repository\/CommentRepository.php.html#21\">App\\Domain\\Repository\\CommentRepository::findComments<\/a>"],[100,1,"<a href=\"Domain\/Repository\/GroupTrickRepository.php.html#17\">App\\Domain\\Repository\\GroupTrickRepository::__construct<\/a>"],[100,1,"<a href=\"Domain\/Repository\/TrickImageRepository.php.html#12\">App\\Domain\\Repository\\TrickImageRepository::__construct<\/a>"],[100,1,"<a href=\"Domain\/Repository\/TrickRepository.php.html#13\">App\\Domain\\Repository\\TrickRepository::__construct<\/a>"],[100,1,"<a href=\"Domain\/Repository\/TrickRepository.php.html#21\">App\\Domain\\Repository\\TrickRepository::findLatestWithFirstImageActive<\/a>"],[100,1,"<a href=\"Domain\/Repository\/TrickVideoRepository.php.html#17\">App\\Domain\\Repository\\TrickVideoRepository::__construct<\/a>"],[100,1,"<a href=\"Domain\/Repository\/UserRepository.php.html#13\">App\\Domain\\Repository\\UserRepository::__construct<\/a>"],[100,1,"<a href=\"Domain\/Repository\/UserRepository.php.html#18\">App\\Domain\\Repository\\UserRepository::findByCredentials<\/a>"],[100,1,"<a href=\"Form\/CustomConstraints\/NotInDatabaseValidator.php.html#24\">App\\Form\\CustomConstraints\\NotInDatabaseValidator::__construct<\/a>"],[50,6,"<a href=\"Form\/CustomConstraints\/NotInDatabaseValidator.php.html#29\">App\\Form\\CustomConstraints\\NotInDatabaseValidator::validate<\/a>"],[100,1,"<a href=\"Form\/CustomConstraints\/UniqueEmailValidator.php.html#24\">App\\Form\\CustomConstraints\\UniqueEmailValidator::__construct<\/a>"],[75,6,"<a href=\"Form\/CustomConstraints\/UniqueEmailValidator.php.html#29\">App\\Form\\CustomConstraints\\UniqueEmailValidator::validate<\/a>"],[100,1,"<a href=\"Form\/CustomConstraints\/UniqueTrickTitleValidator.php.html#24\">App\\Form\\CustomConstraints\\UniqueTrickTitleValidator::__construct<\/a>"],[50,6,"<a href=\"Form\/CustomConstraints\/UniqueTrickTitleValidator.php.html#29\">App\\Form\\CustomConstraints\\UniqueTrickTitleValidator::validate<\/a>"],[100,1,"<a href=\"Form\/CustomConstraints\/UniqueUsernameValidator.php.html#24\">App\\Form\\CustomConstraints\\UniqueUsernameValidator::__construct<\/a>"],[75,6,"<a href=\"Form\/CustomConstraints\/UniqueUsernameValidator.php.html#29\">App\\Form\\CustomConstraints\\UniqueUsernameValidator::validate<\/a>"],[100,1,"<a href=\"Form\/Handler\/AddTrickTypeHandler.php.html#50\">App\\Form\\Handler\\AddTrickTypeHandler::__construct<\/a>"],[71.42857142857143,6,"<a href=\"Form\/Handler\/AddTrickTypeHandler.php.html#60\">App\\Form\\Handler\\AddTrickTypeHandler::handle<\/a>"],[100,1,"<a href=\"Form\/Handler\/AddTrickTypeHandler.php.html#95\">App\\Form\\Handler\\AddTrickTypeHandler::checkImage<\/a>"],[100,1,"<a href=\"Form\/Handler\/AddUserTypeHandler.php.html#47\">App\\Form\\Handler\\AddUserTypeHandler::__construct<\/a>"],[100,3,"<a href=\"Form\/Handler\/AddUserTypeHandler.php.html#56\">App\\Form\\Handler\\AddUserTypeHandler::handle<\/a>"],[100,1,"<a href=\"Form\/Handler\/EditProfilPictureTypeHandler.php.html#40\">App\\Form\\Handler\\EditProfilPictureTypeHandler::__construct<\/a>"],[0,3,"<a href=\"Form\/Handler\/EditProfilPictureTypeHandler.php.html#48\">App\\Form\\Handler\\EditProfilPictureTypeHandler::handle<\/a>"],[100,1,"<a href=\"Form\/Handler\/EditTrickTypeHandler.php.html#52\">App\\Form\\Handler\\EditTrickTypeHandler::__construct<\/a>"],[0,3,"<a href=\"Form\/Handler\/EditTrickTypeHandler.php.html#62\">App\\Form\\Handler\\EditTrickTypeHandler::handle<\/a>"],[100,1,"<a href=\"Form\/Handler\/NewPasswordRequestTypeHandler.php.html#41\">App\\Form\\Handler\\NewPasswordRequestTypeHandler::__construct<\/a>"],[100,4,"<a href=\"Form\/Handler\/NewPasswordRequestTypeHandler.php.html#50\">App\\Form\\Handler\\NewPasswordRequestTypeHandler::handle<\/a>"],[100,1,"<a href=\"Form\/Handler\/ResetPasswordTypeHandler.php.html#41\">App\\Form\\Handler\\ResetPasswordTypeHandler::__construct<\/a>"],[91.66666666666666,4,"<a href=\"Form\/Handler\/ResetPasswordTypeHandler.php.html#50\">App\\Form\\Handler\\ResetPasswordTypeHandler::handle<\/a>"],[100,1,"<a href=\"Form\/Handler\/TrickCommentTypeHandler.php.html#36\">App\\Form\\Handler\\TrickCommentTypeHandler::__construct<\/a>"],[100,3,"<a href=\"Form\/Handler\/TrickCommentTypeHandler.php.html#43\">App\\Form\\Handler\\TrickCommentTypeHandler::handleAddComment<\/a>"],[100,3,"<a href=\"Form\/Handler\/TrickCommentTypeHandler.php.html#62\">App\\Form\\Handler\\TrickCommentTypeHandler::handleUpdateComment<\/a>"],[100,1,"<a href=\"Form\/Type\/CreateTrickType.php.html#20\">App\\Form\\Type\\CreateTrickType::buildForm<\/a>"],[100,1,"<a href=\"Form\/Type\/CreateTrickType.php.html#80\">App\\Form\\Type\\CreateTrickType::configureOptions<\/a>"],[100,2,"<a href=\"Form\/Type\/CreateTrickType.php.html#97\">App\\Form\\Type\\CreateTrickType::getChoices<\/a>"],[100,1,"<a href=\"Form\/Type\/EmailForPasswordRecoveryFormType.php.html#15\">App\\Form\\Type\\EmailForPasswordRecoveryFormType::buildForm<\/a>"],[100,1,"<a href=\"Form\/Type\/EmailForPasswordRecoveryFormType.php.html#26\">App\\Form\\Type\\EmailForPasswordRecoveryFormType::configureOptions<\/a>"],[100,1,"<a href=\"Form\/Type\/ImageType.php.html#19\">App\\Form\\Type\\ImageType::buildForm<\/a>"],[44.44444444444444,1,"<a href=\"Form\/Type\/ImageType.php.html#65\">App\\Form\\Type\\ImageType::configureOptions<\/a>"],[0,1,"<a href=\"Form\/Type\/ProfilPictureType.php.html#15\">App\\Form\\Type\\ProfilPictureType::buildForm<\/a>"],[0,1,"<a href=\"Form\/Type\/ProfilPictureType.php.html#42\">App\\Form\\Type\\ProfilPictureType::configureOptions<\/a>"],[100,1,"<a href=\"Form\/Type\/RegistrationType.php.html#14\">App\\Form\\Type\\RegistrationType::buildForm<\/a>"],[100,1,"<a href=\"Form\/Type\/RegistrationType.php.html#23\">App\\Form\\Type\\RegistrationType::configureOptions<\/a>"],[0,1,"<a href=\"Form\/Type\/RegistrationType.php.html#40\">App\\Form\\Type\\RegistrationType::getSalt<\/a>"],[0,1,"<a href=\"Form\/Type\/ResetPasswordFromAccountType.php.html#15\">App\\Form\\Type\\ResetPasswordFromAccountType::buildForm<\/a>"],[100,1,"<a href=\"Form\/Type\/ResetPasswordType.php.html#16\">App\\Form\\Type\\ResetPasswordType::buildForm<\/a>"],[100,1,"<a href=\"Form\/Type\/ResetPasswordType.php.html#32\">App\\Form\\Type\\ResetPasswordType::configureOptions<\/a>"],[0,1,"<a href=\"Form\/Type\/UpdateTrickType.php.html#21\">App\\Form\\Type\\UpdateTrickType::buildForm<\/a>"],[0,1,"<a href=\"Form\/Type\/UpdateTrickType.php.html#80\">App\\Form\\Type\\UpdateTrickType::configureOptions<\/a>"],[0,2,"<a href=\"Form\/Type\/UpdateTrickType.php.html#98\">App\\Form\\Type\\UpdateTrickType::getChoices<\/a>"],[100,1,"<a href=\"Form\/Type\/VideoType.php.html#14\">App\\Form\\Type\\VideoType::buildForm<\/a>"],[71.42857142857143,1,"<a href=\"Form\/Type\/VideoType.php.html#23\">App\\Form\\Type\\VideoType::configureOptions<\/a>"],[100,1,"<a href=\"Form\/Type\/trickCommentType.php.html#15\">App\\Form\\Type\\trickCommentType::buildForm<\/a>"],[100,1,"<a href=\"Form\/Type\/trickCommentType.php.html#24\">App\\Form\\Type\\trickCommentType::configureOptions<\/a>"],[0,1,"<a href=\"Listener\/UserCreatedListener.php.html#11\">App\\Listener\\UserCreatedListener::onUserCreated<\/a>"],[100,1,"<a href=\"Responders\/RedirectResponder.php.html#20\">App\\Responders\\RedirectResponder::__construct<\/a>"],[100,1,"<a href=\"Responders\/RedirectResponder.php.html#25\">App\\Responders\\RedirectResponder::__invoke<\/a>"],[100,1,"<a href=\"Responders\/ViewResponder.php.html#20\">App\\Responders\\ViewResponder::__construct<\/a>"],[100,1,"<a href=\"Responders\/ViewResponder.php.html#25\">App\\Responders\\ViewResponder::__invoke<\/a>"],[100,1,"<a href=\"Security\/LoginFormAuthenticator.php.html#49\">App\\Security\\LoginFormAuthenticator::__construct<\/a>"],[100,2,"<a href=\"Security\/LoginFormAuthenticator.php.html#58\">App\\Security\\LoginFormAuthenticator::supports<\/a>"],[100,1,"<a href=\"Security\/LoginFormAuthenticator.php.html#64\">App\\Security\\LoginFormAuthenticator::getCredentials<\/a>"],[85.71428571428571,3,"<a href=\"Security\/LoginFormAuthenticator.php.html#80\">App\\Security\\LoginFormAuthenticator::getUser<\/a>"],[75,2,"<a href=\"Security\/LoginFormAuthenticator.php.html#96\">App\\Security\\LoginFormAuthenticator::checkCredentials<\/a>"],[66.66666666666666,2,"<a href=\"Security\/LoginFormAuthenticator.php.html#107\">App\\Security\\LoginFormAuthenticator::onAuthenticationSuccess<\/a>"],[100,1,"<a href=\"Security\/LoginFormAuthenticator.php.html#116\">App\\Security\\LoginFormAuthenticator::getLoginUrl<\/a>"],[0,1,"<a href=\"Service\/ImageFileNameService.php.html#13\">App\\Service\\ImageFileNameService::generateFileName<\/a>"],[100,1,"<a href=\"Service\/MailSenderHelper.php.html#21\">App\\Service\\MailSenderHelper::__construct<\/a>"],[100,1,"<a href=\"Service\/MailSenderHelper.php.html#27\">App\\Service\\MailSenderHelper::sendTemplatedEmailForPasswordReset<\/a>"],[0,1,"<a href=\"Service\/MailSenderHelper.php.html#43\">App\\Service\\MailSenderHelper::getTwigTemplate<\/a>"],[100,1,"<a href=\"Service\/TrickUpdateResolver.php.html#39\">App\\Service\\TrickUpdateResolver::__construct<\/a>"],[0,7,"<a href=\"Service\/TrickUpdateResolver.php.html#47\">App\\Service\\TrickUpdateResolver::updateTrickFromDTO<\/a>"],[100,1,"<a href=\"Service\/UploaderHelper.php.html#22\">App\\Service\\UploaderHelper::__construct<\/a>"],[0,2,"<a href=\"Service\/UploaderHelper.php.html#27\">App\\Service\\UploaderHelper::uploadTrickImage<\/a>"],[0,2,"<a href=\"Service\/UploaderHelper.php.html#41\">App\\Service\\UploaderHelper::uploadProfilPictureImage<\/a>"],[0,2,"<a href=\"Service\/UploaderHelper.php.html#55\">App\\Service\\UploaderHelper::deleteTrickImage<\/a>"],[0,2,"<a href=\"Service\/UploaderHelper.php.html#62\">App\\Service\\UploaderHelper::deleteProfilPictureImage<\/a>"],[0,2,"<a href=\"Service\/UploaderHelper.php.html#69\">App\\Service\\UploaderHelper::createTrickPictureFile<\/a>"],[100,5,"<a href=\"Service\/VideoLinkHelper.php.html#10\">App\\Service\\VideoLinkHelper::transformLinkForEmbedIframe<\/a>"],[100,1,"<a href=\"Twig\/AppExtension.php.html#17\">App\\Twig\\AppExtension::__construct<\/a>"],[0,1,"<a href=\"Twig\/AppExtension.php.html#23\">App\\Twig\\AppExtension::getFunctions<\/a>"],[0,1,"<a href=\"Twig\/AppExtension.php.html#30\">App\\Twig\\AppExtension::getFilters<\/a>"],[100,2,"<a href=\"Twig\/AppExtension.php.html#37\">App\\Twig\\AppExtension::getEncoreEntryCssSource<\/a>"],[0,1,"<a href=\"Twig\/AppExtension.php.html#51\">App\\Twig\\AppExtension::getSubscribedServices<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

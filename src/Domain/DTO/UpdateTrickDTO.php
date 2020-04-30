@@ -16,7 +16,7 @@ class UpdateTrickDTO implements TrickDTOInterface
      * @var string|null
      *
      * @Assert\NotBlank()
-     * @Assert\Length(min="10", max="100")
+     * @Assert\Length(min="3", max="100")
      */
     protected $title;
 

@@ -113,6 +113,12 @@ class Trick
         $this->setLastUser($user);
     }
 
+    public function comments(Comment $comment)
+    {
+        $comment->setTrick($this);
+        $this->addComment($comment);
+    }
+
     public function images(TrickImage $trickImage)
     {
         $trickImage->setTrick($this);

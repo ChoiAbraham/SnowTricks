@@ -8,6 +8,15 @@
 
 {% block body %}
 
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success flash-homepage" style="z-index: 3" role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    {% endfor %}
+
     <div class="jumbotron-fluid section_one">
             {% if firstImage|default %}
                 <img src="{{ asset('uploads/trick_picture/') ~ firstImage.imageFileName }}"
@@ -51,7 +60,6 @@
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
         {{ include('include/modal/_ajax_modal_delete_trick.html.twig') }}
     </form>
-
 
     <!-- Section Medias on Mobile -->
     <div class="container onmobile-only">
@@ -153,14 +161,16 @@
                 </div>
 
                 <!-- Comment Form -->
-                <div class="col-12 p-5">
-                    <div class="border border-info p-3">
-                        {{ form_start(form) }}
-                        {{ form_row(form.text, {'attr': {'rows': "7", 'cols': "50"}}) }}
-                        <button class="btn btn-primary">Envoyer</button>
-                        {{ form_end(form) }}
+                {% if app.user is defined and app.user %}
+                    <div class="col-12 p-5">
+                        <div class="border border-info p-3">
+                            {{ form_start(form) }}
+                            {{ form_row(form.text, {'attr': {'rows': "7", 'cols': "50"}}) }}
+                            <button class="btn btn-primary">Envoyer</button>
+                            {{ form_end(form) }}
+                        </div>
                     </div>
-                </div>
+                {% endif %}
 
                 <!-- Comments -->
                 {% if comments %}
@@ -172,11 +182,11 @@
                             {% for comment in comments %}
                             <li class="media">
                                 {% if comment.user.picturePath %}
-                                    <img src="{{ asset('uploads/profilpicture/' ~ comment.user.picturePath) }}"
+                                    <img src="{{ asset('uploads/profil_picture/' ~ comment.user.picturePath) }}"
                                          class="mr-3 rounded-circle embed-responsive d-inline-block p-1"
-                                         alt="photo profil utilisateur">
+                                         alt="photo profil utilisateur" style="width:80px; height:80px">
                                 {% else %}
-                                    <img src="{{ asset('build/images/user/profil_picture_default.53651817.jpg') }}"
+                                    <img src="{{ asset('uploads/profile_picture/profil_picture_default.jpg') }}"
                                          class="mr-3 rounded-circle embed-responsive d-inline-block p-1"
                                          alt="photo profil default" style="width:80px; height:80px">
                                 {% endif %}
@@ -185,12 +195,33 @@
                                         {{ comment.user.name|capitalize }}
                                         <br>
                                         <small>
-                                            Le {{ comment.user.createdAt|date("d/m/Y") }}</a>
+                                            Le {{ comment.user.createdAt|date("d/m/Y H:i:s") }}</a>
                                         </small>
                                     </h4>
                                     <p>{{ comment.content }}</p>
+
+                                    {% if app.user is defined and app.user %}
+                                        {% if comment.user.name == app.user.name %}
+                                        <span class="d-inline-block pb-3 margin_left_com">
+                                            <button class="btn btn-info text-right p-0">
+                                                <a href="{{ path('edit.comment', {id: comment.id}) }}" style="color: white">
+                                                    Modifier</a>
+                                            </button>
+                                            <button class=" btn btn-danger text-right p-0 pl-1 js-delete-comment" id="delete_comment"
+                                                    data-message="Êtes-vous sûr de vouloir supprimer ce commentaire ?"
+                                                    data-toggle="modal"
+                                                    data-id="{{ comment.id }}">Supprimer
+                                            </button>
+                                            <form method="POST" action="{{ path('delete.comment', {id: comment.id}) }}" style="display: inline-block">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+                                                {{ include('include/modal/_ajax_modal_delete_comment.html.twig') }}
+                                            </form>
+                                        </span>
+                                            {% endif %}
+                                    {% endif %}
                                 </div>
                             </li>
+
                             {% endfor %}
 
                         </ul>
@@ -205,7 +236,7 @@
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                     Loading...
                 </button>
-                <a data-url="{{ path('comments.loaded') }}"
+                <a data-url="{{ path('comments.loaded', {slug: trick.slug}) }}"
                    type="button" data-maxpage="{{ maxPageNumberComments }}"
                    data-page="2"
                    class="btn btn-outline-primary" id="js-btn-morecomments">Plus de Commentaires
@@ -219,6 +250,7 @@
 
 {% block javascripts %}
     {{ encore_entry_script_tags('displayTrickPage') }}
-    {{ encore_entry_script_tags('trick_load_comments') }}
     {{ encore_entry_script_tags('delete.trick') }}
+    {{ encore_entry_script_tags('delete.comment') }}
+    {{ encore_entry_script_tags('trick_load_comments') }}
 {% endblock %}

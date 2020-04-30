@@ -55,7 +55,7 @@ class TrickImage
      * @param bool $firstImage
      * @param string $altImage
      */
-    public function __construct(string $imageFileName, bool $firstImage = false, string $altImage)
+    public function __construct(string $imageFileName, bool $firstImage = false, string $altImage = '')
     {
         $this->imageFileName = $imageFileName;
         $this->firstImage = $firstImage;

@@ -3,14 +3,14 @@
 
 namespace App\Form\Type;
 
-use App\Domain\DTO\CreateCommentDTO;
+use App\Domain\DTO\CommentDTO;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class addTrickCommentType extends AbstractType
+class trickCommentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,16 +18,19 @@ class addTrickCommentType extends AbstractType
             ->add('text', TextareaType::class,
                 [
                     'label' => 'Ajouter un commentaire'
-                ])
-            ->add('idtrick', HiddenType::class)
-            ->add('user', HiddenType::class);
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
             [
-                'data_class' => CreateCommentDTO::class,
+                'data_class' => CommentDTO::class,
+                'empty_data' => function (FormInterface $form) {
+                    return new CommentDTO(
+                        $form->get('text')->getData()
+                    );
+                },
             ]
         );
     }
