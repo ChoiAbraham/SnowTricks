@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class trickCommentType extends AbstractType
+class TrickCommentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

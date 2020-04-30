@@ -13,7 +13,7 @@ use App\Domain\Repository\TrickRepository;
 use App\Domain\Repository\TrickVideoRepository;
 use App\Form\Handler\Interfaces\EditTrickTypeHandlerInterface;
 use App\Form\Handler\TrickCommentTypeHandler;
-use App\Form\Type\trickCommentType;
+use App\Form\Type\TrickCommentType;
 use App\Responders\RedirectResponder;
 use App\Responders\ViewResponder;
 use App\Service\UploaderHelper;
@@ -105,7 +105,7 @@ class TrickAction
 
         $firstImage = $this->trickImageRepository->findOneBy(['trick' => $trick->getId(), 'firstImage' => true]);
 
-        $commentForm = $this->formFactory->create(trickCommentType::class)->handleRequest($request);
+        $commentForm = $this->formFactory->create(TrickCommentType::class)->handleRequest($request);
 
         $user = $this->security->getUser();
         if ($this->trickCommentTypeHandler->handleAddComment($commentForm, $trick) && null != $user) {
