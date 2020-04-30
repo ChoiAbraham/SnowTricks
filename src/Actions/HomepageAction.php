@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class HomepageAction
+ * Class HomepageAction.
  *
  * @Route(
  *     "/",
@@ -25,7 +25,6 @@ final class HomepageAction implements HomeActionInterface
 
     /**
      * HomepageAction constructor.
-     * @param TrickRepositoryInterface $trickRepository
      */
     public function __construct(TrickRepositoryInterface $trickRepository)
     {
@@ -40,17 +39,17 @@ final class HomepageAction implements HomeActionInterface
 
         /** @var $maxPageNumber */
         $maxPageNumber = ceil(
-            $this->trickRepository->count([]) / Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE);
+            $this->trickRepository->count([]) / Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE
+        );
         $nextPage = $maxPageNumber > 1 ? true : false;
 
-        return $responder (
+        return $responder(
             'core/home.html.twig',
             [
                 'tricks' => $tricks,
                 'maxPageNumber' => $maxPageNumber,
-                'nextPage' => $nextPage
+                'nextPage' => $nextPage,
             ]
         );
     }
 }
-

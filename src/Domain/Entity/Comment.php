@@ -5,14 +5,14 @@ namespace App\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Comment
+ * Class Comment.
  *
  * @ORM\Table(name="comment_entity")
  * @ORM\Entity(repositoryClass="App\Domain\Repository\CommentRepository")
  */
 class Comment
 {
-    public CONST NUMBER_PER_PAGE = 4;
+    public const NUMBER_PER_PAGE = 4;
 
     /**
      * @var id
@@ -57,17 +57,17 @@ class Comment
 
     /**
      * Comment constructor.
+     *
      * @param DateTime $createdAt
      */
-    public function __construct()
+    public function __construct(string $text = '', User $user = null)
     {
-        $this->createdAt = new \DateTime();;
+        $this->content = $text;
+        $this->user = $user;
+        $this->createdAt = new \DateTime();
     }
 
-    /**
-     * @return id
-     */
-    public function getId(): id
+    public function getId()
     {
         return $this->id;
     }
@@ -88,9 +88,6 @@ class Comment
         return $this->createdAt;
     }
 
-    /**
-     * @param string $content
-     */
     public function setContent(string $content): void
     {
         $this->content = $content;
@@ -101,7 +98,7 @@ class Comment
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }

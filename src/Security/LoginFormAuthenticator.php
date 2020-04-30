@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -26,10 +26,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     /** @var UserRepositoryInterface */
     private $userRepository;
 
-    /** @var CsrfTokenManagerInterface  */
+    /** @var CsrfTokenManagerInterface */
     private $csrfTokenManager;
 
-    /** @var UserPasswordEncoderInterface  */
+    /** @var UserPasswordEncoderInterface */
     private $passwordEncoder;
 
     /** @var RouterInterface */
@@ -40,11 +40,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     /**
      * LoginFormAuthenticator constructor.
-     * @param UserRepositoryInterface $userRepository
-     * @param CsrfTokenManagerInterface $csrfTokenManager
-     * @param UserPasswordEncoderInterface $passwordEncoder
-     * @param RouterInterface $router
-     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(UserRepositoryInterface $userRepository, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder, RouterInterface $router, UrlGeneratorInterface $urlGenerator)
     {
@@ -84,7 +79,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->userRepository->findBy(array('name' => $credentials['username'], 'email' => $credentials['mail']));
+        $user = $this->userRepository->findBy(['name' => $credentials['username'], 'email' => $credentials['mail']]);
 
         if (!$user) {
             throw new CustomUserMessageAuthenticationException('Mauvais identifiant');

@@ -32,7 +32,7 @@ class RegistrationType extends AbstractType
                         $form->get('password')->getData(),
                         $form->get('confirm_password')->getData()
                     );
-                }
+                },
             ]
         );
     }

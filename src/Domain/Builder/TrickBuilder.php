@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Domain\Builder;
 
 use App\Domain\Builder\Interfaces\TrickBuilderInterface;
@@ -12,7 +11,6 @@ use App\Domain\DTO\TrickVideoDTO;
 use App\Domain\Entity\Trick;
 use App\Domain\Repository\GroupTrickRepository;
 use App\Domain\Repository\UserRepository;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\Security;
 
 class TrickBuilder implements TrickBuilderInterface
@@ -50,13 +48,6 @@ class TrickBuilder implements TrickBuilderInterface
 
     /**
      * TrickBuilder constructor.
-     * @param Trick $trick
-     * @param TrickImageBuilderInterface $trickImageBuilder
-     * @param TrickVideoBuilderInterface $trickVideoBuilder
-     * @param GroupTrickRepository $groupTrickRepository
-     * @param UserRepository $userRepository
-     * @param Security $security
-     * @param string $uploadPath
      */
     public function __construct(Trick $trick, TrickImageBuilderInterface $trickImageBuilder, TrickVideoBuilderInterface $trickVideoBuilder, GroupTrickRepository $groupTrickRepository, UserRepository $userRepository, Security $security, string $uploadPath)
     {
@@ -71,6 +62,7 @@ class TrickBuilder implements TrickBuilderInterface
 
     /**
      * @param string $content
+     *
      * @return TrickBuilder
      */
     public function create(TrickDTOInterface $dto): self
@@ -89,7 +81,6 @@ class TrickBuilder implements TrickBuilderInterface
     }
 
     /**
-     * @param Trick $trick
      * @param $images
      * set TrickImages on the Trick object from ImageDTOs
      */
@@ -103,7 +94,6 @@ class TrickBuilder implements TrickBuilderInterface
     }
 
     /**
-     * @param Trick $trick
      * @param $videos
      * set TrickVideos on the Trick object from VideoDTOs
      */
@@ -119,11 +109,12 @@ class TrickBuilder implements TrickBuilderInterface
 
     public function getUser()
     {
-        $user =  $this->security->getUser();
+        $user = $this->security->getUser();
+
         return $user;
     }
 
-    public function getTrickVideos($videoDTOs):array
+    public function getTrickVideos($videoDTOs): array
     {
         $trickVideos = [];
         foreach ($videoDTOs as $videoDTO) {
@@ -137,11 +128,11 @@ class TrickBuilder implements TrickBuilderInterface
 
     public function getGroupTrick($groupTrick)
     {
-        if($groupTrick == null) {
+        if (null == $groupTrick) {
             return null;
         }
         $name = Trick::LIST_GROUPS[$groupTrick];
-        $result = $this->groupTrickRepository->findOneBy(array('name' => $name));
+        $result = $this->groupTrickRepository->findOneBy(['name' => $name]);
 
         return $result;
     }

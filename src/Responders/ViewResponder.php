@@ -1,14 +1,13 @@
 <?php
 
-
 namespace App\Responders;
 
 use App\Responders\Interfaces\ViewResponderInterface;
-use Twig\Environment;
 use Symfony\Component\HttpFoundation\Response;
+use Twig\Environment;
 
 /**
- * Class ViewResponder
+ * Class ViewResponder.
  */
 final class ViewResponder implements ViewResponderInterface
 {
@@ -26,5 +25,4 @@ final class ViewResponder implements ViewResponderInterface
     {
         return new Response($this->templating->render($template, $paramsTemplate));
     }
-
 }

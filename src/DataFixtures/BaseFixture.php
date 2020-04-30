@@ -3,10 +3,11 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
 
-abstract class BaseFixture extends Fixture
+abstract class BaseFixture extends Fixture implements FixtureGroupInterface
 {
     /** @var ObjectManager */
     private $manager;
@@ -25,7 +26,7 @@ abstract class BaseFixture extends Fixture
 
     protected function createMany(string $className, int $count, callable $factory)
     {
-        for ($i = 0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; ++$i) {
             $entity = new $className();
             $factory($entity, $i);
 
@@ -35,12 +36,13 @@ abstract class BaseFixture extends Fixture
         }
     }
 
-    protected function getRandomReference(string $className) {
+    protected function getRandomReference(string $className)
+    {
         if (!isset($this->referencesIndex[$className])) {
             $this->referencesIndex[$className] = [];
 
             foreach ($this->referenceRepository->getReferences() as $key => $ref) {
-                if (strpos($key, $className.'_') === 0) {
+                if (0 === strpos($key, $className . '_')) {
                     $this->referencesIndex[$className][] = $key;
                 }
             }
@@ -56,4 +58,9 @@ abstract class BaseFixture extends Fixture
     }
 
     abstract protected function loadData(ObjectManager $manager);
+
+    public static function getGroups(): array
+    {
+        return ['snowtricks'];
+    }
 }

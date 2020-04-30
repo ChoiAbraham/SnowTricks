@@ -28,9 +28,8 @@ class ImageTrickFixture extends BaseFixture implements DependentFixtureInterface
 
     /**
      * ImageTrickFixture constructor.
-     * @param string $uploadPath
-     * @param string $trickpicturePath
-     */public function __construct(string $uploadPath, string $trickpicturePath)
+     */
+    public function __construct(string $uploadPath, string $trickpicturePath)
     {
         $this->uploadPath = $uploadPath;
         $this->trickpicturePath = $trickpicturePath;
@@ -38,7 +37,7 @@ class ImageTrickFixture extends BaseFixture implements DependentFixtureInterface
 
     public function loadData(ObjectManager $manager)
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $random = rand(0, 2);
             $imageFileName = self::$imageFileNames[$random];
             $generateFileName = $imageFileName . '-' . uniqid() . '.jpg';
@@ -57,7 +56,7 @@ class ImageTrickFixture extends BaseFixture implements DependentFixtureInterface
             $manager->persist($trickImage);
             // store for usage later as App\Entity\ClassName_#COUNT#
             $this->addReference(TrickImage::class . '_' . $i, $trickImage);
-            $trickImage->setTrick($this->getReference(Trick::class.'_'.$i));
+            $trickImage->setTrick($this->getReference(Trick::class . '_' . $i));
         }
 
         //$filesystem->copy('hello',$this->trickPicturesDir . $path);

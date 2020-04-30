@@ -1,11 +1,7 @@
 <?php
 
-
 namespace App\Service;
 
-
-use App\Domain\Entity\TrickImage;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ImageFileNameService
@@ -19,7 +15,7 @@ class ImageFileNameService
 
         $extension = $uploadedFile->guessExtension();
 
-        $newFileName = $safeFilename.'-'.uniqid().'.'. $extension;
+        $newFileName = $safeFilename . '-' . uniqid() . '.' . $extension;
 
         return $newFileName;
     }

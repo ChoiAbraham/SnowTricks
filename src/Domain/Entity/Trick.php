@@ -2,24 +2,21 @@
 
 namespace App\Domain\Entity;
 
-use App\Domain\DTO\NewTrickDTO;
-use App\Domain\DTO\TrickImageDTO;
-use App\Domain\DTO\UpdateTrickDTO;
+use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Cocur\Slugify\Slugify;
 
 /**
- * Class Trick
+ * Class Trick.
  *
  * @ORM\Table(name="trick_entity")
  * @ORM\Entity(repositoryClass="App\Domain\Repository\TrickRepository")
  */
 class Trick
 {
-    public CONST LIST_GROUPS=['group1', 'group2', 'group3'];
-    public CONST NUMBER_OF_TRICKS_IN_HOMEPAGE = 6;
+    public const LIST_GROUPS = ['group1', 'group2', 'group3'];
+    public const NUMBER_OF_TRICKS_IN_HOMEPAGE = 6;
 
     /**
      * @var id
@@ -113,6 +110,12 @@ class Trick
         $this->setLastUser($user);
     }
 
+    public function comments(Comment $comment)
+    {
+        $comment->setTrick($this);
+        $this->addComment($comment);
+    }
+
     public function images(TrickImage $trickImage)
     {
         $trickImage->setTrick($this);
@@ -128,18 +131,20 @@ class Trick
     public function setTrickImages(array $trickImages): self
     {
         $this->trickImages->clear();
-        foreach($trickImages as $image) {
+        foreach ($trickImages as $image) {
             $this->trickImages->add($image);
         }
+
         return $this;
     }
 
     public function setTrickVideos(array $trickVideos): self
     {
         $this->trickVideos->clear();
-        foreach($trickVideos as $video) {
+        foreach ($trickVideos as $video) {
             $this->trickVideos->add($video);
         }
+
         return $this;
     }
 
@@ -151,9 +156,6 @@ class Trick
         return $this->updatedAt;
     }
 
-    /**
-     * @param \DateTime $updatedAt
-     */
     public function setUpdatedAt(\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
@@ -208,17 +210,11 @@ class Trick
         return $this->createdAt;
     }
 
-    /**
-     * @param string $title
-     */
     public function setTitle(string $title): void
     {
         $this->title = $title;
     }
 
-    /**
-     * @param string $content
-     */
     public function setContent(string $content): void
     {
         $this->content = $content;

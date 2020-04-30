@@ -4,8 +4,8 @@ namespace App\Form\Handler;
 
 use App\Domain\DTO\EmailPasswordRecoveryDTO;
 use App\Domain\Entity\User;
-use App\Form\Handler\Interfaces\NewPasswordRequestTypeHandlerInterface;
 use App\Domain\Repository\Interfaces\UserRepositoryInterface;
+use App\Form\Handler\Interfaces\NewPasswordRequestTypeHandlerInterface;
 use App\Service\MailSenderHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
@@ -32,11 +32,6 @@ class NewPasswordRequestTypeHandler implements NewPasswordRequestTypeHandlerInte
 
     /**
      * NewPasswordRequestTypeHandler constructor.
-     * @param FlashBagInterface $bag
-     * @param MailSenderHelper $mailSenderHelper
-     * @param UserRepositoryInterface $userRepository
-     * @param EntityManagerInterface $em
-     * @param UrlGeneratorInterface $router
      */
     public function __construct(FlashBagInterface $bag, MailSenderHelper $mailSenderHelper, UserRepositoryInterface $userRepository, EntityManagerInterface $em, UrlGeneratorInterface $router)
     {
@@ -61,6 +56,7 @@ class NewPasswordRequestTypeHandler implements NewPasswordRequestTypeHandlerInte
 
             if (is_null($user)) {
                 $this->bag->add('success', 'Un mail vous a été envoyé avec un lien pour modifier votre mot de passe');
+
                 return new RedirectResponse($this->router->generate('homepage_action'));
             }
 

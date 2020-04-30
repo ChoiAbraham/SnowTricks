@@ -35,43 +35,49 @@ class EditTrickActionFunctionalTest extends AbstractWebTestCase
         static::assertTrue($this->client->getResponse()->isSuccessful());
     }
 
-    public function testSuccessEditWithNewPicturesNewVideos()
+    public function testSuccessEditChangePicture()
     {
-        //Simulation Authentification
+        // Step 1 : Load All Fixtures
         /** @var User $user */
         $users = $this->loadFixtures([UserFixture::class])->getReferenceRepository();
-        $user = $users->getReference('userRef_0');
-        $this->login($this->client, $user);
 
         $this->loadFixtures([
+            UserFixture::class,
             GroupFixture::class,
             TrickFixtures::class,
             ImageTrickFixture::class,
-            VideoTrickFixture::class,
-            CommentFixture::class
+            CommentFixture::class,
         ]);
 
+        // Step 2 : Simulation Authentification Abraham Choi
+        $user = $users->getReference('userRef_7');
+        $this->login($this->client, $user);
+
         $crawler = $this->client->request('GET', '/trick/edit/crail');
+
+        $form = $crawler->selectButton('Sauvegarder')->form();
+
+        $photo = new UploadedFile(
+            'public/uploads/first_image_default/first_image_default.jpg',
+            'first_image_default.jpg',
+            'image/jpeg',
+            null
+        );
+
+        $form['update_trick[title]'] = 'Crail Updated';
+        $form['update_trick[content]'] = 'New Content';
+        //Change Picture 1
+        $form['update_trick[imageslinks][0][image]'] = $photo;
+        $form['update_trick[imageslinks][0][alt]'] = 'new photo';
+        //TODO - Js Testing - Panther - Click and open 'New Video Field'
+//        $form['update_trick[videoslinks][0][pathUrl]'] = 'https://www.youtube.com/watch?v=__l6q-9OVhY';
+
+        $crawler = $this->client->submit($form);
 
         static::assertTrue($this->client->getResponse()->isRedirection());
 
         $this->client->followRedirect();
         static::assertTrue($this->client->getResponse()->isSuccessful());
-
-//        static::assertSame(1, $crawler->filter('html:contains("Le Trick a été modifié avec succès")')->count());
-        static::assertSelectorTextContains('.fash-homepage', 'Le Trick a été modifié avec succès');
-    }
-
-    public function testSuccessEditWithDeletePicturesAndVideos()
-    {
-    }
-
-    public function testSuccessEditWithChangingPicturesAndVideos()
-    {
-    }
-
-    public function testPanther()
-    {
-        $pantherClient->executeScript("document.querySelector('#image_list').click()");
+        static::assertSelectorTextContains('.flash-homepage', 'Le Trick a été modifié avec succès');
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Domain\Builder;
 
 use App\Domain\Builder\Interfaces\TrickVideoBuilderInterface;
@@ -20,7 +19,6 @@ class TrickVideoBuilder implements TrickVideoBuilderInterface
 
     /**
      * TrickVideoBuilder constructor.
-     * @param VideoLinkHelper $videoLinkHelper
      */
     public function __construct(VideoLinkHelper $videoLinkHelper)
     {
@@ -29,6 +27,7 @@ class TrickVideoBuilder implements TrickVideoBuilderInterface
 
     /**
      * @param string $content
+     *
      * @return TrickVideo
      */
     public function create(TrickVideoDTO $dto): self
@@ -40,7 +39,8 @@ class TrickVideoBuilder implements TrickVideoBuilderInterface
         return $this;
     }
 
-    public function getEmbedPathUrl($path) {
+    public function getEmbedPathUrl($path)
+    {
         return $this->videoLinkHelper->transformLinkForEmbedIframe($path);
     }
 

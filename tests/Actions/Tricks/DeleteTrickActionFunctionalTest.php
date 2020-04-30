@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Actions\Tricks;
 
 use App\DataFixtures\ImageTrickFixture;
@@ -22,8 +21,6 @@ class DeleteTrickActionFunctionalTest extends AbstractWebTestCase
         //Simulation Authentification
         /** @var User $user */
         $users = $this->loadFixtures([UserFixture::class])->getReferenceRepository();
-        $user = $users->getReference('userRef_7');
-        $this->login($this->client, $user);
 
         $this->loadFixtures([
             TrickFixtures::class,
@@ -31,9 +28,12 @@ class DeleteTrickActionFunctionalTest extends AbstractWebTestCase
             VideoTrickFixture::class,
         ]);
 
+        $user = $users->getReference('userRef_7');
+        $this->login($this->client, $user);
+
         $trickRepository = $this->containerService->get('App\Domain\Repository\TrickRepository');
         $trick = $trickRepository->findOneBy(['slug' => 'crail']);
-        $token = 'delete' . $trick->getId();
+        $token = 'delete'.$trick->getId();
 
         $csrfStorage = $this->containerService->get('security.csrf.token_storage');
         $csrfStorage->setToken($token, 'random');
@@ -42,7 +42,7 @@ class DeleteTrickActionFunctionalTest extends AbstractWebTestCase
             'POST',
             '/delete/crail',
             ['_token' => 'random',
-            'slug' => 'crail']
+            'slug' => 'crail', ]
         );
 
         static::assertTrue($this->client->getResponse()->isRedirection());

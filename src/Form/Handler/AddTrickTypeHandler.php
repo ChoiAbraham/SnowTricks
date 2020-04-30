@@ -1,11 +1,8 @@
 <?php
 
-
 namespace App\Form\Handler;
 
-
 use App\Domain\Builder\Interfaces\TrickBuilderInterface;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\Domain\DTO\CreateTrickDTO;
 use App\Domain\Entity\Trick;
 use App\Domain\Repository\Interfaces\TrickRepositoryInterface;
@@ -13,6 +10,7 @@ use App\Form\Handler\Interfaces\AddTrickTypeHandlerInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AddTrickTypeHandler implements AddTrickTypeHandlerInterface
 {
@@ -40,11 +38,7 @@ class AddTrickTypeHandler implements AddTrickTypeHandlerInterface
 
     /**
      * AddTrickTypeHandler constructor.
-     * @param TrickBuilderInterface $trickBuilder
-     * @param TrickRepositoryInterface $trickRepository
-     * @param EntityManagerInterface $em
-     * @param UrlGeneratorInterface $urlGenerator
-     * @param FlashBagInterface $bag
+     *
      * @param string $noImages
      */
     public function __construct(TrickBuilderInterface $trickBuilder, TrickRepositoryInterface $trickRepository, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator, FlashBagInterface $bag, bool $checkImage = false)
@@ -71,15 +65,17 @@ class AddTrickTypeHandler implements AddTrickTypeHandlerInterface
 
             // if no first image among all images, then redirect to account
             foreach ($trick->getTrickImages() as $image) {
-                if ($image->getFirstImage() == false) {
+                if (false == $image->getFirstImage()) {
                     $this->checkImage = true;
+
                     return false;
                 }
             }
 
             // if no images, redirect to account
-            if($trick->getTrickImages()->isEmpty()) {
+            if ($trick->getTrickImages()->isEmpty()) {
                 $this->checkImage = true;
+
                 return false;
             }
 

@@ -33,7 +33,7 @@
                                 </div>
                                 {% else %}
                                     <div class="text-center img-width">
-                                        <img src="{{ asset('uploads/profil_picture/profil_picture_default.jpg') }}"
+                                        <img src="{{ asset('uploads/profile_picture/profil_picture_default.jpg') }}"
                                              class="rounded-circle"
                                              alt="photo de profil">
                                     </div>
@@ -98,7 +98,7 @@
                             Supprimer le compte
                         </button>
 
-                        <form method="POST" action="{{ path('my_account_delete', {'username': app.user.name}) }}" style="display: inline-block">
+                        <form method="POST" action="{{ path('my_account_delete', {'id': app.user.id}) }}" style="display: inline-block">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete-item') }}">
                             {{ include('include/_ajax_modal_delete.html.twig') }}
                         </form>

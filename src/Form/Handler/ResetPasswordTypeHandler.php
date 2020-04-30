@@ -11,7 +11,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 
 class ResetPasswordTypeHandler implements ResetPasswordTypeHandlerInterface
 {
@@ -32,11 +31,6 @@ class ResetPasswordTypeHandler implements ResetPasswordTypeHandlerInterface
 
     /**
      * ResetPasswordTypeHandler constructor.
-     * @param FlashBagInterface $bag
-     * @param UserRepositoryInterface $userRepository
-     * @param EntityManagerInterface $em
-     * @param UrlGeneratorInterface $router
-     * @param UserPasswordEncoderInterface $encoder
      */
     public function __construct(FlashBagInterface $bag, UserRepositoryInterface $userRepository, EntityManagerInterface $em, UrlGeneratorInterface $router, UserPasswordEncoderInterface $encoder)
     {
@@ -56,7 +50,7 @@ class ResetPasswordTypeHandler implements ResetPasswordTypeHandlerInterface
             /** @var User $user */
             $user = $this->userRepository->findOneBy(['name' => $data->getUsername()]);
 
-            if(is_null($user)) {
+            if (is_null($user)) {
                 throw new \Exception('mauvais identifiant');
             } else {
                 $hash = $this->encoder->encodePassword($user, $data->getPassword());

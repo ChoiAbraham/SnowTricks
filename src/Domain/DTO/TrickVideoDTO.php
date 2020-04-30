@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Domain\DTO;
 
 use App\Domain\Entity\TrickVideo;
@@ -20,16 +19,12 @@ class TrickVideoDTO
 
     /**
      * TrickVideoDTO constructor.
-     * @param string|null $pathUrl
      */
     public function __construct(?string $pathUrl = '')
     {
         $this->setPathUrl($pathUrl);
     }
 
-    /**
-     * @param TrickVideo $video
-     */
     public static function createFromEntity(TrickVideo $video, $y)
     {
         $dto = new self();
@@ -40,9 +35,6 @@ class TrickVideoDTO
         return $dto;
     }
 
-    /**
-     *
-     */
     public function getId()
     {
         return $this->id;
@@ -64,9 +56,6 @@ class TrickVideoDTO
         return $this->pathUrl;
     }
 
-    /**
-     * @param string|null $pathUrl
-     */
     public function setPathUrl(?string $pathUrl): void
     {
         $this->pathUrl = $pathUrl;

@@ -2,11 +2,10 @@
 
 namespace App\Domain\Entity;
 
-use App\Domain\DTO\TrickImageDTO;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class TrickFile
+ * Class TrickFile.
  *
  * @ORM\Table(name="trick_image_entity")
  * @ORM\Entity(repositoryClass="App\Domain\Repository\TrickImageRepository")
@@ -51,11 +50,8 @@ class TrickImage
 
     /**
      * TrickImage constructor.
-     * @param string $imageFileName
-     * @param bool $firstImage
-     * @param string $altImage
      */
-    public function __construct(string $imageFileName, bool $firstImage = false, string $altImage)
+    public function __construct(string $imageFileName, bool $firstImage = false, string $altImage = '')
     {
         $this->imageFileName = $imageFileName;
         $this->firstImage = $firstImage;
@@ -70,9 +66,6 @@ class TrickImage
         return $this->firstImage;
     }
 
-    /**
-     * @param bool $firstImage
-     */
     public function setFirstImage(bool $firstImage = false): void
     {
         $this->firstImage = $firstImage;
@@ -86,17 +79,11 @@ class TrickImage
         return $this->altImage;
     }
 
-    /**
-     * @param string $altImage
-     */
     public function setAltImage(string $altImage): void
     {
         $this->altImage = $altImage;
     }
 
-    /**
-     *
-     */
     public function getId()
     {
         return $this->id;
@@ -110,16 +97,13 @@ class TrickImage
         return $this->imageFileName;
     }
 
-    /**
-     * @param string $imageFileName
-     */
     public function setImageFileName(string $imageFileName): void
     {
         $this->imageFileName = $imageFileName;
     }
 
     /**
-     * Get Trick
+     * Get Trick.
      *
      * @return Trick|null
      */
@@ -129,9 +113,8 @@ class TrickImage
     }
 
     /**
-     * Set Trick
+     * Set Trick.
      *
-     * @param Trick|null $trick
      * @return TrickImage
      */
     public function setTrick(?Trick $trick): self

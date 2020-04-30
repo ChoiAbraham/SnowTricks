@@ -1,15 +1,12 @@
 <?php
 
-
 namespace App\Form\Type;
 
 use App\Domain\DTO\CreateTrickDTO;
-use App\Domain\DTO\TrickDTO;
 use App\Domain\Entity\Trick;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,7 +26,7 @@ class CreateTrickType extends AbstractType
                 [
                     'label' => 'Titre',
                     'attr' => [
-                        'class' => 'form-title'
+                        'class' => 'form-title',
                     ],
                     'required' => false,
                 ]
@@ -49,7 +46,7 @@ class CreateTrickType extends AbstractType
                     'choices' => $this->getChoices(),
                     'placeholder' => 'GROUPE',
                     'attr' => [
-                        'class' => 'form-subject'
+                        'class' => 'form-subject',
                     ],
                     'required' => false,
                 ]
@@ -91,7 +88,7 @@ class CreateTrickType extends AbstractType
                     $form->get('videoslinks')->getData()
                 );
             },
-            'translation_domain' => 'forms'
+            'translation_domain' => 'forms',
         ]);
     }
 
@@ -99,9 +96,10 @@ class CreateTrickType extends AbstractType
     {
         $choices = Trick::LIST_GROUPS;
         $output = [];
-        foreach($choices as $k => $v) {
+        foreach ($choices as $k => $v) {
             $output[$v] = $k;
         }
+
         return $output;
     }
 }

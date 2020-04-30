@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Form\Type;
 
 use App\Domain\DTO\EmailPasswordRecoveryDTO;
@@ -33,7 +32,7 @@ class EmailForPasswordRecoveryFormType extends AbstractType
                         $form->get('pseudo')->getData(),
                         $form->get('email')->getData()
                     );
-                }
+                },
             ]
         );
     }

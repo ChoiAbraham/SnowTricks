@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Form\Handler;
 
 use App\Domain\Builder\Interfaces\UserBuilderInterface;
@@ -32,10 +31,6 @@ class EditProfilPictureTypeHandler implements EditProfilPictureTypeHandlerInterf
 
     /**
      * EditProfilPictureTypeHandler constructor.
-     * @param UserBuilderInterface $userBuilder
-     * @param UserRepositoryInterface $userRepository
-     * @param EntityManagerInterface $em
-     * @param FlashBagInterface $bag
      */
     public function __construct(UserBuilderInterface $userBuilder, UserRepositoryInterface $userRepository, EntityManagerInterface $em, FlashBagInterface $bag)
     {

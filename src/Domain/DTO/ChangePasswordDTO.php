@@ -1,11 +1,10 @@
 <?php
 
-
 namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\ChangePasswordDTOInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 use App\Form\CustomConstraints as AcmeAssert;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class ChangePasswordDTO implements ChangePasswordDTOInterface
 {
@@ -24,6 +23,7 @@ class ChangePasswordDTO implements ChangePasswordDTOInterface
 
     /**
      * ChangePasswordDTO constructor.
+     *
      * @param $username
      * @param $password
      */

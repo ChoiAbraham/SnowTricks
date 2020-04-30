@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Actions\Security;
 
 use App\Actions\Interfaces\SecurityRequestNewPasswordInterface;
@@ -17,17 +16,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class SecurityRequestNewPasswordAction implements SecurityRequestNewPasswordInterface
 {
-    /** @var FormFactoryInterface $formFactory */
+    /** @var FormFactoryInterface */
     protected $formFactory;
 
     /** @var NewPasswordRequestTypeHandlerInterface */
     private $newPasswordRequestTypeHandler;
 
-
     /**
      * SecurityPasswordRecoveryAction constructor.
-     * @param FormFactoryInterface $formFactory
-     * @param NewPasswordRequestTypeHandlerInterface $newPasswordRequestTypeHandler
      */
     public function __construct(FormFactoryInterface $formFactory, NewPasswordRequestTypeHandlerInterface $newPasswordRequestTypeHandler)
     {
@@ -43,10 +39,10 @@ class SecurityRequestNewPasswordAction implements SecurityRequestNewPasswordInte
             return $redirect('homepage_action');
         }
 
-        return $responder (
+        return $responder(
             'security/form_request_new_password.html.twig',
             [
-                'form' => $emailNewPassword->createView()
+                'form' => $emailNewPassword->createView(),
             ]
         );
     }

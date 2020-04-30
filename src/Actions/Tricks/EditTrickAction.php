@@ -10,9 +10,8 @@ use App\Domain\Entity\TrickVideo;
 use App\Domain\Repository\CommentRepository;
 use App\Domain\Repository\GroupTrickRepository;
 use App\Domain\Repository\TrickImageRepository;
-use App\Domain\Repository\TrickVideoRepository;
 use App\Domain\Repository\TrickRepository;
-use App\Form\Handler\AddTrickCommentTypeHandler;
+use App\Domain\Repository\TrickVideoRepository;
 use App\Form\Handler\Interfaces\EditTrickTypeHandlerInterface;
 use App\Form\Type\UpdateTrickType;
 use App\Responders\RedirectResponder;
@@ -28,7 +27,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
 /**
- * Class EditTrickAction
+ * Class EditTrickAction.
  *
  * @Route("/trick/edit/{slug}", name="trick_edit", methods={"GET","POST"})
  * @IsGranted("ROLE_USER")
@@ -62,9 +61,6 @@ class EditTrickAction
     /** @var EditTrickTypeHandlerInterface */
     private $editTrickTypeHandler;
 
-    /** @var AddTrickCommentTypeHandler */
-    private $addTrickCommentTypeHandler;
-
     /** @var UploaderHelper */
     private $uploaderHelper;
 
@@ -73,20 +69,8 @@ class EditTrickAction
 
     /**
      * EditTrickAction constructor.
-     * @param EventDispatcherInterface $eventDispatcher
-     * @param TrickRepository $trickRepository
-     * @param TrickImageRepository $trickImageRepository
-     * @param TrickVideoRepository $trickVideoRepository
-     * @param Security $security
-     * @param CommentRepository $commentRepository
-     * @param FormFactoryInterface $formFactory
-     * @param GroupTrickRepository $groupTrickRepository
-     * @param EditTrickTypeHandlerInterface $editTrickTypeHandler
-     * @param AddTrickCommentTypeHandler $addTrickCommentTypeHandler
-     * @param UploaderHelper $uploaderHelper
-     * @param FlashBagInterface $bag
      */
-    public function __construct(EventDispatcherInterface $eventDispatcher, TrickRepository $trickRepository, TrickImageRepository $trickImageRepository, TrickVideoRepository $trickVideoRepository, Security $security, CommentRepository $commentRepository, FormFactoryInterface $formFactory, GroupTrickRepository $groupTrickRepository, EditTrickTypeHandlerInterface $editTrickTypeHandler, AddTrickCommentTypeHandler $addTrickCommentTypeHandler, UploaderHelper $uploaderHelper, FlashBagInterface $bag)
+    public function __construct(EventDispatcherInterface $eventDispatcher, TrickRepository $trickRepository, TrickImageRepository $trickImageRepository, TrickVideoRepository $trickVideoRepository, Security $security, CommentRepository $commentRepository, FormFactoryInterface $formFactory, GroupTrickRepository $groupTrickRepository, EditTrickTypeHandlerInterface $editTrickTypeHandler, UploaderHelper $uploaderHelper, FlashBagInterface $bag)
     {
         $this->eventDispatcher = $eventDispatcher;
         $this->trickRepository = $trickRepository;
@@ -97,7 +81,6 @@ class EditTrickAction
         $this->formFactory = $formFactory;
         $this->groupTrickRepository = $groupTrickRepository;
         $this->editTrickTypeHandler = $editTrickTypeHandler;
-        $this->addTrickCommentTypeHandler = $addTrickCommentTypeHandler;
         $this->uploaderHelper = $uploaderHelper;
         $this->bag = $bag;
     }
@@ -108,7 +91,7 @@ class EditTrickAction
         /** @var Trick $trick */
         $trick = $this->trickRepository->findOneBy(['slug' => $request->attributes->get('slug')]);
 
-        if(is_null($trick)) {
+        if (is_null($trick)) {
             throw new EntityNotFoundException('Pas de Trick "%s"', $trick->getSlug());
         }
 
@@ -126,7 +109,7 @@ class EditTrickAction
 
         // 1. Récupération du Nom du Trick avec le group_id
         $groupEntity = $this->groupTrickRepository->findOneBy(['id' => $trick->getGroupTrick()]);
-        if(is_null($groupEntity)) {
+        if (is_null($groupEntity)) {
             $groupEntity = new GroupTrick();
             $trick->setGroupTrick($groupEntity);
         }
@@ -143,10 +126,11 @@ class EditTrickAction
 
         if ($this->editTrickTypeHandler->handle($trickType, $trick)) {
             $this->bag->add('success', 'Le Trick a été modifié avec succès');
+
             return $redirect('trick_action', ['slug' => $trick->getSlug()]);
         }
 
-        return $responder (
+        return $responder(
             'trick/trick_page_edit.html.twig',
             [
                 'EditTrickForm' => $trickType->createView(),

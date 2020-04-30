@@ -13,7 +13,6 @@ use App\Responders\Interfaces\ViewResponderInterface;
 use App\Responders\RedirectResponder;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
@@ -23,12 +22,12 @@ use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 /**
- * Class DeleteTrickAction
+ * Class DeleteTrickAction.
  *
  * @Route("/delete/{slug}", name="edit_trick_delete")
  * @IsGranted("ROLE_USER")
  */
-final class DeleteTrickAction extends AbstractController implements DeleteTrickActionInterface
+final class DeleteTrickAction implements DeleteTrickActionInterface
 {
     /** @var EntityManagerInterface */
     private $manager;
@@ -68,16 +67,6 @@ final class DeleteTrickAction extends AbstractController implements DeleteTrickA
 
     /**
      * DeleteTrickAction constructor.
-     * @param EntityManagerInterface $manager
-     * @param TokenStorageInterface $tokenStorage
-     * @param TrickRepository $trickRepository
-     * @param TrickImageRepository $trickImageRepository
-     * @param TrickVideoRepository $trickVideoRepository
-     * @param CommentRepository $commentRepository
-     * @param FlashBagInterface $flashBag
-     * @param string $uploadPath
-     * @param CsrfTokenManagerInterface $csrf
-     * @param Filesystem $filesystem
      */
     public function __construct(EntityManagerInterface $manager, TokenStorageInterface $tokenStorage, TrickRepository $trickRepository, TrickImageRepository $trickImageRepository, TrickVideoRepository $trickVideoRepository, CommentRepository $commentRepository, FlashBagInterface $flashBag, string $uploadPath, CsrfTokenManagerInterface $csrf, Filesystem $filesystem)
     {
@@ -99,7 +88,7 @@ final class DeleteTrickAction extends AbstractController implements DeleteTrickA
         $trickEntity = $this->trickRepository->findOneBy(['slug' => $request->attributes->get('slug')]);
 
         if ($this->csrf->isTokenValid(new CsrfToken('delete' . $trickEntity->getId(), $request->get('_token')))) {
-            if($this->tokenStorage->getToken()->getUser()) {
+            if ($this->tokenStorage->getToken()->getUser()) {
                 $comments = $this->commentRepository->findBy(['trick' => $trickEntity->getId()]);
                 foreach ($comments as $comment) {
                     $this->manager->remove($comment);
@@ -107,7 +96,7 @@ final class DeleteTrickAction extends AbstractController implements DeleteTrickA
 
                 $images = $this->trickImageRepository->findBy(['trick' => $trickEntity->getId()]);
                 foreach ($images as $image) {
-                    /** @var TrickImage $image */
+                    /* @var TrickImage $image */
                     $this->filesystem->remove(
                         [
                             '',
@@ -126,6 +115,7 @@ final class DeleteTrickAction extends AbstractController implements DeleteTrickA
                 $this->manager->flush();
 
                 $this->flashBag->add('success', 'La figure a été supprimé');
+
                 return $redirect('homepage_action');
             }
         }

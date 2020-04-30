@@ -24,7 +24,7 @@ class ResetPasswordType extends AbstractType
                 'invalid_message' => 'Les mots de passes doivent être identiques',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'Mot de passe'],
+                'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Retaper votre mot de passe'],
             ]);
     }
@@ -39,7 +39,7 @@ class ResetPasswordType extends AbstractType
                         $form->get('username')->getData(),
                         $form->get('password')->getData(),
                     );
-                }
+                },
             ]
         );
     }

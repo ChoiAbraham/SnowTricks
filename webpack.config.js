@@ -41,6 +41,7 @@ Encore
     .addEntry('new.trick', './assets/js/page/new.trick.js')
     .addEntry('displayTrickPage', './assets/js/page/trick_display.js')
 
+    .addEntry('delete.comment', './assets/js/components/delete.comment.js')
     .addEntry('delete.trick', './assets/js/components/delete.trick.js')
     .addEntry('addpictures', './assets/js/components/addpictures.js')
     .addEntry('addvideos', './assets/js/components/addvideos.js')

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Class User
+ * Class User.
  *
  * @ORM\Table(name="user_entity")
  * @ORM\Entity(repositoryClass="App\Domain\Repository\UserRepository")
@@ -59,7 +59,6 @@ class User implements UserInterface
      */
     protected $updatedAt;
 
-
     /**
      * @var string
      *
@@ -85,7 +84,7 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * User constructor
+     * User constructor.
      */
     public function __construct(?string $name = '', ?string $email = '', ?string $password = '')
     {
@@ -161,33 +160,21 @@ class User implements UserInterface
         return $this->createdAt;
     }
 
-    /**
-     * @param string $name
-     */
     public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @param string $email
-     */
     public function setEmail(string $email): void
     {
         $this->email = $email;
     }
 
-    /**
-     * @param string $password
-     */
     public function setPassword(string $password): void
     {
         $this->password = $password;
     }
 
-    /**
-     * @param string $picturePath
-     */
     public function setPicturePath(string $picturePath): void
     {
         $this->picturePath = $picturePath;
@@ -201,9 +188,6 @@ class User implements UserInterface
         return $this->updatedAt;
     }
 
-    /**
-     * @param \DateTime $updatedAt
-     */
     public function setUpdatedAt(\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
@@ -241,7 +225,7 @@ class User implements UserInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getRoles()
     {
@@ -257,14 +241,14 @@ class User implements UserInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getUsername()
     {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function eraseCredentials()
     {

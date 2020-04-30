@@ -1,14 +1,13 @@
 <?php
 
-
 namespace App\Actions\Account;
 
 use App\Actions\Interfaces\MyAccountActionInterface;
 use App\Domain\Entity\Trick;
-use App\Domain\Repository\UserRepository;
 use App\Domain\Repository\TrickRepository;
+use App\Domain\Repository\UserRepository;
 use App\Form\Handler\Interfaces\EditProfilPictureTypeHandlerInterface;
-use App\Form\ProfilPictureType;
+use App\Form\Type\ProfilPictureType;
 use App\Responders\RedirectResponder;
 use App\Responders\ViewResponder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -19,7 +18,7 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 
 /**
- * Class MyAccountAction
+ * Class MyAccountAction.
  *
  * @Route("/dashboard", name="my_account", methods={"GET","POST"})
  * @IsGranted("ROLE_USER")
@@ -48,12 +47,6 @@ class MyAccountAction implements MyAccountActionInterface
 
     /**
      * MyAccountAction constructor.
-     * @param TrickRepository $trickRepository
-     * @param UserRepository $userRepository
-     * @param Security $security
-     * @param TokenStorageInterface $tokenStorage
-     * @param EditProfilPictureTypeHandlerInterface $editProfilPictureTypeHandler
-     * @param FormFactoryInterface $formFactory
      */
     public function __construct(TrickRepository $trickRepository, UserRepository $userRepository, Security $security, TokenStorageInterface $tokenStorage, EditProfilPictureTypeHandlerInterface $editProfilPictureTypeHandler, FormFactoryInterface $formFactory)
     {
@@ -65,11 +58,11 @@ class MyAccountAction implements MyAccountActionInterface
         $this->formFactory = $formFactory;
     }
 
-
     public function __invoke(Request $request, ViewResponder $responder, RedirectResponder $redirect)
     {
-        $userId = $this->security->getUser()->getId();
         $user = $this->security->getUser();
+        $userId = $user->getId();
+
         /** @var Trick $tricks */
         $tricks = $this->trickRepository->findBy(['creator' => $userId]);
 

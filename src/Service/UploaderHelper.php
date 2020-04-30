@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Service;
 
 use Symfony\Component\Filesystem\Filesystem;
@@ -16,7 +15,7 @@ class UploaderHelper
 
     /**
      * UploaderHelper constructor.
-     * @param string $uploadPath
+     *
      * @param Filesystem $filesystem
      */
     public function __construct(string $uploadPath)
@@ -26,7 +25,7 @@ class UploaderHelper
 
     public function uploadTrickImage(UploadedFile $uploadedFile, $newFileName)
     {
-        $destination = $this->uploadPath.'/trick_picture';
+        $destination = $this->uploadPath . '/trick_picture';
 
         try {
             $uploadedFile->move(
@@ -34,13 +33,12 @@ class UploaderHelper
                 $newFileName
             );
         } catch (FileException $e) {
-            //
         }
     }
 
     public function uploadProfilPictureImage(UploadedFile $uploadedFile, $newFileName)
     {
-        $destination = $this->uploadPath.'/profil_picture';
+        $destination = $this->uploadPath . '/profil_picture';
 
         try {
             $uploadedFile->move(
@@ -54,7 +52,7 @@ class UploaderHelper
 
     public function deleteTrickImage(?string $filename)
     {
-        $destination = $this->uploadPath.'/trick_picture/' . $filename;
+        $destination = $this->uploadPath . '/trick_picture/' . $filename;
         $fileSystem = new FileSystem();
         $fileSystem->remove($destination);
     }
@@ -62,13 +60,14 @@ class UploaderHelper
     public function deleteProfilPictureImage(?string $filename)
     {
         $fileSystem = new FileSystem();
-        $destination = $this->uploadPath.'/profil_picture/'. $filename;
+        $destination = $this->uploadPath . '/profil_picture/' . $filename;
         $fileSystem->remove($destination);
     }
 
     public function createTrickPictureFile(?string $filename)
     {
         $file = new File($this->uploadPath . '/trick_picture/' . $filename);
+
         return $file;
     }
 }

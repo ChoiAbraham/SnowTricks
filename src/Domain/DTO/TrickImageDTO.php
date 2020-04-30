@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Domain\DTO;
-
 
 use App\Domain\Entity\TrickImage;
 use Symfony\Component\HttpFoundation\File\File;
@@ -50,6 +48,7 @@ class TrickImageDTO
 
     /**
      * TrickImageDTO constructor.
+     *
      * @param $id
      * @param $alt
      */
@@ -61,15 +60,12 @@ class TrickImageDTO
         $this->firstimage = $firstImage;
     }
 
-    /**
-     * @param TrickImage $image
-     */
     public static function createFromEntity(TrickImage $image, $i, $files)
     {
         $dto = new self();
         $dto->setId($i);
         $dto->setAlt($image->getAltImage());
-        $dto->setImage($files[$i-1]);
+        $dto->setImage($files[$i - 1]);
         $dto->setFirstimage($image->getFirstImage());
 
         return $dto;
@@ -80,9 +76,6 @@ class TrickImageDTO
         return $this->alt;
     }
 
-    /**
-     * @param string $alt
-     */
     public function setAlt(string $alt): void
     {
         $this->alt = $alt;
@@ -109,9 +102,6 @@ class TrickImageDTO
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
     public function setId(int $id): void
     {
         $this->id = $id;

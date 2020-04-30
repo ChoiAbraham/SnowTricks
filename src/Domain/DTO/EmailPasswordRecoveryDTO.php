@@ -22,6 +22,7 @@ class EmailPasswordRecoveryDTO implements EmailPasswordRecoveryDTOInterface
 
     /**
      * EmailPasswordRecoveryDTO constructor.
+     *
      * @param $pseudo
      * @param $email
      */

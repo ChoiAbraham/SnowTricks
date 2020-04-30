@@ -28,11 +28,11 @@ class MailSenderHelper
     {
         $email = (new TemplatedEmail())
             ->from('hello@example.com')
-            ->to(new Address($emailUser, $firstName), )
+            ->to(new Address($emailUser, $firstName))
             ->subject('Changement du mot de passe')
             ->htmlTemplate('emails/_password_recovery.html.twig')
             ->context([
-                'tokenSent' => $token
+                'tokenSent' => $token,
             ]);
 
         $this->mailer->send($email);

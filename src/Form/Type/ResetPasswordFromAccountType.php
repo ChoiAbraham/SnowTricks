@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Form\Type;
-
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -16,17 +14,18 @@ class ResetPasswordFromAccountType extends AbstractType
     {
         $builder
             ->add('username', TextType::class)
-            ->add('oldPassword',
+            ->add(
+                'oldPassword',
                 PasswordType::class,
                 [
-                    'mapped' => false
+                    'mapped' => false,
                 ]
             )
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent être identique',
                 'options' => ['attr' => ['class' => 'password-field']],
-                'required' => true
+                'required' => true,
             ]);
     }
 }

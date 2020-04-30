@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Form\Handler;
 
 use App\Domain\Builder\Interfaces\TrickBuilderInterface;
@@ -8,13 +7,11 @@ use App\Domain\Builder\Interfaces\TrickImageBuilderInterface;
 use App\Domain\Builder\Interfaces\TrickVideoBuilderInterface;
 use App\Domain\DTO\UpdateTrickDTO;
 use App\Domain\Entity\Trick;
-use App\Domain\Entity\TrickImage;
 use App\Domain\Repository\Interfaces\TrickRepositoryInterface;
 use App\Form\Handler\Interfaces\EditTrickTypeHandlerInterface;
 use App\Service\TrickUpdateResolver;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Security\Core\Security;
 
 class EditTrickTypeHandler implements EditTrickTypeHandlerInterface
 {
@@ -42,12 +39,6 @@ class EditTrickTypeHandler implements EditTrickTypeHandlerInterface
 
     /**
      * EditTrickTypeHandler constructor.
-     * @param TrickBuilderInterface $trickBuilder
-     * @param TrickRepositoryInterface $trickRepository
-     * @param EntityManagerInterface $em
-     * @param TrickUpdateResolver $trickUpdateResolver
-     * @param TrickImageBuilderInterface $trickImageBuilder
-     * @param TrickVideoBuilderInterface $trickVideoBuilder
      */
     public function __construct(TrickBuilderInterface $trickBuilder, TrickRepositoryInterface $trickRepository, EntityManagerInterface $em, TrickUpdateResolver $trickUpdateResolver, TrickImageBuilderInterface $trickImageBuilder, TrickVideoBuilderInterface $trickVideoBuilder)
     {

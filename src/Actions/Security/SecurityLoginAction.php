@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Actions\Security;
 
 use App\Responders\ViewResponder;
@@ -8,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
- * Class SecurityLoginAction
+ * Class SecurityLoginAction.
  *
  * @Route("/login", name="security_login")
  */
@@ -19,11 +18,11 @@ final class SecurityLoginAction
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $responder (
+        return $responder(
             'security/login.html.twig',
             [
                 'last_username' => $lastUsername,
-                'error' => $error
+                'error' => $error,
             ]
         );
     }
