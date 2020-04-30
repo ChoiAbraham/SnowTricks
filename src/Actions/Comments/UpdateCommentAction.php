@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Actions\Comments;
 
 use App\Actions\Interfaces\UpdateCommentActionInterface;
@@ -20,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
 /**
- * Class EditTrickAction
+ * Class EditTrickAction.
  *
  * @Route("/trick/comment/edit/{id}", name="edit.comment", methods={"GET","POST"})
  * @IsGranted("ROLE_USER")
@@ -46,11 +45,6 @@ final class UpdateCommentAction implements UpdateCommentActionInterface
 
     /**
      * UpdateCommentAction constructor.
-     * @param Security $security
-     * @param CommentRepository $commentRepository
-     * @param FormFactoryInterface $formFactory
-     * @param TrickCommentTypeHandler $trickCommentTypeHandler
-     * @param FlashBagInterface $bag
      */
     public function __construct(Security $security, CommentRepository $commentRepository, FormFactoryInterface $formFactory, TrickCommentTypeHandler $trickCommentTypeHandler, FlashBagInterface $bag)
     {
@@ -60,7 +54,6 @@ final class UpdateCommentAction implements UpdateCommentActionInterface
         $this->trickCommentTypeHandler = $trickCommentTypeHandler;
         $this->bag = $bag;
     }
-
 
     public function __invoke(Request $request, ViewResponder $responder, RedirectResponder $redirect)
     {
@@ -81,16 +74,17 @@ final class UpdateCommentAction implements UpdateCommentActionInterface
         $commentForm = $this->formFactory->create(trickCommentType::class, $commentDTO)->handleRequest($request);
 
         $user = $this->security->getUser();
-        if ($this->trickCommentTypeHandler->handleUpdateComment($commentForm, $comment) && $user != null) {
+        if ($this->trickCommentTypeHandler->handleUpdateComment($commentForm, $comment) && null != $user) {
             $this->bag->add('success', 'Votre commentaire a été mise à jour');
+
             return $redirect('trick_action', ['slug' => $comment->getTrick()->getSlug()]);
         }
 
-        return $responder (
+        return $responder(
             'trick/comment_page_edit.html.twig',
             [
                 'form' => $commentForm->createView(),
-                'comment' => $comment
+                'comment' => $comment,
             ]
         );
     }

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Form\CustomConstraints;
-
 
 use App\Domain\Repository\Interfaces\TrickRepositoryInterface;
 use Symfony\Component\Validator\Constraint;
@@ -19,7 +17,6 @@ class UniqueTrickTitleValidator extends ConstraintValidator
 
     /**
      * UniqueTrickTitleValidator constructor.
-     * @param TrickRepositoryInterface $trickRepository
      */
     public function __construct(TrickRepositoryInterface $trickRepository)
     {
@@ -40,13 +37,12 @@ class UniqueTrickTitleValidator extends ConstraintValidator
             throw new UnexpectedValueException($value, 'string');
         }
 
-        $userByUsername = $this->trickRepository->findOneBy(array('title' => $value));
+        $userByUsername = $this->trickRepository->findOneBy(['title' => $value]);
 
-        if ($userByUsername != null) {
+        if (null != $userByUsername) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ string }}', $value)
                 ->addViolation();
         }
     }
-
 }

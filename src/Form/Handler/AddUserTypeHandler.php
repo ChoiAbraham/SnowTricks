@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Form\Handler;
 
 use App\Domain\Builder\Interfaces\UserBuilderInterface;
@@ -38,10 +37,7 @@ class AddUserTypeHandler implements AddUserTypeHandlerInterface
 
     /**
      * AddUserTypeHandler constructor.
-     * @param UserBuilderInterface $userBuilder
-     * @param FlashBagInterface $bag
-     * @param UserRepositoryInterface $userRepository
-     * @param EntityManagerInterface $em
+     *
      * @param UserPasswordEncoderInterface $this->encoder
      */
     public function __construct(UserBuilderInterface $userBuilder, FlashBagInterface $bag, UserRepositoryInterface $userRepository, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)

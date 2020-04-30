@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-
 class VideoLinkHelper
 {
     private $finalLink = '';
@@ -11,7 +10,7 @@ class VideoLinkHelper
     {
         // Youtube
         $youtubeRegex = '/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((?:\w|-){11})(?:&list=(\S+))?$/';
-        if(preg_match($youtubeRegex, $link, $matches)) {
+        if (preg_match($youtubeRegex, $link, $matches)) {
             $this->finalLink = 'https://www.youtube.com/embed/' . $matches[1];
         }
 
@@ -28,9 +27,9 @@ class VideoLinkHelper
         }
 
         // Iframes
-        if(preg_match('/<iframe\s.*?\bsrc="(.*?)".*?>/si', $link, $matches)) {
+        if (preg_match('/<iframe\s.*?\bsrc="(.*?)".*?>/si', $link, $matches)) {
             $this->finalLink = $matches[1];
-        };
+        }
 
         return $this->finalLink;
     }

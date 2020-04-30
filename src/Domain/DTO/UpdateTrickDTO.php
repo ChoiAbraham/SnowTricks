@@ -1,13 +1,10 @@
 <?php
 
-
 namespace App\Domain\DTO;
-
 
 use App\Domain\DTO\Interfaces\TrickDTOInterface;
 use App\Domain\Entity\Trick;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class UpdateTrickDTO implements TrickDTOInterface
@@ -38,9 +35,7 @@ class UpdateTrickDTO implements TrickDTOInterface
 
     /**
      * TrickDTO constructor.
-     * @param string|null $title
-     * @param string|null $content
-     * @param string|null $groups
+     *
      * @param ArrayCollection $image
      * @param ArrayCollection $video
      */
@@ -53,33 +48,23 @@ class UpdateTrickDTO implements TrickDTOInterface
         $this->videoslinks = $videos;
     }
 
-    /**
-     * @param string|null $title
-     */
     public function setTitle(?string $title): void
     {
         $this->title = $title;
     }
 
-    /**
-     * @param string|null $content
-     */
     public function setContent(?string $content): void
     {
         $this->content = $content;
     }
 
-    /**
-     *
-     */
     public function setGroups($groups): void
     {
         $this->groups = $groups;
     }
 
     /**
-     * Prepopulate the data from the Trick Entity
-     *
+     * Prepopulate the data from the Trick Entity.
      */
     public static function createFromEntity(Trick $trick, $files): self
     {
@@ -92,7 +77,7 @@ class UpdateTrickDTO implements TrickDTOInterface
         $i = 1;
         foreach ($trick->getTrickImages() as $image) {
             $images[] = TrickImageDTO::createFromEntity($image, $i, $files);
-            $i++;
+            ++$i;
         }
         //$images returns an array of TrickImageDTO instances
         $dto->setImageslinks($images);
@@ -101,7 +86,7 @@ class UpdateTrickDTO implements TrickDTOInterface
         $videos = [];
         foreach ($trick->getTrickVideos() as $video) {
             $videos[] = TrickVideoDTO::createFromEntity($video, $y);
-            $y++;
+            ++$y;
         }
         $dto->setVideoslinks($videos);
 
@@ -113,9 +98,10 @@ class UpdateTrickDTO implements TrickDTOInterface
      */
     public function getTitle(): ?string
     {
-        if ($this->title == '') {
+        if ('' == $this->title) {
             $this->title = 'no title';
         }
+
         return $this->title;
     }
 
@@ -136,7 +122,7 @@ class UpdateTrickDTO implements TrickDTOInterface
     }
 
     /**
-     * Only select those with upload files
+     * Only select those with upload files.
      */
     public function getImageslinks()
     {
@@ -146,11 +132,12 @@ class UpdateTrickDTO implements TrickDTOInterface
                 $checkUploads[] = $image;
             }
         }
+
         return $checkUploads;
     }
 
     /**
-     * Only select those with Ids
+     * Only select those with Ids.
      */
     public function getImageslinksWithIds()
     {
@@ -160,12 +147,12 @@ class UpdateTrickDTO implements TrickDTOInterface
                 $checkUploads[] = $image;
             }
         }
+
         return $checkUploads;
     }
 
     /**
-     *
-     * Only select those with upload Files and No Ids
+     * Only select those with upload Files and No Ids.
      */
     public function getImageslinksWithNoIds()
     {
@@ -176,6 +163,7 @@ class UpdateTrickDTO implements TrickDTOInterface
                 $checkUploads[] = $image;
             }
         }
+
         return $checkUploads;
     }
 
@@ -188,7 +176,7 @@ class UpdateTrickDTO implements TrickDTOInterface
     }
 
     /**
-     * Only select those with Ids
+     * Only select those with Ids.
      */
     public function getVideolinksWithIds()
     {
@@ -198,11 +186,12 @@ class UpdateTrickDTO implements TrickDTOInterface
                 $checkUploads[] = $video;
             }
         }
+
         return $checkUploads;
     }
 
     /**
-     * Only select those with No Ids
+     * Only select those with No Ids.
      */
     public function getVideolinksWithNoIds()
     {
@@ -212,6 +201,7 @@ class UpdateTrickDTO implements TrickDTOInterface
                 $checkUploads[] = $video;
             }
         }
+
         return $checkUploads;
     }
 

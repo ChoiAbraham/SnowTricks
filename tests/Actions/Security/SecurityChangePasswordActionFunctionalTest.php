@@ -20,7 +20,7 @@ class SecurityChangePasswordActionFunctionalTest extends AbstractWebTestCase
         $user = $users->getReference('userRef_0');
 
         $token = $user->getToken();
-        $uri = '/reset_password/' . $token;
+        $uri = '/reset_password/'.$token;
         $crawler = $this->client->request('GET', $uri);
 
         $form = $crawler->selectButton('Réinitialiser')->form();

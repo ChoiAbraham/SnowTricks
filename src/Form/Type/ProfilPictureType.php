@@ -27,13 +27,13 @@ class ProfilPictureType extends AbstractType
                             [
                                 'maxSize' => '1024k',
                                 'mimeTypes' => [
-                                    "image/png",
-                                    "image/jpeg",
-                                    "image/jpg",
+                                    'image/png',
+                                    'image/jpeg',
+                                    'image/jpg',
                                 ],
-                                'mimeTypesMessage' => 'Seuls les formats .png .jpg .jpeg sont acceptés' ,
+                                'mimeTypesMessage' => 'Seuls les formats .png .jpg .jpeg sont acceptés',
                             ]
-                        )
+                        ),
                     ],
                 ]
             );
@@ -48,7 +48,7 @@ class ProfilPictureType extends AbstractType
                     return new ProfilPictureDTO(
                         $form->get('profilPicture')->getData()
                     );
-                }
+                },
             ]
         );
     }

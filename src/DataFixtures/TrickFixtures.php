@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Domain\Entity\Comment;
 use App\Domain\Entity\GroupTrick;
 use App\Domain\Entity\Trick;
 use App\Domain\Entity\User;
@@ -56,7 +55,7 @@ class TrickFixtures extends BaseFixture implements DependentFixtureInterface
     {
         return [
             UserFixture::class,
-            GroupFixture::class
+            GroupFixture::class,
         ];
     }
 }

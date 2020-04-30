@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Actions;
 
 use App\Domain\Entity\Trick;
@@ -10,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class HomepageTricksLoadedAction
+ * Class HomepageTricksLoadedAction.
  *
  * @Route("/tricks_loaded", name="tricks.loaded")
  */
@@ -21,13 +20,11 @@ final class HomepageTricksLoadedAction
 
     /**
      * HomepageTricksLoadedAction constructor.
-     * @param TrickRepositoryInterface $trickRepository
      */
     public function __construct(TrickRepositoryInterface $trickRepository)
     {
         $this->trickRepository = $trickRepository;
     }
-
 
     public function __invoke(Request $request, ViewResponderInterface $responder)
     {
@@ -40,20 +37,19 @@ final class HomepageTricksLoadedAction
             true : false
         ;
 
-        $offset = $pageId * Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE - Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE ;
+        $offset = $pageId * Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE - Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE;
 
         /** @var Trick $tricksToShow */
         $tricksToLoad = $this->trickRepository->findLatestWithFirstImageActive(Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE, $offset);
         $page = $pageId++;
 
-        return $responder (
+        return $responder(
             'include/_ajax_load_tricks.html.twig',
             [
                 'tricksToLoad' => $tricksToLoad,
                 'nextPage' => $nextPage,
-                'numberOfThePage' => $page
+                'numberOfThePage' => $page,
             ]
         );
     }
-
 }

@@ -19,7 +19,7 @@ class UserFixture extends BaseFixture
         'Vachel Quessy',
         'Yolande Vadeboncoeur',
         'Jacquenett Gousse',
-        'Abraham Choi'
+        'Abraham Choi',
     ];
 
     private static $userEmails = [
@@ -30,7 +30,7 @@ class UserFixture extends BaseFixture
         'VachelQuessy@rhyta.com',
         'YolandeVadeboncoeur@jourrapide.com',
         'JacquenettGousse@dayrep.com',
-        'abraham.choi@yahoo.fr'
+        'abraham.choi@yahoo.fr',
     ];
 
     private static $userPasswords = [
@@ -41,11 +41,12 @@ class UserFixture extends BaseFixture
         'VachelQuessy',
         'YolandeVadeboncoeur',
         'JacquenettGousse',
-        'abrahamchoi'
+        'abrahamchoi',
     ];
 
     /**
      * UserFixture constructor.
+     *
      * @param UserPasswordEncoderInterface $this->encoder
      */
     public function __construct(UserPasswordEncoderInterface $encoder)
@@ -55,7 +56,7 @@ class UserFixture extends BaseFixture
 
     protected function loadData(ObjectManager $manager)
     {
-        $this->createMany(User::class, 8, function(User $user, $i) {
+        $this->createMany(User::class, 8, function (User $user, $i) {
             $user->setName(self::$userNames[$i]);
             $user->setEmail(self::$userEmails[$i]);
             // Pour récupérer User instance in tests

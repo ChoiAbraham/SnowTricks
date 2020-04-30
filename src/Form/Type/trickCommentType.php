@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Form\Type;
 
 use App\Domain\DTO\CommentDTO;
@@ -15,10 +14,13 @@ class trickCommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text', TextareaType::class,
+            ->add(
+                'text',
+                TextareaType::class,
                 [
-                    'label' => 'Ajouter un commentaire'
-                ]);
+                    'label' => 'Ajouter un commentaire',
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)

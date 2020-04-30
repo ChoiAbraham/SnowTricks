@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\ProfilPictureDTOInterface;
@@ -23,7 +22,8 @@ class ProfilPictureDTO implements ProfilPictureDTOInterface
     protected $profilPicture;
 
     /**
-     * ProfilPictureDTO constructor
+     * ProfilPictureDTO constructor.
+     *
      * @param $profilPicture
      */
     public function __construct($profilPicture = null)
@@ -45,9 +45,6 @@ class ProfilPictureDTO implements ProfilPictureDTOInterface
         $this->image = $image;
     }
 
-    /**
-     * @param User $user
-     */
     public static function createFromEntity(User $user)
     {
         $dto = new self();

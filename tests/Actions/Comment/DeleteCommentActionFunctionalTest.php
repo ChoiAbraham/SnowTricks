@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Tests\Actions\Comment;
-
 
 use App\DataFixtures\CommentFixture;
 use App\DataFixtures\GroupFixture;
@@ -14,7 +12,6 @@ use App\Domain\Entity\User;
 use App\Tests\AbstractWebTestCase;
 use App\Tests\NeedLoginTrait;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
-use Symfony\Component\HttpFoundation\Response;
 
 class DeleteCommentActionFunctionalTest extends AbstractWebTestCase
 {
@@ -33,7 +30,7 @@ class DeleteCommentActionFunctionalTest extends AbstractWebTestCase
             TrickFixtures::class,
             ImageTrickFixture::class,
             VideoTrickFixture::class,
-            CommentFixture::class
+            CommentFixture::class,
         ]);
 
         // Step 2 : Simulation Authentification Abraham Choi
@@ -42,16 +39,16 @@ class DeleteCommentActionFunctionalTest extends AbstractWebTestCase
 
         $commentRepository = $this->containerService->get('App\Domain\Repository\CommentRepository');
         $comment = $commentRepository->findOneBy(['content' => 'hello']);
-        $token = 'delete' . $comment->getId();
+        $token = 'delete'.$comment->getId();
 
         $csrfStorage = $this->containerService->get('security.csrf.token_storage');
         $csrfStorage->setToken($token, 'random');
 
         $this->client->request(
             'POST',
-            '/delete/comment/' . $comment->getId(),
+            '/delete/comment/'.$comment->getId(),
             ['_token' => 'random',
-                'slug' => 'crail']
+                'slug' => 'crail', ]
         );
 
         static::assertTrue($this->client->getResponse()->isRedirection());

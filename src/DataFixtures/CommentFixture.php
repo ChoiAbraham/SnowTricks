@@ -23,7 +23,7 @@ class CommentFixture extends BaseFixture implements DependentFixtureInterface
         $manager->persist($commentTest);
         $manager->flush();
 
-        $this->createMany(Comment::class, 100, function(Comment $comment) {
+        $this->createMany(Comment::class, 100, function (Comment $comment) {
             $comment->setContent(
                 $this->faker->boolean ? $this->faker->paragraph : $this->faker->sentences(2, true)
             );
@@ -39,6 +39,6 @@ class CommentFixture extends BaseFixture implements DependentFixtureInterface
 
     public function getDependencies()
     {
-        return [TrickFixtures::class,UserFixture::class];
+        return [TrickFixtures::class, UserFixture::class];
     }
 }

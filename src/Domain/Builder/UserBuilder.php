@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Domain\Builder;
 
 use App\Domain\Builder\Interfaces\UserBuilderInterface;
@@ -23,15 +22,11 @@ class UserBuilder implements UserBuilderInterface
      */
     private $uploaderHelper;
 
-
     /** @var EntityManagerInterface */
     private $em;
 
     /**
      * UserBuilder constructor.
-     * @param User $user
-     * @param UploaderHelper $uploaderHelper
-     * @param EntityManagerInterface $em
      */
     public function __construct(User $user, UploaderHelper $uploaderHelper, EntityManagerInterface $em)
     {
@@ -40,9 +35,9 @@ class UserBuilder implements UserBuilderInterface
         $this->em = $em;
     }
 
-
     /**
      * @param
+     *
      * @return UserBuilder
      */
     public function create(CreateUserDTO $dto): self
@@ -58,7 +53,7 @@ class UserBuilder implements UserBuilderInterface
 
     public function updateProfilPicture(ProfilPictureDTO $dto, User $user): self
     {
-        /** @var UploadedFile $uploadFile*/
+        /** @var UploadedFile $uploadFile */
         $uploadFile = $dto->getProfilPicture();
         $newFileName = ImageFileNameService::generateFileName($uploadFile);
 
@@ -71,9 +66,9 @@ class UserBuilder implements UserBuilderInterface
         $this->em->flush();
 
         $this->user = $user;
+
         return $this;
     }
-
 
     /**
      * @return User

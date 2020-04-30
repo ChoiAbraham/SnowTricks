@@ -50,7 +50,7 @@ class TrickActionFunctionalTest extends AbstractWebTestCase
             TrickFixtures::class,
             ImageTrickFixture::class,
             VideoTrickFixture::class,
-            CommentFixture::class
+            CommentFixture::class,
         ]);
 
         // Step 2 : Simulation Authentification Abraham Choi

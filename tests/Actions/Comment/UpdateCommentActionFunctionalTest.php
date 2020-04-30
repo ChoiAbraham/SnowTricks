@@ -1,10 +1,7 @@
 <?php
 
-
 namespace App\Tests\Actions\Comment;
 
-
-use App\DataFixtures\AppFixtures;
 use App\DataFixtures\CommentFixture;
 use App\DataFixtures\GroupFixture;
 use App\DataFixtures\ImageTrickFixture;
@@ -34,7 +31,7 @@ class UpdateCommentActionFunctionalTest extends AbstractWebTestCase
             TrickFixtures::class,
             ImageTrickFixture::class,
             VideoTrickFixture::class,
-            CommentFixture::class
+            CommentFixture::class,
         ]);
 
         // Step 2 : Simulation Authentification Abraham Choi
@@ -51,7 +48,6 @@ class UpdateCommentActionFunctionalTest extends AbstractWebTestCase
 
         $link = $crawler->selectLink('Modifier')->link();
         $crawler = $this->client->click($link);
-
 
         static::assertSame(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
         static::assertSame(1, $crawler->filter('html:contains("Votre Commentaire")')->count());

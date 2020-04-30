@@ -1,11 +1,10 @@
 <?php
 
-
 namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\UserDTOInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 use App\Form\CustomConstraints as AcmeAssert;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class CreateUserDTO implements UserDTOInterface
 {
@@ -44,10 +43,6 @@ class CreateUserDTO implements UserDTOInterface
 
     /**
      * CreateUserDTO constructor.
-     * @param string $name
-     * @param string $email
-     * @param string $password
-     * @param string $confirm_password
      */
     public function __construct(string $name, string $email, string $password, string $confirm_password)
     {
@@ -65,9 +60,6 @@ class CreateUserDTO implements UserDTOInterface
         return $this->username;
     }
 
-    /**
-     * @param string $username
-     */
     public function setUsername(string $username): void
     {
         $this->username = $username;
@@ -81,9 +73,6 @@ class CreateUserDTO implements UserDTOInterface
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     */
     public function setEmail(string $email): void
     {
         $this->email = $email;
@@ -97,9 +86,6 @@ class CreateUserDTO implements UserDTOInterface
         return $this->password;
     }
 
-    /**
-     * @param string $password
-     */
     public function setPassword(string $password): void
     {
         $this->password = $password;
@@ -113,9 +99,6 @@ class CreateUserDTO implements UserDTOInterface
         return $this->confirm_password;
     }
 
-    /**
-     * @param string $confirm_password
-     */
     public function setConfirmPassword(string $confirm_password): void
     {
         $this->confirm_password = $confirm_password;

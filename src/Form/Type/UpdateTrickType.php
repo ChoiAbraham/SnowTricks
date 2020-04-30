@@ -1,15 +1,12 @@
 <?php
 
-
 namespace App\Form\Type;
 
 use App\Domain\DTO\UpdateTrickDTO;
 use App\Domain\Entity\Trick;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\DataMapperInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,7 +26,7 @@ class UpdateTrickType extends AbstractType
                 [
                     'label' => 'Titre',
                     'attr' => [
-                        'class' => 'form-title'
+                        'class' => 'form-title',
                     ],
                     'required' => false,
                 ]
@@ -46,7 +43,7 @@ class UpdateTrickType extends AbstractType
                     'choices' => $this->getChoices(),
                     'placeholder' => 'GROUPE',
                     'attr' => [
-                        'class' => 'form-subject'
+                        'class' => 'form-subject',
                     ],
                     'required' => false,
                 ]
@@ -81,7 +78,7 @@ class UpdateTrickType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => UpdateTrickDTO::class,
-            'empty_data' => function(FormInterface $form) {
+            'empty_data' => function (FormInterface $form) {
                 return UpdateTrickDTO(
                     $form->get('title')->getData(),
                     $form->get('content')->getData(),
@@ -91,7 +88,7 @@ class UpdateTrickType extends AbstractType
                 );
             },
 
-            'translation_domain' => 'forms'
+            'translation_domain' => 'forms',
         ]);
     }
 
@@ -99,9 +96,10 @@ class UpdateTrickType extends AbstractType
     {
         $choices = Trick::LIST_GROUPS;
         $output = [];
-        foreach($choices as $k => $v) {
+        foreach ($choices as $k => $v) {
             $output[$v] = $k;
         }
+
         return $output;
     }
 }

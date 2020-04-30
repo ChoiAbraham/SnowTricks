@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Actions\Tricks;
 
 use App\Domain\Entity\Comment;
@@ -11,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class HomepageTricksLoadedAction
+ * Class HomepageTricksLoadedAction.
  *
  * @Route("/commentsloaded/{slug}", name="comments.loaded")
  */
@@ -25,8 +24,6 @@ final class TrickCommentsLoadedAction
 
     /**
      * TrickCommentsLoadedAction constructor.
-     * @param CommentRepository $commentRepository
-     * @param TrickRepository $trickRepository
      */
     public function __construct(CommentRepository $commentRepository, TrickRepository $trickRepository)
     {
@@ -45,7 +42,7 @@ final class TrickCommentsLoadedAction
                 true : false
         ;
 
-        $offset = $pageId * Comment::NUMBER_PER_PAGE - Comment::NUMBER_PER_PAGE ;
+        $offset = $pageId * Comment::NUMBER_PER_PAGE - Comment::NUMBER_PER_PAGE;
 
         $trick = $this->trickRepository->findOneBy(['slug' => $request->attributes->get('slug')]);
 
@@ -53,12 +50,12 @@ final class TrickCommentsLoadedAction
         $commentsToLoad = $this->commentRepository->findComments($trick->getId(), Comment::NUMBER_PER_PAGE, $offset);
         $page = $pageId++;
 
-        return $responder (
+        return $responder(
             'include/_ajax_load_more_comments_on_trick_page.html.twig',
             [
                 'commentsToLoad' => $commentsToLoad,
                 'nextPage' => $nextPage,
-                'numberOfThePage' => $page
+                'numberOfThePage' => $page,
             ]
         );
     }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Actions;
 
 use App\DataFixtures\UserFixture;

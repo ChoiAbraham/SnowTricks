@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -9,7 +8,6 @@ use Liip\TestFixturesBundle\Test\FixturesTrait;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class AbstractWebTestCase extends WebTestCase
 {

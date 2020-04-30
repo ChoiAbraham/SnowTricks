@@ -1,13 +1,11 @@
 <?php
 
-
 namespace App\Form\Handler;
 
 use App\Domain\Builder\Interfaces\CommentBuilderInterface;
 use App\Domain\DTO\CommentDTO;
 use App\Domain\Entity\Comment;
 use App\Domain\Entity\Trick;
-use App\Domain\Entity\User;
 use App\Domain\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormInterface;
@@ -29,9 +27,6 @@ class TrickCommentTypeHandler
 
     /**
      * TrickCommentTypeHandler constructor.
-     * @param CommentBuilderInterface $commentBuilder
-     * @param CommentRepository $commentRepository
-     * @param EntityManagerInterface $em
      */
     public function __construct(CommentBuilderInterface $commentBuilder, CommentRepository $commentRepository, EntityManagerInterface $em)
     {
@@ -43,7 +38,6 @@ class TrickCommentTypeHandler
     public function handleAddComment(FormInterface $form, Trick $trick): bool
     {
         if ($form->isSubmitted() && $form->isValid()) {
-
             /** @var CommentDTO $data */
             $data = $form->getData();
             /** @var Comment $comment */
@@ -62,7 +56,6 @@ class TrickCommentTypeHandler
     public function handleUpdateComment(FormInterface $form, Comment $comment): bool
     {
         if ($form->isSubmitted() && $form->isValid()) {
-
             /** @var CommentDTO $data */
             $data = $form->getData();
 

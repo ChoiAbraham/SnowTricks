@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Form\CustomConstraints;
-
 
 use App\Domain\Repository\Interfaces\UserRepositoryInterface;
 use Symfony\Component\Validator\Constraint;
@@ -19,7 +17,6 @@ class NotInDatabaseValidator extends ConstraintValidator
 
     /**
      * UniqueUsernameValidator constructor.
-     * @param UserRepositoryInterface $userRepository
      */
     public function __construct(UserRepositoryInterface $userRepository)
     {
@@ -42,8 +39,8 @@ class NotInDatabaseValidator extends ConstraintValidator
 
         $user = $this->userRepository->findByCredentials($value);
 
-        if ($user == null) {
-        $this->context->buildViolation($constraint->message)
+        if (null == $user) {
+            $this->context->buildViolation($constraint->message)
             ->setParameter('{{ string }}', $value)
             ->addViolation();
         }

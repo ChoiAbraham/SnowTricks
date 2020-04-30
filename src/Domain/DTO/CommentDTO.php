@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Domain\DTO;
 
 use App\Domain\Entity\Comment;
@@ -17,7 +16,6 @@ class CommentDTO
 
     /**
      * CommentDTO constructor.
-     * @param string|null $text
      */
     public function __construct(?string $text = '')
     {
@@ -40,9 +38,6 @@ class CommentDTO
         return $this->text;
     }
 
-    /**
-     * @param string|null $text
-     */
     public function setText(?string $text): void
     {
         $this->text = $text;

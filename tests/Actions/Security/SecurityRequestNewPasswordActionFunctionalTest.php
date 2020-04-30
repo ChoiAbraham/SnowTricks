@@ -45,7 +45,6 @@ class SecurityRequestNewPasswordActionFunctionalTest extends AbstractWebTestCase
     {
         $this->loadFixtures([UserFixture::class]);
 
-
         $crawler = $this->client->request('GET', '/');
 
         $link = $crawler->selectLink('Connexion')->link();
@@ -72,7 +71,6 @@ class SecurityRequestNewPasswordActionFunctionalTest extends AbstractWebTestCase
     {
         $this->loadFixtures([UserFixture::class]);
 
-
         $crawler = $this->client->request('GET', '/');
 
         $link = $crawler->selectLink('Connexion')->link();
@@ -88,7 +86,6 @@ class SecurityRequestNewPasswordActionFunctionalTest extends AbstractWebTestCase
         $form['email_for_password_recovery_form[pseudo]']->setValue('');
         $form['email_for_password_recovery_form[email]']->setValue('');
         $crawler = $this->client->submit($form);
-
 
         static::assertSame(2, $crawler->filter('html span.form-error-icon')->count());
     }

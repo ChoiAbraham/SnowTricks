@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -8,7 +7,6 @@ use Doctrine\ORM\Tools\SchemaTool;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
-use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\PantherTestCase;
 
 class AbstractPantherWebTestCase extends PantherTestCase

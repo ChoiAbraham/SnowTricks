@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Actions\Tricks;
 
 use App\Domain\Entity\Comment;
@@ -10,10 +9,10 @@ use App\Domain\Entity\TrickVideo;
 use App\Domain\Repository\CommentRepository;
 use App\Domain\Repository\GroupTrickRepository;
 use App\Domain\Repository\TrickImageRepository;
-use App\Domain\Repository\TrickVideoRepository;
 use App\Domain\Repository\TrickRepository;
-use App\Form\Handler\TrickCommentTypeHandler;
+use App\Domain\Repository\TrickVideoRepository;
 use App\Form\Handler\Interfaces\EditTrickTypeHandlerInterface;
+use App\Form\Handler\TrickCommentTypeHandler;
 use App\Form\Type\trickCommentType;
 use App\Responders\RedirectResponder;
 use App\Responders\ViewResponder;
@@ -27,7 +26,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
 /**
- * Class TrickDisplay
+ * Class TrickDisplay.
  *
  * @Route("/trick/{slug}", name="trick_action")
  */
@@ -71,18 +70,6 @@ class TrickAction
 
     /**
      * TrickAction constructor.
-     * @param EventDispatcherInterface $eventDispatcher
-     * @param TrickRepository $trickRepository
-     * @param TrickImageRepository $trickImageRepository
-     * @param TrickVideoRepository $trickVideoRepository
-     * @param Security $security
-     * @param CommentRepository $commentRepository
-     * @param FormFactoryInterface $formFactory
-     * @param GroupTrickRepository $groupTrickRepository
-     * @param EditTrickTypeHandlerInterface $editTrickTypeHandler
-     * @param TrickCommentTypeHandler $trickCommentTypeHandler
-     * @param UploaderHelper $uploaderHelper
-     * @param FlashBagInterface $bag
      */
     public function __construct(EventDispatcherInterface $eventDispatcher, TrickRepository $trickRepository, TrickImageRepository $trickImageRepository, TrickVideoRepository $trickVideoRepository, Security $security, CommentRepository $commentRepository, FormFactoryInterface $formFactory, GroupTrickRepository $groupTrickRepository, EditTrickTypeHandlerInterface $editTrickTypeHandler, TrickCommentTypeHandler $trickCommentTypeHandler, UploaderHelper $uploaderHelper, FlashBagInterface $bag)
     {
@@ -106,7 +93,7 @@ class TrickAction
         /** @var Trick $trick */
         $trick = $this->trickRepository->findOneBy(['slug' => $request->attributes->get('slug')]);
 
-        if(is_null($trick)) {
+        if (is_null($trick)) {
             throw new EntityNotFoundException('Pas de Trick "%s"', $trick->getSlug());
         }
 
@@ -121,8 +108,9 @@ class TrickAction
         $commentForm = $this->formFactory->create(trickCommentType::class)->handleRequest($request);
 
         $user = $this->security->getUser();
-        if ($this->trickCommentTypeHandler->handleAddComment($commentForm, $trick) && $user != null) {
+        if ($this->trickCommentTypeHandler->handleAddComment($commentForm, $trick) && null != $user) {
             $this->bag->add('success', 'Votre commentaire a été ajouté');
+
             return $redirect('trick_action', ['slug' => $trick->getSlug()]);
         }
 
@@ -135,10 +123,9 @@ class TrickAction
 
         $nextPage = $maxPageNumberComments > 1 ? true : false;
 
-
-        return $responder (
-        'trick/trick_page.html.twig',
-                [
+        return $responder(
+            'trick/trick_page.html.twig',
+            [
                     'form' => $commentForm->createView(),
                     'firstImage' => $firstImage,
                     'trick' => $trick,
@@ -146,7 +133,7 @@ class TrickAction
                     'videos' => $videos,
                     'comments' => $comments,
                     'nextPage' => $nextPage,
-                    'maxPageNumberComments' => $maxPageNumberComments
+                    'maxPageNumberComments' => $maxPageNumberComments,
                 ]
         );
     }

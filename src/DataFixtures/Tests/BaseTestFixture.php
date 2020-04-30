@@ -26,7 +26,7 @@ abstract class BaseTestFixture extends Fixture implements FixtureGroupInterface
 
     protected function createMany(string $className, int $count, callable $factory)
     {
-        for ($i = 0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; ++$i) {
             $entity = new $className();
             $factory($entity, $i);
 
@@ -36,12 +36,13 @@ abstract class BaseTestFixture extends Fixture implements FixtureGroupInterface
         }
     }
 
-    protected function getRandomReference(string $className) {
+    protected function getRandomReference(string $className)
+    {
         if (!isset($this->referencesIndex[$className])) {
             $this->referencesIndex[$className] = [];
 
             foreach ($this->referenceRepository->getReferences() as $key => $ref) {
-                if (strpos($key, $className.'_') === 0) {
+                if (0 === strpos($key, $className . '_')) {
                     $this->referencesIndex[$className][] = $key;
                 }
             }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Actions\Tricks;
 
 use App\DataFixtures\CommentFixture;
@@ -54,7 +53,7 @@ class NewTrickActionFunctionalTest extends AbstractWebTestCase
             TrickFixtures::class,
             ImageTrickFixture::class,
             VideoTrickFixture::class,
-            CommentFixture::class
+            CommentFixture::class,
         ]);
 
         $user = $users->getReference('userRef_7');
@@ -69,7 +68,7 @@ class NewTrickActionFunctionalTest extends AbstractWebTestCase
 
         $this->client->submit($form, [
             'create_trick[title]' => 'Title of the trick',
-            'create_trick[content]' => 'content'
+            'create_trick[content]' => 'content',
         ]);
 
         static::assertTrue($this->client->getResponse()->isRedirection());

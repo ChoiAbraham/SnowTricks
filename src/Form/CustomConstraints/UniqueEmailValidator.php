@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Form\CustomConstraints;
-
 
 use App\Domain\Repository\Interfaces\UserRepositoryInterface;
 use Symfony\Component\Validator\Constraint;
@@ -19,7 +17,6 @@ class UniqueEmailValidator extends ConstraintValidator
 
     /**
      * UniqueUsernameValidator constructor.
-     * @param UserRepositoryInterface $userRepository
      */
     public function __construct(UserRepositoryInterface $userRepository)
     {
@@ -40,10 +37,10 @@ class UniqueEmailValidator extends ConstraintValidator
             throw new UnexpectedValueException($value, 'string');
         }
 
-        $userByEmail = $this->userRepository->findOneBy(array('email' => $value));
+        $userByEmail = $this->userRepository->findOneBy(['email' => $value]);
 
-        if ($userByEmail != null) {
-        $this->context->buildViolation($constraint->message)
+        if (null != $userByEmail) {
+            $this->context->buildViolation($constraint->message)
             ->setParameter('{{ string }}', $value)
             ->addViolation();
         }

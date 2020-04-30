@@ -12,14 +12,14 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id',
+            ->add(
+                'id',
                 HiddenType::class,
                 [
                     'required' => false,
@@ -39,15 +39,15 @@ class ImageType extends AbstractType
                             [
                                 'maxSize' => '1024k',
                                 'mimeTypes' => [
-                                    "image/png",
-                                    "image/jpeg",
-                                    "image/jpg",
-                                    "image/gif",
+                                    'image/png',
+                                    'image/jpeg',
+                                    'image/jpg',
+                                    'image/gif',
                                 ],
                                 'mimeTypesMessage' => 'Veuillez uploader un fichier conforme',
                             ]
-                        )
-                    ]
+                        ),
+                    ],
                 ]
             )
             ->add('alt', TextType::class, ['label' => 'Description de l\'image'])
@@ -57,7 +57,7 @@ class ImageType extends AbstractType
                 [
                     'attr' => ['class' => 'checkbox_check', 'data-id' => '__name__'],
                     'label' => 'Image à la Une ?',
-                    'required' => false
+                    'required' => false,
                 ]
             );
     }
@@ -72,8 +72,8 @@ class ImageType extends AbstractType
                     $form->get('alt')->getData(),
                     $form->get('image')->getData(),
                     $form->get('first_image')->getData()
-                    );
-            }
+                );
+            },
         ]);
     }
 }

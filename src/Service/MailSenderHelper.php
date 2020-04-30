@@ -32,7 +32,7 @@ class MailSenderHelper
             ->subject('Changement du mot de passe')
             ->htmlTemplate('emails/_password_recovery.html.twig')
             ->context([
-                'tokenSent' => $token
+                'tokenSent' => $token,
             ]);
 
         $this->mailer->send($email);

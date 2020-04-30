@@ -28,7 +28,7 @@ class DeleteMyAccountActionFunctionalTest extends AbstractWebTestCase
 
         $this->client->request(
             'POST',
-            '/dashboard/delete-account/' . $user->getId(),
+            '/dashboard/delete-account/'.$user->getId(),
             [
                 '_token' => 'random',
             ]

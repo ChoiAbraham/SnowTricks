@@ -15,7 +15,7 @@ class GroupFixture extends BaseFixture
 
     public function loadData(ObjectManager $manager)
     {
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 3; ++$i) {
             $groupTrick = new GroupTrick();
             $groupTrick->setname(self::$groupTrickContents[$i]);
             $manager->persist($groupTrick);

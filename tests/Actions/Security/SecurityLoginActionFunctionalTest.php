@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Actions\Security;
 
 use App\DataFixtures\UserFixture;
@@ -43,7 +42,7 @@ class SecurityLoginActionFunctionalTest extends AbstractWebTestCase
 
         $csrfToken = $this->containerService->get('security.csrf.token_manager')->getToken('authenticate');
 
-        $form = $crawler->selectButton("Se Connecter")->form();
+        $form = $crawler->selectButton('Se Connecter')->form();
         //Wrong Username
         $form['_csrf_token'] = $csrfToken;
         $form['username'] = 'Abraham Choiiiiii';
@@ -72,7 +71,7 @@ class SecurityLoginActionFunctionalTest extends AbstractWebTestCase
 
         $csrfToken = $this->containerService->get('security.csrf.token_manager')->getToken('authenticate');
 
-        $form = $crawler->selectButton("Se Connecter")->form();
+        $form = $crawler->selectButton('Se Connecter')->form();
         $form['_csrf_token'] = $csrfToken;
         $form['username'] = 'Abraham Choi';
         //Wrong Email
@@ -99,7 +98,7 @@ class SecurityLoginActionFunctionalTest extends AbstractWebTestCase
 
         $csrfToken = $this->containerService->get('security.csrf.token_manager')->getToken('authenticate');
 
-        $form = $crawler->selectButton("Se Connecter")->form();
+        $form = $crawler->selectButton('Se Connecter')->form();
         $form['_csrf_token'] = $csrfToken;
         $form['username'] = 'Abraham Choi';
         $form['mail'] = 'abraham.choi@yahoo.com';

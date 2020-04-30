@@ -42,7 +42,7 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
 
         $source = '';
         foreach ($files as $file) {
-            $source .= file_get_contents($this->publicDir.'/'.$file);
+            $source .= file_get_contents($this->publicDir . '/' . $file);
         }
 
         return $source;

@@ -30,7 +30,7 @@ class VideoType extends AbstractType
                         $form->get('pathUrl')->getData(),
                     );
                 },
-                'translation_domain' => 'form_add_video'
+                'translation_domain' => 'form_add_video',
             ]
         );
     }

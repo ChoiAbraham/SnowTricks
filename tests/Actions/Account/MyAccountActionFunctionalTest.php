@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Tests\Actions\Account;
 
 use App\DataFixtures\UserFixture;
@@ -39,7 +38,6 @@ class MyAccountActionFunctionalTest extends AbstractWebTestCase
         static::assertTrue($this->client->getResponse()->isSuccessful());
     }
 
-
     public function testSuccessfulProfilPictureUpload()
     {
         //Simulation Authentification
@@ -50,7 +48,7 @@ class MyAccountActionFunctionalTest extends AbstractWebTestCase
 
         $crawler = $this->client->request('GET', '/dashboard');
 
-        $form = $crawler->selectButton("Envoyer")->form();
+        $form = $crawler->selectButton('Envoyer')->form();
 
         $photo = new UploadedFile(
             'public/uploads/profile_picture/profil_picture_default.jpg',

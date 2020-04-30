@@ -16,7 +16,7 @@ use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 /**
- * Class DeleteCommentAction
+ * Class DeleteCommentAction.
  *
  * @Route("/delete/comment/{id}", name="delete.comment")
  * @IsGranted("ROLE_USER")
@@ -49,11 +49,6 @@ final class DeleteCommentAction implements DeleteCommentActionInterface
 
     /**
      * DeleteCommentAction constructor.
-     * @param EntityManagerInterface $manager
-     * @param TokenStorageInterface $tokenStorage
-     * @param CommentRepositoryInterface $commentRepository
-     * @param FlashBagInterface $flashBag
-     * @param CsrfTokenManagerInterface $csrf
      */
     public function __construct(EntityManagerInterface $manager, TokenStorageInterface $tokenStorage, CommentRepositoryInterface $commentRepository, FlashBagInterface $flashBag, CsrfTokenManagerInterface $csrf)
     {
@@ -76,6 +71,7 @@ final class DeleteCommentAction implements DeleteCommentActionInterface
                 $this->manager->flush();
 
                 $this->flashBag->add('success', 'Le commentaire a été supprimé');
+
                 return $redirect('trick_action', ['slug' => $slug]);
             }
         }

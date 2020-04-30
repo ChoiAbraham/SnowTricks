@@ -1,12 +1,11 @@
 <?php
 
-
 namespace App\Domain\DTO;
 
 use App\Domain\DTO\Interfaces\TrickDTOInterface;
+use App\Form\CustomConstraints as AcmeAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Form\CustomConstraints as AcmeAssert;
 
 class CreateTrickDTO implements TrickDTOInterface
 {
@@ -40,9 +39,7 @@ class CreateTrickDTO implements TrickDTOInterface
 
     /**
      * TrickDTO constructor.
-     * @param string|null $title
-     * @param string|null $content
-     * @param string|null $groups
+     *
      * @param ArrayCollection $image
      * @param ArrayCollection $video
      */
@@ -55,25 +52,16 @@ class CreateTrickDTO implements TrickDTOInterface
         $this->videoslinks = $videoslinks;
     }
 
-    /**
-     * @param string|null $title
-     */
     public function setTitle(?string $title): void
     {
         $this->title = $title;
     }
 
-    /**
-     * @param string|null $content
-     */
     public function setContent(?string $content): void
     {
         $this->content = $content;
     }
 
-    /**
-     *
-     */
     public function setGroups($groups): void
     {
         $this->groups = $groups;
@@ -119,9 +107,6 @@ class CreateTrickDTO implements TrickDTOInterface
         return $this->groups;
     }
 
-    /**
-     *
-     */
     public function getImageslinks()
     {
         $checkNewUploads = [];
@@ -131,12 +116,10 @@ class CreateTrickDTO implements TrickDTOInterface
                 $checkNewUploads[] = $image;
             }
         }
+
         return $checkNewUploads;
     }
 
-    /**
-     *
-     */
     public function getVideoslinks()
     {
         return $this->videoslinks;

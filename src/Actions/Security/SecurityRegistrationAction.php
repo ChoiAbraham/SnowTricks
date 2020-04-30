@@ -1,9 +1,7 @@
 <?php
 
-
 namespace App\Actions\Security;
 
-use App\Domain\Entity\User;
 use App\Form\Handler\Interfaces\AddUserTypeHandlerInterface;
 use App\Form\Type\RegistrationType;
 use App\Responders\RedirectResponder;
@@ -13,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class SecurityRegistrationAction
+ * Class SecurityRegistrationAction.
  *
  * @Route("/registration", name="registration")
  */
@@ -27,8 +25,6 @@ class SecurityRegistrationAction
 
     /**
      * SecurityRegistrationAction constructor.
-     * @param FormFactoryInterface $formFactory
-     * @param AddUserTypeHandlerInterface $addUserTypeHandler
      */
     public function __construct(FormFactoryInterface $formFactory, AddUserTypeHandlerInterface $addUserTypeHandler)
     {
@@ -44,10 +40,10 @@ class SecurityRegistrationAction
             return $redirect('security_login');
         }
 
-        return $responder (
+        return $responder(
             'security/registration.html.twig',
             [
-                'registrationForm' => $addUserType->createView()
+                'registrationForm' => $addUserType->createView(),
             ]
         );
     }

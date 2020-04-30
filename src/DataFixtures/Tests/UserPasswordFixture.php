@@ -12,19 +12,20 @@ class UserPasswordFixture extends BaseTestFixture
     private $encoder;
 
     private static $userNames = [
-        'Abraham Choi'
+        'Abraham Choi',
     ];
 
     private static $userEmails = [
-        'abraham.choi@yahoo.fr'
+        'abraham.choi@yahoo.fr',
     ];
 
     private static $userPasswords = [
-        'abrahamchoi'
+        'abrahamchoi',
     ];
 
     /**
      * UserFixture constructor.
+     *
      * @param UserPasswordEncoderInterface $this->encoder
      */
     public function __construct(UserPasswordEncoderInterface $encoder)
@@ -34,7 +35,7 @@ class UserPasswordFixture extends BaseTestFixture
 
     protected function loadData(ObjectManager $manager)
     {
-        $this->createMany(User::class, 1, function(User $user, $i) {
+        $this->createMany(User::class, 1, function (User $user, $i) {
             $user->setName(self::$userNames[$i]);
             $user->setEmail(self::$userEmails[$i]);
 

@@ -5,8 +5,8 @@ namespace App\Tests\Service;
 use App\Domain\Entity\User;
 use App\Service\MailSenderHelper;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 use Twig\Environment;
 
 class MailSenderHelperTest extends TestCase
