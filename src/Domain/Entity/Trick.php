@@ -15,7 +15,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Trick
 {
-    public const LIST_GROUPS = ['group1', 'group2', 'group3'];
+    public const LIST_GROUPS = [
+        'Stances',
+        'Straight airs',
+        'Grabs',
+        'Les rotations',
+        'Flips',
+        'Les rotations désaxées',
+        'Slides',
+        'Les one foot tricks',
+        'Old School',
+        'Autres'
+    ];
     public const NUMBER_OF_TRICKS_IN_HOMEPAGE = 6;
 
     /**
