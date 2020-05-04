@@ -1,4 +1,4 @@
-import '../../css/pages/trick.display.scss'
+import '../../css/pages/trick.display.scss';
 
 jQuery.noConflict();
 import 'bootstrap';

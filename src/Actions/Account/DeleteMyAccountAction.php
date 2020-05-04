@@ -9,7 +9,6 @@ use App\Domain\Repository\CommentRepository;
 use App\Domain\Repository\Interfaces\UserRepositoryInterface;
 use App\Domain\Repository\TrickRepository;
 use App\Responders\RedirectResponder;
-use App\Responders\ViewResponder;
 use App\Service\UploaderHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -74,7 +73,7 @@ class DeleteMyAccountAction implements DeleteMyAccountActionInterface
         $this->commentRepository = $commentRepository;
     }
 
-    public function __invoke(Request $request, RedirectResponder $redirect, ViewResponder $responder)
+    public function __invoke(Request $request, RedirectResponder $redirect)
     {
         /** @var User $user */
         $user = $this->security->getUser();

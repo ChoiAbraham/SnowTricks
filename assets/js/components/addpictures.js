@@ -10,7 +10,7 @@ $(document).ready(function () {
     // append the add new item link to the collectionHolder
     $collectionHolder.append($addNewItem);
     // add an index property to the collectionHolder which helps track the count of forms we have in the list
-    $collectionHolder.data('index', $collectionHolder.find('.panel_trick').length)
+    $collectionHolder.data('index', $collectionHolder.find('.panel_trick').length);
     // finds all the panels in the list and foreach one of them we add a remove button to it
     // add remove button to existing items
     // $collectionHolder.find('.panel_trick').each(function () {
@@ -76,7 +76,7 @@ function addRemoveButton ($panel) {
         // after the animation is done the element (the panel) is removed from the html
         $(e.target).parents('.panel').slideUp(1000, function () {
             $(this).remove();
-        })
+        });
     });
     // append the footer to the panel
     $panel.append($panelFooter);

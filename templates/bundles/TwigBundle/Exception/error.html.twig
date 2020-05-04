@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+erreur : {{ status_text }}
+{% endblock %}
+
+{% block body %}
+    <div class="container d-flex align-items-center min-vh-100">
+        <div class="row">
+            <div class="col-md-12 p-5">
+                <div>
+                    <h1>Erreur</h1>
+                    <h2>Le serveur a renvoyé un "{{ status_code }} {{ status_text }}".</h2>
+                    <p>
+                        Une erreur s'est produite. Veuillez nous contacter.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

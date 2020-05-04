@@ -31,10 +31,9 @@ final class HomepageAction implements HomeActionInterface
         $this->trickRepository = $trickRepository;
     }
 
-    public function __invoke(Request $request, ViewResponderInterface $responder)
+    public function __invoke(ViewResponderInterface $responder)
     {
         /** @var Trick $tricks */
-//        $tricks = $this->trickRepository->findBy([], ['id' => 'DESC'], Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE, null);
         $tricks = $this->trickRepository->findLatestWithFirstImageActive(Trick::NUMBER_OF_TRICKS_IN_HOMEPAGE, null);
 
         /** @var $maxPageNumber */

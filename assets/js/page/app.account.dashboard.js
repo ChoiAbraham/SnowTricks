@@ -1,7 +1,7 @@
 import 'bootstrap';  // js-file
 
 import '../../css/pages/app.account.dashboard.scss';
-import '../bootstrap/browse_button_my_account'
+import '../bootstrap/browse_button_my_account';
 
 import $ from "jquery";
 

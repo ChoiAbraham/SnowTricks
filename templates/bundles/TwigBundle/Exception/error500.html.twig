@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    erreur : {{ status_text }}
+{% endblock %}
+
+{% block body %}
+    <div class="container d-flex align-items-center min-vh-100">
+        <div class="row">
+            <div class="col-md-12 p-5">
+                <div>
+                    <h1>
+                        Mince!</h1>
+                    <h2>
+                        500 Internal Server Error</h2>
+                    <div>
+                        Une erreur serveur s'est produite.
+                    </div>
+                    <div class="pt-3">
+                        <a href="{{path('homepage_action')}}" class="btn btn-primary btn-lg">
+                            Retour à la page d'accueil. </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

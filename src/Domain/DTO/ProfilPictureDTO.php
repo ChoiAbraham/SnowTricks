@@ -38,23 +38,6 @@ class ProfilPictureDTO implements ProfilPictureDTOInterface
     }
 
     /**
-     * @param UploadedFile $image
-     */
-    public function setProfilPicture(string $image): UploadedFile
-    {
-        $this->image = $image;
-    }
-
-    public static function createFromEntity(User $user)
-    {
-        $dto = new self();
-
-        $dto->setProfilPicture($image->getImageFileName());
-
-        return $dto;
-    }
-
-    /**
      * @return string
      */
     public function getAlt(): string
